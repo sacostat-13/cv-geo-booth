@@ -1,0 +1,6 @@
+# Generated on every deploy from the site's environment variables.
+config.js
+
+# Build-time only
+node_modules/
+.netlify/

@@ -1,7 +1,11 @@
-# Static site — nothing to build. Drop this folder on Netlify as-is.
+# Static site. The one build step turns the site's environment variables into
+# config.js — static pages cannot read environment variables at runtime.
 [build]
   publish = "."
-  command = ""
+  command = "node tools/build-config.js"
+
+[build.environment]
+  NODE_VERSION = "20"
 
 # Tidy URL for the booth screen: /screen instead of /display.html
 [[redirects]]
@@ -26,14 +30,13 @@
   for = "/world.js"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+[[headers]]
+  for = "/vendor/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
 
-# config.js carries the Supabase URL and the event settings — never cache it,
-# or a change you push will not reach the screen until someone clears the cache.
+# config.js is rewritten on every deploy; never let a cache hold the old one.
 [[headers]]
   for = "/config.js"
-  [headers.values]
-    Cache-Control = "no-store"
-[[headers]]
-  for = "/qr.js"
   [headers.values]
     Cache-Control = "no-store"

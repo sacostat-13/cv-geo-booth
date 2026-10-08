@@ -4,8 +4,8 @@ Two pages that talk to each other through one table:
 
 | File | Runs on | What it does |
 |---|---|---|
-| `display.html` | the 42″ screen, 1080p landscape | rotating globe or flat map, pins, live counters, QR code |
-| `index.html` | visitors' phones (the QR target) | country → language → variety → initials → contribute |
+| `display.html` (`/screen`) | the 42″ screen, 1080p landscape | rotating globe or flat map, pins, live counters, QR code |
+| `index.html` (`/`) | visitors' phones (the QR target) | country → language → variety → initials → contribute |
 
 `cv-booth-display.standalone.html` is the screen flattened into one file — handy
 for a quick look or for a laptop with no web server. It cannot receive phone
@@ -14,7 +14,8 @@ submissions; use `display.html` for the real thing.
 ## Try it in 30 seconds
 
 ```bash
-cd dist && python3 -m http.server 8080
+node tools/build-config.js    # writes config.js — demo mode with no env vars set
+python3 -m http.server 8080
 ```
 
 Open `http://localhost:8080/display.html`. It starts in **demo mode** with seeded
@@ -25,20 +26,24 @@ local storage, so a submission in one shows up on the other.
 
 ## Going live
 
-1. **Database.** Run `supabase.sql` in your Supabase SQL editor. It creates one
-   table with row-level security that allows anonymous `insert` and `select` and
-   nothing else — no update, no delete.
-2. **Config.** In `config.js` set `mode: 'supabase'`, paste the project URL and
-   the anon key, and set `phoneUrl` to wherever you host `index.html`.
-3. **QR.** `pip install segno && python3 make-qr.py https://your-url/` writes
-   `qr.js`; the screen picks it up automatically.
-4. **Hosting.** Both pages are static files. S3 + CloudFront works and keeps
-   everything on Mozilla infrastructure; the only outbound call at runtime is
-   the Supabase REST endpoint, plus Google Fonts (the pages fall back to system
-   fonts if the venue blocks it).
+`DEPLOY.md` has the full walkthrough. In short: run `supabase.sql`, connect the
+repo to Netlify, and set `SUPABASE_URL` and `SUPABASE_ANON_KEY` as environment
+variables. Setting those two is what switches the site out of demo mode.
+
+There is no URL to configure. `phoneUrl` defaults to empty, meaning "wherever
+this page is served from", and the QR code is generated in the browser from that
+— so the same commit works on a deploy preview, the renamed site and a custom
+domain with nothing to change.
 
 Both pages must be served over **HTTPS** — phone cameras will not open an
 `http://` QR target, and Supabase requires it.
+
+## Configuration
+
+`defaults.js` holds every setting and is committed. `config.js` is generated on
+each deploy by `tools/build-config.js` from the site's environment variables and
+overrides the defaults; it is gitignored and should never be edited by hand.
+`.env.example` lists the variables.
 
 ## Things worth knowing before the festival
 
@@ -65,13 +70,17 @@ Both pages must be served over **HTTPS** — phone cameras will not open an
 (`https://commonvoice.mozilla.org/api/v1/stats/languages`), taken **2026-10-08**:
 281 locales with recorded hours, validated hours and speaker counts. It is baked
 in on purpose — the booth should not depend on venue wifi to draw its own
-headline numbers. Rebuild it from `build/make-data.js` when you want fresher
+headline numbers. Rebuild it with `node build/make-data.js` when you want fresher
 figures.
 
 The country → language suggestions in the same file are hand-curated: for each
 Common Voice locale, the countries where it is widely spoken. It is a starting
 point for the picker, not a claim about who speaks what — anyone can search all
 281 languages, or type a language that is not there at all.
+
+The QR code is drawn at runtime by
+[qrcode-generator](https://github.com/kazuhikoarase/qrcode-generator) (MIT),
+vendored under `vendor/` so the booth never depends on a CDN.
 
 Map geometry is Natural Earth 1:50m via
 [world-atlas](https://github.com/topojson/world-atlas) (public domain),

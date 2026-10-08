@@ -340,13 +340,58 @@
   }
 
   // ---------- QR -----------------------------------------------------------
+  /* Where the phone page lives. Left blank in config, it is wherever this page
+     is served from — so the same commit works on a Netlify preview, the
+     production site and a custom domain with nothing to edit. */
+  function phoneUrl() {
+    if (CFG.phoneUrl) return CFG.phoneUrl;
+    if (location.protocol === 'file:') return '';
+    return location.origin + location.pathname.replace(/[^/]*$/, '');
+  }
+
   function paintQR() {
-    $('qrUrl').textContent = CFG.phoneUrl;
-    if (window.BOOTH_QR) {
-      $('qr').innerHTML = '<img alt="QR code to the Common Voice booth page" src="' + window.BOOTH_QR + '">';
-    } else {
-      $('qrFallback').textContent = CFG.phoneUrl.replace(/^https?:\/\//, '');
+    const url = phoneUrl();
+    const box = $('qr');
+    $('qrUrl').textContent = url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+
+    if (!url) {
+      $('qrFallback').textContent = 'Open this page over http to generate the QR code';
+      return;
     }
+    if (typeof window.qrcode === 'function') {
+      try {
+        const qr = window.qrcode(0, 'M');          // 0 = pick the smallest version that fits
+        qr.addData(url);
+        qr.make();
+        const n = qr.getModuleCount();
+        const pad = 2;
+        // Draw one canvas pixel per module-pixel and let the canvas keep that
+        // exact size on screen. Scaling a QR code down blurs the module edges
+        // and phones stop reading it, so the box flexes instead of the code.
+        const target = Math.round(210 * (window.innerHeight / 1080));
+        const cell = Math.max(3, Math.floor(target / (n + pad * 2)));
+        const c = document.createElement('canvas');
+        c.width = c.height = (n + pad * 2) * cell;
+        c.style.width = c.style.height = c.width + 'px';
+        const g = c.getContext('2d');
+        g.fillStyle = '#FFFFFF'; g.fillRect(0, 0, c.width, c.height);
+        g.fillStyle = '#120F1C';
+        for (let r = 0; r < n; r++) for (let col = 0; col < n; col++) {
+          if (qr.isDark(r, col)) g.fillRect((col + pad) * cell, (r + pad) * cell, cell, cell);
+        }
+        c.setAttribute('role', 'img');
+        c.setAttribute('aria-label', 'QR code to ' + url);
+        box.innerHTML = ''; box.appendChild(c);
+        return;
+      } catch (e) {
+        console.warn('[booth] QR generation failed', e);
+      }
+    }
+    if (window.BOOTH_QR) {
+      box.innerHTML = '<img alt="QR code to the Common Voice booth page" src="' + window.BOOTH_QR + '">';
+      return;
+    }
+    $('qrFallback').textContent = url.replace(/^https?:\/\//, '');
   }
 
   // ---------- simulate (demo / rehearsal) ---------------------------------
