@@ -1,0 +1,39 @@
+# Static site — nothing to build. Drop this folder on Netlify as-is.
+[build]
+  publish = "."
+  command = ""
+
+# Tidy URL for the booth screen: /screen instead of /display.html
+[[redirects]]
+  from = "/screen"
+  to = "/display.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# The data files are frozen snapshots; let phones and the screen cache them hard.
+[[headers]]
+  for = "/cv-data.js"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+[[headers]]
+  for = "/world.js"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# config.js carries the Supabase URL and the event settings — never cache it,
+# or a change you push will not reach the screen until someone clears the cache.
+[[headers]]
+  for = "/config.js"
+  [headers.values]
+    Cache-Control = "no-store"
+[[headers]]
+  for = "/qr.js"
+  [headers.values]
+    Cache-Control = "no-store"
