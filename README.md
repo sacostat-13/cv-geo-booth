@@ -52,8 +52,11 @@ this page is served from", and the QR code is generated in the browser from that
 — so the same commit works on a deploy preview, the renamed site and a custom
 domain with nothing to change.
 
-Both pages must be served over **HTTPS** — phone cameras will not open an
-`http://` QR target, and Supabase requires it.
+Serve both pages over **HTTPS** in the field. Netlify does that for you, and it
+keeps QR scanners from warning people at the booth.
+
+To work on it locally without deploying, use `netlify dev` — `DEPLOY.md` has the
+details, including how to get a real phone onto your laptop's build.
 
 ## Configuration
 

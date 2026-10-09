@@ -154,42 +154,61 @@
     const l = pick.locale ? LANG[pick.locale] : null;
     const where = flag(pick.country) + ' ' + CNAME[pick.country];
     $('doneSub').textContent = pick.langName + (pick.dialect ? ' · ' + pick.dialect : '') + ' · ' + where;
-    const stats = $('doneStats'), callout = $('doneCallout'), cta = $('ctaMain');
+    const stats = $('doneStats'), callout = $('doneCallout');
+
+    /* Recording is only possible where Common Voice has the language open.
+       Everywhere else the useful next step is asking for it, not a page that
+       will turn them away. */
+    const canRecord = !!(l && l.o);
 
     if (l && l.h > 0) {
       stats.className = 'statrow';
       stats.innerHTML =
         tile(fmtHours(l.h) + ' h', 'recorded') + tile(fmtHours(l.v) + ' h', 'validated') + tile(nf.format(l.s), 'voices');
       callout.hidden = true;
-      cta.textContent = 'Record a few sentences in ' + pick.langName;
-      cta.href = CFG.contributeUrl.replace('{locale}', pick.locale);
-      $('doneTitle').textContent = 'You’re on the map';
-    } else if (l && l.o) {
+      $('doneTitle').textContent = 'You\u2019re on the map';
+    } else if (canRecord) {
       stats.className = 'statrow gold';
       stats.innerHTML = tile('0 h', 'recorded so far') + tile(nf.format(l.s), 'voices so far');
       callout.hidden = false;
       callout.textContent = pick.langName + ' is open for recording on Common Voice and has nothing in it yet. The first voice in the dataset could be yours.';
-      cta.textContent = 'Be the first voice in ' + pick.langName;
-      cta.href = CFG.contributeUrl.replace('{locale}', pick.locale);
-      $('doneTitle').textContent = 'You’re on the map — and you’re early';
+      $('doneTitle').textContent = 'You\u2019re on the map — and you\u2019re early';
     } else if (l) {
       stats.className = 'statrow gold';
       stats.innerHTML = tile('—', 'not collecting yet');
       callout.hidden = false;
       callout.textContent = pick.langName + ' is in the Common Voice language list but not open for recording yet. Languages open when enough people ask for them.';
-      cta.textContent = 'Ask for ' + pick.langName + ' to be opened';
-      cta.href = CFG.addLanguageUrl;
-      $('doneTitle').textContent = 'You’re on the map in gold';
+      $('doneTitle').textContent = 'You\u2019re on the map in gold';
     } else {
       stats.className = 'statrow gold';
       stats.innerHTML = tile('—', 'not in Common Voice');
       callout.hidden = false;
-      callout.textContent = pick.langName + ' isn’t in Common Voice yet. Languages get added because people ask for them — here is how.';
-      cta.textContent = 'Ask for ' + pick.langName + ' to be added';
-      cta.href = CFG.addLanguageUrl;
-      $('doneTitle').textContent = 'You’re on the map in gold';
+      callout.textContent = pick.langName + ' isn\u2019t in Common Voice yet. Languages get added because people ask for them — here is how.';
+      $('doneTitle').textContent = 'You\u2019re on the map in gold';
+    }
+
+    paintCtas(canRecord);
+  }
+
+  /* Two things a visitor can do next: lend their voice, or write sentences in
+     their language for other people to read aloud. Writing matters most for the
+     languages with the least data, which is exactly who this booth attracts. */
+  function paintCtas(canRecord) {
+    const main = $('ctaMain'), sec = $('ctaSec');
+    if (canRecord) {
+      main.textContent = 'Sign in and record a few sentences';
+      main.href = CFG.loginUrl;
+      sec.textContent = 'Write a few sentences in ' + pick.langName;
+      sec.href = CFG.writeUrl.replace('{locale}', encodeURIComponent(pick.locale));
+    } else {
+      main.textContent = l0() ? 'Ask for ' + pick.langName + ' to be opened' : 'Ask for ' + pick.langName + ' to be added';
+      main.href = CFG.addLanguageUrl;
+      sec.textContent = 'Sign in to Common Voice';
+      sec.href = CFG.loginUrl;
     }
   }
+  const l0 = () => !!(pick.locale && LANG[pick.locale]);
+
   const tile = (b, s) => '<div><b>' + b + '</b><span>' + s + '</span></div>';
 
   function paintReach() {

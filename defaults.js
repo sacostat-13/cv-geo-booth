@@ -46,7 +46,10 @@ window.BOOTH = {
     idleSpinSpeed: 2.6,    // degrees per second
   },
 
-  contributeUrl: 'https://commonvoice.mozilla.org/{locale}/speak',
+  // Where the phone sends people next. {locale} is replaced with the Common
+  // Voice locale they picked.
+  loginUrl: 'https://commonvoice.mozilla.org/login',
+  writeUrl: 'https://commonvoice.mozilla.org/{locale}/write',
   addLanguageUrl: 'https://commonvoice.mozilla.org/en/languages',
 };
 

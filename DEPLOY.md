@@ -117,19 +117,50 @@ Then the two things that actually go wrong at a booth:
   the booth" and recover on its own, with nothing lost — the map is rebuilt from
   the table on every poll.
 
-## Working on it locally
+## Working on it locally, without deploying
+
+### With the functions (what the booth actually runs)
 
 ```bash
-node tools/build-config.js     # writes config.js; local mode with no env set
+npm install -g netlify-cli      # once
+netlify dev
+```
+
+`netlify dev` runs the build step, serves the site on `http://localhost:8888`
+and runs `submit.mjs` and `wall.mjs` for real, against a **local sandboxed blob
+store** — separate from production, so you cannot pollute the real wall. It also
+sets `NETLIFY=true`, so `config.js` comes out in `netlify` mode exactly as it
+would on a deploy.
+
+Open `http://localhost:8888/screen` and `http://localhost:8888/` in two tabs and
+the full loop works.
+
+### Testing from a real phone
+
+A phone cannot reach `localhost` on your laptop. Two ways round it:
+
+```bash
+netlify dev --live
+```
+
+gives you a public HTTPS tunnel URL. Because `phoneUrl` is derived from wherever
+the page is served, **the QR code on the screen points at the tunnel
+automatically** — scan it and your phone is on the local build, with nothing
+deployed and no credits spent.
+
+Failing that, serve on your LAN and visit `http://<your-laptop-ip>:8888` from the
+phone, with both on the same wifi. Most phone cameras will open an `http://` QR
+target, though some scanners warn about it; the tunnel avoids the question.
+
+### Without the functions
+
+```bash
+node tools/build-config.js     # local mode: browser storage only
 python3 -m http.server 8080
 ```
 
-Then `http://localhost:8080/display.html` and `http://localhost:8080/`. To point
-local work at Supabase, put the variables in your shell first:
-
-```bash
-SUPABASE_URL=... SUPABASE_ANON_KEY=... node tools/build-config.js
-```
+Good enough for layout and copy work. Submissions stay in that one browser, and
+both pages say so.
 
 `config.js` is in `.gitignore` — it is generated on every deploy and should never
 be committed.
