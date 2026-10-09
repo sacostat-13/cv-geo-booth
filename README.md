@@ -33,10 +33,16 @@ On the screen: **P** switches between globe and flat map, **F** is fullscreen,
 
 - A new submission takes over: the globe flies to the country, it lights up warm,
   a pin drops, and the card shows that language's Common Voice figures.
-- With nothing arriving, it tours the languages the room has already added —
-  one every `idleTourMs` (7s by default), flying to a country where each is
-  spoken and lighting it in the quieter accent, so an actual arrival still reads
-  as an arrival. Everyone who contributed sees theirs come round again.
+- With nothing arriving, the globe simply turns for `idleRestMs` (25s), then
+  one language from the room takes the screen for `idleTourMs` (7s) — flying to
+  a country where it is spoken and lighting it in the quieter accent, so an
+  actual arrival still reads as an arrival — and then the globe takes over
+  again. One language per turn rather than the whole list, so the map is
+  visible about three quarters of the time and everyone who contributed still
+  sees theirs come round.
+- A backlog is played one at a time, never collapsed: ten phones submitting at
+  once produce ten celebrations in order, each shortened toward
+  `minHighlightMs` while the queue is deep.
 - Tapping or clicking a country shows how it stands: the voices and languages
   collected from there, or, where the room has none yet, the Common Voice
   languages spoken there and how much each has recorded. It holds for

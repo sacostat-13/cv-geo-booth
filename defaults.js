@@ -44,7 +44,8 @@ window.BOOTH = {
     queuePressure: 5,      // queue length at which compression starts
     pinMax: 40,            // pins per country; above this the country fills with intensity
     idleSpinSpeed: 2.6,    // degrees per second
-    idleTourMs: 7000,      // how long each language holds the screen while idle
+    idleRestMs: 25000,     // the globe simply turns for this long between languages
+    idleTourMs: 7000,      // how long one language holds the screen before the globe returns
     pickHoldMs: 20000,     // how long a country someone tapped stays up
   },
 

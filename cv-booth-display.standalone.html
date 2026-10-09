@@ -186,7 +186,8 @@ window.BOOTH = {
     queuePressure: 5,      // queue length at which compression starts
     pinMax: 40,            // pins per country; above this the country fills with intensity
     idleSpinSpeed: 2.6,    // degrees per second
-    idleTourMs: 7000,      // how long each language holds the screen while idle
+    idleRestMs: 25000,     // the globe simply turns for this long between languages
+    idleTourMs: 7000,      // how long one language holds the screen before the globe returns
     pickHoldMs: 20000,     // how long a country someone tapped stays up
   },
 
@@ -2903,6 +2904,8 @@ var qrcode = function() {
     langOrder: [],       // the order languages joined the wall, for the idle tour
     rotIndex: -1,        // where the idle tour has got to
     rotUntil: 0,
+    touring: false,      // a language is holding the screen right now
+    restUntil: 0,        // until when the globe just turns, showing nothing
     focus: null,         // { country, kind: 'submission' | 'rotation' | 'pick' }
     picked: null,        // country code the viewer clicked
     pickUntil: 0,
@@ -2992,20 +2995,30 @@ var qrcode = function() {
     return ['Listening for the room', false];
   }
 
-  /* With nothing new arriving, walk the languages the room has already added so
-     every contributor sees theirs come round again. A real submission always
-     interrupts this. */
+  /* Hand the screen back to the turning globe. The booth is a thing people
+     walk past, and a map that never just turns stops reading as a map. */
+  function rest(now) {
+    state.touring = false;
+    state.focus = null;
+    state.spinning = true;
+    state.tgtZoom = 1;
+    state.tgtLat = 14;
+    state.restUntil = now + (D.idleRestMs || 25000);
+    // The card stays up while the globe turns, but it is no longer news.
+    if ($('cardFrom').textContent === 'Just added') $('cardFrom').textContent = 'Most recent';
+    setStatus.apply(null, restingStatus());
+  }
+
+  /* One language from the room, then back to the globe. Showing the whole list
+     end to end would leave the globe barely visible, so the tour takes one
+     turn at a time. A real submission always interrupts. */
   function tourStep(now) {
     if (!state.langOrder.length) {
-      state.focus = null;
-      state.spinning = true;
-      state.tgtZoom = 1;
-      state.tgtLat = 14;
-      state.rotUntil = now + 2000;
       paintEmpty();
-      setStatus.apply(null, restingStatus());
+      rest(now);
       return;
     }
+    state.touring = true;
     state.rotIndex = (state.rotIndex + 1) % state.langOrder.length;
     const info = state.langInfo[state.langOrder[state.rotIndex]];
     state.rotUntil = now + (D.idleTourMs || 7000);
@@ -3020,11 +3033,15 @@ var qrcode = function() {
 
   function clearPick() {
     state.picked = null;
-    state.rotUntil = 0;   // pick the tour back up on the next frame
+    rest(performance.now());
   }
 
+  /* The screen is in exactly one of four states, in this order of precedence:
+     celebrating an arrival, holding a country someone tapped, showing one
+     language from the room, or simply turning. */
   function tickQueue(now) {
-    // A live submission beats the tour and beats whatever someone clicked.
+    // A live arrival beats everything, and a backlog is worked through one at
+    // a time rather than collapsed.
     if (state.queue.length && (!state.active || now >= state.holdUntil)) {
       celebrate(state.queue.shift());
       return;
@@ -3033,13 +3050,20 @@ var qrcode = function() {
       if (now < state.holdUntil) return;
       state.active = null;
       state.activePin = null;
-      state.rotUntil = 0;
+      rest(now);
+      return;
     }
     if (state.picked) {
       if (now < state.pickUntil) return;
       clearPick();
+      return;
     }
-    if (now >= state.rotUntil) tourStep(now);
+    if (state.touring) {
+      if (now < state.rotUntil) return;
+      rest(now);
+      return;
+    }
+    if (now >= state.restUntil) tourStep(now);
   }
 
   // ---------- the card -----------------------------------------------------
@@ -3473,7 +3497,7 @@ var qrcode = function() {
   // if the backend is unreachable at open. Either way the screen shows an
   // invitation rather than the markup's placeholders.
   paintEmpty();
-  setStatus.apply(null, restingStatus());
+  rest(performance.now());
 
   window.Store.subscribe(rows => {
     ingest(rows);
