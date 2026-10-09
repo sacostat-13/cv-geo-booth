@@ -1,5 +1,6 @@
 /* Store: one small interface, three backends.
    A submission is { id, ts, country, locale, langName, dialect, initials, missing }
+   The wall starts empty in every mode; the only way in is the phone page.
    `missing` is the typed-in name when the language is not in Common Voice yet. */
 (function () {
   const CFG = window.BOOTH;
@@ -25,9 +26,8 @@
     try { localStorage.setItem(KEY, JSON.stringify(rows.slice(-5000))); } catch (e) { /* private mode */ }
   }
 
-  function LocalStore(seed) {
+  function LocalStore() {
     let rows = readLocal();
-    if (!rows.length && seed) { rows = seed(); writeLocal(rows); }
     const listeners = new Set();
     let channel = null;
     try { channel = new BroadcastChannel('cvbooth'); } catch (e) { /* unsupported */ }
@@ -111,43 +111,14 @@
     };
   }
 
-  // ---- demo seed ----------------------------------------------------------
-  function demoSeed() {
-    const picks = [
-      ['GB', 'en', 'English', 'Scottish'], ['CR', 'es', 'Spanish', 'Centroamericano'],
-      ['KE', 'sw', 'Swahili', 'Sheng (Nairobi)'], ['KE', 'luo', 'Dholuo', ''],
-      ['IN', 'ta', 'Tamil', 'Kongu'], ['IN', 'bn', 'Bengali', 'রাঢ়ী (Rarhi / Kolkata)'],
-      ['NG', 'yo', 'Yoruba', 'Ọ̀yọ́'], ['NG', 'pcm', 'Nigerian Pidgin English', ''],
-      ['CM', 'bas', 'Basaa', ''], ['DE', 'de', 'German', 'Bairisch'],
-      ['ES', 'ca', 'Catalan', 'Valencià'], ['MX', 'es', 'Spanish', 'Mexicano'],
-      ['BR', 'pt', 'Portuguese', 'Brasileiro (Nordeste)'], ['JP', 'ja', 'Japanese', '関西弁'],
-      ['RW', 'rw', 'Kinyarwanda', ''], ['PK', 'ps', 'Pashto', 'ختیځ (Eastern)'],
-      ['GE', 'ka', 'Georgian', 'იმერული'], ['UA', 'uk', 'Ukrainian', 'Галицька'],
-      ['ID', 'id', 'Indonesian', 'Jakarta / Betawi-influenced'], ['TW', 'nan-tw', 'Taiwanese (Minnan)', ''],
-      ['CA', 'fr', 'French', 'Québécois'], ['AU', 'en', 'English', 'Australian'],
-      ['ZA', 'xh', 'Xhosa', 'Urban Cape'], ['ET', 'am', 'Amharic', 'Gondar'],
-      ['PE', 'quy', 'Quechua Chanka', 'Ayacucho'],
-    ];
-    const rows = [];
-    const now = Date.now();
-    picks.forEach((p, i) => {
-      const n = p[0] === 'GB' || p[0] === 'IN' ? 3 : 1;
-      for (let k = 0; k < n; k++) {
-        rows.push({ id: 'seed-' + i + '-' + k, ts: now - (picks.length - i) * 60000 - k * 9000, country: p[0], locale: p[1], langName: p[2], dialect: p[3], initials: '', missing: '' });
-      }
-    });
-    rows.push({ id: 'seed-missing', ts: now - 30000, country: 'GH', locale: '', langName: 'Nzema', dialect: '', initials: 'A.B.', missing: 'Nzema' });
-    return rows;
-  }
-
   window.Store = (function () {
     if (CFG.mode === 'supabase') {
       if (!CFG.supabase.url || !CFG.supabase.anonKey) {
         console.warn('[booth] supabase mode without credentials — falling back to local');
-        return LocalStore(null);
+        return LocalStore();
       }
       return SupabaseStore();
     }
-    return LocalStore(CFG.mode === 'demo' ? demoSeed : null);
+    return LocalStore();
   })();
 })();

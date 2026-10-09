@@ -394,17 +394,20 @@
     $('qrFallback').textContent = url.replace(/^https?:\/\//, '');
   }
 
-  // ---------- simulate (demo / rehearsal) ---------------------------------
-  function simulate() {
-    const pool = window.CV.countries.filter(c => (window.CV.byCountry[c.c] || []).length);
-    const c = pool[Math.floor(Math.random() * pool.length)];
-    const locs = window.CV.byCountry[c.c];
-    const loc = locs[Math.floor(Math.random() * Math.min(locs.length, 6))];
-    const dl = window.CV.dialects[loc];
-    window.Store.add({
-      country: c.c, locale: loc, langName: LANG[loc] ? LANG[loc].n : loc,
-      dialect: dl ? dl[Math.floor(Math.random() * dl.length)] : '', initials: '', missing: '',
-    });
+  /* Nothing has been added yet: invite rather than show an empty frame. */
+  function paintEmpty() {
+    const card = $('card');
+    card.classList.remove('new');
+    $('cardFrom').textContent = 'The wall is empty';
+    $('cardLang').textContent = 'Be the first';
+    $('cardVariety').textContent = '';
+    $('cardFlag').textContent = '';
+    $('cardStats').innerHTML =
+      statTile(nf.format(window.CV.langs.length), 'languages in Common Voice') +
+      statTile('0', 'in the room');
+    $('cardNote').hidden = false;
+    $('cardNote').textContent = 'Scan the code and tell the wall what you speak.';
+    card.classList.add('on');
   }
 
   // ---------- boot ---------------------------------------------------------
@@ -412,8 +415,20 @@
   resize();
   paintQR();
   $('eyebrow').textContent = CFG.event.booth + ' · ' + CFG.event.name;
+  // The first frame is drawn before the store answers — and it may never answer,
+  // if the backend is unreachable at open. Either way the screen shows an
+  // invitation rather than the markup's placeholders.
+  paintEmpty();
 
-  window.Store.subscribe(rows => { ingest(rows); if (!booted) { booted = true; const lastRow = rows[rows.length - 1]; if (lastRow) { paintCard(lastRow); $('cardFrom').textContent = 'Most recent'; } } });
+  window.Store.subscribe(rows => {
+    ingest(rows);
+    if (!booted) {
+      booted = true;
+      const lastRow = rows[rows.length - 1];
+      if (lastRow) { paintCard(lastRow); $('cardFrom').textContent = 'Most recent'; }
+      else paintEmpty();
+    }
+  });
   window.addEventListener('booth:offline', () => {
     state.offline = true;
     if (!state.active) setStatus('Reconnecting to the booth', true);
@@ -426,10 +441,8 @@
   document.addEventListener('keydown', e => {
     const k = e.key.toLowerCase();
     if (k === 'p') { state.mode = state.mode === 'globe' ? 'map' : 'globe'; state.zoom = state.tgtZoom = 1; }
-    if (k === 's') simulate();
     if (k === 'f') { const el = document.documentElement; if (!document.fullscreenElement) el.requestFullscreen && el.requestFullscreen().catch(() => {}); else document.exitFullscreen(); }
   });
-  canvas.addEventListener('click', () => { if (CFG.mode !== 'supabase') simulate(); });
 
   if (navigator.wakeLock) navigator.wakeLock.request('screen').catch(() => {});
   document.addEventListener('visibilitychange', () => {
@@ -437,5 +450,5 @@
   });
 
   requestAnimationFrame(frame);
-  window.BoothDisplay = { state, simulate };
+  window.BoothDisplay = { state };
 })();

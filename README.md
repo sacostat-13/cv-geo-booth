@@ -11,24 +11,29 @@ Two pages that talk to each other through one table:
 for a quick look or for a laptop with no web server. It cannot receive phone
 submissions; use `display.html` for the real thing.
 
+Nothing ever appears on the wall except what someone submits from a phone. There
+is no seeded data and no simulate key, so what you see on the screen is real.
+
 ## Try it in 30 seconds
 
 ```bash
-node tools/build-config.js    # writes config.js — demo mode with no env vars set
+node tools/build-config.js    # writes config.js — local mode with no env vars set
 python3 -m http.server 8080
 ```
 
-Open `http://localhost:8080/display.html`. It starts in **demo mode** with seeded
-data. Press **S** (or click the map) to fake a visitor, **P** to switch between
-globe and flat map, **F** for fullscreen. Open `http://localhost:8080/` in a
-second tab to walk the phone flow — in demo mode both tabs share the browser's
-local storage, so a submission in one shows up on the other.
+Open `http://localhost:8080/display.html` for the screen and
+`http://localhost:8080/` in a second tab for the phone flow. The wall starts
+empty; add a language on the phone tab and watch it land. In local mode the two
+tabs share the browser's own storage, so no backend is needed to walk through it.
+
+On the screen: **P** switches between globe and flat map, **F** is fullscreen.
 
 ## Going live
 
 `DEPLOY.md` has the full walkthrough. In short: run `supabase.sql`, connect the
 repo to Netlify, and set `SUPABASE_URL` and `SUPABASE_ANON_KEY` as environment
-variables. Setting those two is what switches the site out of demo mode.
+variables. Setting those two is what switches the site from browser-local storage to the
+shared table that real phones write to.
 
 There is no URL to configure. `phoneUrl` defaults to empty, meaning "wherever
 this page is served from", and the QR code is generated in the browser from that

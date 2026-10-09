@@ -1,15 +1,16 @@
 /* Booth defaults. Committed, and safe to open with no configuration at all —
-   with nothing set the pages run in demo mode with seeded data.
+   with nothing set the pages run against this browser's own storage.
 
    Netlify overrides these at build time: tools/build-config.js reads the site's
    environment variables and writes config.js, which calls BOOTH_CONFIGURE below.
+   The wall always starts empty — the phone page is the only way onto it.
    Nothing here is secret; the Supabase anon key is a publishable key whose
    permissions are set by the row-level security policies in supabase.sql. */
 window.BOOTH = {
-  // "demo"     seeded sample data + a Simulate key (no backend)
-  // "local"    this browser only, via localStorage
-  // "supabase" the real thing: anonymous inserts from phones, polled by the screen
-  mode: 'demo',
+  // "local"    no backend: submissions live in this browser's localStorage, so the
+  //            screen only sees phones in the same browser. Fine for a walkthrough.
+  // "supabase" the real thing: anonymous inserts from any phone, polled by the screen.
+  mode: 'local',
 
   supabase: {
     url: '',

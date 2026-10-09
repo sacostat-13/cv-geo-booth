@@ -5,13 +5,13 @@
 
    Netlify runs it via the build command in netlify.toml. Locally:
        node tools/build-config.js
-   With no variables set it writes a demo-mode config, so a fresh clone still
-   runs without a backend.
+   With no variables set it writes a local-mode config, so a fresh clone still
+   runs without a backend (the wall is empty until someone submits).
 
    Recognised variables (all optional):
      SUPABASE_URL           https://xxxx.supabase.co   — setting this and the key
      SUPABASE_ANON_KEY      the anon / publishable key   switches mode to supabase
-     BOOTH_MODE             demo | local | supabase     — overrides that choice
+     BOOTH_MODE             local | supabase            — overrides that choice
      BOOTH_PHONE_URL        only if the phone page is not on this same site
      BOOTH_EVENT_NAME       e.g. "MozFest 2026"
      BOOTH_NAME             e.g. "Common Voice"
@@ -42,7 +42,7 @@ const drop = o => {
 };
 
 const hasSupabase = !!(env.SUPABASE_URL && env.SUPABASE_ANON_KEY);
-const mode = env.BOOTH_MODE || (hasSupabase ? 'supabase' : 'demo');
+const mode = env.BOOTH_MODE || (hasSupabase ? 'supabase' : 'local');
 
 if (env.SUPABASE_URL && !env.SUPABASE_ANON_KEY) {
   console.warn('[build-config] SUPABASE_URL is set but SUPABASE_ANON_KEY is not — staying in ' + mode + ' mode');

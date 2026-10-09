@@ -40,8 +40,8 @@ Site configuration → **Environment variables** → Add a variable, for each of
 | `BOOTH_EVENT_NAME` | `MozFest 2026` |
 | `BOOTH_NAME` | `Common Voice` |
 
-Setting the URL and the key is what switches the site out of demo mode; you do
-not set a mode flag. `.env.example` lists the optional ones — poll interval,
+Setting the URL and the key is what switches the site from browser-local storage
+to the shared table real phones write to; you do not set a mode flag. `.env.example` lists the optional ones — poll interval,
 projection, highlight duration, pins per country, daily reset — all of which have
 sensible defaults in `defaults.js`.
 
@@ -51,10 +51,10 @@ site, and it means the screen never has to be touched to change the booth's
 behaviour — change `BOOTH_PROJECTION` to `map`, trigger a deploy, refresh the
 screen.
 
-Leave them unset on deploy previews and the preview runs in demo mode with seeded
-data — useful for showing the thing to people without writing to the real wall.
-Set them per-context in Netlify if you want previews pointed at a scratch
-Supabase project instead.
+Leave them unset on deploy previews and the preview keeps its submissions in the
+viewer's own browser instead of the shared table — useful for showing the thing
+to people without writing to the real wall. Set them per-context in Netlify if
+you want previews pointed at a scratch Supabase project instead.
 
 ## 4. The URL takes care of itself
 
@@ -94,7 +94,7 @@ Then the two things that actually go wrong at a booth:
 ## Working on it locally
 
 ```bash
-node tools/build-config.js     # writes config.js; demo mode with no env set
+node tools/build-config.js     # writes config.js; local mode with no env set
 python3 -m http.server 8080
 ```
 
