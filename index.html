@@ -72,6 +72,7 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(-
 .statrow.gold b{color:var(--gold)}
 .callout{background:rgba(255,200,97,.1);border:1px solid rgba(255,200,97,.3);border-radius:16px;
   padding:16px;color:#FFE2A8;text-align:left;margin-bottom:18px}
+.callout.warn{background:rgba(255,138,91,.12);border-color:rgba(255,138,91,.4);color:#FFC4AC}
 .cta{display:block;padding:16px;border-radius:14px;background:var(--voice);color:#07211C;
   font:600 17px/1 var(--ui);text-decoration:none;margin-bottom:10px}
 .cta.sec{background:transparent;border:1px solid var(--line);color:var(--fg)}
@@ -139,6 +140,7 @@ footer{color:var(--dim);font-size:12.5px;text-align:center;margin-top:20px}
       <h2 id="doneTitle">You're on the map</h2>
       <p class="lede" id="doneSub"></p>
       <div class="statrow" id="doneStats"></div>
+      <div class="callout warn" id="reach" hidden></div>
       <div class="callout" id="doneCallout" hidden></div>
       <a class="cta" id="ctaMain" href="#" target="_blank" rel="noopener">Record a few sentences</a>
       <a class="cta sec" id="ctaSec" href="https://commonvoice.mozilla.org/en/languages" target="_blank" rel="noopener">See every language in Common Voice</a>

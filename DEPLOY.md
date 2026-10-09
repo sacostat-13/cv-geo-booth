@@ -83,6 +83,15 @@ wifi, so you are testing the real path. Submit a language. Within about three
 seconds the country should light up, a pin should drop, and the card should show
 that language's figures.
 
+**If the pin does not appear and the phone showed no error, the site has no
+backend configured.** Both pages fall back to the browser's own storage, so the
+phone saves it locally and the screen never hears about it. The screen says
+"Not connected to a shared wall — this screen only" across the top, and the
+phone says so on its confirmation. Open `https://your-site/config.js` — if it
+does not contain a `supabase` block with your URL and key, set the two
+environment variables and **trigger a redeploy**; variables are read at build
+time, so setting them is not enough on its own.
+
 Then the two things that actually go wrong at a booth:
 
 - **Reload the screen.** It should come back with the accumulated map and sit

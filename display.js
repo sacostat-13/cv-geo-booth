@@ -7,6 +7,11 @@
   for (const c of window.CV.countries) COUNTRY[c.c] = c.n;
 
   const $ = id => document.getElementById(id);
+
+  /* Is this screen reading a wall that phones can actually reach? Without a
+     backend every page keeps its submissions in its own browser, so a phone can
+     "succeed" and the screen never hears about it. Say so, loudly. */
+  const SHARED = CFG.mode === 'supabase' && !!CFG.supabase.url && !!CFG.supabase.anonKey;
   const canvas = $('map'), ctx = canvas.getContext('2d');
 
   const state = {
@@ -83,6 +88,12 @@
     setStatus('Just added · ' + (COUNTRY[s.country] || s.country), false);
   }
 
+  function restingStatus() {
+    if (!SHARED) return ['Not connected to a shared wall — this screen only', true];
+    if (state.offline) return ['Reconnecting to the booth', true];
+    return ['Listening for the room', false];
+  }
+
   function idle() {
     state.active = null;
     state.activePin = null;
@@ -90,7 +101,7 @@
     state.tgtZoom = 1;
     state.tgtLat = 14;
     $('cardFrom').textContent = 'Most recent';
-    setStatus(state.offline ? 'Reconnecting to the booth' : 'Listening for the room', state.offline);
+    setStatus.apply(null, restingStatus());
   }
 
   function tickQueue(now) {
@@ -406,7 +417,9 @@
       statTile(nf.format(window.CV.langs.length), 'languages in Common Voice') +
       statTile('0', 'in the room');
     $('cardNote').hidden = false;
-    $('cardNote').textContent = 'Scan the code and tell the wall what you speak.';
+    $('cardNote').textContent = SHARED
+      ? 'Scan the code and tell the wall what you speak.'
+      : 'This screen is not connected to a shared wall yet, so phones cannot reach it. Set SUPABASE_URL and SUPABASE_ANON_KEY and redeploy.';
     card.classList.add('on');
   }
 
@@ -419,6 +432,7 @@
   // if the backend is unreachable at open. Either way the screen shows an
   // invitation rather than the markup's placeholders.
   paintEmpty();
+  setStatus.apply(null, restingStatus());
 
   window.Store.subscribe(rows => {
     ingest(rows);
@@ -431,11 +445,11 @@
   });
   window.addEventListener('booth:offline', () => {
     state.offline = true;
-    if (!state.active) setStatus('Reconnecting to the booth', true);
+    if (!state.active) setStatus.apply(null, restingStatus());
   });
   window.addEventListener('booth:online', () => {
     state.offline = false;
-    if (!state.active) setStatus('Listening for the room', false);
+    if (!state.active) setStatus.apply(null, restingStatus());
   });
 
   document.addEventListener('keydown', e => {

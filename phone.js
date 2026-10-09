@@ -8,6 +8,11 @@
   const CNAME = {};
   for (const c of CV.countries) CNAME[c.c] = c.n;
 
+  /* Without a backend this page writes to its own browser storage, so a
+     submission here never reaches a screen on another device. Say so rather
+     than reporting a cheerful success nobody can see. */
+  const SHARED = CFG.mode === 'supabase' && !!CFG.supabase.url && !!CFG.supabase.anonKey;
+
   const pick = { country: '', locale: '', langName: '', dialect: '', initials: '', missing: '' };
   let step = 1;
 
@@ -134,6 +139,7 @@
         dialect: pick.dialect, initials: pick.initials, missing: pick.missing,
       });
       renderDone();
+      paintReach();
       go(5);
     } catch (err) {
       $('err').textContent = err.message + ' — try once more, or ask someone at the booth.';
@@ -186,6 +192,12 @@
   }
   const tile = (b, s) => '<div><b>' + b + '</b><span>' + s + '</span></div>';
 
+  function paintReach() {
+    const el = $('reach');
+    el.hidden = SHARED;
+    if (!SHARED) el.textContent = 'Saved on this phone only — this site has no shared wall configured, so the booth screen will not show it.';
+  }
+
   $('again').addEventListener('click', () => {
     pick.country = pick.locale = pick.langName = pick.dialect = pick.initials = pick.missing = '';
     $('countrySearch').value = ''; $('initials').value = '';
@@ -195,6 +207,7 @@
 
   // ---- boot ---------------------------------------------------------------
   $('brand').textContent = CFG.event.booth + ' · ' + CFG.event.name;
-  $('foot').textContent = 'Common Voice figures from ' + CV.meta.fetched + ' · ' + CV.meta.locales + ' languages · no personal data is stored';
+  $('foot').textContent = 'Common Voice figures from ' + CV.meta.fetched + ' · ' + CV.meta.locales + ' languages · no personal data is stored'
+    + (SHARED ? '' : ' · local mode');
   renderCountries('');
 })();
