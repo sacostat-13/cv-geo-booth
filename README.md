@@ -26,7 +26,21 @@ Open `http://localhost:8080/display.html` for the screen and
 empty; add a language on the phone tab and watch it land. In local mode the two
 tabs share the browser's own storage, so no backend is needed to walk through it.
 
-On the screen: **P** switches between globe and flat map, **F** is fullscreen.
+On the screen: **P** switches between globe and flat map, **F** is fullscreen,
+**Esc** drops a country you tapped.
+
+## What the screen does
+
+- A new submission takes over: the globe flies to the country, it lights up warm,
+  a pin drops, and the card shows that language's Common Voice figures.
+- With nothing arriving, it tours the languages the room has already added —
+  one every `idleTourMs` (7s by default), flying to a country where each is
+  spoken and lighting it in the quieter accent, so an actual arrival still reads
+  as an arrival. Everyone who contributed sees theirs come round again.
+- Tapping or clicking a country shows how it stands: the voices and languages
+  collected from there, or, where the room has none yet, the Common Voice
+  languages spoken there and how much each has recorded. It holds for
+  `pickHoldMs` (20s) and a live submission always wins.
 
 ## Going live
 

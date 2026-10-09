@@ -62,6 +62,10 @@ h1{font:700 calc(58*var(--u))/1.04 var(--display);margin:calc(14*var(--u)) 0 cal
 .card.new .stat b{color:var(--gold)}
 .card .note{margin-top:calc(22*var(--u));padding-top:calc(20*var(--u));border-top:1px solid rgba(255,255,255,.1);
   font:400 calc(20*var(--u))/1.45 var(--ui);color:var(--gold)}
+.card .list{display:flex;flex-direction:column;gap:calc(8*var(--u));margin-top:calc(14*var(--u))}
+.card .list div{display:flex;justify-content:space-between;gap:calc(16*var(--u));align-items:baseline}
+.card .list b{font:600 calc(21*var(--u))/1.2 var(--ui);color:var(--fg)}
+.card .list span{font:400 calc(17*var(--u))/1.2 var(--ui);color:var(--muted);white-space:nowrap}
 
 /* Ticker of what the room speaks */
 .ticker{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(44*var(--u));
@@ -132,7 +136,7 @@ h1{font:700 calc(58*var(--u))/1.04 var(--display);margin:calc(14*var(--u)) 0 cal
   </div>
 
   <div class="ticker" id="ticker"></div>
-  <div class="hint">P projection · F fullscreen</div>
+  <div class="hint">Tap a country for its languages · P projection · F fullscreen</div>
 </div>
 
 <script src="defaults.js"></script>

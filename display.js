@@ -22,6 +22,13 @@
     pins: {},            // country -> [{lon,lat,id,missing,ts}]
     counts: {},          // country -> number
     langCount: {},       // locale|!name -> number
+    langInfo: {},        // locale|!name -> { key, locale, name, countries:Set, dialects:Set }
+    langOrder: [],       // the order languages joined the wall, for the idle tour
+    rotIndex: -1,        // where the idle tour has got to
+    rotUntil: 0,
+    focus: null,         // { country, kind: 'submission' | 'rotation' | 'pick' }
+    picked: null,        // country code the viewer clicked
+    pickUntil: 0,
     seen: new Set(),
     queue: [],
     active: null,        // submission being celebrated
@@ -45,8 +52,15 @@
       state.seen.add(s.id);
       state.total++;
       const k = langKey(s);
-      if (!state.langCount[k]) { state.langCount[k] = 0; if (!s.locale) state.newLangs++; }
+      if (!state.langCount[k]) {
+        state.langCount[k] = 0;
+        if (!s.locale) state.newLangs++;
+        state.langInfo[k] = { key: k, locale: s.locale, name: s.missing || (LANG[s.locale] ? LANG[s.locale].n : s.langName), countries: new Set(), dialects: new Set() };
+        state.langOrder.push(k);
+      }
       state.langCount[k]++;
+      state.langInfo[k].countries.add(s.country);
+      if (s.dialect) state.langInfo[k].dialects.add(s.dialect);
       state.counts[s.country] = (state.counts[s.country] || 0) + 1;
       const list = (state.pins[s.country] ||= []);
       const spot = window.Geo.placePin(s.country, s.id, list.map(p => [p.lon, p.lat]));
@@ -71,20 +85,27 @@
     return Math.round(D.highlightMs + (D.minHighlightMs - D.highlightMs) * over);
   }
 
+  /* Point the camera at a country. Used by all three things that take the
+     screen: a new submission, the idle tour, and a viewer clicking the map. */
+  function flyTo(code, zoom) {
+    const c = window.Geo.byCode[code];
+    if (!c) return;
+    state.tgtLon = c.k[0];
+    state.tgtLat = Math.max(-58, Math.min(58, c.k[1]));
+    state.tgtZoom = zoom;
+    state.spinning = false;
+  }
+
   function celebrate(s) {
     state.active = s;
     state.activeStart = performance.now();
     state.holdUntil = state.activeStart + holdFor();
-    state.spinning = false;
+    state.picked = null;
     const list = state.pins[s.country] || [];
     state.activePin = list.find(p => p.id === s.id) || null;
-    const c = window.Geo.byCode[s.country];
-    if (c) {
-      state.tgtLon = c.k[0];
-      state.tgtLat = Math.max(-58, Math.min(58, c.k[1]));
-      state.tgtZoom = state.mode === 'globe' ? 1.3 : 1.75;
-    }
-    paintCard(s, true);
+    state.focus = { country: s.country, kind: 'submission' };
+    flyTo(s.country, state.mode === 'globe' ? 1.3 : 1.75);
+    paintCard(s);
     setStatus('Just added · ' + (COUNTRY[s.country] || s.country), false);
   }
 
@@ -94,35 +115,62 @@
     return ['Listening for the room', false];
   }
 
-  function idle() {
-    state.active = null;
-    state.activePin = null;
-    state.spinning = true;
-    state.tgtZoom = 1;
-    state.tgtLat = 14;
-    $('cardFrom').textContent = 'Most recent';
+  /* With nothing new arriving, walk the languages the room has already added so
+     every contributor sees theirs come round again. A real submission always
+     interrupts this. */
+  function tourStep(now) {
+    if (!state.langOrder.length) {
+      state.focus = null;
+      state.spinning = true;
+      state.tgtZoom = 1;
+      state.tgtLat = 14;
+      state.rotUntil = now + 2000;
+      paintEmpty();
+      setStatus.apply(null, restingStatus());
+      return;
+    }
+    state.rotIndex = (state.rotIndex + 1) % state.langOrder.length;
+    const info = state.langInfo[state.langOrder[state.rotIndex]];
+    state.rotUntil = now + (D.idleTourMs || 7000);
+
+    const countries = [...info.countries];
+    const country = countries[state.rotIndex % countries.length] || countries[0];
+    state.focus = { country, kind: 'rotation' };
+    flyTo(country, state.mode === 'globe' ? 1.18 : 1.5);
+    paintTourCard(info, country);
     setStatus.apply(null, restingStatus());
   }
 
+  function clearPick() {
+    state.picked = null;
+    state.rotUntil = 0;   // pick the tour back up on the next frame
+  }
+
   function tickQueue(now) {
-    if (state.active && now < state.holdUntil) return;
-    if (state.queue.length) { celebrate(state.queue.shift()); return; }
-    if (state.active) idle();
+    // A live submission beats the tour and beats whatever someone clicked.
+    if (state.queue.length && (!state.active || now >= state.holdUntil)) {
+      celebrate(state.queue.shift());
+      return;
+    }
+    if (state.active) {
+      if (now < state.holdUntil) return;
+      state.active = null;
+      state.activePin = null;
+      state.rotUntil = 0;
+    }
+    if (state.picked) {
+      if (now < state.pickUntil) return;
+      clearPick();
+    }
+    if (now >= state.rotUntil) tourStep(now);
   }
 
   // ---------- the card -----------------------------------------------------
-  function paintCard(s) {
-    const card = $('card');
-    const l = s.locale ? LANG[s.locale] : null;
-    const name = s.missing || (l ? l.n : s.langName);
-    $('cardFrom').textContent = 'Just added';
-    $('cardLang').textContent = name;
-    $('cardVariety').textContent = s.dialect ? s.dialect : '';
-    $('cardFlag').textContent = (flag(s.country) + ' ' + (COUNTRY[s.country] || s.country) + (s.initials ? ' · ' + s.initials : '')).trim();
-    const inRoom = state.langCount[langKey(s)] || 1;
-    const stats = $('cardStats');
-    const note = $('cardNote');
-
+  /* The four states a language can be in, shared by the submission card and the
+     idle tour so a language reads the same whichever one put it on screen. */
+  function fillFacts(name, locale, inRoom) {
+    const card = $('card'), stats = $('cardStats'), note = $('cardNote');
+    const l = locale ? LANG[locale] : null;
     if (l && l.h > 0) {
       card.classList.remove('new');
       stats.innerHTML =
@@ -145,10 +193,77 @@
       card.classList.add('new');
       stats.innerHTML = statTile('—', 'not in Common Voice') + statTile(nf.format(inRoom), 'in the room');
       note.hidden = false;
-      note.textContent = name + ' isn’t in Common Voice yet. Languages get added because someone asks.';
+      note.textContent = name + ' isn\u2019t in Common Voice yet. Languages get added because someone asks.';
     }
     card.classList.add('on');
   }
+
+  function paintCard(s) {
+    const l = s.locale ? LANG[s.locale] : null;
+    const name = s.missing || (l ? l.n : s.langName);
+    $('cardFrom').textContent = 'Just added';
+    $('cardLang').textContent = name;
+    $('cardVariety').textContent = s.dialect ? s.dialect : '';
+    $('cardFlag').textContent = (flag(s.country) + ' ' + (COUNTRY[s.country] || s.country) + (s.initials ? ' · ' + s.initials : '')).trim();
+    fillFacts(name, s.locale, state.langCount[langKey(s)] || 1);
+  }
+
+  /* One language on the idle tour: the same facts, plus every country and
+     variety the room has given it so far. */
+  function paintTourCard(info, country) {
+    $('cardFrom').textContent = 'In the room';
+    $('cardLang').textContent = info.name;
+    const varieties = [...info.dialects];
+    $('cardVariety').textContent = varieties.length
+      ? varieties.slice(0, 3).join(' · ') + (varieties.length > 3 ? ' +' + (varieties.length - 3) : '')
+      : '';
+    const countries = [...info.countries];
+    $('cardFlag').textContent = countries.slice(0, 4)
+      .map(c => (flag(c) + ' ' + (COUNTRY[c] || c)).trim())
+      .join('  ') + (countries.length > 4 ? '  +' + (countries.length - 4) : '');
+    fillFacts(info.name, info.locale, state.langCount[info.key] || 1);
+  }
+
+  /* Someone touched a country: show how it stands, from the room's own
+     submissions first and from Common Voice where the room has nothing. */
+  function paintPickCard(code) {
+    const card = $('card');
+    const name = COUNTRY[code] || code;
+    const here = Object.values(state.langInfo).filter(i => i.countries.has(code));
+    here.sort((a, b) => (state.langCount[b.key] || 0) - (state.langCount[a.key] || 0));
+    const voices = state.counts[code] || 0;
+
+    $('cardFrom').textContent = 'On this map';
+    $('cardLang').textContent = name;
+    $('cardVariety').textContent = '';
+    $('cardFlag').textContent = flag(code);
+
+    const stats = $('cardStats'), note = $('cardNote');
+    if (here.length) {
+      card.classList.remove('new');
+      stats.innerHTML = statTile(nf.format(voices), voices === 1 ? 'voice from here' : 'voices from here') +
+        statTile(nf.format(here.length), here.length === 1 ? 'language' : 'languages');
+      note.hidden = false;
+      note.innerHTML = '<div class="list">' + here.slice(0, 6).map(i => {
+        const l = i.locale ? LANG[i.locale] : null;
+        const fact = l && l.h > 0 ? fmtHours(l.h) + ' h in Common Voice' : l ? 'no recordings yet' : 'not in Common Voice';
+        return '<div><b>' + esc(i.name) + '</b><span>' + fact + '</span></div>';
+      }).join('') + '</div>';
+    } else {
+      card.classList.add('new');
+      const cvLangs = (window.CV.byCountry[code] || []).map(c => LANG[c]).filter(Boolean);
+      cvLangs.sort((a, b) => b.h - a.h);
+      stats.innerHTML = statTile('0', 'voices from here') +
+        statTile(nf.format(cvLangs.length), 'in Common Voice');
+      note.hidden = false;
+      note.innerHTML = 'Nobody from ' + esc(name) + ' yet.' + (cvLangs.length
+        ? '<div class="list">' + cvLangs.slice(0, 5).map(l =>
+            '<div><b>' + esc(l.n) + '</b><span>' + (l.h > 0 ? fmtHours(l.h) + ' h' : 'no recordings yet') + '</span></div>').join('') + '</div>'
+        : '');
+    }
+    card.classList.add('on');
+  }
+
   const statTile = (b, s) => '<div class="stat"><b>' + b + '</b><span>' + s + '</span></div>';
 
   function setStatus(text, warn) {
@@ -224,6 +339,18 @@
     ctx.stroke(); ctx.globalAlpha = 1;
   }
 
+  /* Countries worth drawing for the current camera — on the globe, anything
+     whose whole extent is behind the horizon is skipped. */
+  const DEGR = Math.PI / 180;
+  function onScreen(cam) {
+    if (cam.mode !== 'globe') return window.WORLD;
+    const sinLat = Math.sin(state.rotLat * DEGR), cosLat = Math.cos(state.rotLat * DEGR);
+    return window.WORLD.filter(c => {
+      const a = sinLat * Math.sin(c.k[1] * DEGR) + cosLat * Math.cos(c.k[1] * DEGR) * Math.cos((c.k[0] - state.rotLon) * DEGR);
+      return Math.acos(Math.max(-1, Math.min(1, a))) / DEGR - (c.r || 1) <= 90;
+    });
+  }
+
   function intensity(n) {
     // 0 pins -> plain land; more voices -> warmer toward the accent.
     const t = Math.min(1, Math.log(1 + n) / Math.log(1 + D.pinMax * 2.5));
@@ -246,33 +373,31 @@
     }
     drawGraticule(cam);
 
-    const activeCode = state.active ? state.active.country : null;
+    const focusCode = state.focus ? state.focus.country : null;
+    const focusKind = state.focus ? state.focus.kind : null;
     ctx.lineWidth = state.mode === 'globe' ? 0.9 : 0.8;
-    const DEGR = Math.PI / 180;
-    const sinLat = Math.sin(state.rotLat * DEGR), cosLat = Math.cos(state.rotLat * DEGR);
-    for (const c of window.WORLD) {
+    for (const c of onScreen(cam)) {
       const n = state.counts[c.c] || 0;
-      if (cam.mode === 'globe') {
-        // Skip anything whose whole extent sits behind the horizon.
-        const a = sinLat * Math.sin(c.k[1] * DEGR) + cosLat * Math.cos(c.k[1] * DEGR) * Math.cos((c.k[0] - state.rotLon) * DEGR);
-        const ang = Math.acos(Math.max(-1, Math.min(1, a))) / DEGR;
-        if (ang - (c.r || 1) > 90) continue;
-      }
       ctx.beginPath();
       for (const ring of c.g) window.Geo.tracePath(ctx, ring, cam);
       ctx.fillStyle = n > 0 ? intensity(n) : COL['--land'];
       ctx.fill('evenodd');
       ctx.strokeStyle = COL['--land-edge'];
       ctx.stroke();
-      if (c.c === activeCode) {
-        const t = Math.min(1, (now - state.activeStart) / 650);
+      if (c.c === focusCode) {
+        // A new submission flares in warm; the idle tour and a viewer's tap glow
+        // in the quieter accent, so an actual arrival still stands out.
+        const hot = focusKind === 'submission';
+        const t = hot ? Math.min(1, (now - state.activeStart) / 650) : 1;
         ctx.save();
-        ctx.fillStyle = 'rgba(255,138,91,' + (0.18 + 0.3 * t).toFixed(3) + ')';
+        ctx.fillStyle = hot
+          ? 'rgba(255,138,91,' + (0.18 + 0.3 * t).toFixed(3) + ')'
+          : 'rgba(56,227,192,0.22)';
         ctx.fill('evenodd');
-        ctx.strokeStyle = COL['--ember'];
-        ctx.lineWidth = 2.2;
-        ctx.shadowColor = COL['--ember'];
-        ctx.shadowBlur = 26 * t;
+        ctx.strokeStyle = hot ? COL['--ember'] : COL['--voice'];
+        ctx.lineWidth = hot ? 2.2 : 1.8;
+        ctx.shadowColor = ctx.strokeStyle;
+        ctx.shadowBlur = hot ? 26 * t : 16;
         ctx.stroke();
         ctx.restore();
       }
@@ -324,6 +449,36 @@
     }
   }
 
+  /* Hit-testing. Rather than inverting two different projections, rebuild each
+     country's path under the live camera and ask the canvas whether the point
+     is inside it. Exact for the globe and the flat map alike — reading pixel
+     colours instead would misreport every antialiased border. */
+  const hit = document.createElement('canvas');
+  const hitCtx = hit.getContext('2d');   // deliberately left untransformed
+  function countryAt(x, y) {
+    if (!W || !H) return null;
+    // isPointInPath only answers for points inside the canvas, and a detached
+    // canvas defaults to 300x150 — size it to the map or every hit misses.
+    if (hit.width !== W || hit.height !== H) { hit.width = W; hit.height = H; }
+    const cam = camera();
+    const list = onScreen(cam);
+    for (const c of list) {
+      const path = new Path2D();
+      for (const ring of c.g) window.Geo.tracePath(path, ring, cam);
+      if (hitCtx.isPointInPath(path, x, y, 'evenodd')) return c;
+    }
+    // Nothing exactly under the pointer: allow a near miss, so the small
+    // countries are still reachable with a finger.
+    let best = null, bestD = 18 * 18;
+    for (const c of list) {
+      if (!cam.visible(c.k[0], c.k[1])) continue;
+      const p = cam.project(c.k[0], c.k[1]);
+      const d = (p[0] - x) * (p[0] - x) + (p[1] - y) * (p[1] - y);
+      if (d < bestD) { bestD = d; best = c; }
+    }
+    return best;
+  }
+
   // shortest-path easing for longitude
   function easeLon(cur, tgt, k) {
     let d = ((tgt - cur + 540) % 360) - 180;
@@ -334,9 +489,18 @@
   function frame(now) {
     const dt = Math.min(100, now - last) / 1000; last = now;
     tickQueue(now);
-    if (state.spinning && state.mode === 'globe') state.tgtLon = state.rotLon + D.idleSpinSpeed * dt * 60 / 60;
-    if (state.spinning && state.mode === 'globe') state.rotLon += D.idleSpinSpeed * dt;
-    else state.rotLon = easeLon(state.rotLon, state.tgtLon, 1 - Math.pow(0.001, dt));
+    if (state.spinning && state.mode === 'globe') {
+      state.rotLon += D.idleSpinSpeed * dt;
+      state.tgtLon = state.rotLon;
+    } else {
+      // Once a tour stop has settled, keep drifting slowly so the screen never
+      // looks frozen between languages. A submission or a tap holds still.
+      if (state.focus && state.focus.kind === 'rotation' && state.mode === 'globe'
+          && Math.abs(((state.tgtLon - state.rotLon + 540) % 360) - 180) < 3) {
+        state.tgtLon += 0.45 * dt;
+      }
+      state.rotLon = easeLon(state.rotLon, state.tgtLon, 1 - Math.pow(0.001, dt));
+    }
     state.rotLat += (state.tgtLat - state.rotLat) * (1 - Math.pow(0.002, dt));
     state.zoom += (state.tgtZoom - state.zoom) * (1 - Math.pow(0.004, dt));
     if (state.spinning && state.mode === 'map') {
@@ -452,8 +616,23 @@
     if (!state.active) setStatus.apply(null, restingStatus());
   });
 
+  function pickAt(clientX, clientY) {
+    const r = canvas.getBoundingClientRect();
+    const c = countryAt(clientX - r.left, clientY - r.top);
+    if (!c) { if (state.picked) clearPick(); return; }
+    state.picked = c.c;
+    state.pickUntil = performance.now() + (D.pickHoldMs || 20000);
+    state.focus = { country: c.c, kind: 'pick' };
+    flyTo(c.c, state.mode === 'globe' ? 1.25 : 1.6);
+    paintPickCard(c.c);
+    setStatus((COUNTRY[c.c] || c.c), false);
+  }
+  canvas.addEventListener('click', e => pickAt(e.clientX, e.clientY));
+  canvas.style.cursor = 'pointer';
+
   document.addEventListener('keydown', e => {
     const k = e.key.toLowerCase();
+    if (k === 'escape' && state.picked) { clearPick(); return; }
     if (k === 'p') { state.mode = state.mode === 'globe' ? 'map' : 'globe'; state.zoom = state.tgtZoom = 1; }
     if (k === 'f') { const el = document.documentElement; if (!document.fullscreenElement) el.requestFullscreen && el.requestFullscreen().catch(() => {}); else document.exitFullscreen(); }
   });
@@ -464,5 +643,5 @@
   });
 
   requestAnimationFrame(frame);
-  window.BoothDisplay = { state };
+  window.BoothDisplay = { state, countryAt, pickAt };
 })();

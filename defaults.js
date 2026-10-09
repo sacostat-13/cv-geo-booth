@@ -44,6 +44,8 @@ window.BOOTH = {
     queuePressure: 5,      // queue length at which compression starts
     pinMax: 40,            // pins per country; above this the country fills with intensity
     idleSpinSpeed: 2.6,    // degrees per second
+    idleTourMs: 7000,      // how long each language holds the screen while idle
+    pickHoldMs: 20000,     // how long a country someone tapped stays up
   },
 
   // Where the phone sends people next. {locale} is replaced with the Common
