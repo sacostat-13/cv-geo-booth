@@ -1,0 +1,12 @@
+{
+  "name": "cv-geo-booth",
+  "private": true,
+  "description": "Common Voice booth wall — static pages plus two Netlify functions.",
+  "scripts": {
+    "build": "node tools/build-config.js",
+    "dev": "node tools/build-config.js && python3 -m http.server 8080"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^11.1.0"
+  }
+}

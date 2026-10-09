@@ -11,7 +11,7 @@
   /* Is this screen reading a wall that phones can actually reach? Without a
      backend every page keeps its submissions in its own browser, so a phone can
      "succeed" and the screen never hears about it. Say so, loudly. */
-  const SHARED = CFG.mode === 'supabase' && !!CFG.supabase.url && !!CFG.supabase.anonKey;
+  const SHARED = !!window.Store.shared;
   const canvas = $('map'), ctx = canvas.getContext('2d');
 
   const state = {

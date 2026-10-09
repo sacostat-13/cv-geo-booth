@@ -30,10 +30,22 @@ On the screen: **P** switches between globe and flat map, **F** is fullscreen.
 
 ## Going live
 
-`DEPLOY.md` has the full walkthrough. In short: run `supabase.sql`, connect the
-repo to Netlify, and set `SUPABASE_URL` and `SUPABASE_ANON_KEY` as environment
-variables. Setting those two is what switches the site from browser-local storage to the
-shared table that real phones write to.
+`DEPLOY.md` has the full walkthrough. In short: connect the repo to Netlify and
+deploy. **Nothing else is required** — on a Netlify build the site uses its own
+two functions, backed by Netlify Blobs, as the wall.
+
+## The three backends
+
+| Mode | Where the wall lives | When it is chosen |
+|---|---|---|
+| `local` | the browser's own storage | a plain static server, no Netlify |
+| `netlify` | Netlify Blobs, via `/api/submit` and `/api/wall` | automatically on a Netlify build |
+| `supabase` | a Postgres table | when `SUPABASE_URL` and `SUPABASE_ANON_KEY` are set |
+
+`local` is the only one that is not shared between devices: a phone's submission
+stays on that phone. Both pages say so plainly when that happens, because a
+silent failure here looks exactly like a working booth.
+
 
 There is no URL to configure. `phoneUrl` defaults to empty, meaning "wherever
 this page is served from", and the QR code is generated in the browser from that

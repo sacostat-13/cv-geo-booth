@@ -5,13 +5,14 @@
 
    Netlify runs it via the build command in netlify.toml. Locally:
        node tools/build-config.js
-   With no variables set it writes a local-mode config, so a fresh clone still
-   runs without a backend (the wall is empty until someone submits).
+   With no variables set it picks "netlify" on a Netlify build (the site's own
+   functions back the wall) and "local" anywhere else, so a fresh clone still
+   runs from a plain static server with nothing to configure.
 
    Recognised variables (all optional):
      SUPABASE_URL           https://xxxx.supabase.co   — setting this and the key
      SUPABASE_ANON_KEY      the anon / publishable key   switches mode to supabase
-     BOOTH_MODE             local | supabase            — overrides that choice
+     BOOTH_MODE             local | netlify | supabase  — overrides that choice
      BOOTH_PHONE_URL        only if the phone page is not on this same site
      BOOTH_EVENT_NAME       e.g. "MozFest 2026"
      BOOTH_NAME             e.g. "Common Voice"
@@ -42,7 +43,9 @@ const drop = o => {
 };
 
 const hasSupabase = !!(env.SUPABASE_URL && env.SUPABASE_ANON_KEY);
-const mode = env.BOOTH_MODE || (hasSupabase ? 'supabase' : 'local');
+// NETLIFY=true is set during a Netlify build, and by `netlify dev` locally.
+const onNetlify = !!env.NETLIFY;
+const mode = env.BOOTH_MODE || (hasSupabase ? 'supabase' : onNetlify ? 'netlify' : 'local');
 
 if (env.SUPABASE_URL && !env.SUPABASE_ANON_KEY) {
   console.warn('[build-config] SUPABASE_URL is set but SUPABASE_ANON_KEY is not — staying in ' + mode + ' mode');
@@ -60,6 +63,7 @@ const cfg = drop({
     pollMs: num(env.BOOTH_POLL_MS, 'BOOTH_POLL_MS'),
   }),
   phoneUrl: env.BOOTH_PHONE_URL,
+  netlify: drop({ pollMs: num(env.BOOTH_POLL_MS, 'BOOTH_POLL_MS') }),
   event: drop({
     name: env.BOOTH_EVENT_NAME,
     booth: env.BOOTH_NAME,

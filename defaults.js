@@ -9,8 +9,15 @@
 window.BOOTH = {
   // "local"    no backend: submissions live in this browser's localStorage, so the
   //            screen only sees phones in the same browser. Fine for a walkthrough.
-  // "supabase" the real thing: anonymous inserts from any phone, polled by the screen.
+  // "netlify"  two functions in this same site, storing the wall in Netlify Blobs.
+  //            Nothing to sign up for; chosen automatically on a Netlify build.
+  // "supabase" a Postgres table, for when the booth outgrows the above.
   mode: 'local',
+
+  netlify: {
+    base: '/api',   // where submit.mjs and wall.mjs are served
+    pollMs: 3000,   // how often the screen asks for the wall
+  },
 
   supabase: {
     url: '',

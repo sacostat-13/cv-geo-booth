@@ -1,6 +1,6 @@
 # Generated on every deploy from the site's environment variables.
 config.js
 
-# Build-time only
+# Dependencies — Netlify installs these at build time.
 node_modules/
 .netlify/

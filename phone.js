@@ -11,7 +11,7 @@
   /* Without a backend this page writes to its own browser storage, so a
      submission here never reaches a screen on another device. Say so rather
      than reporting a cheerful success nobody can see. */
-  const SHARED = CFG.mode === 'supabase' && !!CFG.supabase.url && !!CFG.supabase.anonKey;
+  const SHARED = !!window.Store.shared;
 
   const pick = { country: '', locale: '', langName: '', dialect: '', initials: '', missing: '' };
   let step = 1;

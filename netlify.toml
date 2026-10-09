@@ -7,6 +7,21 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# submit.mjs and wall.mjs declare their own /api/* routes.
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Repo-only folders: nothing on the site links to them.
+[[redirects]]
+  from = "/netlify/*"
+  to = "/index.html"
+  status = 404
+[[redirects]]
+  from = "/build/*"
+  to = "/index.html"
+  status = 404
+
 # Tidy URL for the booth screen: /screen instead of /display.html
 [[redirects]]
   from = "/screen"
@@ -38,5 +53,11 @@
 # config.js is rewritten on every deploy; never let a cache hold the old one.
 [[headers]]
   for = "/config.js"
+  [headers.values]
+    Cache-Control = "no-store"
+
+# The wall is live data; never let a CDN or a browser hold on to it.
+[[headers]]
+  for = "/api/*"
   [headers.values]
     Cache-Control = "no-store"
