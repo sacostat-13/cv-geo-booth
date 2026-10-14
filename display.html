@@ -100,7 +100,7 @@ h1{font:700 calc(58*var(--u))/1.04 var(--display);margin:calc(14*var(--u)) 0 cal
    the counters join the header, the card drops to the foot beside the QR.
    wall.js mirrors these insets in region(). */
 body.scene-wall .veil,body.scene-wall .ticker,body.scene-wall .sub{display:none}
-body.scene-wall h1{font-size:calc(40*var(--u));margin:calc(10*var(--u)) 0 0;max-width:22ch}
+body.scene-wall h1{font-size:calc(36*var(--u));margin:calc(10*var(--u)) 0 0;max-width:19ch}
 body.scene-wall .bl{top:calc(40*var(--u));right:calc(52*var(--u));left:auto;bottom:auto;text-align:right}
 body.scene-wall .counts{justify-content:flex-end;gap:calc(38*var(--u))}
 body.scene-wall .count b{font-size:calc(56*var(--u))}
@@ -127,7 +127,7 @@ body.scene-wall .br .url{display:none}
 
   <div class="corner tl">
     <div class="eyebrow" id="eyebrow">Common Voice · MozFest 2026</div>
-    <h1>Which languages are in this room?</h1>
+    <h1 id="h1">Which languages are in this room?</h1>
     <p class="sub">Every voice here is a language Common Voice could learn to hear. Add yours.</p>
   </div>
 
@@ -153,7 +153,7 @@ body.scene-wall .br .url{display:none}
   </div>
 
   <div class="corner br">
-    <div class="call">Scan to put your<br>language on the map</div>
+    <div class="call" id="call">Scan to put your<br>language on the map</div>
     <div class="qr" id="qr"><div class="qr-fallback" id="qrFallback">QR goes here</div></div>
     <div class="url" id="qrUrl"></div>
   </div>

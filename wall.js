@@ -4,14 +4,22 @@
    is the question the booth is actually asking, and it does not need anyone to
    pin a language to a country. Press V to switch; the geo wall is untouched.
 
-   The whole design problem here is the long tail. A festival room gives you a
-   handful of big languages and then forty with one voice each. Shrinking
-   everything until it all fits turns the wall into grey noise; cutting the tail
-   off tells exactly the wrong story. So the wall has two tiers — the languages
-   with weight stand as columns of blocks, one block per voice, and the rest
-   pack into a field of tiles beneath them. Nothing is dropped, and the idle
-   tour lifts one language out of the field at a time, which is how a language
-   with a single voice still gets its name across a 42" screen. */
+   Two things decide what the wall looks like.
+
+   What gets the screen is need, not headcount: a column's height is how far
+   Common Voice still has to go for that language, and the blocks stacked inside
+   it are the voices this room has given it — the start of filling the gap. Rank
+   the room by how many speak each language and the wall hands itself to
+   English, which is the opposite of what the booth is for.
+
+   What to do with the long tail: a festival room gives a handful of languages
+   Common Voice knows well and then forty it barely has. Shrinking everything
+   until it all fits turns the wall into grey noise; cutting the tail off tells
+   exactly the wrong story. So there are two tiers — the languages Common Voice
+   is missing most stand as columns, the well-recorded rest pack into a field of
+   tiles beneath them. Nothing is dropped, and the idle tour lifts one language
+   out of the field at a time, which is how a language with a single voice still
+   gets its name across a 42" screen. */
 (function () {
   const COL = {};
   (function readColors() {
@@ -60,11 +68,12 @@
     if (!L) return out;
 
     const gap = Math.max(9, R.w * 0.007);
-    const minColW = 126, maxColW = 236;
+    // Wide enough for a language's name and what Common Voice has of it.
+    const minColW = 168, maxColW = 250;
     let n = Math.min(L, Math.max(1, Math.floor((R.w + gap) / (minColW + gap))));
     const tail = L - n;
 
-    const labelH = Math.max(44, 62 * R.u);
+    const labelH = Math.max(50, 70 * R.u);
     const headH = tail ? Math.max(R.h * 0.56, R.h - 236 * R.u) : R.h;
     const fieldY = R.y + headH + gap * 2.6;
     const fieldH = tail ? (R.y + R.h) - fieldY : 0;
@@ -72,22 +81,26 @@
     const colW = Math.min(maxColW, (R.w - gap * (n - 1)) / n);
     const startX = R.x + (R.w - (n * colW + (n - 1) * gap)) / 2;
     const base = R.y + headH - labelH;
-    const blocksH = Math.max(40, base - R.y);
-    const maxCount = entries[0].count || 1;
+    const shaftArea = Math.max(40, base - R.y);
 
-    // One block per voice for as long as that is legible. Thin stripes still
-    // read as counted things from across a room; a smear does not, so only
-    // below ~2.5px does the column give up and become one bar with its number.
-    let bgap = 3.5, bh = (blocksH - (maxCount - 1) * bgap) / maxCount;
-    if (bh < 9) { bgap = 1.5; bh = (blocksH - (maxCount - 1) * bgap) / maxCount; }
-    if (bh < 5) { bgap = 0.8; bh = (blocksH - (maxCount - 1) * bgap) / maxCount; }
-    const solid = bh < 2.6;
+    /* One block per voice, the same size in every column so a block means the
+       same thing wherever it is — which is what lets someone point at theirs.
+       Thin stripes still read as counted things from across a room; a smear
+       does not, so only below ~2px does a column give up and go solid. */
+    let maxVoices = 1;
+    for (let i = 0; i < n; i++) maxVoices = Math.max(maxVoices, entries[i].count);
+    const unit = Math.min(22, shaftArea / Math.max(7, maxVoices));
+    const bgap = unit > 7 ? Math.min(3.4, unit * 0.22) : unit > 3 ? 1.2 : 0.6;
+    const bh = Math.max(1.4, unit - bgap);
+    const solid = bh < 2.2;
 
     for (let i = 0; i < n; i++) {
       const e = entries[i];
-      const h = Math.max(9, solid ? blocksH * (e.count / maxCount) : e.count * bh + (e.count - 1) * bgap);
+      const fillH = Math.min(shaftArea, e.count * bh + (e.count - 1) * bgap);
+      const shaftH = Math.max(20, Math.min(shaftArea, (e.need || 0) * shaftArea));
       out.set(e.key, {
-        tier: 'col', rank: i, x: startX + i * (colW + gap), y: base - h, w: colW, h,
+        tier: 'col', rank: i, x: startX + i * (colW + gap), y: base - Math.max(shaftH, fillH),
+        w: colW, h: Math.max(shaftH, fillH), fillH,
         base, bh, bgap, solid, labelH,
       });
     }
@@ -96,7 +109,7 @@
     /* The field. Sized down until every one of them fits — density is the
        point, so the answer to "too many" is smaller tiles, never fewer. */
     const rest = entries.slice(n);
-    const restMax = rest[0].count || 1;
+    const restMax = rest.reduce((m, e) => Math.max(m, e.count), 1);
     const g = gap * 0.6;
     const sizeOf = (c, s0) => s0 * (0.6 + 0.4 * Math.sqrt(c / restMax));
     let s = Math.min(62, fieldH * 0.44), rows = null;
@@ -147,11 +160,12 @@
     const k = 1 - Math.pow(0.0025, Math.min(0.06, view.dt));
     for (const [key, t] of target) {
       let b = boxes.get(key);
-      if (!b) b = { x: t.x, y: t.tier === 'col' ? t.base : t.y + t.h / 2, w: t.w, h: 0, spot: 0 };
+      if (!b) b = { x: t.x, y: t.tier === 'col' ? t.base : t.y + t.h / 2, w: t.w, h: 0, fh: 0, spot: 0 };
       b.tier = t.tier; b.base = t.base; b.bh = t.bh; b.bgap = t.bgap; b.solid = t.solid;
       b.labelH = t.labelH; b.rank = t.rank;
       b.x += (t.x - b.x) * k; b.y += (t.y - b.y) * k;
       b.w += (t.w - b.w) * k; b.h += (t.h - b.h) * k;
+      b.fh += ((t.fillH || 0) - b.fh) * k;
       b.spot += ((key === view.focusKey ? 1 : 0) - b.spot) * k;
       boxes.set(key, b);
     }
@@ -196,30 +210,30 @@
   function drawColumn(ctx, b, e, now, view, dim, sweep) {
     const just = view.justKey === e.key ? Math.min(1, (now - view.justStart) / 900) : 1;
     const shimmer = Math.max(0, 1 - Math.abs(b.x + b.w / 2 - sweep) / 220) * 0.22;
+    const base = b.base, fh = Math.max(0, b.fh);
     ctx.save();
     ctx.globalAlpha = dim;
 
+    // The shaft: what Common Voice is still missing, standing empty.
+    const sg = ctx.createLinearGradient(0, base - b.h, 0, base);
+    sg.addColorStop(0, rgbaOf(e, 0.03));
+    sg.addColorStop(1, rgbaOf(e, 0.12));
+    ctx.fillStyle = sg;
+    rr(ctx, b.x, base - b.h, b.w, Math.max(2, b.h), 10); ctx.fill();
+    ctx.strokeStyle = rgbaOf(e, 0.26); ctx.lineWidth = 1.5; ctx.stroke();
+
     if (b.solid) {
-      const g = ctx.createLinearGradient(0, b.y, 0, b.base);
+      const g = ctx.createLinearGradient(0, base - fh, 0, base);
       g.addColorStop(0, rgbaOf(e, 0.95 + shimmer * 0.2));
-      g.addColorStop(1, rgbaOf(e, 0.3));
+      g.addColorStop(1, rgbaOf(e, 0.35));
       ctx.fillStyle = g;
-      rr(ctx, b.x, b.y, b.w, Math.max(2, b.h), 9); ctx.fill();
-      ctx.fillStyle = COL['--fg'];
-      const fs = Math.max(15, Math.min(30, b.w * 0.2));
-      ctx.font = '600 ' + fs + 'px ' + MONO;
-      ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-      ctx.fillText(String(e.count), b.x + b.w / 2, b.y + 9);
+      rr(ctx, b.x, base - fh, b.w, Math.max(2, fh), 9); ctx.fill();
     } else {
-      const n = e.count;
-      const bh = b.bh, bg = b.bgap;
-      const first = Math.max(0, n - Math.ceil((b.h + bg) / (bh + bg)) - 1);
+      const n = e.count, bh = b.bh, bg = b.bgap;
+      const first = Math.max(0, n - Math.ceil((fh + bg) / (bh + bg)) - 1);
       for (let i = first; i < n; i++) {
-        const y = b.base - (i + 1) * bh - i * bg;
-        if (y > b.base) continue;
+        const y = base - (i + 1) * bh - i * bg;
         const t = n > 1 ? i / (n - 1) : 1;
-        let a = 0.4 + 0.5 * t + shimmer;
-        ctx.fillStyle = rgbaOf(e, Math.min(0.97, a));
         if (i === n - 1 && just < 1) {
           // The block that just arrived lands warm and cools into the stack.
           const pop = 1 + (1 - just) * 0.55 * Math.exp(-4 * just);
@@ -231,6 +245,7 @@
           ctx.fill(); ctx.shadowBlur = 0;
           continue;
         }
+        ctx.fillStyle = rgbaOf(e, Math.min(0.97, 0.45 + 0.45 * t + shimmer));
         rr(ctx, b.x, y, b.w, bh, Math.min(5, bh * 0.35));
         ctx.fill();
       }
@@ -246,10 +261,14 @@
     ctx.textAlign = 'center'; ctx.textBaseline = 'top';
     ctx.fillStyle = COL['--fg'];
     ctx.font = '600 ' + fs + 'px ' + UI;
-    ctx.fillText(fit(ctx, e.name, b.w - 4), b.x + b.w / 2, b.base + fs * 0.6);
-    ctx.font = '500 ' + Math.round(fs * 0.92) + 'px ' + MONO;
+    ctx.fillText(fit(ctx, e.name, b.w - 4), b.x + b.w / 2, b.base + fs * 0.55);
+    ctx.font = '500 ' + Math.round(fs * 0.82) + 'px ' + UI;
     ctx.fillStyle = accentOf(e);
-    ctx.fillText(String(e.count), b.x + b.w / 2, b.base + fs * 1.9);
+    const voices = e.count + (e.count === 1 ? ' voice' : ' voices');
+    ctx.fillText(fit(ctx, voices, b.w - 4), b.x + b.w / 2, b.base + fs * 1.75);
+    ctx.font = '400 ' + Math.round(Math.min(16, fs * 0.72)) + 'px ' + UI;
+    ctx.fillStyle = COL['--dim'];
+    ctx.fillText(fit(ctx, e.note || '', b.w - 4), b.x + b.w / 2, b.base + fs * 2.7);
     ctx.restore();
   }
 
@@ -286,7 +305,7 @@
   function drawSpotlight(ctx, R, b, e) {
     if (b.tier === 'col') return;
     const t = b.spot;
-    const w = b.w + (Math.min(360, R.w * 0.26) - b.w) * t;
+    const w = b.w + (Math.min(470, R.w * 0.3) - b.w) * t;
     const h = b.h + (Math.min(132, R.h * 0.3) - b.h) * t;
     let x = b.x + b.w / 2 - w / 2, y = b.y + b.h / 2 - h / 2;
     x = Math.max(R.x, Math.min(R.x + R.w - w, x));
@@ -320,7 +339,7 @@
     ctx.font = '500 ' + fs + 'px ' + UI;
     ctx.fillStyle = COL['--dim'];
     ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
-    ctx.fillText(meta.tail + ' more languages in the room', R.x, meta.fieldY - fs * 0.45);
+    ctx.fillText(meta.tail + ' more in the room, further along in Common Voice', R.x, meta.fieldY - fs * 0.45);
     ctx.restore();
   }
 
@@ -330,7 +349,7 @@
     ctx.save();
     ctx.font = '500 ' + fs + 'px ' + UI;
     ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
-    const y = R.y - fs * 0.5;
+    const y = R.y - fs * 2.1;
     let x = R.x + R.w;
     const bits = [[COL['--gold'], 'not in Common Voice yet'], [COL['--voice'], 'in Common Voice']];
     for (const [c, label] of bits) {
@@ -341,6 +360,10 @@
       rr(ctx, x - 11, y - fs * 0.75, 11, 11, 3); ctx.fill();
       x -= 11 + 22;
     }
+    ctx.textAlign = 'right';
+    ctx.fillStyle = COL['--dim'];
+    ctx.fillText('height: what Common Voice is still missing \u00b7 blocks: voices in this room',
+      R.x + R.w, R.y - fs * 0.5);
     ctx.restore();
   }
 

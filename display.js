@@ -320,19 +320,40 @@
   }
   const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-  /* What the language wall draws: every language in the room, heaviest first,
-     ties broken by who got here first so the order is stable between frames. */
+  /* How far Common Voice still has to go for one language, 0 to 1. This is the
+     booth's actual subject: a language nobody has recorded needs the screen more
+     than one with three thousand hours, however many people here happen to speak
+     it. Ranking on voices in the room would hand the wall to English, which is
+     the opposite of what the booth is for. */
+  const HMAX = window.CV.langs.reduce((m, l) => Math.max(m, l.h || 0), 1);
+  const LOGMAX = Math.log10(1 + HMAX);
+  function needOf(locale) {
+    const l = locale ? LANG[locale] : null;
+    if (!l) return { need: 1, note: 'not in Common Voice' };
+    if (!(l.h > 0)) return l.o ? { need: 0.88, note: 'no recordings yet' } : { need: 0.94, note: 'not open yet' };
+    return { need: Math.max(0.06, 0.8 * (1 - Math.log10(1 + l.h) / LOGMAX)), note: fmtHours(l.h) + ' h recorded' };
+  }
+
+  /* What the language wall draws: every language in the room, the ones Common
+     Voice is missing most first. Ties go to the language more of the room
+     speaks, then to whoever got here first, so the order is stable between
+     frames and never reshuffles on its own. */
   function wallRows() {
     if (state.wallRows) return state.wallRows;
-    const rows = Object.values(state.langInfo).map(i => ({
-      key: i.key,
-      name: i.name,
-      locale: i.locale,
-      count: state.langCount[i.key] || 0,
-      missing: !i.locale,
-    }));
+    const rows = Object.values(state.langInfo).map(i => {
+      const n = needOf(i.locale);
+      return {
+        key: i.key,
+        name: i.name,
+        locale: i.locale,
+        count: state.langCount[i.key] || 0,
+        missing: !i.locale,
+        need: n.need,
+        note: n.note,
+      };
+    });
     const order = new Map(state.langOrder.map((k, n) => [k, n]));
-    rows.sort((a, b) => b.count - a.count || order.get(a.key) - order.get(b.key));
+    rows.sort((a, b) => b.need - a.need || b.count - a.count || order.get(a.key) - order.get(b.key));
     return (state.wallRows = rows);
   }
 
@@ -571,7 +592,6 @@
         focusKey: state.focusLang,
         justKey: state.justKey,
         justStart: state.activeStart,
-        fieldNote: rows.length ? rows.length + (rows.length === 1 ? ' language in the room' : ' languages in the room') : '',
         dt,
       });
     } else {
@@ -712,6 +732,12 @@
   function setScene(next) {
     state.scene = next;
     document.body.classList.toggle('scene-wall', next === 'wall');
+    $('h1').textContent = next === 'wall'
+      ? 'What is Common Voice still missing?'
+      : 'Which languages are in this room?';
+    $('call').innerHTML = next === 'wall'
+      ? 'Add what you<br>speak'
+      : 'Scan to put your<br>language on the map';
     $('hint').textContent = next === 'wall'
       ? 'Tap a language for its standing \u00b7 V map \u00b7 F fullscreen'
       : 'Tap a country for its languages \u00b7 P projection \u00b7 V languages \u00b7 F fullscreen';
