@@ -38,7 +38,9 @@ window.BOOTH = {
   },
 
   display: {
-    scene: 'geo',          // "geo" (the map) or "wall" (languages) — press V to switch
+    // The phone no longer asks where people are from, so the wall is the live
+    // view; the map is still here (press V) and still draws older rows.
+    scene: 'wall',         // "wall" (languages) or "geo" (the map) — press V to switch
     projection: 'globe',   // "globe" or "map" — press P on the screen to switch
     highlightMs: 10000,    // how long one submission holds the screen
     minHighlightMs: 4000,  // compressed to this when the queue backs up

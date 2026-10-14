@@ -79,13 +79,18 @@
           state.langOrder.push(k);
         }
         state.langCount[k]++;
-        state.langInfo[k].countries.add(s.country);
+        if (s.country) state.langInfo[k].countries.add(s.country);
         if (L.dialect) state.langInfo[k].dialects.add(L.dialect);
       }
-      state.counts[s.country] = (state.counts[s.country] || 0) + 1;
-      const list = (state.pins[s.country] ||= []);
-      const spot = window.Geo.placePin(s.country, s.id, list.map(p => [p.lon, p.lat]));
-      if (spot) list.push({ lon: spot[0], lat: spot[1], id: s.id, missing: ls.some(L => !L.locale), ts: s.ts });
+      /* The phone stopped asking where people are from. Rows saved before that
+         still carry a country and still get a pin; new ones simply don't, and
+         the map scene draws whatever is there. */
+      if (s.country) {
+        state.counts[s.country] = (state.counts[s.country] || 0) + 1;
+        const list = (state.pins[s.country] ||= []);
+        const spot = window.Geo.placePin(s.country, s.id, list.map(p => [p.lon, p.lat]));
+        if (spot) list.push({ lon: spot[0], lat: spot[1], id: s.id, missing: ls.some(L => !L.locale), ts: s.ts });
+      }
       // Everything in the first batch is history; only live arrivals queue up.
       if (booted) state.queue.push(s);
     });
@@ -123,17 +128,18 @@
     state.activeStart = performance.now();
     state.holdUntil = state.activeStart + holdFor();
     state.picked = null;
-    const list = state.pins[s.country] || [];
+    const list = s.country ? (state.pins[s.country] || []) : [];
     state.activePin = list.find(p => p.id === s.id) || null;
-    state.focus = { country: s.country, kind: 'submission' };
+    state.focus = s.country ? { country: s.country, kind: 'submission' } : null;
     // Several blocks land at once; the screen holds the one Common Voice has
     // the least of, because that is the one worth reading out.
     const ls = langsOf(s);
     state.justKeys = ls.map(langKey);
-    state.focusLang = langKey(primaryOf(ls));
-    flyTo(s.country, state.mode === 'globe' ? 1.3 : 1.75);
+    const main = primaryOf(ls);
+    state.focusLang = langKey(main);
+    if (s.country) flyTo(s.country, state.mode === 'globe' ? 1.3 : 1.75);
     paintCard(s);
-    setStatus('Just added · ' + (COUNTRY[s.country] || s.country), false);
+    setStatus('Just added · ' + (s.country ? (COUNTRY[s.country] || s.country) : (main.missing || main.langName)), false);
   }
 
   function restingStatus() {
@@ -172,10 +178,12 @@
     state.rotUntil = now + (D.idleTourMs || 7000);
     state.focusLang = info.key;
 
+    // A language the room gave without a country has nowhere to fly to; on the
+    // map the globe simply keeps turning behind its card.
     const countries = [...info.countries];
-    const country = countries[state.rotIndex % countries.length] || countries[0];
-    state.focus = { country, kind: 'rotation' };
-    flyTo(country, state.mode === 'globe' ? 1.18 : 1.5);
+    const country = countries.length ? (countries[state.rotIndex % countries.length] || countries[0]) : null;
+    state.focus = country ? { country, kind: 'rotation' } : null;
+    if (country) flyTo(country, state.mode === 'globe' ? 1.18 : 1.5);
     paintTourCard(info, country);
     setStatus.apply(null, restingStatus());
   }
@@ -265,7 +273,8 @@
     $('cardLang').classList.toggle('multi', ls.length > 1);
     const varieties = ls.map(L => L.dialect).filter(Boolean);
     $('cardVariety').textContent = varieties.join(' · ');
-    $('cardFlag').textContent = (flag(s.country) + ' ' + (COUNTRY[s.country] || s.country) + (s.initials ? ' · ' + s.initials : '')).trim();
+    const where = s.country ? flag(s.country) + ' ' + (COUNTRY[s.country] || s.country) : '';
+    $('cardFlag').textContent = [where, s.initials].filter(Boolean).join(' · ');
     fillFacts(name, main.locale, state.langCount[langKey(main)] || 1);
   }
 
@@ -279,9 +288,10 @@
       ? varieties.slice(0, 3).join(' · ') + (varieties.length > 3 ? ' +' + (varieties.length - 3) : '')
       : '';
     const countries = [...info.countries];
-    $('cardFlag').textContent = countries.slice(0, 4)
-      .map(c => (flag(c) + ' ' + (COUNTRY[c] || c)).trim())
-      .join('  ') + (countries.length > 4 ? '  +' + (countries.length - 4) : '');
+    $('cardFlag').textContent = countries.length
+      ? countries.slice(0, 4).map(c => (flag(c) + ' ' + (COUNTRY[c] || c)).trim()).join('  ')
+        + (countries.length > 4 ? '  +' + (countries.length - 4) : '')
+      : '';
     fillFacts(info.name, info.locale, state.langCount[info.key] || 1);
   }
 

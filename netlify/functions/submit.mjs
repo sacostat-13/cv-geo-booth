@@ -30,9 +30,11 @@ export default async (req) => {
     return json(400, { error: 'Expected JSON' });
   }
 
-  // Validate before truncating: "XYZ" must be rejected, not quietly filed as "XY".
+  /* The phone no longer sends a country. One may still arrive from an older
+     page, and it is kept if so — but it is validated before truncating, so
+     "XYZ" is rejected rather than quietly filed as "XY". */
   const country = clean(body.country, 16).toUpperCase();
-  if (!/^[A-Z]{2}$/.test(country)) return json(400, { error: 'country must be a two-letter code' });
+  if (country && !/^[A-Z]{2}$/.test(country)) return json(400, { error: 'country must be a two-letter code' });
 
   /* Accept either shape: a langs array, or the single language the page used
      to send. Both end up stored as an array with the first entry repeated at

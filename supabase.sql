@@ -2,14 +2,14 @@
 -- Run this in the Supabase SQL editor, then put the project URL and the anon
 -- (publishable) key into config.js and set mode to "supabase".
 --
--- No personal data is collected: a country, a language code, an optional
--- dialect string and optional initials. No IP, no device id, no free text
--- beyond the language and dialect names people type themselves.
+-- No personal data is collected: language codes, optional dialect strings and
+-- optional initials. No country, no IP, no device id, no free text beyond the
+-- language and dialect names people type themselves.
 
 create table if not exists public.submissions (
   id          bigint generated always as identity primary key,
   created_at  timestamptz not null default now(),
-  country     char(2)     not null,
+  country     char(2),                   -- no longer collected; older rows keep theirs
   locale      text,                      -- Common Voice locale, null when the language isn't in CV
   lang_name   text        not null,
   dialect     text,
@@ -21,6 +21,7 @@ create table if not exists public.submissions (
 
 -- For a table created before multi-language submissions existed.
 alter table public.submissions add column if not exists langs jsonb;
+alter table public.submissions alter column country drop not null;
 
 create index if not exists submissions_created_at_idx on public.submissions (created_at);
 

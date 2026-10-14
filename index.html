@@ -21,12 +21,12 @@
 html,body{height:100%}
 body{margin:0;background:var(--ink);color:var(--fg);font-family:var(--ui);
   font-size:17px;line-height:1.5;-webkit-text-size-adjust:100%}
-.wrap{min-height:100%;display:flex;flex-direction:column;max-width:620px;margin:0 auto;
+.wrap{height:100%;display:flex;flex-direction:column;max-width:620px;margin:0 auto;
   padding:0 20px;padding-block:18px 24px}
 .rail{display:flex;gap:6px;margin-bottom:22px}
 .rail i{flex:1;height:4px;border-radius:999px;background:var(--line);transition:background .3s}
 .rail i.on{background:var(--voice)}
-.step{display:none;flex:1;flex-direction:column;min-width:0}
+.step{display:none;flex:1;flex-direction:column;min-width:0;overflow-y:auto}
 .step.on{display:flex}
 .eyebrow{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--voice);margin-bottom:10px}
 h1{font:700 30px/1.15 var(--display);margin:0 0 8px;text-wrap:balance}
@@ -98,58 +98,48 @@ footer{color:var(--dim);font-size:12.5px;text-align:center;margin-top:20px}
 </head>
 <body>
 <div class="wrap">
-  <div class="rail" id="rail"><i></i><i></i><i></i><i></i></div>
+  <div class="rail" id="rail"><i></i><i></i><i></i></div>
 
-  <!-- 1. country -->
+  <!-- 1. languages -->
   <section class="step on" id="s1">
-    <div class="eyebrow" id="brand">Common Voice · MozFest</div>
-    <h1>Put your language on the wall</h1>
-    <p class="lede">Start with where you are from. Look up at the big screen when you finish.</p>
-    <input type="search" id="countrySearch" placeholder="Search countries" autocomplete="off" enterkeyhint="search">
-    <div class="scroll"><div class="list" id="countryList"></div></div>
-  </section>
-
-  <!-- 2. languages -->
-  <section class="step" id="s2">
-    <div class="eyebrow" id="step2Eyebrow">Step 2</div>
+    <div class="eyebrow" id="brand">Common Voice</div>
     <h1>What do you speak?</h1>
-    <p class="lede" id="step2Lede">Pick every language you could lend your voice in. Up to five.</p>
+    <p class="lede" id="step1Lede">Pick every language you could lend your voice in. Up to five. Look up at the big screen when you finish.</p>
     <div class="tray" id="langTray" hidden></div>
     <input type="search" id="langSearch" placeholder="Search all languages" autocomplete="off">
     <div class="scroll"><div class="list" id="langList"></div></div>
     <div class="actions">
-      <button class="btn sec" data-back="1">Back</button>
-      <button class="btn" id="toStep3" disabled>Continue</button>
+      <button class="btn" id="toStep2" disabled style="width:100%">Continue</button>
     </div>
   </section>
 
-  <!-- 3. varieties -->
-  <section class="step" id="s3">
-    <div class="eyebrow">Step 3</div>
-    <h1 id="step3Title">Which variety?</h1>
-    <p class="lede">Dialects carry sounds a dataset will never hear otherwise. Skip any that don't fit.</p>
+  <!-- 2. varieties -->
+  <section class="step" id="s2">
+    <div class="eyebrow">Step 2</div>
+    <h1 id="step2Title">Which variety?</h1>
+    <p class="lede">Dialects carry sounds a dataset will never hear otherwise. Skip any that don’t fit.</p>
     <div class="scroll"><div id="varietyGroups"></div></div>
     <div class="actions">
-      <button class="btn sec" data-back="2">Back</button>
-      <button class="btn" id="toStep4">Continue</button>
+      <button class="btn sec" data-back="1">Back</button>
+      <button class="btn" id="toStep3">Continue</button>
     </div>
   </section>
 
-  <!-- 4. initials -->
-  <section class="step" id="s4">
+  <!-- 3. initials -->
+  <section class="step" id="s3">
     <div class="eyebrow">Last step</div>
     <h1>Sign it, or stay anonymous</h1>
     <p class="lede">Initials only — nothing else is stored, and nothing identifies you.</p>
     <input type="text" id="initials" maxlength="4" placeholder="e.g. S.T." autocomplete="off">
     <div class="actions">
-      <button class="btn sec" data-back="3">Back</button>
-      <button class="btn" id="submitBtn">Add me to the map</button>
+      <button class="btn sec" data-back="2">Back</button>
+      <button class="btn" id="submitBtn">Add me to the wall</button>
     </div>
     <div class="err" id="err" hidden></div>
   </section>
 
-  <!-- 5. done -->
-  <section class="step" id="s5">
+  <!-- 4. done -->
+  <section class="step" id="s4">
     <div class="done">
       <div class="mark">✓</div>
       <h2 id="doneTitle">You're on the map</h2>
@@ -159,7 +149,7 @@ footer{color:var(--dim);font-size:12.5px;text-align:center;margin-top:20px}
       <div class="callout" id="doneCallout" hidden></div>
       <a class="cta" id="ctaMain" href="#" target="_blank" rel="noopener">Sign in and record a few sentences</a>
       <a class="cta sec" id="ctaSec" href="#" target="_blank" rel="noopener">Write a few sentences</a>
-      <p class="look">Look up at the screen — your pin is landing now.</p>
+      <p class="look">Look up at the screen — your blocks are landing now.</p>
       <button class="btn sec" id="again" style="margin-top:18px;width:100%;flex:1">Add someone else</button>
     </div>
   </section>

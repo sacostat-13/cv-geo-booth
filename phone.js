@@ -1,4 +1,9 @@
-/* The phone page behind the QR code: country → languages → varieties → initials.
+/* The phone page behind the QR code: languages → varieties → initials.
+
+   No country is asked for. A language does not belong to a place, and asking
+   made people answer for a country that had nothing to do with what they
+   speak. Submissions carry no country at all now; the map scene still draws
+   any rows that already had one.
 
    A visitor picks up to five languages, because "languages I speak" and
    "languages I could record sentences in" are different lists and the second
@@ -12,8 +17,6 @@
   const nf = new Intl.NumberFormat('en');
   const LANG = {};
   for (const l of CV.langs) LANG[l.l] = l;
-  const CNAME = {};
-  for (const c of CV.countries) CNAME[c.c] = c.n;
 
   /* Without a backend this page writes to its own browser storage, so a
      submission here never reaches a screen on another device. Say so rather
@@ -22,7 +25,7 @@
 
   const MAXLANGS = 5;
   // One person, one submission, with every language they chose on it.
-  const pick = { country: '', initials: '', langs: [] };
+  const pick = { initials: '', langs: [] };
   let step = 1;
 
   const keyOf = l => (l.locale ? l.locale : '!' + String(l.langName).toLowerCase());
@@ -40,7 +43,6 @@
   }
   const neediest = () => pick.langs.slice().sort((a, b) => needOf(b.locale) - needOf(a.locale))[0];
 
-  const flag = c => (/^[A-Z]{2}$/.test(c) ? String.fromCodePoint(0x1F1E6 + c.charCodeAt(0) - 65, 0x1F1E6 + c.charCodeAt(1) - 65) : '');
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const fmtHours = h => (h >= 100 ? nf.format(Math.round(h)) : h >= 10 ? h.toFixed(0) : h.toFixed(1));
   const fold = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -49,34 +51,14 @@
     step = n;
     document.querySelectorAll('.step').forEach(s => s.classList.remove('on'));
     $('s' + n).classList.add('on');
-    [...$('rail').children].forEach((el, i) => el.classList.toggle('on', i < Math.min(n, 4)));
+    [...$('rail').children].forEach((el, i) => el.classList.toggle('on', i < Math.min(n, 3)));
     window.scrollTo(0, 0);
     const first = $('s' + n).querySelector('input');
-    if (first && n !== 4) setTimeout(() => { try { first.value = first.value; } catch (e) {} }, 0);
+    if (first && n !== 3) setTimeout(() => { try { first.value = first.value; } catch (e) {} }, 0);
   }
   document.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', () => go(+b.dataset.back)));
 
-  // ---- step 1: country ----------------------------------------------------
-  function renderCountries(q) {
-    const f = fold(q || '');
-    const rows = CV.countries.filter(c => !f || fold(c.n).includes(f) || c.c.toLowerCase() === f);
-    $('countryList').innerHTML = rows.length
-      ? rows.map(c => '<button class="opt" data-c="' + c.c + '"><span class="flag">' + flag(c.c) + '</span>' + esc(c.n) + '</button>').join('')
-      : '<p class="empty">No country matches that. Try the English name.</p>';
-  }
-  $('countrySearch').addEventListener('input', e => renderCountries(e.target.value));
-  $('countryList').addEventListener('click', e => {
-    const b = e.target.closest('[data-c]');
-    if (!b) return;
-    pick.country = b.dataset.c;
-    $('step2Eyebrow').textContent = flag(pick.country) + ' ' + CNAME[pick.country];
-    $('langSearch').value = '';
-    renderTray();
-    renderLangs('');
-    go(2);
-  });
-
-  // ---- step 2: language ---------------------------------------------------
+  // ---- step 1: languages --------------------------------------------------
   function langRow(code) {
     const l = LANG[code];
     if (!l) return '';
@@ -93,9 +75,9 @@
     tray.hidden = !n;
     tray.innerHTML = pick.langs.map((l, i) =>
       '<button class="' + (l.locale ? '' : 'new') + '" data-rm="' + i + '">' + esc(l.langName) + ' <i>×</i></button>').join('');
-    $('toStep3').disabled = !n;
-    $('step2Lede').textContent =
-      n === 0 ? 'Pick every language you could lend your voice in. Up to five.'
+    $('toStep2').disabled = !n;
+    $('step1Lede').textContent =
+      n === 0 ? 'Pick every language you could lend your voice in. Up to five. Look up at the big screen when you finish.'
       : n === 1 ? 'Add another, or continue.'
       : n < MAXLANGS ? 'Which of these would you most want Common Voice to hear? Up to five.'
       : 'Five is the limit — these are the ones the wall will show.';
@@ -112,18 +94,21 @@
     const at = pick.langs.findIndex(x => keyOf(x) === keyOf(entry));
     if (at >= 0) pick.langs.splice(at, 1);
     else if (pick.langs.length >= MAXLANGS) {
-      $('step2Lede').textContent = 'Five is the limit — remove one to add another.';
+      $('step1Lede').textContent = 'Five is the limit — remove one to add another.';
       return;
     } else pick.langs.push(entry);
     renderTray();
     renderLangs($('langSearch').value);
   }
+  /* Without a country there is nothing to suggest from, so the list is simply
+     every Common Voice language by name and the search box does the work. A
+     ranked default would be a second opinion nobody asked for in a picker. */
+  const ALL = CV.langs.slice().sort((a, b) => a.n.localeCompare(b.n));
   function renderLangs(q) {
     const f = fold(q || '');
     let html = '';
     if (!f) {
-      const sug = CV.byCountry[pick.country] || [];
-      html = sug.map(c => langRow(c)).join('');
+      html = ALL.map(l => langRow(l.l)).join('');
     } else {
       const hits = CV.langs.filter(l => fold(l.n).includes(f) || l.l.toLowerCase().startsWith(f)).slice(0, 60);
       html = hits.map(l => langRow(l.l)).join('') || '<p class="empty">No Common Voice language matches that.</p>';
@@ -150,11 +135,11 @@
     if (!b) return;
     toggleLang({ locale: b.dataset.l, langName: LANG[b.dataset.l].n, dialect: '', missing: '' });
   });
-  $('toStep3').addEventListener('click', openVarieties);
+  $('toStep2').addEventListener('click', openVarieties);
 
   // ---- step 3: varieties, one group per language --------------------------
   function openVarieties() {
-    $('step3Title').textContent = pick.langs.length === 1
+    $('step2Title').textContent = pick.langs.length === 1
       ? 'Which ' + pick.langs[0].langName + '?'
       : 'Which varieties?';
     $('varietyGroups').innerHTML = pick.langs.map((l, i) => {
@@ -166,7 +151,7 @@
         list.map(d => '<button class="chip" data-d="' + esc(d) + '">' + esc(d) + '</button>').join('') +
         '</div><input type="text" class="vother" placeholder="Or name your own variety" autocomplete="off"></div>';
     }).join('');
-    go(3);
+    go(2);
   }
   $('varietyGroups').addEventListener('click', e => {
     const b = e.target.closest('[data-d]');
@@ -181,12 +166,12 @@
     if (!e.target.classList.contains('vother')) return;
     if (e.target.value.trim()) [...e.target.closest('.vgroup').querySelectorAll('.chip')].forEach(c => c.classList.remove('sel'));
   });
-  $('toStep4').addEventListener('click', () => {
+  $('toStep3').addEventListener('click', () => {
     [...$('varietyGroups').children].forEach(group => {
       const typed = group.querySelector('.vother').value.trim();
       if (typed) pick.langs[+group.dataset.i].dialect = typed.slice(0, 48);
     });
-    go(4);
+    go(3);
   });
 
   // ---- step 4: submit -----------------------------------------------------
@@ -198,7 +183,6 @@
     try {
       const first = neediest();
       await window.Store.add({
-        country: pick.country,
         initials: pick.initials,
         langs: pick.langs.map(l => ({ locale: l.locale, langName: l.langName, dialect: l.dialect, missing: l.missing })),
         /* The neediest language is repeated at the top level so a row written
@@ -207,7 +191,7 @@
       });
       renderDone();
       paintReach();
-      go(5);
+      go(4);
     } catch (err) {
       $('err').textContent = err.message + ' — try once more, or ask someone at the booth.';
       $('err').hidden = false;
@@ -222,9 +206,8 @@
     // whichever of them Common Voice has the least of.
     const main = neediest();
     const l = main.locale ? LANG[main.locale] : null;
-    const where = flag(pick.country) + ' ' + CNAME[pick.country];
     $('doneSub').textContent = pick.langs
-      .map(x => x.langName + (x.dialect ? ' · ' + x.dialect : '')).join('  ·  ') + '  ·  ' + where;
+      .map(x => x.langName + (x.dialect ? ' · ' + x.dialect : '')).join('  ·  ');
     const stats = $('doneStats'), callout = $('doneCallout');
 
     /* Recording is only possible where Common Voice has the language open.
@@ -290,10 +273,10 @@
   }
 
   $('again').addEventListener('click', () => {
-    pick.country = ''; pick.initials = ''; pick.langs = [];
-    $('countrySearch').value = ''; $('initials').value = ''; $('langSearch').value = '';
+    pick.initials = ''; pick.langs = [];
+    $('initials').value = ''; $('langSearch').value = '';
     renderTray();
-    renderCountries('');
+    renderLangs('');
     go(1);
   });
 
@@ -301,5 +284,7 @@
   $('brand').textContent = CFG.event.booth + ' · ' + CFG.event.name;
   $('foot').textContent = 'Common Voice figures from ' + CV.meta.fetched + ' · ' + CV.meta.locales + ' languages · no personal data is stored'
     + (SHARED ? '' : ' · local mode');
-  renderCountries('');
+  renderTray();
+  renderLangs('');
+  go(1);
 })();
