@@ -367,9 +367,16 @@
   const LOGMAX = Math.log10(1 + HMAX);
   function needOf(locale) {
     const l = locale ? LANG[locale] : null;
-    if (!l) return { need: 1, note: 'not in Common Voice' };
-    if (!(l.h > 0)) return l.o ? { need: 0.88, note: 'no recordings yet' } : { need: 0.94, note: 'not open yet' };
-    return { need: Math.max(0.06, 0.8 * (1 - Math.log10(1 + l.h) / LOGMAX)), note: fmtHours(l.h) + ' h recorded' };
+    if (!l) return { need: 1, note: 'not in Common Voice', hours: 0, bar: 0 };
+    if (!(l.h > 0)) return { need: l.o ? 0.88 : 0.94, note: l.o ? 'no recordings yet' : 'not open yet', hours: 0, bar: 0 };
+    // The bar is log-scaled: linear, English alone would be the whole track and
+    // every language that needs the booth would be a sliver against it.
+    return {
+      need: Math.max(0.06, 0.8 * (1 - Math.log10(1 + l.h) / LOGMAX)),
+      note: fmtHours(l.h) + ' h',
+      hours: l.h,
+      bar: Math.log10(1 + l.h) / LOGMAX,
+    };
   }
 
   /* What the language wall draws: every language in the room, the ones Common
@@ -388,6 +395,8 @@
         missing: !i.locale,
         need: n.need,
         note: n.note,
+        hours: n.hours,
+        bar: n.bar,
       };
     });
     const order = new Map(state.langOrder.map((k, n) => [k, n]));

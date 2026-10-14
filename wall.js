@@ -6,11 +6,19 @@
 
    Two things decide what the wall looks like.
 
-   What gets the screen is need, not headcount: a column's height is how far
-   Common Voice still has to go for that language, and the blocks stacked inside
-   it are the voices this room has given it — the start of filling the gap. Rank
-   the room by how many speak each language and the wall hands itself to
-   English, which is the opposite of what the booth is for.
+   The screen shows two quantities that do not share a scale: hours Common Voice
+   has recorded (global, 0 to a few thousand, log-distributed) and voices this
+   room has given (local, 0 to a few dozen, linear). Making one the container of
+   the other reads as a measurement and is really a metaphor — a person speaking
+   for five minutes cannot fill English's three thousand hours. So they are two
+   channels side by side on one row per language: a log-scaled bar of what is
+   recorded, and one discrete block per person here. Neither contains the other,
+   and the rows stay comparable straight down the column.
+
+   What gets the screen is need, not headcount: rows are ordered by how far
+   Common Voice still has to go. Rank the room by how many speak each language
+   and the wall hands itself to English, which is the opposite of what the booth
+   is for.
 
    What to do with the long tail: a festival room gives a handful of languages
    Common Voice knows well and then forty it barely has. Shrinking everything
@@ -68,59 +76,85 @@
     if (!L) return out;
 
     const gap = Math.max(9, R.w * 0.007);
-    // Wide enough for a language's name and what Common Voice has of it.
-    const minColW = 168, maxColW = 250;
-    let n = Math.min(L, Math.max(1, Math.floor((R.w + gap) / (minColW + gap))));
-    const tail = L - n;
+    const headerH = Math.max(26, 34 * R.u);     // the two channel captions
+    const minRowH = Math.max(38, 46 * R.u);
+    const maxRowH = Math.max(minRowH, 76 * R.u);
 
-    const labelH = Math.max(50, 70 * R.u);
-    const headH = tail ? Math.max(R.h * 0.56, R.h - 236 * R.u) : R.h;
-    const fieldY = R.y + headH + gap * 2.6;
-    const fieldH = tail ? (R.y + R.h) - fieldY : 0;
+    /* The field is one compact band at the foot, so the rows get the rest. */
+    const bodyTop = R.y + headerH;
+    const fieldBand = 136 * R.u;
+    const headH = L > 3 ? R.h - fieldBand : R.h;
+    const rowsH = headH - headerH;
+    let n = Math.max(1, Math.min(L, Math.floor(rowsH / minRowH)));
+    const rowH = Math.min(maxRowH, rowsH / n);
+    const fieldY = R.y + headH + gap * 2.2;
+    const fieldH = (R.y + R.h) - fieldY;
 
-    const colW = Math.min(maxColW, (R.w - gap * (n - 1)) / n);
-    const startX = R.x + (R.w - (n * colW + (n - 1) * gap)) / 2;
-    const base = R.y + headH - labelH;
-    const shaftArea = Math.max(40, base - R.y);
-
-    /* One block per voice, the same size in every column so a block means the
-       same thing wherever it is — which is what lets someone point at theirs.
-       Thin stripes still read as counted things from across a room; a smear
-       does not, so only below ~2px does a column give up and go solid. */
-    let maxVoices = 1;
-    for (let i = 0; i < n; i++) maxVoices = Math.max(maxVoices, entries[i].count);
-    const unit = Math.min(22, shaftArea / Math.max(7, maxVoices));
-    const bgap = unit > 7 ? Math.min(3.4, unit * 0.22) : unit > 3 ? 1.2 : 0.6;
-    const bh = Math.max(1.4, unit - bgap);
-    const solid = bh < 2.2;
-
-    for (let i = 0; i < n; i++) {
-      const e = entries[i];
-      const fillH = Math.min(shaftArea, e.count * bh + (e.count - 1) * bgap);
-      const shaftH = Math.max(20, Math.min(shaftArea, (e.need || 0) * shaftArea));
-      out.set(e.key, {
-        tier: 'col', rank: i, x: startX + i * (colW + gap), y: base - Math.max(shaftH, fillH),
-        w: colW, h: Math.max(shaftH, fillH), fillH,
-        base, bh, bgap, solid, labelH,
-      });
+    /* Which languages get a row. Ordering by need alone puts every zero-hour
+       language at the top, so the recorded channel would be empty on every
+       visible row and the comparison it exists for would never appear. So the
+       last rows are kept for what the room already has well recorded: the
+       channel then spans nothing to thousands of hours, which is the point. */
+    let rows = entries, splitAt = -1;
+    if (L > n) {
+      const bottom = Math.min(3, Math.max(0, n - 4));
+      const top = n - bottom;
+      rows = entries.slice(0, top).concat(bottom ? entries.slice(L - bottom) : []);
+      splitAt = bottom ? top : -1;
     }
+    const middle = L > n ? entries.slice(n - Math.min(3, Math.max(0, n - 4)), L - Math.min(3, Math.max(0, n - 4))) : [];
+    const tail = middle.length;
+
+    /* Three columns: who, what Common Voice has, who is here. The name gets
+       enough room for the longest language names, the bar gets the most, and
+       the blocks get what is left. */
+    const nameW = Math.min(420, Math.max(190, R.w * 0.21));
+    const voiceW = Math.min(430, Math.max(180, R.w * 0.22));
+    const barX = R.x + nameW + gap * 2;
+    const barW = R.w - nameW - voiceW - gap * 4;
+    const voiceX = barX + barW + gap * 2;
+
+    // One block per voice, the same size on every row, so a block means the
+    // same thing wherever it sits — that is what lets someone point at theirs.
+    let maxVoices = 1;
+    for (const e of rows) maxVoices = Math.max(maxVoices, e.count);
+    /* A block is sized by the row, not by the busiest language. Sizing to fit
+       the largest count would shrink every block until the rows that matter —
+       the ones with two or three voices — stopped being countable, to make one
+       row of eighty fit. That row says what it needs to with a run of blocks
+       and a remainder instead. */
+    const bw = Math.max(6, Math.min(16, rowH * 0.3));
+    const bgap = Math.max(2, bw * 0.28);
+    const solid = bw < 4;
+
+    rows.forEach((e, i) => {
+      out.set(e.key, {
+        tier: 'row', rank: i, x: R.x, y: bodyTop + i * rowH, w: R.w, h: rowH,
+        nameW, barX, barW, voiceX, voiceW, bw, bgap, solid,
+        fillH: Math.min(barW, (e.bar || 0) * barW),
+      });
+    });
+    out.meta = {
+      tail: 0, headerH, barX, barW, voiceX, rowsTop: bodyTop,
+      splitY: splitAt >= 0 ? bodyTop + splitAt * rowH : 0,
+    };
     if (!tail) return out;
 
     /* The field. Sized down until every one of them fits — density is the
        point, so the answer to "too many" is smaller tiles, never fewer. */
-    const rest = entries.slice(n);
+    const rest = middle;
     const restMax = rest.reduce((m, e) => Math.max(m, e.count), 1);
     const g = gap * 0.6;
     const sizeOf = (c, s0) => s0 * (0.6 + 0.4 * Math.sqrt(c / restMax));
-    let s = Math.min(62, fieldH * 0.44), rows = null;
+    let s = Math.min(62, fieldH * 0.44), packed = null;
     for (; s >= 10; s -= 1.5) {
-      rows = pack(rest, s, sizeOf, R.w, g);
-      const total = rows.reduce((t, r) => t + r.h, 0) + (rows.length - 1) * g;
+      packed = pack(rest, s, sizeOf, R.w, g);
+      const total = packed.reduce((t, r) => t + r.h, 0) + (packed.length - 1) * g;
       if (total <= fieldH) break;
     }
-    const totalH = rows.reduce((t, r) => t + r.h, 0) + (rows.length - 1) * g;
+    const totalH = packed.reduce((t, r) => t + r.h, 0) + (packed.length - 1) * g;
     let y = fieldY + Math.max(0, (fieldH - totalH) / 2);
-    for (const row of rows) {
+    for (const row of packed) {
       let x = R.x + (R.w - row.w) / 2;
       for (const it of row.items) {
         out.set(it.e.key, { tier: 'tile', rank: 999, x, y: y + (row.h - it.s) / 2, w: it.s, h: it.s });
@@ -128,7 +162,7 @@
       }
       y += row.h + g;
     }
-    out.meta = { tail, fieldY: fieldY + Math.max(0, (fieldH - totalH) / 2) };
+    out.meta = Object.assign(out.meta || {}, { tail, fieldY: fieldY + Math.max(0, (fieldH - totalH) / 2) });
     return out;
   }
 
@@ -160,9 +194,10 @@
     const k = 1 - Math.pow(0.0025, Math.min(0.06, view.dt));
     for (const [key, t] of target) {
       let b = boxes.get(key);
-      if (!b) b = { x: t.x, y: t.tier === 'col' ? t.base : t.y + t.h / 2, w: t.w, h: 0, fh: 0, spot: 0 };
-      b.tier = t.tier; b.base = t.base; b.bh = t.bh; b.bgap = t.bgap; b.solid = t.solid;
-      b.labelH = t.labelH; b.rank = t.rank;
+      if (!b) b = { x: t.x, y: t.y, w: t.w, h: t.h, fh: 0, spot: 0 };
+      b.tier = t.tier; b.bgap = t.bgap; b.solid = t.solid; b.rank = t.rank;
+      b.nameW = t.nameW; b.barX = t.barX; b.barW = t.barW;
+      b.voiceX = t.voiceX; b.voiceW = t.voiceW; b.bw = t.bw;
       b.x += (t.x - b.x) * k; b.y += (t.y - b.y) * k;
       b.w += (t.w - b.w) * k; b.h += (t.h - b.h) * k;
       b.fh += ((t.fillH || 0) - b.fh) * k;
@@ -182,14 +217,16 @@
       placed.push({ key: e.key, b });
       const dim = 1 - 0.45 * lit * (1 - b.spot);
       if (b.spot > 0.5) { spotted = { e, b, dim }; continue; }
-      if (b.tier === 'col') drawColumn(ctx, b, e, now, view, dim, sweep);
+      if (b.tier === 'row') drawRow(ctx, b, e, now, view, dim, sweep);
       else drawTile(ctx, b, e, now, view, dim, sweep);
     }
     if (spotted) {
-      if (spotted.b.tier === 'col') drawColumn(ctx, spotted.b, spotted.e, now, view, 1, sweep);
+      if (spotted.b.tier === 'row') drawRow(ctx, spotted.b, spotted.e, now, view, 1, sweep);
       else drawTile(ctx, spotted.b, spotted.e, now, view, 1, sweep);
       drawSpotlight(ctx, R, spotted.b, spotted.e);
     }
+    if (target.meta) channelHeaders(ctx, R, target.meta);
+    if (target.meta && target.meta.splitY) divider(ctx, R, target.meta);
     if (target.meta && target.meta.tail) fieldCaption(ctx, R, target.meta);
     legend(ctx, R);
   }
@@ -207,68 +244,150 @@
     return (e.missing ? 'rgba(255,200,97,' : 'rgba(56,227,192,') + a.toFixed(3) + ')';
   }
 
-  function drawColumn(ctx, b, e, now, view, dim, sweep) {
+  /* One language, one row, two channels: what Common Voice has recorded, and
+     who in this room could add to it. */
+  function drawRow(ctx, b, e, now, view, dim, sweep) {
     const just = view.justKeys.indexOf(e.key) >= 0 ? Math.min(1, (now - view.justStart) / 900) : 1;
-    const shimmer = Math.max(0, 1 - Math.abs(b.x + b.w / 2 - sweep) / 220) * 0.22;
-    const base = b.base, fh = Math.max(0, b.fh);
+    const mid = b.y + b.h / 2;
+    const fs = Math.max(15, Math.min(30, b.h * 0.42));
     ctx.save();
     ctx.globalAlpha = dim;
 
-    // The shaft: what Common Voice is still missing, standing empty.
-    const sg = ctx.createLinearGradient(0, base - b.h, 0, base);
-    sg.addColorStop(0, rgbaOf(e, 0.03));
-    sg.addColorStop(1, rgbaOf(e, 0.12));
-    ctx.fillStyle = sg;
-    rr(ctx, b.x, base - b.h, b.w, Math.max(2, b.h), 10); ctx.fill();
-    ctx.strokeStyle = rgbaOf(e, 0.26); ctx.lineWidth = 1.5; ctx.stroke();
-
-    if (b.solid) {
-      const g = ctx.createLinearGradient(0, base - fh, 0, base);
-      g.addColorStop(0, rgbaOf(e, 0.95 + shimmer * 0.2));
-      g.addColorStop(1, rgbaOf(e, 0.35));
-      ctx.fillStyle = g;
-      rr(ctx, b.x, base - fh, b.w, Math.max(2, fh), 9); ctx.fill();
-    } else {
-      const n = e.count, bh = b.bh, bg = b.bgap;
-      const first = Math.max(0, n - Math.ceil((fh + bg) / (bh + bg)) - 1);
-      for (let i = first; i < n; i++) {
-        const y = base - (i + 1) * bh - i * bg;
-        const t = n > 1 ? i / (n - 1) : 1;
-        if (i === n - 1 && just < 1) {
-          // The block that just arrived lands warm and cools into the stack.
-          const pop = 1 + (1 - just) * 0.55 * Math.exp(-4 * just);
-          const hh = bh * pop, ww = b.w * (1 + (1 - just) * 0.05);
-          ctx.fillStyle = COL['--ember'];
-          ctx.shadowColor = COL['--ember'];
-          ctx.shadowBlur = 26 * (1 - just);
-          rr(ctx, b.x - (ww - b.w) / 2, y - (hh - bh), ww, hh, Math.min(5, bh * 0.35));
-          ctx.fill(); ctx.shadowBlur = 0;
-          continue;
-        }
-        ctx.fillStyle = rgbaOf(e, Math.min(0.97, 0.45 + 0.45 * t + shimmer));
-        rr(ctx, b.x, y, b.w, bh, Math.min(5, bh * 0.35));
-        ctx.fill();
-      }
+    if (b.spot > 0.02) {
+      ctx.fillStyle = rgbaOf(e, 0.08 * b.spot);
+      rr(ctx, b.x - 10, b.y + 2, b.w + 20, b.h - 4, 10); ctx.fill();
     }
-    ctx.restore();
-    columnLabel(ctx, b, e, dim);
-  }
 
-  function columnLabel(ctx, b, e, dim) {
-    const fs = Math.max(13, Math.min(26, b.w * 0.165));
-    ctx.save();
-    ctx.globalAlpha = dim;
-    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    // name
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.fillStyle = COL['--fg'];
     ctx.font = '600 ' + fs + 'px ' + UI;
-    ctx.fillText(fit(ctx, e.name, b.w - 4), b.x + b.w / 2, b.base + fs * 0.55);
-    ctx.font = '500 ' + Math.round(fs * 0.82) + 'px ' + UI;
-    ctx.fillStyle = accentOf(e);
-    const voices = e.count + (e.count === 1 ? ' voice' : ' voices');
-    ctx.fillText(fit(ctx, voices, b.w - 4), b.x + b.w / 2, b.base + fs * 1.75);
-    ctx.font = '400 ' + Math.round(Math.min(16, fs * 0.72)) + 'px ' + UI;
+    ctx.fillText(fit(ctx, e.name, b.nameW), b.x, mid);
+
+    // channel 1 — hours recorded, log-scaled, with the figure beside the fill
+    const trackH = Math.max(8, Math.min(22, b.h * 0.3));
+    const ty = mid - trackH / 2;
+    ctx.fillStyle = 'rgba(255,255,255,.04)';
+    rr(ctx, b.barX, ty, b.barW, trackH, trackH / 2); ctx.fill();
+    const fw = Math.max(0, b.fh);
+    if (e.hours <= 0) {
+      // Nothing recorded. A hatched track reads as "empty", where a plain one
+      // reads as "still loading".
+      ctx.save();
+      rr(ctx, b.barX, ty, b.barW, trackH, trackH / 2); ctx.clip();
+      ctx.strokeStyle = rgbaOf(e, 0.14); ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      for (let x = b.barX - trackH; x < b.barX + b.barW; x += 9) {
+        ctx.moveTo(x, ty + trackH); ctx.lineTo(x + trackH, ty);
+      }
+      ctx.stroke();
+      ctx.restore();
+    }
+    if (fw > 1) {
+      const g = ctx.createLinearGradient(b.barX, 0, b.barX + fw, 0);
+      g.addColorStop(0, rgbaOf(e, 0.45));
+      g.addColorStop(1, rgbaOf(e, 0.95));
+      ctx.fillStyle = g;
+      rr(ctx, b.barX, ty, fw, trackH, trackH / 2); ctx.fill();
+    }
+    /* The figure rides the end of the fill, and moves inside it once the fill
+       is long enough to hold it — otherwise a full bar pushes its own label
+       into the blocks channel. */
+    ctx.font = '500 ' + Math.round(fs * 0.72) + 'px ' + (e.hours > 0 ? MONO : UI);
+    const note = e.note || '';
+    const noteW = ctx.measureText(note).width;
+    const room = b.barX + b.barW - (b.barX + fw) - 14;
+    if (fw > noteW + 28 && room < noteW) {
+      ctx.fillStyle = '#0B0914';
+      ctx.textAlign = 'right';
+      ctx.fillText(note, b.barX + fw - 12, mid);
+      ctx.textAlign = 'left';
+    } else {
+      ctx.fillStyle = e.hours > 0 ? COL['--voice'] : COL['--gold'];
+      ctx.fillText(fit(ctx, note, Math.max(60, room)), b.barX + fw + 12, mid);
+    }
+
+    // channel 2 — one block per person in this room
+    drawVoices(ctx, b, e, now, just, sweep);
+    ctx.restore();
+  }
+
+  function drawVoices(ctx, b, e, now, just, sweep) {
+    const n = e.count;
+    const h = Math.max(10, Math.min(b.h * 0.5, b.bw * 1.5));
+    const y = b.y + (b.h - h) / 2;
+    if (b.solid) {
+      const w = Math.min(b.voiceW, Math.max(6, n * 3));
+      ctx.fillStyle = rgbaOf(e, 0.85);
+      rr(ctx, b.voiceX, y, w, h, 4); ctx.fill();
+      ctx.fillStyle = COL['--fg'];
+      ctx.font = '600 ' + Math.round(h * 0.7) + 'px ' + MONO;
+      ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+      ctx.fillText(String(n), b.voiceX + w + 10, b.y + b.h / 2);
+      return;
+    }
+    const step = b.bw + b.bgap;
+    const fits = Math.floor((b.voiceW + b.bgap) / step);
+    const shown = Math.min(n, fits);
+    for (let i = 0; i < shown; i++) {
+      const x = b.voiceX + i * step;
+      const shimmer = Math.max(0, 1 - Math.abs(x - sweep) / 200) * 0.2;
+      if (i === n - 1 && just < 1) {
+        // The block that just arrived lands warm and settles into the row.
+        const drop = (1 - just) * (1 - just) * b.h * 0.9;
+        ctx.fillStyle = COL['--ember'];
+        ctx.shadowColor = COL['--ember'];
+        ctx.shadowBlur = 24 * (1 - just);
+        rr(ctx, x, y - drop, b.bw, h, Math.min(4, b.bw * 0.3));
+        ctx.fill(); ctx.shadowBlur = 0;
+        continue;
+      }
+      ctx.fillStyle = rgbaOf(e, Math.min(0.95, 0.6 + shimmer));
+      rr(ctx, x, y, b.bw, h, Math.min(4, b.bw * 0.3));
+      ctx.fill();
+    }
+    if (n > shown) {
+      ctx.fillStyle = COL['--muted'];
+      ctx.font = '500 ' + Math.round(h * 0.62) + 'px ' + MONO;
+      ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+      ctx.fillText('+' + (n - shown), b.voiceX + shown * step + 6, b.y + b.h / 2);
+    }
+  }
+
+  /* Where the neediest rows end and the room's well-recorded languages begin. */
+  function divider(ctx, R, meta) {
+    const fs = Math.max(11, 14 * R.u);
+    const y = meta.splitY;
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,.08)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(R.x, y); ctx.lineTo(R.x + R.w, y); ctx.stroke();
+    ctx.font = '500 ' + fs + 'px ' + UI;
     ctx.fillStyle = COL['--dim'];
-    ctx.fillText(fit(ctx, e.note || '', b.w - 4), b.x + b.w / 2, b.base + fs * 2.7);
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    const label = 'what the room already has';
+    const w = ctx.measureText(label).width;
+    ctx.fillStyle = COL['--sea'];
+    ctx.fillRect(R.x + R.w - w - 16, y - fs * 0.8, w + 16, fs * 1.6);
+    ctx.fillStyle = COL['--dim'];
+    ctx.textAlign = 'right';
+    ctx.fillText(label, R.x + R.w, y);
+    ctx.restore();
+  }
+
+  /* Two captions, once, above the rows — they are what make the two channels
+     readable without a key to decode. */
+  function channelHeaders(ctx, R, meta) {
+    if (meta.barX == null) return;
+    const fs = Math.max(12, 16 * R.u);
+    ctx.save();
+    ctx.font = '600 ' + fs + 'px ' + UI;
+    ctx.fillStyle = COL['--dim'];
+    ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+    ctx.letterSpacing && (ctx.letterSpacing = '0.08em');
+    ctx.fillText('RECORDED IN COMMON VOICE', meta.barX, meta.rowsTop - fs * 0.5);
+    ctx.fillText('VOICES IN THIS ROOM', meta.voiceX, meta.rowsTop - fs * 0.5);
+    ctx.letterSpacing && (ctx.letterSpacing = '0px');
     ctx.restore();
   }
 
@@ -339,7 +458,7 @@
     ctx.font = '500 ' + fs + 'px ' + UI;
     ctx.fillStyle = COL['--dim'];
     ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
-    ctx.fillText(meta.tail + ' more in the room, further along in Common Voice', R.x, meta.fieldY - fs * 0.45);
+    ctx.fillText(meta.tail + ' more in between', R.x, meta.fieldY - fs * 0.45);
     ctx.restore();
   }
 
@@ -349,7 +468,7 @@
     ctx.save();
     ctx.font = '500 ' + fs + 'px ' + UI;
     ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
-    const y = R.y - fs * 2.1;
+    const y = R.y - fs * 0.6;
     let x = R.x + R.w;
     const bits = [[COL['--gold'], 'not in Common Voice yet'], [COL['--voice'], 'in Common Voice']];
     for (const [c, label] of bits) {
@@ -360,10 +479,6 @@
       rr(ctx, x - 11, y - fs * 0.75, 11, 11, 3); ctx.fill();
       x -= 11 + 22;
     }
-    ctx.textAlign = 'right';
-    ctx.fillStyle = COL['--dim'];
-    ctx.fillText('height: what Common Voice is still missing \u00b7 blocks: voices in this room',
-      R.x + R.w, R.y - fs * 0.5);
     ctx.restore();
   }
 
@@ -386,7 +501,7 @@
     const sorted = [...placed].sort((a, b) => a.b.w - b.b.w);
     for (const p of sorted) {
       const b = p.b, pad = Math.max(0, 16 - b.w / 2);
-      if (x >= b.x - pad && x <= b.x + b.w + pad && y >= b.y - pad && y <= b.y + b.h + pad + (b.tier === 'col' ? (b.labelH || 0) : 0))
+      if (x >= b.x - pad && x <= b.x + b.w + pad && y >= b.y - pad && y <= b.y + b.h + pad)
         return p.key;
     }
     return null;
