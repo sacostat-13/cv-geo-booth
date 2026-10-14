@@ -181,13 +181,15 @@
     $('err').hidden = true;
     pick.initials = ($('initials').value || '').trim().slice(0, 4);
     try {
-      const first = neediest();
+      /* Neediest first. The server repeats langs[0] in the flat fields for
+         anything still reading one language, so the order here is what decides
+         which one that is — it should be the same one the card leads with. */
+      const ordered = pick.langs.slice().sort((a, b) => needOf(b.locale) - needOf(a.locale));
       await window.Store.add({
         initials: pick.initials,
-        langs: pick.langs.map(l => ({ locale: l.locale, langName: l.langName, dialect: l.dialect, missing: l.missing })),
-        /* The neediest language is repeated at the top level so a row written
-           today still reads correctly to anything expecting one language. */
-        locale: first.locale, langName: first.langName, dialect: first.dialect, missing: first.missing,
+        langs: ordered.map(l => ({ locale: l.locale, langName: l.langName, dialect: l.dialect, missing: l.missing })),
+        locale: ordered[0].locale, langName: ordered[0].langName,
+        dialect: ordered[0].dialect, missing: ordered[0].missing,
       });
       renderDone();
       paintReach();

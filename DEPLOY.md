@@ -123,8 +123,16 @@ Then the two things that actually go wrong at a booth:
 
 ```bash
 npm install -g netlify-cli      # once
+npm install                     # once per clone — the functions need @netlify/blobs
 netlify dev
 ```
+
+Without that second line the two functions cannot resolve `@netlify/blobs` and
+every call to `/api/submit` and `/api/wall` answers **500**, with
+`Cannot find package '@netlify/blobs'` in the `netlify dev` terminal. The
+bundler leaves dependencies external, so they have to be on disk. `npm install`
+then restart `netlify dev` — the bundle under `.netlify/functions-serve` is
+cached from the failed start.
 
 `netlify dev` runs the build step, serves the site on `http://localhost:8888`
 and runs `submit.mjs` and `wall.mjs` for real, against a **local sandboxed blob
