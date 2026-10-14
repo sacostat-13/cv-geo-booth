@@ -94,6 +94,29 @@ h1{font:700 calc(58*var(--u))/1.04 var(--display);margin:calc(14*var(--u)) 0 cal
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .hint{position:absolute;bottom:calc(14*var(--u));left:50%;transform:translateX(-50%);
   font:400 calc(13*var(--u))/1 var(--mono);color:#3C3558}
+
+/* ---- the language wall ------------------------------------------------
+   The wall needs the middle band at full width, so the corners rearrange:
+   the counters join the header, the card drops to the foot beside the QR.
+   wall.js mirrors these insets in region(). */
+body.scene-wall .veil,body.scene-wall .ticker,body.scene-wall .sub{display:none}
+body.scene-wall h1{font-size:calc(40*var(--u));margin:calc(10*var(--u)) 0 0;max-width:22ch}
+body.scene-wall .bl{top:calc(40*var(--u));right:calc(52*var(--u));left:auto;bottom:auto;text-align:right}
+body.scene-wall .counts{justify-content:flex-end;gap:calc(38*var(--u))}
+body.scene-wall .count b{font-size:calc(56*var(--u))}
+body.scene-wall .tr{top:auto;bottom:calc(40*var(--u));left:calc(52*var(--u));right:auto;
+  width:calc(900*var(--u));max-width:calc(900*var(--u))}
+body.scene-wall .card{padding:calc(22*var(--u)) calc(30*var(--u))}
+body.scene-wall .card .lang{font-size:calc(42*var(--u));margin:calc(8*var(--u)) 0 calc(2*var(--u))}
+body.scene-wall .card .stats{margin-top:calc(16*var(--u));padding-top:calc(14*var(--u))}
+body.scene-wall .card .note{margin-top:calc(14*var(--u));padding-top:calc(12*var(--u));
+  font-size:calc(18*var(--u));max-height:calc(104*var(--u));overflow:hidden}
+body.scene-wall .card .list{gap:calc(5*var(--u))}
+body.scene-wall .br{bottom:calc(36*var(--u))}
+body.scene-wall .br .call{font:600 calc(20*var(--u))/1.25 var(--display);margin-bottom:calc(10*var(--u))}
+body.scene-wall .qr img,body.scene-wall .qr-fallback{width:calc(150*var(--u));height:calc(150*var(--u));min-height:calc(150*var(--u))}
+body.scene-wall .br .url{display:none}
+
 @media (prefers-reduced-motion:reduce){.dot{animation:none}.card{transition:none}}
 </style>
 </head>
@@ -136,7 +159,7 @@ h1{font:700 calc(58*var(--u))/1.04 var(--display);margin:calc(14*var(--u)) 0 cal
   </div>
 
   <div class="ticker" id="ticker"></div>
-  <div class="hint">Tap a country for its languages · P projection · F fullscreen</div>
+  <div class="hint" id="hint">Tap a country for its languages · P projection · V languages · F fullscreen</div>
 </div>
 
 <script src="defaults.js"></script>
@@ -144,6 +167,7 @@ h1{font:700 calc(58*var(--u))/1.04 var(--display);margin:calc(14*var(--u)) 0 cal
 <script src="cv-data.js"></script>
 <script src="world.js"></script>
 <script src="geo.js"></script>
+<script src="wall.js"></script>
 <script src="store.js"></script>
 <script src="vendor/qrcode-generator.js"></script>
 <script src="display.js"></script>

@@ -39,6 +39,11 @@
     holdUntil: 0,
     total: 0, newLangs: 0,
     offline: false,
+    // The second scene: the same room drawn as languages rather than places.
+    scene: 'geo',        // "geo" or "wall" — press V
+    focusLang: null,     // which language the wall is holding, if any
+    justKey: null,       // the language a live arrival just added to
+    wallRows: null,      // cached, rebuilt on ingest rather than per frame
   };
 
   // ---------- formatting ---------------------------------------------------
@@ -73,6 +78,7 @@
     // A burst (or a backend hiccup that delivers a batch at once) must not turn
     // into a quarter of an hour of replay: keep the newest, count the rest.
     if (state.queue.length > 25) state.queue = state.queue.slice(-25);
+    state.wallRows = null;
     paintCounts();
     paintTicker();
   }
@@ -106,6 +112,8 @@
     const list = state.pins[s.country] || [];
     state.activePin = list.find(p => p.id === s.id) || null;
     state.focus = { country: s.country, kind: 'submission' };
+    state.focusLang = langKey(s);
+    state.justKey = langKey(s);
     flyTo(s.country, state.mode === 'globe' ? 1.3 : 1.75);
     paintCard(s);
     setStatus('Just added · ' + (COUNTRY[s.country] || s.country), false);
@@ -122,6 +130,7 @@
   function rest(now) {
     state.touring = false;
     state.focus = null;
+    state.focusLang = null;
     state.spinning = true;
     state.tgtZoom = 1;
     state.tgtLat = 14;
@@ -144,6 +153,7 @@
     state.rotIndex = (state.rotIndex + 1) % state.langOrder.length;
     const info = state.langInfo[state.langOrder[state.rotIndex]];
     state.rotUntil = now + (D.idleTourMs || 7000);
+    state.focusLang = info.key;
 
     const countries = [...info.countries];
     const country = countries[state.rotIndex % countries.length] || countries[0];
@@ -309,6 +319,30 @@
     }).join('');
   }
   const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  /* What the language wall draws: every language in the room, heaviest first,
+     ties broken by who got here first so the order is stable between frames. */
+  function wallRows() {
+    if (state.wallRows) return state.wallRows;
+    const rows = Object.values(state.langInfo).map(i => ({
+      key: i.key,
+      name: i.name,
+      locale: i.locale,
+      count: state.langCount[i.key] || 0,
+      missing: !i.locale,
+    }));
+    const order = new Map(state.langOrder.map((k, n) => [k, n]));
+    rows.sort((a, b) => b.count - a.count || order.get(a.key) - order.get(b.key));
+    return (state.wallRows = rows);
+  }
+
+  /* Someone touched a language on the wall. Same facts as the idle tour, said
+     the same way — the wall's answer to tapping a country on the map. */
+  function paintWallPickCard(info) {
+    const countries = [...info.countries];
+    paintTourCard(info, countries[0]);
+    $('cardFrom').textContent = 'On this wall';
+  }
 
   // ---------- rendering ----------------------------------------------------
   let W = 0, H = 0, DPR = 1;
@@ -530,10 +564,22 @@
       state.rotLon = easeLon(state.rotLon, 10, 1 - Math.pow(0.02, dt));
     }
 
-    ctx.clearRect(0, 0, W, H);
-    const cam = camera();
-    drawWorld(cam, now);
-    drawPins(cam, now);
+    if (state.scene === 'wall') {
+      const rows = wallRows();
+      window.Wall.draw(ctx, W, H, now, {
+        entries: rows,
+        focusKey: state.focusLang,
+        justKey: state.justKey,
+        justStart: state.activeStart,
+        fieldNote: rows.length ? rows.length + (rows.length === 1 ? ' language in the room' : ' languages in the room') : '',
+        dt,
+      });
+    } else {
+      ctx.clearRect(0, 0, W, H);
+      const cam = camera();
+      drawWorld(cam, now);
+      drawPins(cam, now);
+    }
     requestAnimationFrame(frame);
   }
 
@@ -566,7 +612,7 @@
         // Draw one canvas pixel per module-pixel and let the canvas keep that
         // exact size on screen. Scaling a QR code down blurs the module edges
         // and phones stop reading it, so the box flexes instead of the code.
-        const target = Math.round(210 * (window.innerHeight / 1080));
+        const target = Math.round((state.scene === 'wall' ? 152 : 210) * (window.innerHeight / 1080));
         const cell = Math.max(3, Math.floor(target / (n + pad * 2)));
         const c = document.createElement('canvas');
         c.width = c.height = (n + pad * 2) * cell;
@@ -650,12 +696,36 @@
     paintPickCard(c.c);
     setStatus((COUNTRY[c.c] || c.c), false);
   }
-  canvas.addEventListener('click', e => pickAt(e.clientX, e.clientY));
+  function pickLangAt(clientX, clientY) {
+    const r = canvas.getBoundingClientRect();
+    const key = window.Wall.hitAt(clientX - r.left, clientY - r.top);
+    const info = key ? state.langInfo[key] : null;
+    if (!info) { if (state.picked) clearPick(); return; }
+    state.picked = key;
+    state.pickUntil = performance.now() + (D.pickHoldMs || 20000);
+    state.focus = null;
+    state.focusLang = key;
+    paintWallPickCard(info);
+    setStatus(info.name, false);
+  }
+
+  function setScene(next) {
+    state.scene = next;
+    document.body.classList.toggle('scene-wall', next === 'wall');
+    $('hint').textContent = next === 'wall'
+      ? 'Tap a language for its standing \u00b7 V map \u00b7 F fullscreen'
+      : 'Tap a country for its languages \u00b7 P projection \u00b7 V languages \u00b7 F fullscreen';
+    if (state.picked) clearPick();
+    paintQR();   // the wall gives the QR less room, so the code is redrawn to fit
+  }
+
+  canvas.addEventListener('click', e => (state.scene === 'wall' ? pickLangAt : pickAt)(e.clientX, e.clientY));
   canvas.style.cursor = 'pointer';
 
   document.addEventListener('keydown', e => {
     const k = e.key.toLowerCase();
     if (k === 'escape' && state.picked) { clearPick(); return; }
+    if (k === 'v') { setScene(state.scene === 'wall' ? 'geo' : 'wall'); return; }
     if (k === 'p') { state.mode = state.mode === 'globe' ? 'map' : 'globe'; state.zoom = state.tgtZoom = 1; }
     if (k === 'f') { const el = document.documentElement; if (!document.fullscreenElement) el.requestFullscreen && el.requestFullscreen().catch(() => {}); else document.exitFullscreen(); }
   });
@@ -665,6 +735,8 @@
     if (!document.hidden && navigator.wakeLock) navigator.wakeLock.request('screen').catch(() => {});
   });
 
+  setScene(D.scene === 'wall' ? 'wall' : 'geo');
+
   requestAnimationFrame(frame);
-  window.BoothDisplay = { state, countryAt, pickAt };
+  window.BoothDisplay = { state, countryAt, pickAt, pickLangAt, setScene, wallRows };
 })();

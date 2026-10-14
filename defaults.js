@@ -38,6 +38,7 @@ window.BOOTH = {
   },
 
   display: {
+    scene: 'geo',          // "geo" (the map) or "wall" (languages) — press V to switch
     projection: 'globe',   // "globe" or "map" — press P on the screen to switch
     highlightMs: 10000,    // how long one submission holds the screen
     minHighlightMs: 4000,  // compressed to this when the queue backs up
