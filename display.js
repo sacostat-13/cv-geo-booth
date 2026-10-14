@@ -42,7 +42,7 @@
     // The second scene: the same room drawn as languages rather than places.
     scene: 'geo',        // "geo" or "wall" — press V
     focusLang: null,     // which language the wall is holding, if any
-    justKey: null,       // the language a live arrival just added to
+    justKeys: [],        // the languages a live arrival just added to
     wallRows: null,      // cached, rebuilt on ingest rather than per frame
   };
 
@@ -50,28 +50,42 @@
   const nf = new Intl.NumberFormat('en');
   const fmtHours = h => (h >= 100 ? nf.format(Math.round(h)) : h >= 10 ? h.toFixed(0) : h.toFixed(1));
   const flag = c => (/^[A-Z]{2}$/.test(c) ? String.fromCodePoint(0x1F1E6 + c.charCodeAt(0) - 65, 0x1F1E6 + c.charCodeAt(1) - 65) : '');
-  const langKey = s => (s.locale ? s.locale : '!' + (s.missing || s.langName).toLowerCase());
+  const langKey = l => (l.locale ? l.locale : '!' + (l.missing || l.langName).toLowerCase());
+
+  /* One submission is one person, who may have given several languages. Rows
+     written before that was possible carry a single language at the top level,
+     so both shapes are read the same way from here on. */
+  function langsOf(s) {
+    return Array.isArray(s.langs) && s.langs.length
+      ? s.langs
+      : [{ locale: s.locale, langName: s.langName, dialect: s.dialect, missing: s.missing }];
+  }
 
   // ---------- ingest -------------------------------------------------------
   function ingest(rows) {
     rows.forEach(s => {
       if (state.seen.has(s.id)) return;
       state.seen.add(s.id);
+      // One voice is one person. Each of their languages counts once toward
+      // that language, so a block on the wall always means one person.
       state.total++;
-      const k = langKey(s);
-      if (!state.langCount[k]) {
-        state.langCount[k] = 0;
-        if (!s.locale) state.newLangs++;
-        state.langInfo[k] = { key: k, locale: s.locale, name: s.missing || (LANG[s.locale] ? LANG[s.locale].n : s.langName), countries: new Set(), dialects: new Set() };
-        state.langOrder.push(k);
+      const ls = langsOf(s);
+      for (const L of ls) {
+        const k = langKey(L);
+        if (!state.langCount[k]) {
+          state.langCount[k] = 0;
+          if (!L.locale) state.newLangs++;
+          state.langInfo[k] = { key: k, locale: L.locale, name: L.missing || (LANG[L.locale] ? LANG[L.locale].n : L.langName), countries: new Set(), dialects: new Set() };
+          state.langOrder.push(k);
+        }
+        state.langCount[k]++;
+        state.langInfo[k].countries.add(s.country);
+        if (L.dialect) state.langInfo[k].dialects.add(L.dialect);
       }
-      state.langCount[k]++;
-      state.langInfo[k].countries.add(s.country);
-      if (s.dialect) state.langInfo[k].dialects.add(s.dialect);
       state.counts[s.country] = (state.counts[s.country] || 0) + 1;
       const list = (state.pins[s.country] ||= []);
       const spot = window.Geo.placePin(s.country, s.id, list.map(p => [p.lon, p.lat]));
-      if (spot) list.push({ lon: spot[0], lat: spot[1], id: s.id, missing: !s.locale, ts: s.ts });
+      if (spot) list.push({ lon: spot[0], lat: spot[1], id: s.id, missing: ls.some(L => !L.locale), ts: s.ts });
       // Everything in the first batch is history; only live arrivals queue up.
       if (booted) state.queue.push(s);
     });
@@ -112,8 +126,11 @@
     const list = state.pins[s.country] || [];
     state.activePin = list.find(p => p.id === s.id) || null;
     state.focus = { country: s.country, kind: 'submission' };
-    state.focusLang = langKey(s);
-    state.justKey = langKey(s);
+    // Several blocks land at once; the screen holds the one Common Voice has
+    // the least of, because that is the one worth reading out.
+    const ls = langsOf(s);
+    state.justKeys = ls.map(langKey);
+    state.focusLang = langKey(primaryOf(ls));
     flyTo(s.country, state.mode === 'globe' ? 1.3 : 1.75);
     paintCard(s);
     setStatus('Just added · ' + (COUNTRY[s.country] || s.country), false);
@@ -231,14 +248,25 @@
     card.classList.add('on');
   }
 
+  /* The neediest of someone's languages: what their card is about, and where
+     the wall's spotlight goes. */
+  function primaryOf(ls) {
+    return ls.slice().sort((a, b) => needOf(b.locale).need - needOf(a.locale).need)[0];
+  }
+
   function paintCard(s) {
-    const l = s.locale ? LANG[s.locale] : null;
-    const name = s.missing || (l ? l.n : s.langName);
+    const ls = langsOf(s);
+    const main = primaryOf(ls);
+    const nameOf = L => L.missing || (L.locale && LANG[L.locale] ? LANG[L.locale].n : L.langName);
+    const name = nameOf(main);
     $('cardFrom').textContent = 'Just added';
-    $('cardLang').textContent = name;
-    $('cardVariety').textContent = s.dialect ? s.dialect : '';
+    // Everything they gave is named; the facts below are the neediest one's.
+    $('cardLang').textContent = ls.map(nameOf).join(' · ');
+    $('cardLang').classList.toggle('multi', ls.length > 1);
+    const varieties = ls.map(L => L.dialect).filter(Boolean);
+    $('cardVariety').textContent = varieties.join(' · ');
     $('cardFlag').textContent = (flag(s.country) + ' ' + (COUNTRY[s.country] || s.country) + (s.initials ? ' · ' + s.initials : '')).trim();
-    fillFacts(name, s.locale, state.langCount[langKey(s)] || 1);
+    fillFacts(name, main.locale, state.langCount[langKey(main)] || 1);
   }
 
   /* One language on the idle tour: the same facts, plus every country and
@@ -590,7 +618,7 @@
       window.Wall.draw(ctx, W, H, now, {
         entries: rows,
         focusKey: state.focusLang,
-        justKey: state.justKey,
+        justKeys: state.justKeys,
         justStart: state.activeStart,
         dt,
       });

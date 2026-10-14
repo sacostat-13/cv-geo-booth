@@ -208,7 +208,7 @@
   }
 
   function drawColumn(ctx, b, e, now, view, dim, sweep) {
-    const just = view.justKey === e.key ? Math.min(1, (now - view.justStart) / 900) : 1;
+    const just = view.justKeys.indexOf(e.key) >= 0 ? Math.min(1, (now - view.justStart) / 900) : 1;
     const shimmer = Math.max(0, 1 - Math.abs(b.x + b.w / 2 - sweep) / 220) * 0.22;
     const base = b.base, fh = Math.max(0, b.fh);
     ctx.save();
@@ -273,7 +273,7 @@
   }
 
   function drawTile(ctx, b, e, now, view, dim, sweep) {
-    const just = view.justKey === e.key ? Math.min(1, (now - view.justStart) / 900) : 1;
+    const just = view.justKeys.indexOf(e.key) >= 0 ? Math.min(1, (now - view.justStart) / 900) : 1;
     const shimmer = Math.max(0, 1 - Math.abs(b.x + b.w / 2 - sweep) / 220) * 0.25;
     ctx.save();
     ctx.globalAlpha = dim;

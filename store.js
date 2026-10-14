@@ -2,7 +2,9 @@
    local    — this browser only
    netlify  — two functions in this site, backed by Netlify Blobs
    supabase — a Postgres table, for when the booth outgrows the above
-   A submission is { id, ts, country, locale, langName, dialect, initials, missing }
+   A submission is { id, ts, country, initials, langs: [{ locale, langName,
+   dialect, missing }] }, with the first language also repeated flat as
+   locale/langName/dialect/missing so rows written either way read the same
    The wall starts empty in every mode; the only way in is the phone page.
    `missing` is the typed-in name when the language is not in Common Voice yet. */
 (function () {
@@ -132,6 +134,7 @@
       return {
         id: r.id, ts: new Date(r.created_at).getTime(), country: r.country, locale: r.locale,
         langName: r.lang_name, dialect: r.dialect || '', initials: r.initials || '', missing: r.missing || '',
+        langs: Array.isArray(r.langs) && r.langs.length ? r.langs : undefined,
       };
     }
     async function pull() {
@@ -160,6 +163,7 @@
         const body = {
           country: sub.country, locale: sub.locale, lang_name: sub.langName,
           dialect: sub.dialect || null, initials: sub.initials || null, missing: sub.missing || null,
+          langs: sub.langs || null,
           event: CFG.event.name,
         };
         const res = await fetch(endpoint, { method: 'POST', headers: Object.assign({ Prefer: 'return=representation' }, headers), body: JSON.stringify(body) });

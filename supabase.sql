@@ -15,8 +15,12 @@ create table if not exists public.submissions (
   dialect     text,
   initials    text,
   missing     text,                      -- the typed-in name when the language isn't in CV yet
+  langs       jsonb,                     -- every language this person gave; the first is also in the columns above
   event       text
 );
+
+-- For a table created before multi-language submissions existed.
+alter table public.submissions add column if not exists langs jsonb;
 
 create index if not exists submissions_created_at_idx on public.submissions (created_at);
 
@@ -27,6 +31,7 @@ alter table public.submissions
     and (dialect  is null or char_length(dialect)  <= 64)
     and (initials is null or char_length(initials) <= 4)
     and (missing  is null or char_length(missing)  <= 64)
+    and (langs    is null or jsonb_array_length(langs) <= 5)
   );
 
 alter table public.submissions enable row level security;
