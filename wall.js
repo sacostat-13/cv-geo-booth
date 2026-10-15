@@ -63,8 +63,10 @@
      so these insets mirror body.scene-wall in display.html. */
   function region(W, H) {
     const u = H / 1080;
-    const x = 56 * u, top = 182 * u, bottom = 356 * u;
-    return { x, y: top, w: W - x * 2, h: Math.max(140, H - top - bottom), u };
+    // The last 74u is the caption band: a fixed strip under the wall, so a
+    // caption fading in never reflows the rows above it.
+    const x = 56 * u, top = 182 * u, bottom = 430 * u;
+    return { x, y: top, w: W - x * 2, h: Math.max(140, H - top - bottom), u, captionH: 74 * u };
   }
 
   // ---------- layout -------------------------------------------------------
@@ -229,6 +231,7 @@
     if (target.meta && target.meta.splitY) divider(ctx, R, target.meta);
     if (target.meta && target.meta.tail) fieldCaption(ctx, R, target.meta);
     legend(ctx, R);
+    drawCaption(ctx, R, now, view);
     drawDebut(ctx, W, H, now, view);
   }
 
@@ -531,6 +534,50 @@
     rr(ctx, W / 2 - lw / 2, cy + 96 * u, lw, 2, 1); ctx.fill();
     ctx.restore();
   }
+
+  /* A language nobody here speaks, named under the wall while it rests.
+
+     It is deliberately not a row: these are not in the room, and letting them
+     share the rows' grammar would make the counts a lie. It is a caption to
+     the whole wall, in the display face rather than the data face, and it only
+     occupies time the wall is not using — no arrival, no tour, no tap. That is
+     what keeps a booth screen from shouting. */
+  function drawCaption(ctx, R, now, view) {
+    const c = view.caption;
+    if (!c) return;
+    const t = now - view.captionStart, span = view.captionMs || 13000;
+    if (t < 0 || t > span) return;
+    const a = Math.min(1, t / 700) * Math.min(1, Math.max(0, (span - t) / 900));
+    if (a <= 0.01) return;
+
+    const u = R.u, top = R.y + R.h + 12 * u;
+    ctx.save();
+    ctx.globalAlpha = a;
+
+    ctx.fillStyle = 'rgba(255,200,97,.3)';
+    rr(ctx, R.x, top, Math.min(R.w, 180 * u), 2, 1); ctx.fill();
+
+    // The line reads: name, how it stands, where, and what is being done.
+    const bits = [c.name, c.status, c.where,
+      c.speakers ? nf(c.speakers) + (c.speakers === 1 ? ' speaker' : ' speakers') : '',
+      c.action, c.cv].filter(Boolean);
+    const fs = Math.max(19, Math.min(34, 32 * u));
+    ctx.font = '400 ' + fs + 'px ' + DISP;
+    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    ctx.fillStyle = COL['--fg'];
+    ctx.fillText(fit(ctx, bits.join('  \u00b7  '), R.w), R.x, top + fs * 1.3);
+
+    const ask = c.ask || view.captionAsk;
+    if (ask) {
+      const fs2 = Math.max(13, Math.min(19, 18 * u));
+      ctx.font = '400 ' + fs2 + 'px ' + UI;
+      ctx.fillStyle = COL['--dim'];
+      ctx.fillText(fit(ctx, ask, R.w), R.x, top + fs * 1.3 + fs2 * 1.7);
+    }
+    ctx.restore();
+  }
+
+  const nf = (n) => new Intl.NumberFormat('en').format(n);
 
   function drawEmpty(ctx, R) {
     ctx.save();

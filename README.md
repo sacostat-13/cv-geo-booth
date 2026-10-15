@@ -14,6 +14,13 @@ submissions; use `display.html` for the real thing.
 Nothing ever appears on the wall except what someone submits from a phone. There
 is no seeded data and no simulate key, so what you see on the screen is real.
 
+`vulnerable.js` is the one exception, and it is editorial rather than data: a
+reviewed list of endangered languages the booth wants people to know about,
+shown one at a time as a caption under the wall while it rests between
+arrivals. It ships empty on purpose — the caption does not appear until
+someone fills it from sources they can cite. The file explains what belongs in
+it.
+
 ## Try it in 30 seconds
 
 ```bash

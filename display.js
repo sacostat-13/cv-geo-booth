@@ -45,6 +45,9 @@
     justKeys: [],        // the languages a live arrival just added to
     debut: null,         // a language Common Voice has never heard, arriving for the first time
     debutStart: 0,
+    caption: null,       // a vulnerable language, shown only while the wall rests
+    captionStart: 0,
+    captionIndex: -1,
     wallRows: null,      // cached, rebuilt on ingest rather than per frame
   };
 
@@ -145,6 +148,7 @@
        free-text box. It gets the screen to itself for a moment. The second
        person to add it does not: by then the wall already knows it. */
     const debut = ls.find(L => !L.locale && (state.langCount[langKey(L)] || 0) <= 1);
+    state.caption = null;
     state.debut = debut ? { key: langKey(debut), name: debut.missing || debut.langName } : null;
     state.debutStart = state.activeStart;
     if (state.debut) {
@@ -165,6 +169,18 @@
     return ['Listening for the room', false];
   }
 
+  /* One vulnerable language per rest period, in order, never twice running.
+     These are not in the room and are never counted as if they were: the
+     caption sits under the wall, in its own band, and only while nothing more
+     important is on screen. */
+  const VULN = (window.VULNERABLE && Array.isArray(window.VULNERABLE.entries)) ? window.VULNERABLE.entries : [];
+  function nextCaption(now) {
+    if (!VULN.length) { state.caption = null; return; }
+    state.captionIndex = (state.captionIndex + 1) % VULN.length;
+    state.caption = VULN[state.captionIndex];
+    state.captionStart = now;
+  }
+
   /* Hand the screen back to the turning globe. The booth is a thing people
      walk past, and a map that never just turns stops reading as a map. */
   function rest(now) {
@@ -177,6 +193,7 @@
     state.tgtZoom = 1;
     state.tgtLat = 14;
     state.restUntil = now + (D.idleRestMs || 25000);
+    nextCaption(now);
     // The card stays up while the globe turns, but it is no longer news.
     if ($('cardFrom').textContent === 'Just added') $('cardFrom').textContent = 'Most recent';
     setStatus.apply(null, restingStatus());
@@ -192,6 +209,7 @@
       return;
     }
     state.touring = true;
+    state.caption = null;
     state.rotIndex = (state.rotIndex + 1) % state.langOrder.length;
     const info = state.langInfo[state.langOrder[state.rotIndex]];
     state.rotUntil = now + (D.idleTourMs || 7000);
@@ -661,6 +679,10 @@
         debut: state.debut,
         debutStart: state.debutStart,
         debutMs: D.debutMs || 3600,
+        caption: state.caption,
+        captionStart: state.captionStart,
+        captionMs: Math.min(D.idleRestMs || 25000, D.captionMs || 13000),
+        captionAsk: (window.VULNERABLE && window.VULNERABLE.ask) || '',
         dt,
       });
     } else {
