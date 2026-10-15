@@ -45,6 +45,7 @@
     justKeys: [],        // the languages a live arrival just added to
     debut: null,         // a language Common Voice has never heard, arriving for the first time
     debutStart: 0,
+    explore: null,       // a language the booth is going deeper into, staff-driven
     caption: null,       // a vulnerable language, shown only while the wall rests
     captionStart: 0,
     captionIndex: -1,
@@ -236,6 +237,9 @@
   function tickQueue(now) {
     // A live arrival beats everything, and a backlog is worked through one at
     // a time rather than collapsed.
+    // While the booth is talking through one language the screen holds still.
+    // Arrivals keep landing in the queue and play once it closes.
+    if (state.explore) return;
     if (state.queue.length && (!state.active || now >= state.holdUntil)) {
       celebrate(state.queue.shift());
       return;
@@ -258,6 +262,68 @@
       return;
     }
     if (now >= state.restUntil) tourStep(now);
+  }
+
+  // ---------- the per-language panel ---------------------------------------
+  /* cv-detail.js carries what the stats endpoint does not: ISO codes, which
+     corpora a language is collected in, release hours, variants, accents and
+     the demographic shape of its data. It ships empty, so every field below
+     renders an em-dash until it is filled. Absent is not zero: a measured zero
+     is a different fact and reads differently on a booth screen. */
+  const DETAIL = window.CV_DETAIL || {};
+  const DL = DETAIL.langs || {};
+  const RELEASE = DETAIL.release || {};
+  const DASH = '\u2014';
+  const detailOf = loc => (loc && DL[loc]) || null;
+
+  function paintDetail(locale, name) {
+    const d = detailOf(locale);
+    const corp = $('cardCorpora'), link = $('cardLink');
+
+    $('cardIso').textContent = locale
+      ? ['ISO ' + ((d && d.iso) || DASH), locale].join('  \u00b7  ')
+      : '';
+
+    // No record at all means we know nothing, and four grey chips saying so on
+    // every card is noise at a booth. Chips appear once there is something.
+    if (!locale || !d) {
+      corp.innerHTML = '';
+      if (!locale) { link.hidden = true; return; }
+    }
+
+    const chip = (label, cls) => '<span class="' + cls + '">' + esc(label) + '</span>';
+    // on = collected, none = a measured zero, neither = we do not know yet.
+    const corpus = k => (d && d[k] && typeof d[k].hours === 'number') ? (d[k].hours > 0 ? 'on' : 'none') : '';
+    const count = (k, one, many) => {
+      const l = (d && Array.isArray(d[k])) ? d[k] : null;
+      if (!l) return chip(many + ' ' + DASH, '');
+      return chip(l.length + ' ' + (l.length === 1 ? one : many), l.length ? 'on' : 'none');
+    };
+    if (d) {
+      corp.innerHTML = chip('Scripted', corpus('scs')) + chip('Spontaneous', corpus('sps'))
+        + count('variants', 'variant', 'variants') + count('accents', 'accent', 'accents');
+    }
+
+    const url = (DETAIL.pageUrl || '').replace('{locale}', encodeURIComponent(locale));
+    const code = url ? makeQR(url, Math.round(108 * (window.innerHeight / 1080))) : null;
+    if (code) {
+      $('cardQr').innerHTML = '';
+      $('cardQr').appendChild(code);
+      $('cardLinkName').textContent = name;
+      link.hidden = false;
+    } else link.hidden = true;
+  }
+
+  /* Hours in the most recent release, which is not the running total the stats
+     endpoint gives. Only shown once we actually have it. */
+  function releaseTiles(locale) {
+    const d = detailOf(locale);
+    if (!d) return '';
+    const label = RELEASE.name ? 'in ' + RELEASE.name : 'last release';
+    let out = '';
+    if (d.scs && typeof d.scs.hours === 'number') out += statTile(fmtHours(d.scs.hours) + ' h', label + ' \u00b7 scripted');
+    if (d.sps && typeof d.sps.hours === 'number') out += statTile(fmtHours(d.sps.hours) + ' h', label + ' \u00b7 spontaneous');
+    return out;
   }
 
   // ---------- the card -----------------------------------------------------
@@ -290,6 +356,8 @@
       note.hidden = false;
       note.textContent = name + ' isn\u2019t in Common Voice yet. Languages get added because someone asks.';
     }
+    stats.innerHTML += releaseTiles(locale);
+    paintDetail(locale, name);
     card.classList.add('on');
   }
 
@@ -374,6 +442,76 @@
 
   const statTile = (b, s) => '<div class="stat"><b>' + b + '</b><span>' + s + '</span></div>';
 
+  /* Going deeper into one language, driven by whoever is standing at the booth.
+     Everything here comes from the release datasheet; while that is missing the
+     panel says so rather than drawing an empty chart. */
+  function exCol(title, rows) {
+    const body = Array.isArray(rows) && rows.length
+      ? rows.slice(0, 7).map(r => {
+          const pct = Math.max(0, Math.min(100, Number(r.pct) || 0));
+          return '<div class="ex-row"><div class="lab">' + esc(String(r.label)) + '<i>' + pct + '%</i></div>'
+            + '<div class="ex-bar"><b style="width:' + Math.max(1, pct) + '%"></b></div></div>';
+        }).join('')
+      : '<p class="ex-empty">Not in the snapshot yet. This is where the release datasheet goes \u2014 and the gap is itself worth talking about.</p>';
+    return '<div class="ex-col"><h3>' + title + '</h3>' + body + '</div>';
+  }
+
+  function openExplore(key) {
+    const info = state.langInfo[key];
+    if (!info) return;
+    const locale = info.locale, d = detailOf(locale), l = locale ? LANG[locale] : null;
+    state.explore = key;
+
+    $('exEyebrow').textContent = l ? 'In the Common Voice dataset' : 'Not in Common Voice yet';
+    $('exName').textContent = info.name;
+    $('exSub').textContent = [
+      locale ? 'ISO ' + ((d && d.iso) || DASH) + '  \u00b7  ' + locale : 'no Common Voice locale',
+      RELEASE.name || '',
+    ].filter(Boolean).join('  \u00b7  ');
+
+    $('exHeadStats').innerHTML =
+      statTile(l && l.h > 0 ? fmtHours(l.h) + ' h' : (l ? '0 h' : DASH), 'recorded') +
+      statTile(l && l.v > 0 ? fmtHours(l.v) + ' h' : (l ? '0 h' : DASH), 'validated') +
+      statTile(nf.format(state.langCount[key] || 0), 'voices here');
+
+    const dem = (d && d.demographics) || {};
+    $('exCols').innerHTML = exCol('Gender', dem.gender) + exCol('Age', dem.age) + exCol('Accent', dem.accent);
+    $('exNeeds').hidden = !(d && d.needs);
+    if (d && d.needs) $('exNeeds').textContent = d.needs;
+    $('explore').hidden = false;
+  }
+
+  function closeExplore() {
+    state.explore = null;
+    $('explore').hidden = true;
+  }
+
+  /* One dot per hundred of the world's languages, with what Common Voice has
+     and what this room has lit inside it. Hidden until cv-detail.js names a
+     figure it can cite: the count of the world's languages is contested and
+     licensed, and guessing it here would be the same mistake twice. */
+  function paintCoverage() {
+    const w = (DETAIL.world && DETAIL.world.languages) || 0;
+    const box = $('coverage');
+    if (!w) { box.hidden = true; return; }
+    const total = Math.max(1, Math.round(w / 100));
+    const cvDots = Math.max(1, Math.round(window.CV.langs.length / 100));
+    const here = Object.keys(state.langCount).length;
+    // A room of six languages is a sixteenth of one dot: draw it as a core
+    // inside a dot rather than lighting a whole one it has not earned.
+    const hereDots = Math.floor(here / 100);
+    const partial = here > 0 && hereDots === 0;
+    let html = '';
+    for (let i = 0; i < total; i++) {
+      const cls = i < hereDots ? 'here' : (partial && i === 0) ? 'partial' : i < cvDots ? 'cv' : '';
+      html += '<i class="' + cls + '"></i>';
+    }
+    $('coverDots').innerHTML = html;
+    $('coverCap').textContent = 'each dot is 100 languages  \u00b7  '
+      + nf.format(window.CV.langs.length) + ' in Common Voice  \u00b7  ' + nf.format(here) + ' in this room';
+    box.hidden = false;
+  }
+
   function setStatus(text, warn) {
     $('statusText').textContent = text;
     $('statusDot').classList.toggle('warn', !!warn);
@@ -383,6 +521,7 @@
     $('nVoices').textContent = nf.format(state.total);
     $('nLangs').textContent = nf.format(Object.keys(state.langCount).length);
     $('nNew').textContent = nf.format(state.newLangs);
+    paintCoverage();
   }
 
   function paintTicker() {
@@ -390,7 +529,7 @@
     $('ticker').innerHTML = rows.map(([k, n]) => {
       const isNew = k[0] === '!';
       const name = isNew ? k.slice(1).replace(/\b\w/g, m => m.toUpperCase()) : (LANG[k] ? LANG[k].n : k);
-      return '<span class="chip' + (isNew ? ' new' : '') + '">' + esc(name) + ' <b>' + n + '</b></span>';
+      return '<span class="chip' + (isNew ? ' new' : '') + '" data-key="' + esc(k) + '">' + esc(name) + ' <b>' + n + '</b></span>';
     }).join('');
   }
   const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -704,6 +843,35 @@
     return location.origin + location.pathname.replace(/[^/]*$/, '');
   }
 
+  /* Draw one canvas pixel per module-pixel and let the canvas keep that exact
+     size on screen. Scaling a QR code down blurs the module edges and phones
+     stop reading it, so the box flexes instead of the code. */
+  function makeQR(url, px) {
+    if (!url || typeof window.qrcode !== 'function') return null;
+    try {
+      const qr = window.qrcode(0, 'M');       // 0 = smallest version that fits
+      qr.addData(url);
+      qr.make();
+      const n = qr.getModuleCount(), pad = 2;
+      const cell = Math.max(2, Math.floor(px / (n + pad * 2)));
+      const c = document.createElement('canvas');
+      c.width = c.height = (n + pad * 2) * cell;
+      c.style.width = c.style.height = c.width + 'px';
+      const g = c.getContext('2d');
+      g.fillStyle = '#FFFFFF'; g.fillRect(0, 0, c.width, c.height);
+      g.fillStyle = '#120F1C';
+      for (let r = 0; r < n; r++) for (let col = 0; col < n; col++) {
+        if (qr.isDark(r, col)) g.fillRect((col + pad) * cell, (r + pad) * cell, cell, cell);
+      }
+      c.setAttribute('role', 'img');
+      c.setAttribute('aria-label', 'QR code to ' + url);
+      return c;
+    } catch (e) {
+      console.warn('[booth] QR generation failed', e);
+      return null;
+    }
+  }
+
   function paintQR() {
     const url = phoneUrl();
     const box = $('qr');
@@ -713,35 +881,9 @@
       $('qrFallback').textContent = 'Open this page over http to generate the QR code';
       return;
     }
-    if (typeof window.qrcode === 'function') {
-      try {
-        const qr = window.qrcode(0, 'M');          // 0 = pick the smallest version that fits
-        qr.addData(url);
-        qr.make();
-        const n = qr.getModuleCount();
-        const pad = 2;
-        // Draw one canvas pixel per module-pixel and let the canvas keep that
-        // exact size on screen. Scaling a QR code down blurs the module edges
-        // and phones stop reading it, so the box flexes instead of the code.
-        const target = Math.round((state.scene === 'wall' ? 152 : 210) * (window.innerHeight / 1080));
-        const cell = Math.max(3, Math.floor(target / (n + pad * 2)));
-        const c = document.createElement('canvas');
-        c.width = c.height = (n + pad * 2) * cell;
-        c.style.width = c.style.height = c.width + 'px';
-        const g = c.getContext('2d');
-        g.fillStyle = '#FFFFFF'; g.fillRect(0, 0, c.width, c.height);
-        g.fillStyle = '#120F1C';
-        for (let r = 0; r < n; r++) for (let col = 0; col < n; col++) {
-          if (qr.isDark(r, col)) g.fillRect((col + pad) * cell, (r + pad) * cell, cell, cell);
-        }
-        c.setAttribute('role', 'img');
-        c.setAttribute('aria-label', 'QR code to ' + url);
-        box.innerHTML = ''; box.appendChild(c);
-        return;
-      } catch (e) {
-        console.warn('[booth] QR generation failed', e);
-      }
-    }
+    const target = Math.round((state.scene === 'wall' ? 152 : 210) * (window.innerHeight / 1080));
+    const code = makeQR(url, target);
+    if (code) { box.innerHTML = ''; box.appendChild(code); return; }
     if (window.BOOTH_QR) {
       box.innerHTML = '<img alt="QR code to the Common Voice booth page" src="' + window.BOOTH_QR + '">';
       return;
@@ -836,11 +978,19 @@
     paintQR();   // the wall gives the QR less room, so the code is redrawn to fit
   }
 
-  canvas.addEventListener('click', e => (state.scene === 'wall' ? pickLangAt : pickAt)(e.clientX, e.clientY));
+  $('ticker').addEventListener('click', e => {
+    const chip = e.target.closest('[data-key]');
+    if (chip) openExplore(chip.dataset.key);
+  });
+  canvas.addEventListener('click', e => {
+    if (state.explore) { closeExplore(); return; }
+    (state.scene === 'wall' ? pickLangAt : pickAt)(e.clientX, e.clientY);
+  });
   canvas.style.cursor = 'pointer';
 
   document.addEventListener('keydown', e => {
     const k = e.key.toLowerCase();
+    if (k === 'escape' && state.explore) { closeExplore(); return; }
     if (k === 'escape' && state.picked) { clearPick(); return; }
     if (k === 'v') { setScene(state.scene === 'wall' ? 'geo' : 'wall'); return; }
     if (k === 'p') { state.mode = state.mode === 'globe' ? 'map' : 'globe'; state.zoom = state.tgtZoom = 1; }

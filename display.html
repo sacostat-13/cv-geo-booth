@@ -70,6 +70,63 @@ h1{font:700 calc(58*var(--u))/1.04 var(--display);margin:calc(14*var(--u)) 0 cal
 .card .list b{font:600 calc(21*var(--u))/1.2 var(--ui);color:var(--fg)}
 .card .list span{font:400 calc(17*var(--u))/1.2 var(--ui);color:var(--muted);white-space:nowrap}
 
+/* The language panel's own lines: what it is called elsewhere, and which
+   Common Voice corpora it is collected in. */
+.card .iso{font:500 calc(16*var(--u))/1.3 var(--mono);color:var(--dim);letter-spacing:.06em;margin-top:calc(6*var(--u))}
+.card .corpora{display:flex;gap:calc(8*var(--u));margin-top:calc(12*var(--u));flex-wrap:wrap}
+.card .corpora span{font:600 calc(14*var(--u))/1 var(--ui);letter-spacing:.1em;text-transform:uppercase;
+  padding:calc(7*var(--u)) calc(11*var(--u));border-radius:999px;border:1px solid rgba(255,255,255,.14);color:var(--dim)}
+.card .corpora span.on{border-color:rgba(56,227,192,.4);background:rgba(56,227,192,.1);color:var(--voice)}
+.card .corpora span.none{border-color:rgba(255,200,97,.32);color:var(--gold)}
+.card .langlink{display:flex;gap:calc(14*var(--u));align-items:center;margin-top:calc(20*var(--u));
+  padding-top:calc(18*var(--u));border-top:1px solid rgba(255,255,255,.1);
+  font:400 calc(17*var(--u))/1.35 var(--ui);color:var(--muted)}
+.card .langlink b{color:var(--fg);font-weight:600}
+.qr.sm{padding:calc(8*var(--u));border-radius:calc(10*var(--u))}
+
+/* Coverage: one dot per hundred of the world's languages. */
+.coverage{margin-bottom:calc(22*var(--u));max-width:calc(430*var(--u))}
+.dots{display:flex;flex-wrap:wrap;gap:calc(5*var(--u));margin-bottom:calc(10*var(--u))}
+.dots i{width:calc(9*var(--u));height:calc(9*var(--u));border-radius:50%;background:rgba(167,159,196,.2)}
+.dots i.cv{background:var(--voice);box-shadow:0 0 calc(8*var(--u)) rgba(56,227,192,.6)}
+.dots i.here{background:var(--ember);box-shadow:0 0 calc(8*var(--u)) rgba(255,138,91,.6)}
+/* Fewer than a hundred languages in the room is less than one dot, and must
+   not be drawn as a whole one. */
+.dots i.partial{background:rgba(167,159,196,.2);position:relative}
+.dots i.partial::after{content:"";position:absolute;inset:calc(2.5*var(--u));border-radius:50%;
+  background:var(--ember);box-shadow:0 0 calc(7*var(--u)) rgba(255,138,91,.7)}
+.coverCap{font:400 calc(14*var(--u))/1.5 var(--ui);color:var(--dim)}
+
+/* Going deeper into one language, with the visitor, at the booth. */
+.explore{position:absolute;top:calc(70*var(--u));left:calc(60*var(--u));right:calc(60*var(--u));
+  bottom:auto;max-height:calc(100% - calc(140*var(--u)));overflow:auto;z-index:5;
+  background:linear-gradient(170deg,rgba(26,21,41,.975),rgba(14,11,24,.985));
+  border:1px solid rgba(255,255,255,.12);border-radius:calc(26*var(--u));
+  padding:calc(44*var(--u)) calc(52*var(--u));backdrop-filter:blur(calc(18*var(--u)));
+  box-shadow:0 calc(40*var(--u)) calc(100*var(--u)) rgba(0,0,0,.6);
+  display:flex;flex-direction:column;gap:calc(26*var(--u))}
+.explore[hidden]{display:none}
+.ex-top{display:flex;justify-content:space-between;align-items:flex-start;gap:calc(40*var(--u))}
+.explore h2{font:700 calc(62*var(--u))/1.05 var(--display);margin:calc(10*var(--u)) 0 calc(6*var(--u))}
+.ex-sub{font:400 calc(20*var(--u))/1.4 var(--ui);color:var(--muted)}
+.ex-head-stats{display:flex;gap:calc(36*var(--u));text-align:right}
+.ex-head-stats b{display:block;font:500 calc(40*var(--u))/1 var(--mono);color:var(--voice)}
+.ex-head-stats span{display:block;font:500 calc(13*var(--u))/1.3 var(--ui);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--dim);margin-top:calc(8*var(--u))}
+.ex-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(44*var(--u));align-items:start}
+.ex-col h3{font:600 calc(16*var(--u))/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);margin:0 0 calc(18*var(--u))}
+.ex-row{margin-bottom:calc(14*var(--u))}
+.ex-row .lab{display:flex;justify-content:space-between;gap:calc(14*var(--u));align-items:baseline;
+  font:400 calc(19*var(--u))/1.3 var(--ui);color:var(--fg);margin-bottom:calc(6*var(--u))}
+.ex-row .lab i{font-style:normal;font-family:var(--mono);color:var(--voice);font-variant-numeric:tabular-nums}
+.ex-bar{height:calc(10*var(--u));border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden}
+.ex-bar b{display:block;height:100%;border-radius:999px;background:var(--voice)}
+.ex-empty{font:400 calc(18*var(--u))/1.5 var(--ui);color:var(--dim)}
+.ex-needs{font:400 calc(21*var(--u))/1.5 var(--ui);color:var(--gold);
+  padding-top:calc(22*var(--u));border-top:1px solid rgba(255,255,255,.1)}
+.ex-hint{font:400 calc(14*var(--u))/1 var(--mono);color:#3C3558;text-align:right}
+
 /* Ticker of what the room speaks */
 .ticker{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(44*var(--u));
   display:flex;gap:calc(10*var(--u));flex-wrap:wrap;justify-content:center;max-width:calc(900*var(--u));pointer-events:none}
@@ -78,6 +135,8 @@ h1{font:700 calc(58*var(--u))/1.04 var(--display);margin:calc(14*var(--u)) 0 cal
 .chip b{font-weight:600;color:var(--voice);font-variant-numeric:tabular-nums}
 .chip.new{background:rgba(255,200,97,.12);border-color:rgba(255,200,97,.3);color:#FFE2A8}
 .chip.new b{color:var(--gold)}
+.chip{pointer-events:auto;cursor:pointer}
+.ticker{pointer-events:none}
 
 /* QR */
 .qr{display:inline-block;background:#fff;padding:calc(14*var(--u));border-radius:calc(16*var(--u));line-height:0}
@@ -141,14 +200,40 @@ body.scene-wall .br .url{display:none}
     <div class="card" id="card">
       <div class="from" id="cardFrom">Just added</div>
       <div class="lang" id="cardLang">—</div>
+      <div class="iso" id="cardIso"></div>
+      <div class="corpora" id="cardCorpora"></div>
       <div class="variety" id="cardVariety"></div>
       <div class="flagline" id="cardFlag"></div>
       <div class="stats" id="cardStats"></div>
       <div class="note" id="cardNote" hidden></div>
+      <div class="langlink" id="cardLink" hidden>
+        <div class="qr sm" id="cardQr"></div>
+        <span>See <b id="cardLinkName"></b><br>on Common Voice</span>
+      </div>
     </div>
   </div>
 
+  <!-- What the booth opens when someone wants to go deeper into one language.
+       Driven by the person at the booth, not by the visitor's phone. -->
+  <div class="explore" id="explore" hidden>
+    <div class="ex-top">
+      <div>
+        <div class="eyebrow" id="exEyebrow">In the Common Voice dataset</div>
+        <h2 id="exName">—</h2>
+        <div class="ex-sub" id="exSub"></div>
+      </div>
+      <div class="ex-head-stats" id="exHeadStats"></div>
+    </div>
+    <div class="ex-cols" id="exCols"></div>
+    <div class="ex-needs" id="exNeeds" hidden></div>
+    <div class="ex-hint">Click the map or press Esc to close</div>
+  </div>
+
   <div class="corner bl">
+    <div class="coverage" id="coverage" hidden>
+      <div class="dots" id="coverDots"></div>
+      <div class="coverCap" id="coverCap"></div>
+    </div>
     <div class="counts">
       <div class="count a"><b id="nVoices">0</b><span>voices</span></div>
       <div class="count b"><b id="nLangs">0</b><span>languages</span></div>
@@ -170,6 +255,7 @@ body.scene-wall .br .url{display:none}
 <script src="config.js" onerror="void 0"></script>
 <script src="cv-data.js"></script>
 <script src="vulnerable.js"></script>
+<script src="cv-detail.js"></script>
 <script src="world.js"></script>
 <script src="geo.js"></script>
 <script src="wall.js"></script>
