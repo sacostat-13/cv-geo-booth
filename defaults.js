@@ -50,6 +50,7 @@ window.BOOTH = {
     idleRestMs: 25000,     // the globe simply turns for this long between languages
     idleTourMs: 7000,      // how long one language holds the screen before the globe returns
     pickHoldMs: 20000,     // how long a country someone tapped stays up
+    debutMs: 3600,         // extra time for a language Common Voice has never heard
   },
 
   // Where the phone sends people next. {locale} is replaced with the Common

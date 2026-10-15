@@ -229,6 +229,7 @@
     if (target.meta && target.meta.splitY) divider(ctx, R, target.meta);
     if (target.meta && target.meta.tail) fieldCaption(ctx, R, target.meta);
     legend(ctx, R);
+    drawDebut(ctx, W, H, now, view);
   }
 
   function backdrop(ctx, R) {
@@ -422,7 +423,8 @@
   /* A language from the field, named. Without this a one-voice language is a
      12-pixel square nobody can read, which is the whole reason the tour exists. */
   function drawSpotlight(ctx, R, b, e) {
-    if (b.tier === 'col') return;
+    // Rows carry their own name already; only a field tile needs lifting out.
+    if (b.tier !== 'tile') return;
     const t = b.spot;
     const w = b.w + (Math.min(470, R.w * 0.3) - b.w) * t;
     const h = b.h + (Math.min(132, R.h * 0.3) - b.h) * t;
@@ -479,6 +481,54 @@
       rr(ctx, x - 11, y - fs * 0.75, 11, 11, 3); ctx.fill();
       x -= 11 + 22;
     }
+    ctx.restore();
+  }
+
+  /* A language Common Voice has never heard, the first time anyone adds it.
+     The wall steps back and lets the name have the screen for a few seconds,
+     then hands it back — so the rare thing reads as rare, and nothing else has
+     to shout for the rest of the festival. */
+  function drawDebut(ctx, W, H, now, view) {
+    if (!view.debut) return;
+    const t = now - view.debutStart, span = view.debutMs || 3600;
+    if (t < 0 || t > span) return;
+    const a = Math.min(1, t / 420) * Math.min(1, Math.max(0, (span - t) / 620));
+    if (a <= 0.01) return;
+    const u = H / 1080;
+
+    ctx.save();
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = 'rgba(10,8,18,' + (0.8 * a).toFixed(3) + ')';
+    ctx.fillRect(0, 0, W, H);
+
+    const cy = H * 0.44;
+    ctx.globalAlpha = a;
+    ctx.textAlign = 'center';
+
+    ctx.textBaseline = 'alphabetic';
+    ctx.font = '600 ' + Math.round(20 * u) + 'px ' + UI;
+    ctx.letterSpacing && (ctx.letterSpacing = '0.22em');
+    ctx.fillStyle = COL['--gold'];
+    ctx.fillText('A LANGUAGE COMMON VOICE HAS NEVER HEARD', W / 2, cy - 92 * u);
+    ctx.letterSpacing && (ctx.letterSpacing = '0px');
+
+    // The name arrives a little late and settles, so the eye lands on it.
+    const rise = (1 - Math.min(1, t / 700)) * 22 * u;
+    const fs = Math.round(Math.min(118 * u, (W * 0.82) / Math.max(7, view.debut.name.length) * 1.75));
+    ctx.font = '700 ' + fs + 'px ' + DISP;
+    ctx.fillStyle = COL['--fg'];
+    ctx.shadowColor = 'rgba(255,200,97,.33)';
+    ctx.shadowBlur = 46 * u;
+    ctx.fillText(fit(ctx, view.debut.name, W * 0.86), W / 2, cy + rise);
+    ctx.shadowBlur = 0;
+
+    ctx.font = '400 ' + Math.round(26 * u) + 'px ' + UI;
+    ctx.fillStyle = COL['--muted'];
+    ctx.fillText('added by someone in this room · it is on the wall now', W / 2, cy + 62 * u);
+
+    const lw = Math.min(W * 0.3, 420 * u);
+    ctx.fillStyle = 'rgba(255,200,97,' + (0.5 * a).toFixed(3) + ')';
+    rr(ctx, W / 2 - lw / 2, cy + 96 * u, lw, 2, 1); ctx.fill();
     ctx.restore();
   }
 

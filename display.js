@@ -43,6 +43,8 @@
     scene: 'geo',        // "geo" or "wall" — press V
     focusLang: null,     // which language the wall is holding, if any
     justKeys: [],        // the languages a live arrival just added to
+    debut: null,         // a language Common Voice has never heard, arriving for the first time
+    debutStart: 0,
     wallRows: null,      // cached, rebuilt on ingest rather than per frame
   };
 
@@ -137,6 +139,21 @@
     state.justKeys = ls.map(langKey);
     const main = primaryOf(ls);
     state.focusLang = langKey(main);
+
+    /* A language Common Voice has never heard, arriving for the first time, is
+       the rarest thing that happens at this booth and the whole reason for the
+       free-text box. It gets the screen to itself for a moment. The second
+       person to add it does not: by then the wall already knows it. */
+    const debut = ls.find(L => !L.locale && (state.langCount[langKey(L)] || 0) <= 1);
+    state.debut = debut ? { key: langKey(debut), name: debut.missing || debut.langName } : null;
+    state.debutStart = state.activeStart;
+    if (state.debut) {
+      // Never at the cost of the queue: a backlog gets the short version.
+      const room = state.queue.length <= D.queuePressure;
+      state.holdUntil += room ? (D.debutMs || 3600) : Math.round((D.debutMs || 3600) * 0.4);
+    }
+    $('card').classList.toggle('debut', !!state.debut);
+
     if (s.country) flyTo(s.country, state.mode === 'globe' ? 1.3 : 1.75);
     paintCard(s);
     setStatus('Just added · ' + (s.country ? (COUNTRY[s.country] || s.country) : (main.missing || main.langName)), false);
@@ -154,6 +171,8 @@
     state.touring = false;
     state.focus = null;
     state.focusLang = null;
+    state.debut = null;
+    $('card').classList.remove('debut');
     state.spinning = true;
     state.tgtZoom = 1;
     state.tgtLat = 14;
@@ -267,7 +286,7 @@
     const main = primaryOf(ls);
     const nameOf = L => L.missing || (L.locale && LANG[L.locale] ? LANG[L.locale].n : L.langName);
     const name = nameOf(main);
-    $('cardFrom').textContent = 'Just added';
+    $('cardFrom').textContent = state.debut ? 'New to the wall' : 'Just added';
     // Everything they gave is named; the facts below are the neediest one's.
     $('cardLang').textContent = ls.map(nameOf).join(' · ');
     $('cardLang').classList.toggle('multi', ls.length > 1);
@@ -639,6 +658,9 @@
         focusKey: state.focusLang,
         justKeys: state.justKeys,
         justStart: state.activeStart,
+        debut: state.debut,
+        debutStart: state.debutStart,
+        debutMs: D.debutMs || 3600,
         dt,
       });
     } else {
