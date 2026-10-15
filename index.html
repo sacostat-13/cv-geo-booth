@@ -85,6 +85,19 @@ footer{color:var(--dim);font-size:12.5px;text-align:center;margin-top:20px}
    count is visible at the moment someone is deciding whether to add another. */
 .tray{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
 .tray[hidden]{display:none}
+
+/* The map a thumb drives. touch-action:none or the browser pans the page
+   instead of the world. */
+/* Fills whatever the step leaves it. The whole world is visible at rest, so a
+   tall box letterboxes it — better than cropping the map someone is trying to
+   aim at. */
+.mapwrap{position:relative;flex:1 1 auto;min-height:240px;
+  border-radius:16px;overflow:hidden;border:1px solid var(--line);touch-action:none}
+#pinCanvas{width:100%;height:100%;display:block;touch-action:none}
+.mapzoom{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:6px}
+.mapzoom button{width:42px;height:42px;border-radius:11px;border:1px solid rgba(255,255,255,.16);
+  background:rgba(18,15,28,.82);color:var(--fg);font:600 22px/1 inherit;cursor:pointer}
+.maphint{text-align:center;font:400 13px/1.4 var(--mono);color:var(--muted);margin-top:10px}
 .tray button{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(56,227,192,.35);
   background:rgba(56,227,192,.12);color:#BDF6E9;border-radius:999px;padding:9px 12px 9px 14px;
   font:600 15px/1 inherit;cursor:pointer}
@@ -99,48 +112,68 @@ footer{color:var(--dim);font-size:12.5px;text-align:center;margin-top:20px}
 </head>
 <body>
 <div class="wrap">
-  <div class="rail" id="rail"><i></i><i></i><i></i></div>
+  <div class="rail" id="rail"><i></i><i></i><i></i><i></i></div>
 
-  <!-- 1. languages -->
+  <!-- 1. the pin -->
   <section class="step on" id="s1">
     <div class="eyebrow" id="brand">Common Voice</div>
+    <h1>Drop a pin on the map</h1>
+    <p class="lede">Anywhere you like — it doesn’t have to be where you are. Then tell us what languages you speak.</p>
+    <div class="mapwrap">
+      <canvas id="pinCanvas"></canvas>
+      <div class="mapzoom">
+        <button type="button" id="zoomIn" aria-label="Zoom in">+</button>
+        <button type="button" id="zoomOut" aria-label="Zoom out">−</button>
+      </div>
+    </div>
+    <div class="maphint" id="mapHint">Drag to move · pinch to zoom · tap to place your pin</div>
+    <div class="actions">
+      <button class="btn sec" id="skipPin">Just my languages</button>
+      <button class="btn" id="toLanguages" disabled>Continue</button>
+    </div>
+  </section>
+
+  <!-- 1. languages -->
+  <section class="step" id="s2">
+    <div class="eyebrow" id="brand">Common Voice</div>
     <h1>What do you speak?</h1>
-    <p class="lede" id="step1Lede">Pick every language you could lend your voice in. Up to five. Look up at the big screen when you finish.</p>
+    <p class="lede" id="step2Lede">Pick every language you could lend your voice in. Up to five. Look up at the big screen when you finish.</p>
     <div class="tray" id="langTray" hidden></div>
     <input type="search" id="langSearch" placeholder="Search all languages" autocomplete="off">
     <div class="scroll"><div class="list" id="langList"></div></div>
     <div class="actions">
-      <button class="btn" id="toStep2" disabled style="width:100%">Continue</button>
+      <button class="btn sec" data-back="1">Back</button>
+      <button class="btn" id="toVarieties" disabled>Continue</button>
     </div>
   </section>
 
   <!-- 2. varieties -->
-  <section class="step" id="s2">
+  <section class="step" id="s3">
     <div class="eyebrow">Step 2</div>
-    <h1 id="step2Title">Which variety?</h1>
+    <h1 id="step3Title">Which variety?</h1>
     <p class="lede">Dialects carry sounds a dataset will never hear otherwise. Skip any that don’t fit.</p>
     <div class="scroll"><div id="varietyGroups"></div></div>
     <div class="actions">
-      <button class="btn sec" data-back="1">Back</button>
-      <button class="btn" id="toStep3">Continue</button>
+      <button class="btn sec" data-back="2">Back</button>
+      <button class="btn" id="toInitials">Continue</button>
     </div>
   </section>
 
   <!-- 3. initials -->
-  <section class="step" id="s3">
+  <section class="step" id="s4">
     <div class="eyebrow">Last step</div>
     <h1>Sign it, or stay anonymous</h1>
     <p class="lede">Initials only — nothing else is stored, and nothing identifies you.</p>
     <input type="text" id="initials" maxlength="4" placeholder="e.g. S.T." autocomplete="off">
     <div class="actions">
-      <button class="btn sec" data-back="2">Back</button>
+      <button class="btn sec" data-back="3">Back</button>
       <button class="btn" id="submitBtn">Add me to the wall</button>
     </div>
     <div class="err" id="err" hidden></div>
   </section>
 
   <!-- 4. done -->
-  <section class="step" id="s4">
+  <section class="step" id="s5">
     <div class="done">
       <div class="mark">✓</div>
       <h2 id="doneTitle">You're on the map</h2>
@@ -161,6 +194,8 @@ footer{color:var(--dim);font-size:12.5px;text-align:center;margin-top:20px}
 <script src="defaults.js"></script>
 <script src="config.js" onerror="void 0"></script>
 <script src="cv-data.js"></script>
+<script src="world.js"></script>
+<script src="pinmap.js"></script>
 <script src="store.js"></script>
 <script src="phone.js"></script>
 </body>

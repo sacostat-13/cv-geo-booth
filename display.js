@@ -19,7 +19,8 @@
     rotLon: 10, rotLat: 14, zoom: 1,
     tgtLon: 10, tgtLat: 14, tgtZoom: 1,
     spinning: true,
-    pins: {},            // country -> [{lon,lat,id,missing,ts}]
+    pins: {},            // country -> [{lon,lat,id,missing,ts}]  (older rows only)
+    freePins: [],        // pins people placed themselves, at the point they chose
     counts: {},          // country -> number
     langCount: {},       // locale|!name -> number
     langInfo: {},        // locale|!name -> { key, locale, name, countries:Set, dialects:Set }
@@ -81,17 +82,23 @@
         if (!state.langCount[k]) {
           state.langCount[k] = 0;
           if (!L.locale) state.newLangs++;
-          state.langInfo[k] = { key: k, locale: L.locale, name: L.missing || (LANG[L.locale] ? LANG[L.locale].n : L.langName), countries: new Set(), dialects: new Set() };
+          state.langInfo[k] = { key: k, locale: L.locale, name: L.missing || (LANG[L.locale] ? LANG[L.locale].n : L.langName), countries: new Set(), dialects: new Set(), points: [] };
           state.langOrder.push(k);
         }
         state.langCount[k]++;
         if (s.country) state.langInfo[k].countries.add(s.country);
         if (L.dialect) state.langInfo[k].dialects.add(L.dialect);
       }
-      /* The phone stopped asking where people are from. Rows saved before that
-         still carry a country and still get a pin; new ones simply don't, and
-         the map scene draws whatever is there. */
-      if (s.country) {
+      /* A pin is where someone chose to put one, nothing more. Rows saved
+         before the map existed carry a country instead, and still get a pin
+         scattered inside it; rows where the map was skipped carry neither and
+         are counted without appearing on the map at all. */
+      const pt = (typeof s.lon === 'number' && typeof s.lat === 'number'
+        && isFinite(s.lon) && isFinite(s.lat)) ? [s.lon, s.lat] : null;
+      if (pt) {
+        for (const L of ls) state.langInfo[langKey(L)].points.push(pt);
+        state.freePins.push({ lon: pt[0], lat: pt[1], id: s.id, missing: ls.some(L => !L.locale), ts: s.ts });
+      } else if (s.country) {
         state.counts[s.country] = (state.counts[s.country] || 0) + 1;
         const list = (state.pins[s.country] ||= []);
         const spot = window.Geo.placePin(s.country, s.id, list.map(p => [p.lon, p.lat]));
@@ -120,6 +127,14 @@
 
   /* Point the camera at a country. Used by all three things that take the
      screen: a new submission, the idle tour, and a viewer clicking the map. */
+  /* A point somebody marked, rather than a country we looked up. */
+  function flyToPoint(lon, lat, zoom) {
+    state.tgtLon = lon;
+    state.tgtLat = Math.max(-58, Math.min(58, lat));
+    state.tgtZoom = zoom;
+    state.spinning = false;
+  }
+
   function flyTo(code, zoom) {
     const c = window.Geo.byCode[code];
     if (!c) return;
@@ -134,9 +149,10 @@
     state.activeStart = performance.now();
     state.holdUntil = state.activeStart + holdFor();
     state.picked = null;
+    const own = state.freePins.find(p => p.id === s.id);
     const list = s.country ? (state.pins[s.country] || []) : [];
-    state.activePin = list.find(p => p.id === s.id) || null;
-    state.focus = s.country ? { country: s.country, kind: 'submission' } : null;
+    state.activePin = own || list.find(p => p.id === s.id) || null;
+    state.focus = (!own && s.country) ? { country: s.country, kind: 'submission' } : null;
     // Several blocks land at once; the screen holds the one Common Voice has
     // the least of, because that is the one worth reading out.
     const ls = langsOf(s);
@@ -159,7 +175,8 @@
     }
     $('card').classList.toggle('debut', !!state.debut);
 
-    if (s.country) flyTo(s.country, state.mode === 'globe' ? 1.3 : 1.75);
+    if (own) flyToPoint(own.lon, own.lat, state.mode === 'globe' ? 1.6 : 2.1);
+    else if (s.country) flyTo(s.country, state.mode === 'globe' ? 1.3 : 1.75);
     paintCard(s);
     setStatus('Just added · ' + (s.country ? (COUNTRY[s.country] || s.country) : (main.missing || main.langName)), false);
   }
@@ -216,12 +233,20 @@
     state.rotUntil = now + (D.idleTourMs || 7000);
     state.focusLang = info.key;
 
-    // A language the room gave without a country has nowhere to fly to; on the
-    // map the globe simply keeps turning behind its card.
+    /* Fly to one of the pins people placed for this language. Failing that, a
+       country an older row carried. Failing both, the globe keeps turning
+       behind the card, which is what a skipped map looks like. */
+    const pts = info.points || [];
     const countries = [...info.countries];
     const country = countries.length ? (countries[state.rotIndex % countries.length] || countries[0]) : null;
-    state.focus = country ? { country, kind: 'rotation' } : null;
-    if (country) flyTo(country, state.mode === 'globe' ? 1.18 : 1.5);
+    if (pts.length) {
+      const p = pts[state.rotIndex % pts.length];
+      state.focus = null;
+      flyToPoint(p[0], p[1], state.mode === 'globe' ? 1.25 : 1.6);
+    } else {
+      state.focus = country ? { country, kind: 'rotation' } : null;
+      if (country) flyTo(country, state.mode === 'globe' ? 1.18 : 1.5);
+    }
     paintTourCard(info, country);
     setStatus.apply(null, restingStatus());
   }
@@ -724,30 +749,33 @@
         }
         continue;
       }
-      for (const pin of list) {
-        if (!cam.visible(pin.lon, pin.lat)) continue;
-        const p = cam.project(pin.lon, pin.lat);
-        const isActive = pin.id === activeId;
-        const col = pin.missing ? COL['--gold'] : COL['--voice'];
-        let rr = r;
-        if (isActive) {
-          const t = Math.min(1, (now - state.activeStart) / 520);
-          const bounce = t < 1 ? 1 + (1 - t) * 2.4 * Math.exp(-4 * t) : 1;
-          rr = r * 1.7 * bounce;
-          const ripple = ((now - state.activeStart) % 1500) / 1500;
-          ctx.beginPath();
-          ctx.arc(p[0], p[1], r * 2 + ripple * cam.radius * 0.09, 0, Math.PI * 2);
-          ctx.strokeStyle = 'rgba(255,138,91,' + (0.5 * (1 - ripple)).toFixed(3) + ')';
-          ctx.lineWidth = 2; ctx.stroke();
-        }
-        ctx.beginPath(); ctx.arc(p[0], p[1], rr, 0, Math.PI * 2);
-        ctx.fillStyle = isActive ? COL['--ember'] : col;
-        ctx.shadowColor = isActive ? COL['--ember'] : col;
-        ctx.shadowBlur = isActive ? 22 : 8;
-        ctx.fill();
-        ctx.shadowBlur = 0;
-      }
+      for (const pin of list) drawOnePin(cam, pin, now, activeId, r);
     }
+    for (const pin of state.freePins) drawOnePin(cam, pin, now, activeId, r);
+  }
+
+  function drawOnePin(cam, pin, now, activeId, r) {
+    if (!cam.visible(pin.lon, pin.lat)) return;
+    const p = cam.project(pin.lon, pin.lat);
+    const isActive = pin.id === activeId;
+    const col = pin.missing ? COL['--gold'] : COL['--voice'];
+    let rr = r;
+    if (isActive) {
+      const t = Math.min(1, (now - state.activeStart) / 520);
+      const bounce = t < 1 ? 1 + (1 - t) * 2.4 * Math.exp(-4 * t) : 1;
+      rr = r * 1.7 * bounce;
+      const ripple = ((now - state.activeStart) % 1500) / 1500;
+      ctx.beginPath();
+      ctx.arc(p[0], p[1], r * 2 + ripple * cam.radius * 0.09, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(255,138,91,' + (0.5 * (1 - ripple)).toFixed(3) + ')';
+      ctx.lineWidth = 2; ctx.stroke();
+    }
+    ctx.beginPath(); ctx.arc(p[0], p[1], rr, 0, Math.PI * 2);
+    ctx.fillStyle = isActive ? COL['--ember'] : col;
+    ctx.shadowColor = isActive ? COL['--ember'] : col;
+    ctx.shadowBlur = isActive ? 22 : 8;
+    ctx.fill();
+    ctx.shadowBlur = 0;
   }
 
   /* Hit-testing. Rather than inverting two different projections, rebuild each

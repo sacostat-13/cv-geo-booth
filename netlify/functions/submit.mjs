@@ -36,6 +36,16 @@ export default async (req) => {
   const country = clean(body.country, 16).toUpperCase();
   if (country && !/^[A-Z]{2}$/.test(country)) return json(400, { error: 'country must be a two-letter code' });
 
+  /* Where someone chose to put a pin, when they placed one at all. Absent is
+     the normal case for anyone who skipped the map, and absent is stored as
+     absent — never as a zero, which is a real place in the Gulf of Guinea. */
+  const num = v => (typeof v === 'number' && isFinite(v)) ? v
+    : (typeof v === 'string' && v.trim() !== '' && isFinite(+v)) ? +v : null;
+  const lon = num(body.lon), lat = num(body.lat);
+  if ((lon === null) !== (lat === null)) return json(400, { error: 'lon and lat go together' });
+  if (lon !== null && (lon < -180 || lon > 180)) return json(400, { error: 'lon out of range' });
+  if (lat !== null && (lat < -85 || lat > 85)) return json(400, { error: 'lat out of range' });
+
   /* Accept either shape: a langs array, or the single language the page used
      to send. Both end up stored as an array with the first entry repeated at
      the top level, so nothing reading the old fields breaks. */
@@ -75,6 +85,7 @@ export default async (req) => {
     dialect: langs[0].dialect,
     missing: langs[0].missing,
   };
+  if (lon !== null) { row.lon = Math.round(lon * 1000) / 1000; row.lat = Math.round(lat * 1000) / 1000; }
 
   const event = clean(body.event, LIMITS.event) || 'default';
 

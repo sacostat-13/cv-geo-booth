@@ -2,9 +2,10 @@
    local    — this browser only
    netlify  — two functions in this site, backed by Netlify Blobs
    supabase — a Postgres table, for when the booth outgrows the above
-   A submission is { id, ts, country, initials, langs: [{ locale, langName,
-   dialect, missing }] }, with the first language also repeated flat as
-   locale/langName/dialect/missing so rows written either way read the same
+   A submission is { id, ts, initials, langs: [{ locale, langName, dialect,
+   missing }] } plus an optional lon/lat where someone placed a pin, with the
+   first language also repeated flat as locale/langName/dialect/missing so rows
+   written either way read the same. Older rows carry a country instead.
    The wall starts empty in every mode; the only way in is the phone page.
    `missing` is the typed-in name when the language is not in Common Voice yet. */
 (function () {
@@ -135,6 +136,8 @@
         id: r.id, ts: new Date(r.created_at).getTime(), country: r.country, locale: r.locale,
         langName: r.lang_name, dialect: r.dialect || '', initials: r.initials || '', missing: r.missing || '',
         langs: Array.isArray(r.langs) && r.langs.length ? r.langs : undefined,
+        lon: typeof r.lon === 'number' ? r.lon : undefined,
+        lat: typeof r.lat === 'number' ? r.lat : undefined,
       };
     }
     async function pull() {
@@ -164,6 +167,8 @@
           country: sub.country, locale: sub.locale, lang_name: sub.langName,
           dialect: sub.dialect || null, initials: sub.initials || null, missing: sub.missing || null,
           langs: sub.langs || null,
+          lon: typeof sub.lon === 'number' ? sub.lon : null,
+          lat: typeof sub.lat === 'number' ? sub.lat : null,
           event: CFG.event.name,
         };
         const res = await fetch(endpoint, { method: 'POST', headers: Object.assign({ Prefer: 'return=representation' }, headers), body: JSON.stringify(body) });

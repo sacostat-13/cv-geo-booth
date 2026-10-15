@@ -16,11 +16,15 @@ create table if not exists public.submissions (
   initials    text,
   missing     text,                      -- the typed-in name when the language isn't in CV yet
   langs       jsonb,                     -- every language this person gave; the first is also in the columns above
+  lon         double precision,          -- where a pin was placed, if one was
+  lat         double precision,
   event       text
 );
 
 -- For a table created before multi-language submissions existed.
 alter table public.submissions add column if not exists langs jsonb;
+alter table public.submissions add column if not exists lon double precision;
+alter table public.submissions add column if not exists lat double precision;
 alter table public.submissions alter column country drop not null;
 
 create index if not exists submissions_created_at_idx on public.submissions (created_at);
@@ -33,6 +37,9 @@ alter table public.submissions
     and (initials is null or char_length(initials) <= 4)
     and (missing  is null or char_length(missing)  <= 64)
     and (langs    is null or jsonb_array_length(langs) <= 5)
+    and (lon      is null or (lon between -180 and 180))
+    and (lat      is null or (lat between -85 and 85))
+    and ((lon is null) = (lat is null))
   );
 
 alter table public.submissions enable row level security;

@@ -1,9 +1,14 @@
-/* The phone page behind the QR code: languages → varieties → initials.
+/* The phone page behind the QR code: pin → languages → varieties → initials.
 
-   No country is asked for. A language does not belong to a place, and asking
-   made people answer for a country that had nothing to do with what they
-   speak. Submissions carry no country at all now; the map scene still draws
-   any rows that already had one.
+   No country is asked for, and no location either. The first step is a map a
+   visitor marks — the copy says "anywhere you like, it doesn't have to be
+   where you are", because a pin someone chooses to place is a different thing
+   from a location we asked them for, and the difference only survives if we
+   keep saying it. Skipping the map is a first-class path, not a fallback:
+   plenty of people will only want to add their languages.
+
+   Submissions carry a lon/lat when a pin was placed and nothing at all when it
+   was skipped. Older rows still carry a country and the map still draws them.
 
    A visitor picks up to five languages, because "languages I speak" and
    "languages I could record sentences in" are different lists and the second
@@ -24,8 +29,8 @@
   const SHARED = !!window.Store.shared;
 
   const MAXLANGS = 5;
-  // One person, one submission, with every language they chose on it.
-  const pick = { initials: '', langs: [] };
+  // One person, one submission: an optional pin, and every language they chose.
+  const pick = { initials: '', langs: [], pin: null };
   let step = 1;
 
   const keyOf = l => (l.locale ? l.locale : '!' + String(l.langName).toLowerCase());
@@ -51,14 +56,34 @@
     step = n;
     document.querySelectorAll('.step').forEach(s => s.classList.remove('on'));
     $('s' + n).classList.add('on');
-    [...$('rail').children].forEach((el, i) => el.classList.toggle('on', i < Math.min(n, 3)));
+    [...$('rail').children].forEach((el, i) => el.classList.toggle('on', i < Math.min(n, 4)));
     window.scrollTo(0, 0);
     const first = $('s' + n).querySelector('input');
-    if (first && n !== 3) setTimeout(() => { try { first.value = first.value; } catch (e) {} }, 0);
+    if (first && n !== 4) setTimeout(() => { try { first.value = first.value; } catch (e) {} }, 0);
+    if (n === 1 && map) map.resize();   // the canvas had no size while hidden
   }
   document.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', () => go(+b.dataset.back)));
 
-  // ---- step 1: languages --------------------------------------------------
+  // ---- step 1: the pin, or not --------------------------------------------
+  let map = null;
+  function startMap() {
+    if (map || !window.PinMap || !window.WORLD) return;
+    map = window.PinMap.create($('pinCanvas'), {
+      onChange(pin) {
+        pick.pin = pin;
+        $('toLanguages').disabled = !pin;
+        $('mapHint').textContent = pin
+          ? 'Pin placed. Tap again to move it.'
+          : 'Drag to move \u00b7 pinch to zoom \u00b7 tap to place your pin';
+      },
+    });
+    $('zoomIn').addEventListener('click', () => map.zoomBy(1.6));
+    $('zoomOut').addEventListener('click', () => map.zoomBy(1 / 1.6));
+  }
+  $('toLanguages').addEventListener('click', () => go(2));
+  $('skipPin').addEventListener('click', () => { pick.pin = null; go(2); });
+
+  // ---- step 2: languages --------------------------------------------------
   function langRow(code) {
     const l = LANG[code];
     if (!l) return '';
@@ -75,8 +100,8 @@
     tray.hidden = !n;
     tray.innerHTML = pick.langs.map((l, i) =>
       '<button class="' + (l.locale ? '' : 'new') + '" data-rm="' + i + '">' + esc(l.langName) + ' <i>×</i></button>').join('');
-    $('toStep2').disabled = !n;
-    $('step1Lede').textContent =
+    $('toVarieties').disabled = !n;
+    $('step2Lede').textContent =
       n === 0 ? 'Pick every language you could lend your voice in. Up to five. Look up at the big screen when you finish.'
       : n === 1 ? 'Add another, or continue.'
       : n < MAXLANGS ? 'Which of these would you most want Common Voice to hear? Up to five.'
@@ -94,7 +119,7 @@
     const at = pick.langs.findIndex(x => keyOf(x) === keyOf(entry));
     if (at >= 0) pick.langs.splice(at, 1);
     else if (pick.langs.length >= MAXLANGS) {
-      $('step1Lede').textContent = 'Five is the limit — remove one to add another.';
+      $('step2Lede').textContent = 'Five is the limit — remove one to add another.';
       return;
     } else pick.langs.push(entry);
     renderTray();
@@ -135,11 +160,11 @@
     if (!b) return;
     toggleLang({ locale: b.dataset.l, langName: LANG[b.dataset.l].n, dialect: '', missing: '' });
   });
-  $('toStep2').addEventListener('click', openVarieties);
+  $('toVarieties').addEventListener('click', openVarieties);
 
   // ---- step 3: varieties, one group per language --------------------------
   function openVarieties() {
-    $('step2Title').textContent = pick.langs.length === 1
+    $('step3Title').textContent = pick.langs.length === 1
       ? 'Which ' + pick.langs[0].langName + '?'
       : 'Which varieties?';
     $('varietyGroups').innerHTML = pick.langs.map((l, i) => {
@@ -151,7 +176,7 @@
         list.map(d => '<button class="chip" data-d="' + esc(d) + '">' + esc(d) + '</button>').join('') +
         '</div><input type="text" class="vother" placeholder="Or name your own variety" autocomplete="off"></div>';
     }).join('');
-    go(2);
+    go(3);
   }
   $('varietyGroups').addEventListener('click', e => {
     const b = e.target.closest('[data-d]');
@@ -166,12 +191,12 @@
     if (!e.target.classList.contains('vother')) return;
     if (e.target.value.trim()) [...e.target.closest('.vgroup').querySelectorAll('.chip')].forEach(c => c.classList.remove('sel'));
   });
-  $('toStep3').addEventListener('click', () => {
+  $('toInitials').addEventListener('click', () => {
     [...$('varietyGroups').children].forEach(group => {
       const typed = group.querySelector('.vother').value.trim();
       if (typed) pick.langs[+group.dataset.i].dialect = typed.slice(0, 48);
     });
-    go(3);
+    go(4);
   });
 
   // ---- step 4: submit -----------------------------------------------------
@@ -187,13 +212,16 @@
       const ordered = pick.langs.slice().sort((a, b) => needOf(b.locale) - needOf(a.locale));
       await window.Store.add({
         initials: pick.initials,
+        // Absent when the map was skipped. Never derived from anything.
+        lon: pick.pin ? pick.pin.lon : undefined,
+        lat: pick.pin ? pick.pin.lat : undefined,
         langs: ordered.map(l => ({ locale: l.locale, langName: l.langName, dialect: l.dialect, missing: l.missing })),
         locale: ordered[0].locale, langName: ordered[0].langName,
         dialect: ordered[0].dialect, missing: ordered[0].missing,
       });
       renderDone();
       paintReach();
-      go(4);
+      go(5);
     } catch (err) {
       $('err').textContent = err.message + ' — try once more, or ask someone at the booth.';
       $('err').hidden = false;
@@ -275,8 +303,10 @@
   }
 
   $('again').addEventListener('click', () => {
-    pick.initials = ''; pick.langs = [];
+    pick.initials = ''; pick.langs = []; pick.pin = null;
     $('initials').value = ''; $('langSearch').value = '';
+    if (map) map.clear();
+    $('toLanguages').disabled = true;
     renderTray();
     renderLangs('');
     go(1);
@@ -288,5 +318,6 @@
     + (SHARED ? '' : ' · local mode');
   renderTray();
   renderLangs('');
+  startMap();
   go(1);
 })();

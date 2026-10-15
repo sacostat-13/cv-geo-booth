@@ -5,7 +5,7 @@ Two pages that talk to each other through one table:
 | File | Runs on | What it does |
 |---|---|---|
 | `display.html` (`/screen`) | the 42″ screen, 1080p landscape | rotating globe or flat map, pins, live counters, QR code |
-| `index.html` (`/`) | visitors' phones (the QR target) | country → language → variety → initials → contribute |
+| `index.html` (`/`) | visitors' phones (the QR target) | pin (skippable) → languages → varieties → initials → contribute |
 
 `cv-booth-display.standalone.html` is the screen flattened into one file — handy
 for a quick look or for a laptop with no web server. It cannot receive phone
