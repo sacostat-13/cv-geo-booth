@@ -780,7 +780,7 @@
     state.scene = next;
     document.body.classList.toggle('scene-wall', next === 'wall');
     $('h1').textContent = next === 'wall'
-      ? 'What is Common Voice still missing?'
+      ? 'Which languages are in this room?'
       : 'Which languages are in this room?';
     $('call').innerHTML = next === 'wall'
       ? 'Add what you<br>speak'
