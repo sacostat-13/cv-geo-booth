@@ -14,6 +14,13 @@ submissions; use `display.html` for the real thing.
 Nothing ever appears on the wall except what someone submits from a phone. There
 is no seeded data and no simulate key, so what you see on the screen is real.
 
+`cv-detail.js` carries what the stats endpoint does not — ISO codes, which
+corpora a language is collected in, release hours, variants, accents and the
+demographic shape of its data. It ships **empty**, so most of the language
+panel shows em-dashes or stays hidden until someone fills it. To see the panel
+working, point `display.html` at `cv-detail.sample.js` instead and change it
+back before committing; everything in the sample is invented.
+
 `vulnerable.js` is the one exception, and it is editorial rather than data: a
 reviewed list of endangered languages the booth wants people to know about,
 shown one at a time as a caption under the wall while it rests between
