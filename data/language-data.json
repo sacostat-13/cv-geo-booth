@@ -1,0 +1,376 @@
+{
+ "source": "github.com/common-voice/common-voice server/src/lib/model/db/language-data",
+ "accents": {
+  "gya": {
+   "gya-doforo": "Doforo",
+   "gya-meiganga": "Meiganga"
+  },
+  "fy-NL": {
+   "fy-clayfr": "Klaaifrysk",
+   "fy-woodfr": "Wâldfrysk",
+   "fy-south-southwest": "Súdwesthoeksk",
+   "fy-north": "Noardhoeksk"
+  },
+  "xmf": {
+   "zugid": "ზუგიდური, ზუგიდური",
+   "jvar": "ზუგიდური, ჯვარული",
+   "senak": "სენაკურ-მარტვილური, სენაკური",
+   "martv": "სენაკურ-მარტვილური, მარტვილური",
+   "bandza": "სენაკურ-მარტვილური, ბანძა-მარტვილური",
+   "chkhor": "სენაკურ-მარტვილური, ჩხოროწყული"
+  },
+  "sva": {
+   "ushgul": "ლჷჟა̄ბუ, უშგულ",
+   "kala": "ლჷჟა̄ბუ, კა̄ლ",
+   "ipari": "ლჷჟა̄ბუ, იფა̄̈რ",
+   "mestia": "ლჷჟა̄ბუ, მესტია",
+   "lenjeri": "ლჷჟა̄ბუ, ლენჯა̄̈რ",
+   "latali": "ლჷჟა̄ბუ, ლატლი",
+   "upperbaldali": "ლჷჟა̄ბუ, და̈ლ",
+   "becho": "ლუჩვაბურუ, ბეჩვი",
+   "tskhumari": "ლუჩვაბურუ, ცხჷმა̈რ",
+   "etseri": "ლუჩვაბურუ, ჰეცერ",
+   "pari": "ლუჩვაბურუ, ფა̈რ",
+   "lakhamula": "ლუჩვაბურუ, ლახმჷლ",
+   "chubekhevi": "ლუჩვაბურუ, ჩვიბეჴევ",
+   "lowerbaldali": "ლუჩვაბურუ, და̈ლ",
+   "zhakhunderi": "ლჷლა̄შხუ, ჟახუნდერ",
+   "chikhareshi": "ლჷლა̄შხუ, ჩიხარეშ",
+   "tsana": "ლჷლა̄შხუ, ცა̄ნ",
+   "lentekhi": "ლჷლტეხუ, ლენტხა",
+   "kheledi": "ლჷლტეხუ, ჴელედ",
+   "khopuri": "ლჷლტეხუ, ხოფურ",
+   "rtskhmeluri": "ლჷლტეხუ, რცხმელურ",
+   "choluri": "ლჷლტეხუ, ჩოლურ"
+  },
+  "ady": {
+   "abzakh": "Абдзах (Abzah)",
+   "bzhedug": "Бжъэдыгъу (Bjeduğ)",
+   "hatikuay": "Хьатыкъуай (Hatıkuay)",
+   "shapsug": "Шапсыгъ (Şapsığ)",
+   "temirgoy": "Кıэмгуй (Çemguy)",
+   "ubykh": "Убых (Ubıh)"
+  },
+  "kbd": {
+   "bakhsan": "Бахъсэн (Baksan)",
+   "besleney": "Беслъэней (Besleney)",
+   "kuban": "Псыжь (Adıgey)",
+   "kuban_zelenchuk": "Псыжь-инжыдж (Karaçay-Çerkes)",
+   "malka": "Малкэ (Malka)",
+   "mozdok": "Мэздэгу (Mozdok)",
+   "terek": "Джылэхъстэней (Gilahsteney)"
+  },
+  "nan-tw": {
+   "other_county": "出生地：其他",
+   "keelung_city": "出生地：基隆市",
+   "taipei_city": "出生地：臺北市",
+   "new_taipei_city": "出生地：新北市",
+   "taoyuan_city": "出生地：桃園市",
+   "hsinchu_county": "出生地：新竹縣",
+   "hsinchu_city": "出生地：新竹市",
+   "miaoli_county": "出生地：苗栗縣",
+   "taichung_city": "出生地：臺中市",
+   "changhua_county": "出生地：彰化縣",
+   "nantou_county": "出生地：南投縣",
+   "yunlin_county": "出生地：雲林縣",
+   "chiayi_county": "出生地：嘉義縣",
+   "chiayi_city": "出生地：嘉義市",
+   "tainan_city": "出生地：臺南市",
+   "kaohsiung_city": "出生地：高雄市",
+   "pingtung_county": "出生地：屏東縣",
+   "yilan_county": "出生地：宜蘭縣",
+   "hualien_county": "出生地：花蓮縣",
+   "taitung_county": "出生地：臺東縣",
+   "penghu_county": "出生地：澎湖縣",
+   "kinmen_county": "出生地：金門縣",
+   "lienchiang_county": "出生地：連江縣"
+  },
+  "lzz": {
+   "atinuri": "Atina (Pazar)",
+   "artaşenuri": "Artaşeni (Ardeşen)",
+   "vitzuri": "Vitzi (Fındıklı)",
+   "arkaburi": "Arkabi (Arhavi)",
+   "xopuri": "Xope (Hopa)",
+   "çxaluri": "Çxala (İçkale/Borçka)",
+   "beğlevanuri": "Beğlevani (Güreşen)"
+  },
+  "ga-IE": {
+   "cainteoir_dúchais_gaeltacht": "Cainteoir dúchais, Gaeltacht",
+   "cainteoir_dúchais_lasmuigh_den_ghaeltacht": "Cainteoir dúchais, lasmuigh den Ghaeltacht",
+   "cainteoir_líofa_ní_ó_dhúchas": "Cainteoir líofa, ní ó dhúchas",
+   "foghlaimeoir_i_ngaelscoil": "Foghlaimeoir, i nGaelscoil",
+   "foghlaimeoir_fásta_ó_bhéarla": "Foghlaimeoir fásta, ó Bhéarla",
+   "foghlaimeoir_fásta_ó_theanga_eile": "Foghlaimeoir fásta, ó theanga eile"
+  },
+  "fr": {
+   "fr-metro-north": "Français du nord de la France",
+   "fr-metro-south": "Français du sud de la France"
+  },
+  "ro": {
+   "ro-muntenia": "Muntenesc",
+   "ro-moldova": "Moldovenesc",
+   "ro-oltenia": "Oltenesc",
+   "ro-maramu": "Maramureșean",
+   "ro-crisana": "Crișean",
+   "ro-banat": "Bănățean",
+   "ro-transilv": "Transilvănean"
+  }
+ },
+ "variants": {
+  "gya": {
+   "gya-bodoe": "bódòè",
+   "gya-bokpan": "bòkpàn",
+   "gya-bonina": "bònìna",
+   "gya-bogui": "bûgûi/bògùì",
+   "gya-boyaa": "bôyá",
+   "gya-yaayuwee": "yààyùwèè"
+  },
+  "apc": {
+   "apc-LB": "اللبناني",
+   "apc-Latn-LB": "Lebneneh"
+  },
+  "ha": {
+   "ha-kanawa": "Hausar kanawa",
+   "ha-katsi": "Hausar Katsinawa",
+   "ha-sakkw": "hausar sakkwatawa",
+   "ha-zazza": "Zazzagancin Hausa",
+   "ha-bauchi": "Hausar Bauchi",
+   "ha-borno": "Hausar Borno",
+   "ha-maradi": "Hausar Maraɗi",
+   "ha-zinder": "Hausar Zinder",
+   "ha-tahoua": "Hausar Tahoua",
+   "ha-agadez": "Hausar Agadez",
+   "ha-GH": "Hausar Ghana",
+   "ha-CM": "Hausar Kamaru",
+   "ha-TD": "Hausar Chadi",
+   "ha-SD": "Hausar Sudan"
+  },
+  "kab": {
+   "kab-west": "Taqbaylit n Umalu",
+   "kab-east": "Taqbaylit n Usammar",
+   "kab-fareast": "Tasaḥlit",
+   "kab-farwest": "Taqbaylit n yiri n Umalu"
+  },
+  "mui": {
+   "mui-belide": "Belidè",
+   "mui-kelingi": "Kelingi",
+   "mui-plmbg": "Pelèmbang",
+   "mui-lematang": "Lematang Ilir",
+   "mui-pegagan": "Pegagan",
+   "mui-penukal": "Penukal",
+   "mui-rawas": "Rawas",
+   "mui-sekayu": "Sekayu"
+  },
+  "ee": {
+   "ee-tongu": "Tongu",
+   "ee-anlo": "Aŋlɔ",
+   "ee-evedome": "Eʋedomɛ"
+  },
+  "su": {
+   "su-banten": "Sunda Banten",
+   "su-bogor": "Sunda Bogor",
+   "su-priangan": "Sunda Priangan",
+   "su-ciamis": "Sunda Ciamis",
+   "su-majalengka": "Sunda Majalengka",
+   "su-cirebon": "Sunda Cirebon",
+   "su-brebes": "Sunda Brebes"
+  },
+  "ny": {
+   "ny-pakati": "Pakati - Central",
+   "ny-mwera": "Mwera - Southern",
+   "ny-mpoto": "Mpoto - Northern"
+  },
+  "cy": {
+   "cy-northwes": "North-Western Welsh",
+   "cy-northeas": "North-Eastern Welsh",
+   "cy-midwales": "Mid Wales",
+   "cy-southwes": "South-Western Welsh",
+   "cy-southeas": "South-Eastern Welsh",
+   "cy-wladfa": "Patagonian Welsh"
+  },
+  "sw": {
+   "sw-katanga": "Katanga (DRC)",
+   "sw-sanifu": "Kiswahili Sanifu (EA)",
+   "sw-barake": "Kiswahili cha Bara ya Kenya",
+   "sw-baratz": "Kiswahili cha Bara ya Tanzania",
+   "sw-kingwana": "Kingwana (DRC)",
+   "sw-kimvita": "Kimvita (KE) - Central dialect",
+   "sw-kibajuni": "Kibajuni (KE) - Northern dialect",
+   "sw-kimrima": "Kimrima (TZ) - Northern dialect",
+   "sw-kiunguja": "Kiunguja (TZ) - Southern dialect",
+   "sw-kipemba": "Kipemba (TZ) - Southern dialect",
+   "sw-kikae": "Kimakunduchi/Kikae (TZ) - Southern dialect"
+  },
+  "pt": {
+   "pt-BR": "Portuguese (Brasil)",
+   "pt-PT": "Portuguese (Portugal)"
+  },
+  "ca": {
+   "ca-central": "Central",
+   "ca-balear": "Balear",
+   "ca-nwestern": "Nord-Occidental",
+   "ca-northern": "Septentrional",
+   "ca-valencia-tortosi": "Tortosí",
+   "ca-valencia-central": "Valencià central",
+   "ca-valencia-northern": "Valencià septentrional",
+   "ca-valencia-southern": "Valencià meridional",
+   "ca-valencia-alacant": "Alacantí",
+   "ca-algueres": "Alguerès"
+  },
+  "zgh": {
+   "zgh-shi": "ⵜⴰⵛⵍⵃⵉⵜ (Tachelhit)",
+   "zgh-tzm": "ⵜⴰⵎⴰⵣⵉⵖⵜ ⵏ ⵡⴰⵟⵍⴰⵚ ⴰⵏⴰⵎⵎⴰⵙ (Central Atlas Tamazight)",
+   "zgh-rif": "ⵜⴰⵔⵉⴼⵉⵜ (Tarifit)"
+  },
+  "tui": {
+   "tui-bangwere": "Ɓaŋwere (Tupuri Bangwere)",
+   "tui-banggo": "Ɓaŋgɔ̀ (Tupuri Banggo)"
+  },
+  "tn": {
+   "tn-central": "Central Setswana (Sehurutshe, Sengwaketse, Serolong)",
+   "tn-northern": "Northern Setswana (Sengwato, Setawana, Sekwena, Selete)",
+   "tn-eastern": "Eastern Setswana (Sekgatla, Setlokwa)",
+   "tn-southern": "Southern Setswana (Setlhaping, Setlharo)"
+  },
+  "ady": {
+   "ady-Cyrl": "Адыгабзэ (Кирил, пстэумэ зэдыряе)",
+   "ady-RU": "Адыгабзэ (Кирил, Урысый)",
+   "ady-Cyrl-TR": "Адыгабзэ (Кирил, Тырку - Batı Çerkesçesi)",
+   "ady-Latn-TR-t-ady-cyrl": "Adığabze (Latin, Turk, transliteratse - Batı Çerkesçesi)",
+   "ady-Cyrl-JOR": "Адыгабзэ (Кирил, Иордание)",
+   "ady-Cyrl-SY": "Адыгабзэ (Кирил, Сирие)"
+  },
+  "kbd": {
+   "kbd-Cyrl": "Адыгэбзэ (Къэбэрдей, Кирил, псоми зэдай)",
+   "kbd-RU": "Адыгэбзэ (Къэбэрдей, Кирил, Урысей)",
+   "kbd-Cyrl-TR": "Адыгэбзэ (Къэбэрдей, Кирил, Тырку - Doğu Çerkesçesi)",
+   "kbd-Latn-TR-t-kbd-cyrl": "Adığebze (Kabardey, Latin, Turk, transliteratse - Doğu Çerkesçesi)",
+   "kbd-Cyrl-JOR": "Адыгэбзэ (Къэбэрдей, Кирил, Иордание)",
+   "kbd-Cyrl-SY": "Адыгэбзэ (Къэбэрдей, Кирил, Сирие)"
+  },
+  "pwn": {
+   "pwn-central": "pinayuanan a tjinuvecekadanan (中排灣語)",
+   "pwn-eastern": "pinayuanan a kinaikacedasan (東排灣語)",
+   "pwn-northern": "pinayuanan a tjinuvirian (北排灣語)",
+   "pwn-southern": "pinayuanan a tjinainavaljan (南排灣語)"
+  },
+  "trv": {
+   "trv-tgdaya": "Kari Seediq Tgdaya (德固達雅賽德克語)",
+   "trv-teuda": "Kari Sediq Toda (都達賽德克語)",
+   "trv-truku": "Kari Seejiq Truku (德鹿谷賽德克語)"
+  },
+  "tay": {
+   "tay-squliq": "keʼ na Squliq Tayal (賽考利克泰雅語)",
+   "tay-ciuli": "kay na Sʼuli Tayan (澤敖利泰雅語)",
+   "tay-klesan": "keʼ na Cʼoli Klesan Tayal (宜蘭澤敖利泰雅語)",
+   "tay-cquliq": "ke na Cquliq Tayal (四季泰雅語)",
+   "tay-matuuwal": "kayiʼ na Matuʼuwal (汶水泰雅語)",
+   "tay-pingawan": "keʼ na Pingawan (萬大泰雅語)"
+  },
+  "dru": {
+   "dru-taromak": "Ngodradrekai ka so Taromak (東魯凱語)",
+   "dru-veday": "Ngudradreadrekadhane ka Veday (霧臺魯凱語)",
+   "dru-labuane": "Ngudradreadrekadha ka Tailailabuwana (大武魯凱語)",
+   "dru-oponoho": "ʼakoʼoponohae (萬山語)",
+   "dru-kunga": "bakani Kongadavane (多納語)",
+   "dru-teldreka": "teldredrekane (茂林語)"
+  },
+  "bnn": {
+   "bnn-takitudu": "MalasTakitudu (卓群布農語)",
+   "bnn-bakha": "MalasTakibakha (卡群布農語)",
+   "bnn-bubukun": "MalasʼIsbubukun (郡群布農語)",
+   "bnn-banuaz": "MalasTakbanuaz (巒群布農語)",
+   "bnn-vatan": "MalasTakivatan (丹群布農語)"
+  },
+  "nan-tw": {
+   "nan-TW-pehoeji": "白話字 (POJ)",
+   "nan-TW-tailo": "台羅 (TL)"
+  },
+  "var": {
+   "var-sierra": "Warihío (Guarijío de la sierra)",
+   "var-delrio": "Makurawe (Guarijío del río)"
+  },
+  "sva": {
+   "sva-upperbal": "ლჷჟა̄ბუ",
+   "sva-lowerbal": "ლუჩვაბურუ",
+   "sva-lashkh": "ლჷლა̄შხუ",
+   "sva-lentekh": "ლჷლტეხუ"
+  },
+  "tvu": {
+   "tvu-ndikini": "Tunen (Ndikinimeki)",
+   "tvu-fombo": "Tunen (Fɔ̀mbɔ́)"
+  },
+  "ug": {
+   "ug-Arab": "ئۇيغۇر تىلى",
+   "ug-Cyrl": "Уйғур тили"
+  },
+  "vi": {
+   "vi-hanoi": "Hà Nội",
+   "vi-huett": "Huế",
+   "vi-saigon": "Sài Gòn"
+  },
+  "xmf": {
+   "xmf-zugdid": "ზუგიდური",
+   "xmf-samurz": "სამურზაყანოული",
+   "xmf-senmar": " სენაკურ-მარტვილური"
+  },
+  "lzz": {
+   "lzz-atinuri": "Atinuri, Artaşenuri",
+   "lzz-arkaburi": "Vitzuri, Arkaburi",
+   "lzz-xopuri": "Xopuri"
+  },
+  "gsw": {
+   "gsw-FR-sudrfran": "Südrheinfränkisch (Weissebuisch, Màdere, usw.)",
+   "gsw-FR-rhinfran": "Rhinfränkisch (Bùckenùmm, Lìtzelstän, Bitsch, Saargemìnn usw.)",
+   "gsw-FR-nordalem": "Nordniederàlemmànisch (Rishoffe, Zàwere, Bùsswìller, Hawenau, Brüemt, Stroossbùri, Molse, Dàmbàch, Schlettstàtt, Pfàlzbùri usw.)",
+   "gsw-FR-sudnalem": "Südniederàlemmànisch (Kolmer, Gawìller, Mìlhüüsa, Àltkìrich, usw.)",
+   "gsw-FR-hochalem": "Hochàlemmànnisch (Hìniga, Pfìrt, usw.)"
+  },
+  "ga-IE": {
+   "ga-IE-uladh": "Gaeilge Uladh",
+   "ga-IE-chonnact": "Gaeilge Chonnacht",
+   "ga-IE-mumhan": "Gaeilge na Mumhan",
+   "ga-IE-caighd": "Gaeilge Chaighdeánach"
+  },
+  "luo": {
+   "luo-milambo": "Dholuo (Milambo)",
+   "luo-nyanduat": "Dholuo (Nyanduat)"
+  },
+  "ro": {
+   "ro-RO": "Romanian-Romania",
+   "ro-MD": "Romanian-Moldova"
+  },
+  "fr": {
+   "fr-metro": "Français de métropole"
+  },
+  "abq": {
+   "abq-tapanta": "Тlапlанта (ашвыуа)",
+   "abq-ashkhara": "Ащхъарауа"
+  },
+  "lrl": {
+   "lrl-bandari": "بندری",
+   "lrl-achomi": "اچومی"
+  },
+  "ms": {
+   "ms-standard": "Dialek Standard",
+   "ms-dialect": "Dialek Lain"
+  },
+  "jv": {
+   "jv-timur": "Jawa Timur",
+   "jv-tengah": "Jawa Tengah",
+   "jv-kulon": "Jawa Kulon"
+  },
+  "qxq": {
+   "qxq-farsq": "قشقایی فارس",
+   "qxq-firuzabad": "قشقایی فیروزآباد",
+   "qxq-semirom": "قشقایی سمیرم",
+   "qxq-tribal": "قشقایی ایلی",
+   "qxq-haftkel": "قشقایی هَفتگِل"
+  },
+  "hr": {
+   "hr-kajkavsk": "Kajkavski",
+   "hr-cakavsk": "Čakavski",
+   "hr-stokavsk": "Štokavski"
+  }
+ }
+}

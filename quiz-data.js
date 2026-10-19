@@ -27,6 +27,10 @@ window.CV_DATA = {
    "users": 26960,
    "avgDurationSecs": 4.881,
    "sps": true,
+   "open": true,
+   "speakers": 27023,
+   "sentences": 1078677,
+   "liveValidHours": 457,
    "gender": [
     {
      "label": "male_masculine",
@@ -125,6 +129,10 @@ window.CV_DATA = {
    "users": 3860,
    "avgDurationSecs": 4.187,
    "sps": false,
+   "open": true,
+   "speakers": 3888,
+   "sentences": 43728,
+   "liveValidHours": 185,
    "gender": [
     {
      "label": "male_masculine",
@@ -186,11 +194,13 @@ window.CV_DATA = {
    "variants": [
     {
      "label": "pt-BR",
-     "share": 0.9618
+     "share": 0.9618,
+     "name": "Portuguese (Brasil)"
     },
     {
      "label": "pt-PT",
-     "share": 0.0382
+     "share": 0.0382,
+     "name": "Portuguese (Portugal)"
     }
    ]
   },
@@ -208,6 +218,10 @@ window.CV_DATA = {
    "users": 7350,
    "avgDurationSecs": 5.444,
    "sps": false,
+   "open": true,
+   "speakers": 7383,
+   "sentences": 920325,
+   "liveValidHours": 366,
    "gender": [
     {
      "label": "male_masculine",
@@ -282,6 +296,10 @@ window.CV_DATA = {
    "users": 21116,
    "avgDurationSecs": 5.038,
    "sps": true,
+   "open": true,
+   "speakers": 21196,
+   "sentences": 1618036,
+   "liveValidHours": 1112,
    "gender": [
     {
      "label": "male_masculine",
@@ -375,7 +393,8 @@ window.CV_DATA = {
    "variants": [
     {
      "label": "fr-metro",
-     "share": 0.9204
+     "share": 0.9204,
+     "name": "Français de métropole"
     },
     {
      "label": "fr-europe",
@@ -417,6 +436,10 @@ window.CV_DATA = {
    "users": 464,
    "avgDurationSecs": 4.073,
    "sps": false,
+   "open": true,
+   "speakers": 465,
+   "sentences": 13767,
+   "liveValidHours": 25,
    "gender": [
     {
      "label": "male_masculine",
@@ -468,19 +491,23 @@ window.CV_DATA = {
    "accents": [
     {
      "label": "ro-muntenia",
-     "share": 0.5814
+     "share": 0.5814,
+     "name": "Muntenesc"
     },
     {
      "label": "ro-transilv",
-     "share": 0.1895
+     "share": 0.1895,
+     "name": "Transilvănean"
     },
     {
      "label": "ro-crisana",
-     "share": 0.1157
+     "share": 0.1157,
+     "name": "Crișean"
     },
     {
      "label": "ro-banat",
-     "share": 0.059
+     "share": 0.059,
+     "name": "Bănățean"
     },
     {
      "label": "",
@@ -488,17 +515,20 @@ window.CV_DATA = {
     },
     {
      "label": "ro-moldova",
-     "share": 0.0129
+     "share": 0.0129,
+     "name": "Moldovenesc"
     },
     {
      "label": "ro-oltenia",
-     "share": 0.0006
+     "share": 0.0006,
+     "name": "Oltenesc"
     }
    ],
    "variants": [
     {
      "label": "ro-RO",
-     "share": 1
+     "share": 1,
+     "name": "Romanian-Romania"
     }
    ]
   },
@@ -516,6 +546,10 @@ window.CV_DATA = {
    "users": 36990,
    "avgDurationSecs": 5.191,
    "sps": true,
+   "open": true,
+   "speakers": 37085,
+   "sentences": 1167037,
+   "liveValidHours": 3020,
    "gender": [
     {
      "label": "male_masculine",
@@ -605,35 +639,43 @@ window.CV_DATA = {
    "variants": [
     {
      "label": "ca-central",
-     "share": 0.8518
+     "share": 0.8518,
+     "name": "Central"
     },
     {
      "label": "ca-nwestern",
-     "share": 0.0636
+     "share": 0.0636,
+     "name": "Nord-Occidental"
     },
     {
      "label": "ca-valencia-tortosi",
-     "share": 0.0265
+     "share": 0.0265,
+     "name": "Tortosí"
     },
     {
      "label": "ca-northern",
-     "share": 0.0198
+     "share": 0.0198,
+     "name": "Septentrional"
     },
     {
      "label": "ca-balear",
-     "share": 0.0173
+     "share": 0.0173,
+     "name": "Balear"
     },
     {
      "label": "ca-valencia-southern",
-     "share": 0.0089
+     "share": 0.0089,
+     "name": "Valencià meridional"
     },
     {
      "label": "ca-valencia-northern",
-     "share": 0.0071
+     "share": 0.0071,
+     "name": "Valencià septentrional"
     },
     {
      "label": "ca-valencia-alacant",
-     "share": 0.0044
+     "share": 0.0044,
+     "name": "Alacantí"
     }
    ]
   },
@@ -651,6 +693,10 @@ window.CV_DATA = {
    "users": 6611,
    "avgDurationSecs": 4.99,
    "sps": true,
+   "open": true,
+   "speakers": 6894,
+   "sentences": 1004027,
+   "liveValidHours": 335,
    "gender": [
     {
      "label": "",
@@ -749,6 +795,10 @@ window.CV_DATA = {
    "users": 149,
    "avgDurationSecs": 4.871,
    "sps": false,
+   "open": true,
+   "speakers": 150,
+   "sentences": 4934,
+   "liveValidHours": 1.9,
    "gender": [
     {
      "label": "",
@@ -819,6 +869,10 @@ window.CV_DATA = {
    "users": 50,
    "avgDurationSecs": 4.723,
    "sps": false,
+   "open": true,
+   "speakers": 50,
+   "sentences": 5489,
+   "liveValidHours": 3,
    "gender": [
     {
      "label": "",
@@ -881,6 +935,10 @@ window.CV_DATA = {
    "users": 34,
    "avgDurationSecs": 4.398,
    "sps": false,
+   "open": true,
+   "speakers": 36,
+   "sentences": 1645,
+   "liveValidHours": 0.9,
    "gender": [
     {
      "label": "male_masculine",
@@ -947,6 +1005,10 @@ window.CV_DATA = {
    "users": 93,
    "avgDurationSecs": 5.379,
    "sps": false,
+   "open": true,
+   "speakers": 93,
+   "sentences": 9332,
+   "liveValidHours": 7.6,
    "gender": [
     {
      "label": "",
@@ -1005,6 +1067,10 @@ window.CV_DATA = {
    "users": 20558,
    "avgDurationSecs": 5.267,
    "sps": true,
+   "open": true,
+   "speakers": 20632,
+   "sentences": 2033452,
+   "liveValidHours": 1398,
    "gender": [
     {
      "label": "male_masculine",
@@ -1111,6 +1177,10 @@ window.CV_DATA = {
    "users": 1892,
    "avgDurationSecs": 4.374,
    "sps": true,
+   "open": true,
+   "speakers": 1905,
+   "sentences": 261033,
+   "liveValidHours": 126,
    "gender": [
     {
      "label": "male_masculine",
@@ -1209,6 +1279,10 @@ window.CV_DATA = {
    "users": 891,
    "avgDurationSecs": 4.024,
    "sps": false,
+   "open": true,
+   "speakers": 900,
+   "sentences": 25060,
+   "liveValidHours": 48,
    "gender": [
     {
      "label": "male_masculine",
@@ -1279,6 +1353,10 @@ window.CV_DATA = {
    "users": 302,
    "avgDurationSecs": 4.072,
    "sps": true,
+   "open": true,
+   "speakers": 302,
+   "sentences": 19013,
+   "liveValidHours": 13,
    "gender": [
     {
      "label": "",
@@ -1345,6 +1423,10 @@ window.CV_DATA = {
    "users": 68,
    "avgDurationSecs": 4.192,
    "sps": false,
+   "open": true,
+   "speakers": 68,
+   "sentences": 4419,
+   "liveValidHours": 2.3,
    "gender": [
     {
      "label": "male_masculine",
@@ -1395,6 +1477,10 @@ window.CV_DATA = {
    "users": 8,
    "avgDurationSecs": 6.425,
    "sps": false,
+   "open": true,
+   "speakers": 8,
+   "sentences": 5083,
+   "liveValidHours": 0.1,
    "gender": [
     {
      "label": "",
@@ -1441,6 +1527,10 @@ window.CV_DATA = {
    "users": 70,
    "avgDurationSecs": 6.123,
    "sps": false,
+   "open": true,
+   "speakers": 70,
+   "sentences": 4826,
+   "liveValidHours": 1,
    "gender": [
     {
      "label": "",
@@ -1507,6 +1597,10 @@ window.CV_DATA = {
    "users": 2106,
    "avgDurationSecs": 4.853,
    "sps": true,
+   "open": true,
+   "speakers": 2126,
+   "sentences": 10869,
+   "liveValidHours": 67,
    "gender": [
     {
      "label": "",
@@ -1562,19 +1656,23 @@ window.CV_DATA = {
     },
     {
      "label": "fy-clayfr",
-     "share": 0.134
+     "share": 0.134,
+     "name": "Klaaifrysk"
     },
     {
      "label": "fy-woodfr",
-     "share": 0.0438
+     "share": 0.0438,
+     "name": "Wâldfrysk"
     },
     {
      "label": "fy-north",
-     "share": 0.0115
+     "share": 0.0115,
+     "name": "Noardhoeksk"
     },
     {
      "label": "fy-south-southwest",
-     "share": 0.0028
+     "share": 0.0028,
+     "name": "Súdwesthoeksk"
     }
    ],
    "variants": []
@@ -1593,6 +1691,10 @@ window.CV_DATA = {
    "users": 3767,
    "avgDurationSecs": 5.185,
    "sps": true,
+   "open": true,
+   "speakers": 3786,
+   "sentences": 48007,
+   "liveValidHours": 258,
    "gender": [
     {
      "label": "male_masculine",
@@ -1667,6 +1769,10 @@ window.CV_DATA = {
    "users": 3477,
    "avgDurationSecs": 4.573,
    "sps": false,
+   "open": true,
+   "speakers": 3482,
+   "sentences": 229767,
+   "liveValidHours": 177,
    "gender": [
     {
      "label": "male_masculine",
@@ -1745,6 +1851,10 @@ window.CV_DATA = {
    "users": 1181,
    "avgDurationSecs": 4.641,
    "sps": false,
+   "open": true,
+   "speakers": 1185,
+   "sentences": 209229,
+   "liveValidHours": 110,
    "gender": [
     {
      "label": "male_masculine",
@@ -1811,6 +1921,10 @@ window.CV_DATA = {
    "users": 1146,
    "avgDurationSecs": 4.461,
    "sps": false,
+   "open": true,
+   "speakers": 1152,
+   "sentences": 451348,
+   "liveValidHours": 76,
    "gender": [
     {
      "label": "male_masculine",
@@ -1881,6 +1995,10 @@ window.CV_DATA = {
    "users": 274,
    "avgDurationSecs": 4.297,
    "sps": false,
+   "open": true,
+   "speakers": 274,
+   "sentences": 22255,
+   "liveValidHours": 57,
    "gender": [
     {
      "label": "",
@@ -1943,6 +2061,10 @@ window.CV_DATA = {
    "users": 155,
    "avgDurationSecs": 5.472,
    "sps": false,
+   "open": true,
+   "speakers": 155,
+   "sentences": 39572,
+   "liveValidHours": 17,
    "gender": [
     {
      "label": "male_masculine",
@@ -2009,6 +2131,10 @@ window.CV_DATA = {
    "users": 187,
    "avgDurationSecs": 3.263,
    "sps": false,
+   "open": true,
+   "speakers": 190,
+   "sentences": 8209,
+   "liveValidHours": 7.7,
    "gender": [
     {
      "label": "",
@@ -2075,6 +2201,10 @@ window.CV_DATA = {
    "users": 1006,
    "avgDurationSecs": 3.986,
    "sps": false,
+   "open": true,
+   "speakers": 1008,
+   "sentences": 4165,
+   "liveValidHours": 18,
    "gender": [
     {
      "label": "male_masculine",
@@ -2145,6 +2275,10 @@ window.CV_DATA = {
    "users": 8624,
    "avgDurationSecs": 4.795,
    "sps": false,
+   "open": true,
+   "speakers": 8644,
+   "sentences": 379189,
+   "liveValidHours": 1823,
    "gender": [
     {
      "label": "",
@@ -2215,6 +2349,10 @@ window.CV_DATA = {
    "users": 469,
    "avgDurationSecs": 4.807,
    "sps": false,
+   "open": true,
+   "speakers": 473,
+   "sentences": 6123,
+   "liveValidHours": 25,
    "gender": [
     {
      "label": "female_feminine",
@@ -2285,6 +2423,10 @@ window.CV_DATA = {
    "users": 41,
    "avgDurationSecs": 7.769,
    "sps": false,
+   "open": true,
+   "speakers": 41,
+   "sentences": 7281,
+   "liveValidHours": 4.8,
    "gender": [
     {
      "label": "",
@@ -2355,6 +2497,10 @@ window.CV_DATA = {
    "users": 1938,
    "avgDurationSecs": 4.918,
    "sps": true,
+   "open": true,
+   "speakers": 1943,
+   "sentences": 117973,
+   "liveValidHours": 124,
    "gender": [
     {
      "label": "",
@@ -2420,23 +2566,28 @@ window.CV_DATA = {
    "variants": [
     {
      "label": "cy-northeas",
-     "share": 0.4271
+     "share": 0.4271,
+     "name": "North-Eastern Welsh"
     },
     {
      "label": "cy-southeas",
-     "share": 0.1888
+     "share": 0.1888,
+     "name": "South-Eastern Welsh"
     },
     {
      "label": "cy-midwales",
-     "share": 0.1588
+     "share": 0.1588,
+     "name": "Mid Wales"
     },
     {
      "label": "cy-northwes",
-     "share": 0.1358
+     "share": 0.1358,
+     "name": "North-Western Welsh"
     },
     {
      "label": "cy-southwes",
-     "share": 0.0895
+     "share": 0.0895,
+     "name": "South-Western Welsh"
     }
    ]
   },
@@ -2454,6 +2605,10 @@ window.CV_DATA = {
    "users": 299,
    "avgDurationSecs": 3.308,
    "sps": true,
+   "open": true,
+   "speakers": 303,
+   "sentences": 46444,
+   "liveValidHours": 36,
    "gender": [
     {
      "label": "male_masculine",
@@ -2540,6 +2695,10 @@ window.CV_DATA = {
    "users": 282,
    "avgDurationSecs": 3.838,
    "sps": true,
+   "open": true,
+   "speakers": 285,
+   "sentences": 4730,
+   "liveValidHours": 15,
    "gender": [
     {
      "label": "male_masculine",
@@ -2591,7 +2750,8 @@ window.CV_DATA = {
    "accents": [
     {
      "label": "cainteoir_líofa_ní_ó_dhúchas",
-     "share": 0.3984
+     "share": 0.3984,
+     "name": "Cainteoir líofa, ní ó dhúchas"
     },
     {
      "label": "",
@@ -2599,37 +2759,45 @@ window.CV_DATA = {
     },
     {
      "label": "cainteoir_dúchais_gaeltacht",
-     "share": 0.2703
+     "share": 0.2703,
+     "name": "Cainteoir dúchais, Gaeltacht"
     },
     {
      "label": "foghlaimeoir_fásta_ó_bhéarla",
-     "share": 0.003
+     "share": 0.003,
+     "name": "Foghlaimeoir fásta, ó Bhéarla"
     },
     {
      "label": "cainteoir_dúchais_lasmuigh_den_ghaeltacht",
-     "share": 0.003
+     "share": 0.003,
+     "name": "Cainteoir dúchais, lasmuigh den Ghaeltacht"
     },
     {
      "label": "foghlaimeoir_i_ngaelscoil",
-     "share": 0.003
+     "share": 0.003,
+     "name": "Foghlaimeoir, i nGaelscoil"
     }
    ],
    "variants": [
     {
      "label": "ga-IE-chonnact",
-     "share": 0.4533
+     "share": 0.4533,
+     "name": "Gaeilge Chonnacht"
     },
     {
      "label": "ga-IE-mumhan",
-     "share": 0.362
+     "share": 0.362,
+     "name": "Gaeilge na Mumhan"
     },
     {
      "label": "ga-IE-uladh",
-     "share": 0.1787
+     "share": 0.1787,
+     "name": "Gaeilge Uladh"
     },
     {
      "label": "ga-IE-caighd",
-     "share": 0.006
+     "share": 0.006,
+     "name": "Gaeilge Chaighdeánach"
     }
    ]
   },
@@ -2647,6 +2815,10 @@ window.CV_DATA = {
    "users": 253,
    "avgDurationSecs": 4.635,
    "sps": false,
+   "open": true,
+   "speakers": 254,
+   "sentences": 5865,
+   "liveValidHours": 15,
    "gender": [
     {
      "label": "male_masculine",
@@ -2717,6 +2889,10 @@ window.CV_DATA = {
    "users": 1127,
    "avgDurationSecs": 6.72,
    "sps": false,
+   "open": true,
+   "speakers": 1127,
+   "sentences": 10874,
+   "liveValidHours": 63,
    "gender": [
     {
      "label": "male_masculine",
@@ -2787,6 +2963,10 @@ window.CV_DATA = {
    "users": 1683,
    "avgDurationSecs": 5.541,
    "sps": false,
+   "open": true,
+   "speakers": 1699,
+   "sentences": 326553,
+   "liveValidHours": 139,
    "gender": [
     {
      "label": "female_feminine",
@@ -2857,6 +3037,10 @@ window.CV_DATA = {
    "users": 500,
    "avgDurationSecs": 4.622,
    "sps": false,
+   "open": true,
+   "speakers": 500,
+   "sentences": 328269,
+   "liveValidHours": 282,
    "gender": [
     {
      "label": "female_feminine",
@@ -2927,6 +3111,10 @@ window.CV_DATA = {
    "users": 13,
    "avgDurationSecs": 5.784,
    "sps": false,
+   "open": true,
+   "speakers": 13,
+   "sentences": 5015,
+   "liveValidHours": 3.8,
    "gender": [
     {
      "label": "male_masculine",
@@ -2989,6 +3177,10 @@ window.CV_DATA = {
    "users": 335,
    "avgDurationSecs": 5.098,
    "sps": false,
+   "open": true,
+   "speakers": 339,
+   "sentences": 129359,
+   "liveValidHours": 29,
    "gender": [
     {
      "label": "",
@@ -3059,6 +3251,10 @@ window.CV_DATA = {
    "users": 6563,
    "avgDurationSecs": 4.821,
    "sps": true,
+   "open": true,
+   "speakers": 6630,
+   "sentences": 33913,
+   "liveValidHours": 269,
    "gender": [
     {
      "label": "",
@@ -3137,6 +3333,10 @@ window.CV_DATA = {
    "users": 1840,
    "avgDurationSecs": 3.855,
    "sps": true,
+   "open": true,
+   "speakers": 1858,
+   "sentences": 409463,
+   "liveValidHours": 131,
    "gender": [
     {
      "label": "male_masculine",
@@ -3207,6 +3407,10 @@ window.CV_DATA = {
    "users": 48,
    "avgDurationSecs": 5.446,
    "sps": false,
+   "open": true,
+   "speakers": 48,
+   "sentences": 93161,
+   "liveValidHours": 0.6,
    "gender": [
     {
      "label": "",
@@ -3269,6 +3473,10 @@ window.CV_DATA = {
    "users": 206,
    "avgDurationSecs": 4.968,
    "sps": false,
+   "open": true,
+   "speakers": 207,
+   "sentences": 6234,
+   "liveValidHours": 2.5,
    "gender": [
     {
      "label": "",
@@ -3331,6 +3539,10 @@ window.CV_DATA = {
    "users": 301,
    "avgDurationSecs": 4.559,
    "sps": false,
+   "open": true,
+   "speakers": 303,
+   "sentences": 5050,
+   "liveValidHours": 40,
    "gender": [
     {
      "label": "male_masculine",
@@ -3393,6 +3605,10 @@ window.CV_DATA = {
    "users": 2318,
    "avgDurationSecs": 4.163,
    "sps": false,
+   "open": true,
+   "speakers": 2358,
+   "sentences": 149584,
+   "liveValidHours": 128,
    "gender": [
     {
      "label": "male_masculine",
@@ -3455,6 +3671,10 @@ window.CV_DATA = {
    "users": 299,
    "avgDurationSecs": 3.84,
    "sps": true,
+   "open": true,
+   "speakers": 306,
+   "sentences": 21487,
+   "liveValidHours": 37,
    "gender": [
     {
      "label": "male_masculine",
@@ -3525,6 +3745,10 @@ window.CV_DATA = {
    "users": 930,
    "avgDurationSecs": 4.427,
    "sps": true,
+   "open": true,
+   "speakers": 942,
+   "sentences": 153968,
+   "liveValidHours": 259,
    "gender": [
     {
      "label": "female_feminine",
@@ -3595,6 +3819,10 @@ window.CV_DATA = {
    "users": 1862,
    "avgDurationSecs": 5.922,
    "sps": false,
+   "open": true,
+   "speakers": 1875,
+   "sentences": 231307,
+   "liveValidHours": 470,
    "gender": [
     {
      "label": "",
@@ -3656,11 +3884,13 @@ window.CV_DATA = {
    "variants": [
     {
      "label": "ug-Arab",
-     "share": 0.9926
+     "share": 0.9926,
+     "name": "ئۇيغۇر تىلى"
     },
     {
      "label": "ug-Cyrl",
-     "share": 0.0074
+     "share": 0.0074,
+     "name": "Уйғур тили"
     }
    ]
   },
@@ -3678,6 +3908,10 @@ window.CV_DATA = {
    "users": 256,
    "avgDurationSecs": 6.33,
    "sps": false,
+   "open": true,
+   "speakers": 256,
+   "sentences": 6083,
+   "liveValidHours": 16,
    "gender": [
     {
      "label": "female_feminine",
@@ -3740,6 +3974,10 @@ window.CV_DATA = {
    "users": 122,
    "avgDurationSecs": 5.042,
    "sps": false,
+   "open": true,
+   "speakers": 122,
+   "sentences": 4382,
+   "liveValidHours": 27,
    "gender": [
     {
      "label": "male_masculine",
@@ -3802,6 +4040,10 @@ window.CV_DATA = {
    "users": 485,
    "avgDurationSecs": 5.051,
    "sps": false,
+   "open": true,
+   "speakers": 487,
+   "sentences": 30247,
+   "liveValidHours": 16,
    "gender": [
     {
      "label": "male_masculine",
@@ -3868,6 +4110,10 @@ window.CV_DATA = {
    "users": 23019,
    "avgDurationSecs": 4.371,
    "sps": false,
+   "open": true,
+   "speakers": 23027,
+   "sentences": 562832,
+   "liveValidHours": 49,
    "gender": [
     {
      "label": "male_masculine",
@@ -3930,6 +4176,10 @@ window.CV_DATA = {
    "users": 506,
    "avgDurationSecs": 4.231,
    "sps": false,
+   "open": true,
+   "speakers": 508,
+   "sentences": 21892,
+   "liveValidHours": 77,
    "gender": [
     {
      "label": "male_masculine",
@@ -3992,6 +4242,10 @@ window.CV_DATA = {
    "users": 75,
    "avgDurationSecs": 4.806,
    "sps": false,
+   "open": true,
+   "speakers": 76,
+   "sentences": 14825,
+   "liveValidHours": 2.5,
    "gender": [
     {
      "label": "male_masculine",
@@ -4058,6 +4312,10 @@ window.CV_DATA = {
    "users": 107,
    "avgDurationSecs": 6.201,
    "sps": false,
+   "open": true,
+   "speakers": 110,
+   "sentences": 6136,
+   "liveValidHours": 20,
    "gender": [
     {
      "label": "female_feminine",
@@ -4124,6 +4382,10 @@ window.CV_DATA = {
    "users": 64,
    "avgDurationSecs": 4.153,
    "sps": false,
+   "open": true,
+   "speakers": 64,
+   "sentences": 1321,
+   "liveValidHours": 1.4,
    "gender": [
     {
      "label": "male_masculine",
@@ -4174,6 +4436,10 @@ window.CV_DATA = {
    "users": 53,
    "avgDurationSecs": 5.846,
    "sps": false,
+   "open": true,
+   "speakers": 57,
+   "sentences": 7171,
+   "liveValidHours": 2.9,
    "gender": [
     {
      "label": "",
@@ -4236,6 +4502,10 @@ window.CV_DATA = {
    "users": 166,
    "avgDurationSecs": 5.54,
    "sps": false,
+   "open": true,
+   "speakers": 167,
+   "sentences": 6191,
+   "liveValidHours": 2.9,
    "gender": [
     {
      "label": "",
@@ -4302,6 +4572,10 @@ window.CV_DATA = {
    "users": 394,
    "avgDurationSecs": 5.12,
    "sps": false,
+   "open": true,
+   "speakers": 395,
+   "sentences": 7172,
+   "liveValidHours": 39,
    "gender": [
     {
      "label": "female_feminine",
@@ -4376,6 +4650,10 @@ window.CV_DATA = {
    "users": 60,
    "avgDurationSecs": 4.164,
    "sps": false,
+   "open": true,
+   "speakers": 60,
+   "sentences": 6010,
+   "liveValidHours": 4.3,
    "gender": [
     {
      "label": "male_masculine",
@@ -4434,6 +4712,10 @@ window.CV_DATA = {
    "users": 984,
    "avgDurationSecs": 6.183,
    "sps": false,
+   "open": true,
+   "speakers": 997,
+   "sentences": 106113,
+   "liveValidHours": 235,
    "gender": [
     {
      "label": "",
@@ -4504,6 +4786,10 @@ window.CV_DATA = {
    "users": 158,
    "avgDurationSecs": 4.243,
    "sps": false,
+   "open": true,
+   "speakers": 159,
+   "sentences": 5487,
+   "liveValidHours": 2.9,
    "gender": [
     {
      "label": "male_masculine",
@@ -4566,6 +4852,10 @@ window.CV_DATA = {
    "users": 4668,
    "avgDurationSecs": 3.93,
    "sps": false,
+   "open": true,
+   "speakers": 4670,
+   "sentences": 54775,
+   "liveValidHours": 373,
    "gender": [
     {
      "label": "male_masculine",
@@ -4636,6 +4926,10 @@ window.CV_DATA = {
    "users": 2069,
    "avgDurationSecs": 4.101,
    "sps": false,
+   "open": true,
+   "speakers": 2077,
+   "sentences": 18510,
+   "liveValidHours": 139,
    "gender": [
     {
      "label": "male_masculine",
@@ -4710,6 +5004,10 @@ window.CV_DATA = {
    "users": 709,
    "avgDurationSecs": 4.201,
    "sps": false,
+   "open": true,
+   "speakers": 712,
+   "sentences": 17034,
+   "liveValidHours": 80,
    "gender": [
     {
      "label": "",
@@ -4776,6 +5074,10 @@ window.CV_DATA = {
    "users": 8429,
    "avgDurationSecs": 3.793,
    "sps": true,
+   "open": true,
+   "speakers": 8495,
+   "sentences": 1225990,
+   "liveValidHours": 3757,
    "gender": [
     {
      "label": "female_feminine",
@@ -4846,6 +5148,10 @@ window.CV_DATA = {
    "users": 25,
    "avgDurationSecs": 4.035,
    "sps": false,
+   "open": true,
+   "speakers": 25,
+   "sentences": 5682,
+   "liveValidHours": 2,
    "gender": [
     {
      "label": "",
@@ -4908,6 +5214,10 @@ window.CV_DATA = {
    "users": 1679,
    "avgDurationSecs": 4.164,
    "sps": false,
+   "open": true,
+   "speakers": 1692,
+   "sentences": 59229,
+   "liveValidHours": 94,
    "gender": [
     {
      "label": "",
@@ -4974,6 +5284,10 @@ window.CV_DATA = {
    "users": 60,
    "avgDurationSecs": 4.596,
    "sps": false,
+   "open": true,
+   "speakers": 60,
+   "sentences": 4256,
+   "liveValidHours": 3.6,
    "gender": [
     {
      "label": "male_masculine",
@@ -5036,6 +5350,10 @@ window.CV_DATA = {
    "users": 225,
    "avgDurationSecs": 4.747,
    "sps": false,
+   "open": true,
+   "speakers": 225,
+   "sentences": 5274,
+   "liveValidHours": 8.8,
    "gender": [
     {
      "label": "female_feminine",
@@ -5102,6 +5420,10 @@ window.CV_DATA = {
    "users": 56,
    "avgDurationSecs": 6.411,
    "sps": true,
+   "open": true,
+   "speakers": 59,
+   "sentences": 2210,
+   "liveValidHours": 2,
    "gender": [
     {
      "label": "male_masculine",
@@ -5152,6 +5474,10 @@ window.CV_DATA = {
    "users": 17,
    "avgDurationSecs": 5.199,
    "sps": false,
+   "open": true,
+   "speakers": 17,
+   "sentences": 4571,
+   "liveValidHours": 0.1,
    "gender": [
     {
      "label": "",
@@ -5202,6 +5528,10 @@ window.CV_DATA = {
    "users": 7601,
    "avgDurationSecs": 4.54,
    "sps": true,
+   "open": true,
+   "speakers": 7638,
+   "sentences": 51797,
+   "liveValidHours": 240,
    "gender": [
     {
      "label": "",
@@ -5300,6 +5630,10 @@ window.CV_DATA = {
    "users": 1188,
    "avgDurationSecs": 3.961,
    "sps": false,
+   "open": true,
+   "speakers": 1196,
+   "sentences": 18548,
+   "liveValidHours": 204,
    "gender": [
     {
      "label": "female_feminine",
@@ -5378,6 +5712,10 @@ window.CV_DATA = {
    "users": 303,
    "avgDurationSecs": 2.659,
    "sps": false,
+   "open": true,
+   "speakers": 303,
+   "sentences": 26894,
+   "liveValidHours": 21,
    "gender": [
     {
      "label": "male_masculine",
@@ -5437,41 +5775,50 @@ window.CV_DATA = {
     },
     {
      "label": "changhua_county",
-     "share": 0.0011
+     "share": 0.0011,
+     "name": "出生地：彰化縣"
     },
     {
      "label": "tainan_city",
-     "share": 0.0009
+     "share": 0.0009,
+     "name": "出生地：臺南市"
     },
     {
      "label": "yunlin_county",
-     "share": 0.0004
+     "share": 0.0004,
+     "name": "出生地：雲林縣"
     },
     {
      "label": "taipei_city",
-     "share": 0.0004
+     "share": 0.0004,
+     "name": "出生地：臺北市"
     },
     {
      "label": "new_taipei_city",
-     "share": 0.0004
+     "share": 0.0004,
+     "name": "出生地：新北市"
     },
     {
      "label": "yilan_county",
-     "share": 0.0002
+     "share": 0.0002,
+     "name": "出生地：宜蘭縣"
     },
     {
      "label": "chiayi_county",
-     "share": 0.0002
+     "share": 0.0002,
+     "name": "出生地：嘉義縣"
     }
    ],
    "variants": [
     {
      "label": "nan-TW-tailo",
-     "share": 0.8582
+     "share": 0.8582,
+     "name": "台羅 (TL)"
     },
     {
      "label": "nan-TW-pehoeji",
-     "share": 0.1418
+     "share": 0.1418,
+     "name": "白話字 (POJ)"
     }
    ]
   },
@@ -5489,6 +5836,10 @@ window.CV_DATA = {
    "users": 7852,
    "avgDurationSecs": 4.467,
    "sps": false,
+   "open": true,
+   "speakers": 7894,
+   "sentences": 36630,
+   "liveValidHours": 382,
    "gender": [
     {
      "label": "female_feminine",
@@ -5575,6 +5926,10 @@ window.CV_DATA = {
    "users": 213,
    "avgDurationSecs": 5.209,
    "sps": false,
+   "open": true,
+   "speakers": 215,
+   "sentences": 7465,
+   "liveValidHours": 2.2,
    "gender": [
     {
      "label": "",
@@ -5649,6 +6004,10 @@ window.CV_DATA = {
    "users": 7997,
    "avgDurationSecs": 4.194,
    "sps": true,
+   "open": true,
+   "speakers": 8072,
+   "sentences": 63770,
+   "liveValidHours": 173,
    "gender": [
     {
      "label": "male_masculine",
@@ -5723,6 +6082,10 @@ window.CV_DATA = {
    "users": 16,
    "avgDurationSecs": 6.532,
    "sps": false,
+   "open": true,
+   "speakers": 16,
+   "sentences": 5145,
+   "liveValidHours": 0.3,
    "gender": [
     {
      "label": "male_masculine",
@@ -5773,6 +6136,10 @@ window.CV_DATA = {
    "users": 419,
    "avgDurationSecs": 4.013,
    "sps": false,
+   "open": true,
+   "speakers": 423,
+   "sentences": 16665,
+   "liveValidHours": 7.7,
    "gender": [
     {
      "label": "male_masculine",
@@ -5834,15 +6201,18 @@ window.CV_DATA = {
    "variants": [
     {
      "label": "vi-huett",
-     "share": 0.674
+     "share": 0.674,
+     "name": "Huế"
     },
     {
      "label": "vi-saigon",
-     "share": 0.1744
+     "share": 0.1744,
+     "name": "Sài Gòn"
     },
     {
      "label": "vi-hanoi",
-     "share": 0.1516
+     "share": 0.1516,
+     "name": "Hà Nội"
     }
    ]
   },
@@ -5860,6 +6230,10 @@ window.CV_DATA = {
    "users": 15,
    "avgDurationSecs": 4.814,
    "sps": false,
+   "open": true,
+   "speakers": 16,
+   "sentences": 364,
+   "liveValidHours": 0.3,
    "gender": [
     {
      "label": "",
@@ -5906,6 +6280,10 @@ window.CV_DATA = {
    "users": 301,
    "avgDurationSecs": 3.517,
    "sps": false,
+   "open": true,
+   "speakers": 301,
+   "sentences": 5190,
+   "liveValidHours": 1.9,
    "gender": [
     {
      "label": "",
@@ -5963,6 +6341,10 @@ window.CV_DATA = {
    "users": 678,
    "avgDurationSecs": 3.991,
    "sps": false,
+   "open": true,
+   "speakers": 683,
+   "sentences": 7021,
+   "liveValidHours": 34,
    "gender": [
     {
      "label": "male_masculine",
@@ -6033,6 +6415,10 @@ window.CV_DATA = {
    "users": 1525,
    "avgDurationSecs": 5.246,
    "sps": true,
+   "open": true,
+   "speakers": 1538,
+   "sentences": 134729,
+   "liveValidHours": 417,
    "gender": [
     {
      "label": "female_feminine",
@@ -6086,31 +6472,38 @@ window.CV_DATA = {
    "variants": [
     {
      "label": "sw-baratz",
-     "share": 0.4299
+     "share": 0.4299,
+     "name": "Kiswahili cha Bara ya Tanzania"
     },
     {
      "label": "sw-sanifu",
-     "share": 0.4136
+     "share": 0.4136,
+     "name": "Kiswahili Sanifu (EA)"
     },
     {
      "label": "sw-barake",
-     "share": 0.1228
+     "share": 0.1228,
+     "name": "Kiswahili cha Bara ya Kenya"
     },
     {
      "label": "sw-kingwana",
-     "share": 0.0332
+     "share": 0.0332,
+     "name": "Kingwana (DRC)"
     },
     {
      "label": "sw-kimvita",
-     "share": 0.0003
+     "share": 0.0003,
+     "name": "Kimvita (KE) - Central dialect"
     },
     {
      "label": "sw-katanga",
-     "share": 0.0001
+     "share": 0.0001,
+     "name": "Katanga (DRC)"
     },
     {
      "label": "sw-kimrima",
-     "share": 0.0001
+     "share": 0.0001,
+     "name": "Kimrima (TZ) - Northern dialect"
     }
    ]
   },
@@ -6128,6 +6521,10 @@ window.CV_DATA = {
    "users": 1187,
    "avgDurationSecs": 5.007,
    "sps": false,
+   "open": true,
+   "speakers": 1189,
+   "sentences": 1404868,
+   "liveValidHours": 2003,
    "gender": [
     {
      "label": "male_masculine",
@@ -6190,6 +6587,10 @@ window.CV_DATA = {
    "users": 672,
    "avgDurationSecs": 5.784,
    "sps": false,
+   "open": true,
+   "speakers": 676,
+   "sentences": 191365,
+   "liveValidHours": 438,
    "gender": [
     {
      "label": "female_feminine",
@@ -6260,6 +6661,10 @@ window.CV_DATA = {
    "users": 9,
    "avgDurationSecs": 5.552,
    "sps": false,
+   "open": true,
+   "speakers": 14,
+   "sentences": 1321,
+   "liveValidHours": 0,
    "gender": [
     {
      "label": "",
@@ -6310,6 +6715,10 @@ window.CV_DATA = {
    "users": 5,
    "avgDurationSecs": 6.424,
    "sps": false,
+   "open": true,
+   "speakers": 7,
+   "sentences": 1476,
+   "liveValidHours": 0,
    "gender": [
     {
      "label": "",
@@ -6339,6 +6748,10 @@ window.CV_DATA = {
    "users": 2,
    "avgDurationSecs": 3.223,
    "sps": false,
+   "open": true,
+   "speakers": 2,
+   "sentences": 2339,
+   "liveValidHours": 0,
    "gender": [
     {
      "label": "male_masculine",
@@ -6381,6 +6794,10 @@ window.CV_DATA = {
    "users": 2,
    "avgDurationSecs": 5.754,
    "sps": false,
+   "open": true,
+   "speakers": 2,
+   "sentences": 2254,
+   "liveValidHours": 0,
    "gender": [
     {
      "label": "",
@@ -6419,6 +6836,10 @@ window.CV_DATA = {
    "users": 18,
    "avgDurationSecs": 4.377,
    "sps": false,
+   "open": true,
+   "speakers": 19,
+   "sentences": 1767,
+   "liveValidHours": 4.3,
    "gender": [
     {
      "label": "",
@@ -6455,11 +6876,13 @@ window.CV_DATA = {
    "variants": [
     {
      "label": "tn-central",
-     "share": 0.8333
+     "share": 0.8333,
+     "name": "Central Setswana (Sehurutshe, Sengwaketse, Serolong)"
     },
     {
      "label": "tn-northern",
-     "share": 0.1667
+     "share": 0.1667,
+     "name": "Northern Setswana (Sengwato, Setawana, Sekwena, Selete)"
     }
    ]
   },
@@ -6477,6 +6900,10 @@ window.CV_DATA = {
    "users": 3,
    "avgDurationSecs": 5.733,
    "sps": false,
+   "open": true,
+   "speakers": 3,
+   "sentences": 1735,
+   "liveValidHours": 0,
    "gender": [
     {
      "label": "female_feminine",
@@ -6519,6 +6946,10 @@ window.CV_DATA = {
    "users": 3,
    "avgDurationSecs": 7.652,
    "sps": false,
+   "open": true,
+   "speakers": 3,
+   "sentences": 1614,
+   "liveValidHours": 0,
    "gender": [
     {
      "label": "",
@@ -6561,6 +6992,10 @@ window.CV_DATA = {
    "users": 57,
    "avgDurationSecs": 3.909,
    "sps": true,
+   "open": true,
+   "speakers": 57,
+   "sentences": 5226,
+   "liveValidHours": 12,
    "gender": [
     {
      "label": "",
@@ -6619,6 +7054,10 @@ window.CV_DATA = {
    "users": 138,
    "avgDurationSecs": 6.048,
    "sps": false,
+   "open": true,
+   "speakers": 139,
+   "sentences": 5419,
+   "liveValidHours": 6.5,
    "gender": [
     {
      "label": "female_feminine",
@@ -6685,6 +7124,10 @@ window.CV_DATA = {
    "users": 188,
    "avgDurationSecs": 5.43,
    "sps": false,
+   "open": true,
+   "speakers": 194,
+   "sentences": 15468,
+   "liveValidHours": 2.6,
    "gender": [
     {
      "label": "female_feminine",
@@ -6755,6 +7198,10 @@ window.CV_DATA = {
    "users": 22,
    "avgDurationSecs": 5.066,
    "sps": false,
+   "open": true,
+   "speakers": 22,
+   "sentences": 49180,
+   "liveValidHours": 0.3,
    "gender": [
     {
      "label": "",
@@ -6809,6 +7256,10 @@ window.CV_DATA = {
    "users": 35,
    "avgDurationSecs": 6.309,
    "sps": false,
+   "open": true,
+   "speakers": 35,
+   "sentences": 5028,
+   "liveValidHours": 0.4,
    "gender": [
     {
      "label": "male_masculine",
@@ -6858,6 +7309,10 @@ window.CV_DATA = {
    "users": 64,
    "avgDurationSecs": 4.38,
    "sps": false,
+   "open": true,
+   "speakers": 74,
+   "sentences": 5505,
+   "liveValidHours": 4.4,
    "gender": [
     {
      "label": "male_masculine",
@@ -6907,11 +7362,13 @@ window.CV_DATA = {
    "variants": [
     {
      "label": "ha-kanawa",
-     "share": 0.9537
+     "share": 0.9537,
+     "name": "Hausar kanawa"
     },
     {
      "label": "ha-bauchi",
-     "share": 0.0463
+     "share": 0.0463,
+     "name": "Hausar Bauchi"
     }
    ]
   },
@@ -6929,6 +7386,10 @@ window.CV_DATA = {
    "users": 1608,
    "avgDurationSecs": 3.344,
    "sps": false,
+   "open": true,
+   "speakers": 1618,
+   "sentences": 181352,
+   "liveValidHours": 572,
    "gender": [
     {
      "label": "male_masculine",
@@ -6986,7 +7447,8 @@ window.CV_DATA = {
    "variants": [
     {
      "label": "kab-east",
-     "share": 1
+     "share": 1,
+     "name": "Taqbaylit n Usammar"
     }
    ]
   },
@@ -7004,6 +7466,10 @@ window.CV_DATA = {
    "users": 51,
    "avgDurationSecs": 3.588,
    "sps": false,
+   "open": true,
+   "speakers": 51,
+   "sentences": 2740,
+   "liveValidHours": 1.5,
    "gender": [
     {
      "label": "male_masculine",
@@ -7036,11 +7502,13 @@ window.CV_DATA = {
    "variants": [
     {
      "label": "zgh-shi",
-     "share": 0.8814
+     "share": 0.8814,
+     "name": "ⵜⴰⵛⵍⵃⵉⵜ (Tachelhit)"
     },
     {
      "label": "zgh-tzm",
-     "share": 0.1186
+     "share": 0.1186,
+     "name": "ⵜⴰⵎⴰⵣⵉⵖⵜ ⵏ ⵡⴰⵟⵍⴰⵚ ⴰⵏⴰⵎⵎⴰⵙ (Central Atlas Tamazight)"
     }
    ]
   },
@@ -7058,6 +7526,10 @@ window.CV_DATA = {
    "users": 3149,
    "avgDurationSecs": 5.321,
    "sps": true,
+   "open": true,
+   "speakers": 3171,
+   "sentences": 137656,
+   "liveValidHours": 266,
    "gender": [
     {
      "label": "female_feminine",
@@ -7136,6 +7608,10 @@ window.CV_DATA = {
    "users": 1084,
    "avgDurationSecs": 5.4,
    "sps": false,
+   "open": true,
+   "speakers": 1115,
+   "sentences": 237448,
+   "liveValidHours": 40,
    "gender": [
     {
      "label": "female_feminine",
@@ -7198,6 +7674,10 @@ window.CV_DATA = {
    "users": 1303,
    "avgDurationSecs": 5.507,
    "sps": false,
+   "open": true,
+   "speakers": 1303,
+   "sentences": 1046830,
+   "liveValidHours": 217,
    "gender": [
     {
      "label": "female_feminine",
@@ -7276,6 +7756,10 @@ window.CV_DATA = {
    "users": 11056,
    "avgDurationSecs": 5.438,
    "sps": false,
+   "open": true,
+   "speakers": 11062,
+   "sentences": 1018163,
+   "liveValidHours": 456,
    "gender": [
     {
      "label": "",
@@ -7362,6 +7846,10 @@ window.CV_DATA = {
    "users": 456,
    "avgDurationSecs": 4.15,
    "sps": false,
+   "open": true,
+   "speakers": 463,
+   "sentences": 8954,
+   "liveValidHours": 21,
    "gender": [
     {
      "label": "male_masculine",
@@ -7428,6 +7916,10 @@ window.CV_DATA = {
    "users": 155,
    "avgDurationSecs": 5.089,
    "sps": false,
+   "open": true,
+   "speakers": 155,
+   "sentences": 50009,
+   "liveValidHours": 9.1,
    "gender": [
     {
      "label": "male_masculine",
@@ -7490,6 +7982,10 @@ window.CV_DATA = {
    "users": 616,
    "avgDurationSecs": 4.893,
    "sps": false,
+   "open": true,
+   "speakers": 622,
+   "sentences": 6040,
+   "liveValidHours": 47,
    "gender": [
     {
      "label": "",
@@ -7564,6 +8060,10 @@ window.CV_DATA = {
    "users": 314,
    "avgDurationSecs": 4.597,
    "sps": false,
+   "open": true,
+   "speakers": 315,
+   "sentences": 5894,
+   "liveValidHours": 5.1,
    "gender": [
     {
      "label": "female_feminine",
@@ -7638,6 +8138,10 @@ window.CV_DATA = {
    "users": 8,
    "avgDurationSecs": 4.994,
    "sps": false,
+   "open": true,
+   "speakers": 8,
+   "sentences": 759,
+   "liveValidHours": 0,
    "gender": [
     {
      "label": "",
@@ -7688,6 +8192,10 @@ window.CV_DATA = {
    "users": 3,
    "avgDurationSecs": 5.566,
    "sps": false,
+   "open": true,
+   "speakers": 3,
+   "sentences": 76,
+   "liveValidHours": 0,
    "gender": [
     {
      "label": "",
@@ -7721,6 +8229,10 @@ window.CV_DATA = {
    "users": 1902,
    "avgDurationSecs": 6.084,
    "sps": true,
+   "open": true,
+   "speakers": 1925,
+   "sentences": 181305,
+   "liveValidHours": 1445,
    "gender": [
     {
      "label": "male_masculine",
@@ -7795,6 +8307,10 @@ window.CV_DATA = {
    "users": 72,
    "avgDurationSecs": 4.204,
    "sps": false,
+   "open": true,
+   "speakers": 72,
+   "sentences": 9069,
+   "liveValidHours": 15,
    "gender": [
     {
      "label": "male_masculine",
@@ -7869,6 +8385,10 @@ window.CV_DATA = {
    "users": 177,
    "avgDurationSecs": 4.309,
    "sps": false,
+   "open": true,
+   "speakers": 177,
+   "sentences": 7519,
+   "liveValidHours": 16,
    "gender": [
     {
      "label": "male_masculine",

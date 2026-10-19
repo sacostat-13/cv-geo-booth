@@ -1,0 +1,4011 @@
+{
+ "fetched": "2026-10-19",
+ "source": "https://commonvoice.mozilla.org/api/v1/stats/languages",
+ "locales": [
+  {
+   "locale": "en",
+   "name": "English",
+   "contributable": 1,
+   "recordedHours": 3842,
+   "validatedHours": 2799,
+   "speakers": 100946,
+   "sentences": 1606091
+  },
+  {
+   "locale": "de",
+   "name": "German",
+   "contributable": 1,
+   "recordedHours": 1502,
+   "validatedHours": 1398,
+   "speakers": 20632,
+   "sentences": 2033452
+  },
+  {
+   "locale": "fr",
+   "name": "French",
+   "contributable": 1,
+   "recordedHours": 1220,
+   "validatedHours": 1112,
+   "speakers": 21196,
+   "sentences": 1618036
+  },
+  {
+   "locale": "cy",
+   "name": "Welsh",
+   "contributable": 1,
+   "recordedHours": 160,
+   "validatedHours": 124,
+   "speakers": 1943,
+   "sentences": 117973
+  },
+  {
+   "locale": "br",
+   "name": "Breton",
+   "contributable": 1,
+   "recordedHours": 38,
+   "validatedHours": 36,
+   "speakers": 303,
+   "sentences": 46444
+  },
+  {
+   "locale": "cv",
+   "name": "Chuvash",
+   "contributable": 1,
+   "recordedHours": 29,
+   "validatedHours": 27,
+   "speakers": 122,
+   "sentences": 4382
+  },
+  {
+   "locale": "tr",
+   "name": "Turkish",
+   "contributable": 1,
+   "recordedHours": 136,
+   "validatedHours": 131,
+   "speakers": 1858,
+   "sentences": 409463
+  },
+  {
+   "locale": "tt",
+   "name": "Tatar",
+   "contributable": 1,
+   "recordedHours": 38,
+   "validatedHours": 37,
+   "speakers": 306,
+   "sentences": 21487
+  },
+  {
+   "locale": "kab",
+   "name": "Kabyle",
+   "contributable": 1,
+   "recordedHours": 706,
+   "validatedHours": 572,
+   "speakers": 1618,
+   "sentences": 181352
+  },
+  {
+   "locale": "ky",
+   "name": "Kyrgyz",
+   "contributable": 1,
+   "recordedHours": 50,
+   "validatedHours": 40,
+   "speakers": 303,
+   "sentences": 5050
+  },
+  {
+   "locale": "ga-IE",
+   "name": "Irish",
+   "contributable": 1,
+   "recordedHours": 19,
+   "validatedHours": 15,
+   "speakers": 285,
+   "sentences": 4730
+  },
+  {
+   "locale": "sl",
+   "name": "Slovenian",
+   "contributable": 1,
+   "recordedHours": 23,
+   "validatedHours": 18,
+   "speakers": 1008,
+   "sentences": 4165
+  },
+  {
+   "locale": "ca",
+   "name": "Catalan",
+   "contributable": 1,
+   "recordedHours": 3530,
+   "validatedHours": 3020,
+   "speakers": 37085,
+   "sentences": 1167037
+  },
+  {
+   "locale": "it",
+   "name": "Italian",
+   "contributable": 1,
+   "recordedHours": 463,
+   "validatedHours": 366,
+   "speakers": 7383,
+   "sentences": 920325
+  },
+  {
+   "locale": "zh-TW",
+   "name": "Chinese (Taiwan)",
+   "contributable": 1,
+   "recordedHours": 132,
+   "validatedHours": 78,
+   "speakers": 2338,
+   "sentences": 20869
+  },
+  {
+   "locale": "eo",
+   "name": "Esperanto",
+   "contributable": 1,
+   "recordedHours": 1992,
+   "validatedHours": 1445,
+   "speakers": 1925,
+   "sentences": 181305
+  },
+  {
+   "locale": "nl",
+   "name": "Dutch",
+   "contributable": 1,
+   "recordedHours": 142,
+   "validatedHours": 126,
+   "speakers": 1905,
+   "sentences": 261033
+  },
+  {
+   "locale": "zh-CN",
+   "name": "Chinese (China)",
+   "contributable": 1,
+   "recordedHours": 1095,
+   "validatedHours": 240,
+   "speakers": 7638,
+   "sentences": 51797
+  },
+  {
+   "locale": "zh-HK",
+   "name": "Chinese (Hong Kong)",
+   "contributable": 1,
+   "recordedHours": 144,
+   "validatedHours": 109,
+   "speakers": 3118,
+   "sentences": 20185
+  },
+  {
+   "locale": "ace",
+   "name": "Acehnese",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 87
+  },
+  {
+   "locale": "an",
+   "name": "Aragonese",
+   "contributable": 1,
+   "recordedHours": 18,
+   "validatedHours": 17,
+   "speakers": 53,
+   "sentences": 10454
+  },
+  {
+   "locale": "ar",
+   "name": "Arabic",
+   "contributable": 1,
+   "recordedHours": 159,
+   "validatedHours": 94,
+   "speakers": 1692,
+   "sentences": 59229
+  },
+  {
+   "locale": "as",
+   "name": "Assamese",
+   "contributable": 1,
+   "recordedHours": 7.8,
+   "validatedHours": 2.9,
+   "speakers": 57,
+   "sentences": 7171
+  },
+  {
+   "locale": "ast",
+   "name": "Asturian",
+   "contributable": 1,
+   "recordedHours": 2.1,
+   "validatedHours": 0.9,
+   "speakers": 36,
+   "sentences": 1645
+  },
+  {
+   "locale": "az",
+   "name": "Azerbaijani",
+   "contributable": 1,
+   "recordedHours": 1.6,
+   "validatedHours": 0.6,
+   "speakers": 48,
+   "sentences": 93161
+  },
+  {
+   "locale": "bg",
+   "name": "Bulgarian",
+   "contributable": 1,
+   "recordedHours": 22,
+   "validatedHours": 17,
+   "speakers": 155,
+   "sentences": 39572
+  },
+  {
+   "locale": "bn",
+   "name": "Bengali",
+   "contributable": 1,
+   "recordedHours": 1278,
+   "validatedHours": 49,
+   "speakers": 23027,
+   "sentences": 562832
+  },
+  {
+   "locale": "bxr",
+   "name": "Buryat",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "cak",
+   "name": "Kaqchikel",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "cnh",
+   "name": "Hakha Chin",
+   "contributable": 1,
+   "recordedHours": 4.8,
+   "validatedHours": 1.9,
+   "speakers": 301,
+   "sentences": 5190
+  },
+  {
+   "locale": "cs",
+   "name": "Czech",
+   "contributable": 1,
+   "recordedHours": 273,
+   "validatedHours": 76,
+   "speakers": 1152,
+   "sentences": 451348
+  },
+  {
+   "locale": "da",
+   "name": "Danish",
+   "contributable": 1,
+   "recordedHours": 17,
+   "validatedHours": 13,
+   "speakers": 302,
+   "sentences": 19013
+  },
+  {
+   "locale": "dsb",
+   "name": "Sorbian, Lower",
+   "contributable": 1,
+   "recordedHours": 0.3,
+   "validatedHours": 0,
+   "speakers": 6,
+   "sentences": 796
+  },
+  {
+   "locale": "el",
+   "name": "Greek",
+   "contributable": 1,
+   "recordedHours": 36,
+   "validatedHours": 21,
+   "speakers": 463,
+   "sentences": 8954
+  },
+  {
+   "locale": "es",
+   "name": "Spanish",
+   "contributable": 1,
+   "recordedHours": 2307,
+   "validatedHours": 457,
+   "speakers": 27023,
+   "sentences": 1078677
+  },
+  {
+   "locale": "et",
+   "name": "Estonian",
+   "contributable": 1,
+   "recordedHours": 70,
+   "validatedHours": 63,
+   "speakers": 1127,
+   "sentences": 10874
+  },
+  {
+   "locale": "eu",
+   "name": "Basque",
+   "contributable": 1,
+   "recordedHours": 716,
+   "validatedHours": 456,
+   "speakers": 11062,
+   "sentences": 1018163
+  },
+  {
+   "locale": "fa",
+   "name": "Persian",
+   "contributable": 1,
+   "recordedHours": 441,
+   "validatedHours": 373,
+   "speakers": 4670,
+   "sentences": 54775
+  },
+  {
+   "locale": "fi",
+   "name": "Finnish",
+   "contributable": 1,
+   "recordedHours": 24,
+   "validatedHours": 15,
+   "speakers": 254,
+   "sentences": 5865
+  },
+  {
+   "locale": "fo",
+   "name": "Faroese",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "fy-NL",
+   "name": "Frisian",
+   "contributable": 1,
+   "recordedHours": 228,
+   "validatedHours": 67,
+   "speakers": 2126,
+   "sentences": 10869
+  },
+  {
+   "locale": "he",
+   "name": "Hebrew",
+   "contributable": 1,
+   "recordedHours": 7.3,
+   "validatedHours": 3.6,
+   "speakers": 60,
+   "sentences": 4256
+  },
+  {
+   "locale": "hsb",
+   "name": "Sorbian, Upper",
+   "contributable": 1,
+   "recordedHours": 17,
+   "validatedHours": 4.8,
+   "speakers": 41,
+   "sentences": 7281
+  },
+  {
+   "locale": "hu",
+   "name": "Hungarian",
+   "contributable": 1,
+   "recordedHours": 185,
+   "validatedHours": 139,
+   "speakers": 1699,
+   "sentences": 326553
+  },
+  {
+   "locale": "ia",
+   "name": "Interlingua",
+   "contributable": 1,
+   "recordedHours": 18,
+   "validatedHours": 15,
+   "speakers": 72,
+   "sentences": 9069
+  },
+  {
+   "locale": "id",
+   "name": "Indonesian",
+   "contributable": 1,
+   "recordedHours": 68,
+   "validatedHours": 34,
+   "speakers": 683,
+   "sentences": 7021
+  },
+  {
+   "locale": "is",
+   "name": "Icelandic",
+   "contributable": 1,
+   "recordedHours": 0.7,
+   "validatedHours": 0.1,
+   "speakers": 8,
+   "sentences": 5083
+  },
+  {
+   "locale": "ja",
+   "name": "Japanese",
+   "contributable": 1,
+   "recordedHours": 757,
+   "validatedHours": 382,
+   "speakers": 7894,
+   "sentences": 36630
+  },
+  {
+   "locale": "ka",
+   "name": "Georgian",
+   "contributable": 1,
+   "recordedHours": 503,
+   "validatedHours": 266,
+   "speakers": 3171,
+   "sentences": 137656
+  },
+  {
+   "locale": "kk",
+   "name": "Kazakh",
+   "contributable": 1,
+   "recordedHours": 4.3,
+   "validatedHours": 2.5,
+   "speakers": 207,
+   "sentences": 6234
+  },
+  {
+   "locale": "ko",
+   "name": "Korean",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 2.2,
+   "speakers": 215,
+   "sentences": 7465
+  },
+  {
+   "locale": "kpv",
+   "name": "Komi-Zyrian",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 196
+  },
+  {
+   "locale": "kw",
+   "name": "Cornish",
+   "contributable": 1,
+   "recordedHours": 13,
+   "validatedHours": 13,
+   "speakers": 11,
+   "sentences": 9609
+  },
+  {
+   "locale": "mdf",
+   "name": "Moksha",
+   "contributable": 1,
+   "recordedHours": 0.5,
+   "validatedHours": 0.5,
+   "speakers": 12,
+   "sentences": 6033
+  },
+  {
+   "locale": "mk",
+   "name": "Macedonian",
+   "contributable": 1,
+   "recordedHours": 56,
+   "validatedHours": 25,
+   "speakers": 473,
+   "sentences": 6123
+  },
+  {
+   "locale": "mn",
+   "name": "Mongolian",
+   "contributable": 1,
+   "recordedHours": 142,
+   "validatedHours": 47,
+   "speakers": 622,
+   "sentences": 6040
+  },
+  {
+   "locale": "myv",
+   "name": "Erzya",
+   "contributable": 1,
+   "recordedHours": 3.9,
+   "validatedHours": 3.8,
+   "speakers": 13,
+   "sentences": 5015
+  },
+  {
+   "locale": "nb-NO",
+   "name": "Norwegian Bokmål",
+   "contributable": 1,
+   "recordedHours": 2.6,
+   "validatedHours": 2.3,
+   "speakers": 68,
+   "sentences": 4419
+  },
+  {
+   "locale": "ne-NP",
+   "name": "Nepali",
+   "contributable": 1,
+   "recordedHours": 2,
+   "validatedHours": 1.4,
+   "speakers": 64,
+   "sentences": 1321
+  },
+  {
+   "locale": "nn-NO",
+   "name": "Norwegian Nynorsk",
+   "contributable": 1,
+   "recordedHours": 1.9,
+   "validatedHours": 1.7,
+   "speakers": 42,
+   "sentences": 5317
+  },
+  {
+   "locale": "oc",
+   "name": "Occitan",
+   "contributable": 1,
+   "recordedHours": 14,
+   "validatedHours": 1.9,
+   "speakers": 150,
+   "sentences": 4934
+  },
+  {
+   "locale": "or",
+   "name": "Odia",
+   "contributable": 1,
+   "recordedHours": 38,
+   "validatedHours": 2.9,
+   "speakers": 167,
+   "sentences": 6191
+  },
+  {
+   "locale": "pl",
+   "name": "Polish",
+   "contributable": 1,
+   "recordedHours": 193,
+   "validatedHours": 177,
+   "speakers": 3482,
+   "sentences": 229767
+  },
+  {
+   "locale": "pt",
+   "name": "Portuguese",
+   "contributable": 1,
+   "recordedHours": 233,
+   "validatedHours": 185,
+   "speakers": 3888,
+   "sentences": 43728
+  },
+  {
+   "locale": "rm-sursilv",
+   "name": "Romansh Sursilvan",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 7.6,
+   "speakers": 93,
+   "sentences": 9332
+  },
+  {
+   "locale": "ro",
+   "name": "Romanian",
+   "contributable": 1,
+   "recordedHours": 53,
+   "validatedHours": 25,
+   "speakers": 465,
+   "sentences": 13767
+  },
+  {
+   "locale": "ru",
+   "name": "Russian",
+   "contributable": 1,
+   "recordedHours": 296,
+   "validatedHours": 258,
+   "speakers": 3786,
+   "sentences": 48007
+  },
+  {
+   "locale": "sah",
+   "name": "Sakha",
+   "contributable": 1,
+   "recordedHours": 24,
+   "validatedHours": 16,
+   "speakers": 256,
+   "sentences": 6083
+  },
+  {
+   "locale": "sc",
+   "name": "Sardinian",
+   "contributable": 1,
+   "recordedHours": 3.7,
+   "validatedHours": 3,
+   "speakers": 50,
+   "sentences": 5489
+  },
+  {
+   "locale": "sk",
+   "name": "Slovak",
+   "contributable": 1,
+   "recordedHours": 62,
+   "validatedHours": 57,
+   "speakers": 274,
+   "sentences": 22255
+  },
+  {
+   "locale": "sq",
+   "name": "Albanian",
+   "contributable": 1,
+   "recordedHours": 9.4,
+   "validatedHours": 9.1,
+   "speakers": 155,
+   "sentences": 50009
+  },
+  {
+   "locale": "sr",
+   "name": "Serbian",
+   "contributable": 1,
+   "recordedHours": 15,
+   "validatedHours": 7.7,
+   "speakers": 190,
+   "sentences": 8209
+  },
+  {
+   "locale": "sv-SE",
+   "name": "Swedish",
+   "contributable": 1,
+   "recordedHours": 57,
+   "validatedHours": 48,
+   "speakers": 900,
+   "sentences": 25060
+  },
+  {
+   "locale": "ta",
+   "name": "Tamil",
+   "contributable": 1,
+   "recordedHours": 432,
+   "validatedHours": 235,
+   "speakers": 997,
+   "sentences": 106113
+  },
+  {
+   "locale": "te",
+   "name": "Telugu",
+   "contributable": 1,
+   "recordedHours": 3.2,
+   "validatedHours": 0.8,
+   "speakers": 78,
+   "sentences": 372
+  },
+  {
+   "locale": "th",
+   "name": "Thai",
+   "contributable": 1,
+   "recordedHours": 428,
+   "validatedHours": 173,
+   "speakers": 8072,
+   "sentences": 63770
+  },
+  {
+   "locale": "uk",
+   "name": "Ukrainian",
+   "contributable": 1,
+   "recordedHours": 123,
+   "validatedHours": 110,
+   "speakers": 1185,
+   "sentences": 209229
+  },
+  {
+   "locale": "ur",
+   "name": "Urdu",
+   "contributable": 1,
+   "recordedHours": 303,
+   "validatedHours": 77,
+   "speakers": 508,
+   "sentences": 21892
+  },
+  {
+   "locale": "uz",
+   "name": "Uzbek",
+   "contributable": 1,
+   "recordedHours": 279,
+   "validatedHours": 128,
+   "speakers": 2358,
+   "sentences": 149584
+  },
+  {
+   "locale": "vi",
+   "name": "Vietnamese",
+   "contributable": 1,
+   "recordedHours": 24,
+   "validatedHours": 7.7,
+   "speakers": 423,
+   "sentences": 16665
+  },
+  {
+   "locale": "af",
+   "name": "Afrikaans",
+   "contributable": 1,
+   "recordedHours": 1.7,
+   "validatedHours": 1,
+   "speakers": 70,
+   "sentences": 4826
+  },
+  {
+   "locale": "ab",
+   "name": "Abkhaz",
+   "contributable": 1,
+   "recordedHours": 255,
+   "validatedHours": 217,
+   "speakers": 1303,
+   "sentences": 1046830
+  },
+  {
+   "locale": "ady",
+   "name": "Adyghe",
+   "contributable": 1,
+   "recordedHours": 97,
+   "validatedHours": 80,
+   "speakers": 175,
+   "sentences": 12602
+  },
+  {
+   "locale": "am",
+   "name": "Amharic",
+   "contributable": 1,
+   "recordedHours": 3.1,
+   "validatedHours": 2,
+   "speakers": 59,
+   "sentences": 2210
+  },
+  {
+   "locale": "dv",
+   "name": "Dhivehi",
+   "contributable": 1,
+   "recordedHours": 62,
+   "validatedHours": 39,
+   "speakers": 395,
+   "sentences": 7172
+  },
+  {
+   "locale": "mhr",
+   "name": "Meadow Mari",
+   "contributable": 1,
+   "recordedHours": 304,
+   "validatedHours": 282,
+   "speakers": 500,
+   "sentences": 328269
+  },
+  {
+   "locale": "mrj",
+   "name": "Hill Mari",
+   "contributable": 1,
+   "recordedHours": 38,
+   "validatedHours": 34,
+   "speakers": 60,
+   "sentences": 54143
+  },
+  {
+   "locale": "uby",
+   "name": "Ubykh",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "udm",
+   "name": "Udmurt",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "vot",
+   "name": "Votic",
+   "contributable": 1,
+   "recordedHours": 0.5,
+   "validatedHours": 0.1,
+   "speakers": 6,
+   "sentences": 5437
+  },
+  {
+   "locale": "hr",
+   "name": "Croatian",
+   "contributable": 1,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 3,
+   "sentences": 1781
+  },
+  {
+   "locale": "rw",
+   "name": "Kinyarwanda",
+   "contributable": 1,
+   "recordedHours": 2388,
+   "validatedHours": 2003,
+   "speakers": 1189,
+   "sentences": 1404868
+  },
+  {
+   "locale": "izh",
+   "name": "Izhorian",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "lt",
+   "name": "Lithuanian",
+   "contributable": 1,
+   "recordedHours": 38,
+   "validatedHours": 29,
+   "speakers": 339,
+   "sentences": 129359
+  },
+  {
+   "locale": "gl",
+   "name": "Galician",
+   "contributable": 1,
+   "recordedHours": 416,
+   "validatedHours": 335,
+   "speakers": 6894,
+   "sentences": 1004027
+  },
+  {
+   "locale": "lv",
+   "name": "Latvian",
+   "contributable": 1,
+   "recordedHours": 318,
+   "validatedHours": 269,
+   "speakers": 6630,
+   "sentences": 33913
+  },
+  {
+   "locale": "lij",
+   "name": "Ligurian",
+   "contributable": 1,
+   "recordedHours": 5.8,
+   "validatedHours": 5.1,
+   "speakers": 40,
+   "sentences": 6009
+  },
+  {
+   "locale": "tg",
+   "name": "Tajik",
+   "contributable": 1,
+   "recordedHours": 1,
+   "validatedHours": 0.8,
+   "speakers": 10,
+   "sentences": 4035
+  },
+  {
+   "locale": "ba",
+   "name": "Bashkir",
+   "contributable": 1,
+   "recordedHours": 279,
+   "validatedHours": 259,
+   "speakers": 942,
+   "sentences": 153968
+  },
+  {
+   "locale": "ha",
+   "name": "Hausa",
+   "contributable": 1,
+   "recordedHours": 14,
+   "validatedHours": 4.4,
+   "speakers": 74,
+   "sentences": 5505
+  },
+  {
+   "locale": "ckb",
+   "name": "Central Kurdish",
+   "contributable": 1,
+   "recordedHours": 198,
+   "validatedHours": 139,
+   "speakers": 2077,
+   "sentences": 18510
+  },
+  {
+   "locale": "ml",
+   "name": "Malayalam",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 2.9,
+   "speakers": 159,
+   "sentences": 5487
+  },
+  {
+   "locale": "si",
+   "name": "Sinhala",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 169
+  },
+  {
+   "locale": "ff",
+   "name": "Fulah",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "rm-vallader",
+   "name": "Romansh Vallader",
+   "contributable": 1,
+   "recordedHours": 5,
+   "validatedHours": 2.8,
+   "speakers": 55,
+   "sentences": 5913
+  },
+  {
+   "locale": "syr",
+   "name": "Syriac",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "mt",
+   "name": "Maltese",
+   "contributable": 1,
+   "recordedHours": 18,
+   "validatedHours": 8.8,
+   "speakers": 225,
+   "sentences": 5274
+  },
+  {
+   "locale": "sw",
+   "name": "Swahili",
+   "contributable": 1,
+   "recordedHours": 1139,
+   "validatedHours": 417,
+   "speakers": 1538,
+   "sentences": 134729
+  },
+  {
+   "locale": "arn",
+   "name": "Mapudungun",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "be",
+   "name": "Belarusian",
+   "contributable": 1,
+   "recordedHours": 1908,
+   "validatedHours": 1823,
+   "speakers": 8644,
+   "sentences": 379189
+  },
+  {
+   "locale": "mg",
+   "name": "Malagasy",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "pa-IN",
+   "name": "Punjabi",
+   "contributable": 1,
+   "recordedHours": 4.7,
+   "validatedHours": 2.5,
+   "speakers": 76,
+   "sentences": 14825
+  },
+  {
+   "locale": "kbd",
+   "name": "Kabardian",
+   "contributable": 1,
+   "recordedHours": 309,
+   "validatedHours": 277,
+   "speakers": 394,
+   "sentences": 31824
+  },
+  {
+   "locale": "lg",
+   "name": "Luganda",
+   "contributable": 1,
+   "recordedHours": 582,
+   "validatedHours": 438,
+   "speakers": 676,
+   "sentences": 191365
+  },
+  {
+   "locale": "my",
+   "name": "Burmese",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 1502
+  },
+  {
+   "locale": "scn",
+   "name": "Sicilian",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 125
+  },
+  {
+   "locale": "kaa",
+   "name": "Karakalpak",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 958
+  },
+  {
+   "locale": "tl",
+   "name": "Tagalog",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 901
+  },
+  {
+   "locale": "vec",
+   "name": "Venetian",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 1
+  },
+  {
+   "locale": "hy-AM",
+   "name": "Armenian",
+   "contributable": 1,
+   "recordedHours": 64,
+   "validatedHours": 40,
+   "speakers": 1115,
+   "sentences": 237448
+  },
+  {
+   "locale": "hi",
+   "name": "Hindi",
+   "contributable": 1,
+   "recordedHours": 27,
+   "validatedHours": 16,
+   "speakers": 487,
+   "sentences": 30247
+  },
+  {
+   "locale": "co",
+   "name": "Corsican",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 16
+  },
+  {
+   "locale": "gn",
+   "name": "Guarani",
+   "contributable": 1,
+   "recordedHours": 34,
+   "validatedHours": 5.1,
+   "speakers": 315,
+   "sentences": 5894
+  },
+  {
+   "locale": "bm",
+   "name": "Bambara",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "kmr",
+   "name": "Kurmanji Kurdish",
+   "contributable": 1,
+   "recordedHours": 116,
+   "validatedHours": 80,
+   "speakers": 712,
+   "sentences": 17034
+  },
+  {
+   "locale": "bas",
+   "name": "Basaa",
+   "contributable": 1,
+   "recordedHours": 14,
+   "validatedHours": 12,
+   "speakers": 57,
+   "sentences": 5226
+  },
+  {
+   "locale": "yue",
+   "name": "Cantonese",
+   "contributable": 1,
+   "recordedHours": 310,
+   "validatedHours": 204,
+   "speakers": 1196,
+   "sentences": 18548
+  },
+  {
+   "locale": "ht",
+   "name": "Haitian",
+   "contributable": 1,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 3,
+   "sentences": 76
+  },
+  {
+   "locale": "mai",
+   "name": "Maithili",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "mos",
+   "name": "Mooré",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "mr",
+   "name": "Marathi",
+   "contributable": 1,
+   "recordedHours": 28,
+   "validatedHours": 20,
+   "speakers": 110,
+   "sentences": 6136
+  },
+  {
+   "locale": "ms",
+   "name": "Malay",
+   "contributable": 1,
+   "recordedHours": 4.4,
+   "validatedHours": 0.4,
+   "speakers": 65,
+   "sentences": 308
+  },
+  {
+   "locale": "ps",
+   "name": "Pashto",
+   "contributable": 1,
+   "recordedHours": 5393,
+   "validatedHours": 3757,
+   "speakers": 8495,
+   "sentences": 1225990
+  },
+  {
+   "locale": "shi",
+   "name": "Tashlhiyt",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "so",
+   "name": "Somali",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 266
+  },
+  {
+   "locale": "ug",
+   "name": "Uyghur",
+   "contributable": 1,
+   "recordedHours": 517,
+   "validatedHours": 470,
+   "speakers": 1875,
+   "sentences": 231307
+  },
+  {
+   "locale": "pap-AW",
+   "name": "Papiamento (Aruba)",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "nia",
+   "name": "Nias",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "tw",
+   "name": "Twi",
+   "contributable": 1,
+   "recordedHours": 1.4,
+   "validatedHours": 0.3,
+   "speakers": 22,
+   "sentences": 49180
+  },
+  {
+   "locale": "yo",
+   "name": "Yoruba",
+   "contributable": 1,
+   "recordedHours": 9.3,
+   "validatedHours": 6.5,
+   "speakers": 139,
+   "sentences": 5419
+  },
+  {
+   "locale": "nyn",
+   "name": "Runyankole",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "ie",
+   "name": "Interlingue",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "sat",
+   "name": "Santali (Ol Chiki)",
+   "contributable": 1,
+   "recordedHours": 1.1,
+   "validatedHours": 0.6,
+   "speakers": 14,
+   "sentences": 5421
+  },
+  {
+   "locale": "ki",
+   "name": "Kikuyu",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "nan-tw",
+   "name": "Taiwanese (Minnan)",
+   "contributable": 1,
+   "recordedHours": 25,
+   "validatedHours": 21,
+   "speakers": 303,
+   "sentences": 26894
+  },
+  {
+   "locale": "yi",
+   "name": "Yiddish",
+   "contributable": 1,
+   "recordedHours": 2.2,
+   "validatedHours": 2.1,
+   "speakers": 129,
+   "sentences": 1550
+  },
+  {
+   "locale": "ig",
+   "name": "Igbo",
+   "contributable": 1,
+   "recordedHours": 20,
+   "validatedHours": 2.6,
+   "speakers": 194,
+   "sentences": 15468
+  },
+  {
+   "locale": "ty",
+   "name": "Tahitian",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "quc",
+   "name": "K'iche'",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "ti",
+   "name": "Tigrinya",
+   "contributable": 1,
+   "recordedHours": 0.7,
+   "validatedHours": 0.1,
+   "speakers": 17,
+   "sentences": 4571
+  },
+  {
+   "locale": "mni",
+   "name": "Meetei Lon",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 10
+  },
+  {
+   "locale": "tig",
+   "name": "Tigre",
+   "contributable": 1,
+   "recordedHours": 13,
+   "validatedHours": 12,
+   "speakers": 155,
+   "sentences": 5422
+  },
+  {
+   "locale": "tk",
+   "name": "Turkmen",
+   "contributable": 1,
+   "recordedHours": 8,
+   "validatedHours": 2.9,
+   "speakers": 153,
+   "sentences": 2496
+  },
+  {
+   "locale": "quy",
+   "name": "Quechua Chanka",
+   "contributable": 1,
+   "recordedHours": 3.1,
+   "validatedHours": 0,
+   "speakers": 8,
+   "sentences": 759
+  },
+  {
+   "locale": "bs",
+   "name": "Bosnian",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "gom",
+   "name": "Konkani (Romi)",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "km",
+   "name": "Khmer",
+   "contributable": 1,
+   "recordedHours": 1,
+   "validatedHours": 0.3,
+   "speakers": 16,
+   "sentences": 364
+  },
+  {
+   "locale": "knn",
+   "name": "Konkani (Devanagari)",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "skr",
+   "name": "Saraiki",
+   "contributable": 1,
+   "recordedHours": 6.7,
+   "validatedHours": 4.3,
+   "speakers": 60,
+   "sentences": 6010
+  },
+  {
+   "locale": "tok",
+   "name": "Toki Pona",
+   "contributable": 1,
+   "recordedHours": 24,
+   "validatedHours": 16,
+   "speakers": 177,
+   "sentences": 7519
+  },
+  {
+   "locale": "lb",
+   "name": "Luxembourgish",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 7
+  },
+  {
+   "locale": "dyu",
+   "name": "Dioula",
+   "contributable": 1,
+   "recordedHours": 0.5,
+   "validatedHours": 0.4,
+   "speakers": 35,
+   "sentences": 5028
+  },
+  {
+   "locale": "nso",
+   "name": "Northern Sotho",
+   "contributable": 1,
+   "recordedHours": 0.2,
+   "validatedHours": 0,
+   "speakers": 2,
+   "sentences": 2254
+  },
+  {
+   "locale": "om",
+   "name": "Afaan Oromo",
+   "contributable": 1,
+   "recordedHours": 27,
+   "validatedHours": 26,
+   "speakers": 40,
+   "sentences": 18521
+  },
+  {
+   "locale": "st",
+   "name": "Southern Sotho",
+   "contributable": 1,
+   "recordedHours": 0.2,
+   "validatedHours": 0,
+   "speakers": 2,
+   "sentences": 2339
+  },
+  {
+   "locale": "ts",
+   "name": "Xitsonga",
+   "contributable": 1,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 1,
+   "sentences": 352
+  },
+  {
+   "locale": "ve",
+   "name": "Tshivenda",
+   "contributable": 1,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 3,
+   "sentences": 1735
+  },
+  {
+   "locale": "nd",
+   "name": "IsiNdebele (North)",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "nr",
+   "name": "IsiNdebele (South)",
+   "contributable": 1,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 2,
+   "sentences": 319
+  },
+  {
+   "locale": "ss",
+   "name": "Siswati",
+   "contributable": 1,
+   "recordedHours": 0.3,
+   "validatedHours": 0,
+   "speakers": 3,
+   "sentences": 1614
+  },
+  {
+   "locale": "tn",
+   "name": "Setswana",
+   "contributable": 1,
+   "recordedHours": 5,
+   "validatedHours": 4.3,
+   "speakers": 19,
+   "sentences": 1767
+  },
+  {
+   "locale": "xh",
+   "name": "Xhosa",
+   "contributable": 1,
+   "recordedHours": 0.1,
+   "validatedHours": 0,
+   "speakers": 7,
+   "sentences": 1476
+  },
+  {
+   "locale": "zu",
+   "name": "Zulu",
+   "contributable": 1,
+   "recordedHours": 0.5,
+   "validatedHours": 0,
+   "speakers": 14,
+   "sentences": 1321
+  },
+  {
+   "locale": "hil",
+   "name": "Hiligaynon",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "jbo",
+   "name": "Lojban",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "kn",
+   "name": "Kannada",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 55
+  },
+  {
+   "locale": "ln",
+   "name": "Lingala",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "lo",
+   "name": "Lao",
+   "contributable": 1,
+   "recordedHours": 0.4,
+   "validatedHours": 0.3,
+   "speakers": 16,
+   "sentences": 5145
+  },
+  {
+   "locale": "sdh",
+   "name": "Southern Kurdish",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "snk",
+   "name": "Soninke",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "zgh",
+   "name": "Tamazight",
+   "contributable": 1,
+   "recordedHours": 2.2,
+   "validatedHours": 1.5,
+   "speakers": 51,
+   "sentences": 2740
+  },
+  {
+   "locale": "dag",
+   "name": "Dagbani",
+   "contributable": 1,
+   "recordedHours": 28,
+   "validatedHours": 17,
+   "speakers": 69,
+   "sentences": 5603
+  },
+  {
+   "locale": "zza",
+   "name": "Zaza",
+   "contributable": 1,
+   "recordedHours": 2.7,
+   "validatedHours": 2,
+   "speakers": 25,
+   "sentences": 5682
+  },
+  {
+   "locale": "byv",
+   "name": "Medumba",
+   "contributable": 1,
+   "recordedHours": 14,
+   "validatedHours": 14,
+   "speakers": 96,
+   "sentences": 990
+  },
+  {
+   "locale": "tyv",
+   "name": "Tuvan",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "wo",
+   "name": "Wolof",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "nhe",
+   "name": "Eastern Huasteca Nahuatl",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "nhi",
+   "name": "Western Sierra Puebla Nahuatl",
+   "contributable": 1,
+   "recordedHours": 0.6,
+   "validatedHours": 0.1,
+   "speakers": 6,
+   "sentences": 758
+  },
+  {
+   "locale": "bo",
+   "name": "Tibetan",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "ny",
+   "name": "Chinyanja",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "ltg",
+   "name": "Latgalian",
+   "contributable": 1,
+   "recordedHours": 35,
+   "validatedHours": 31,
+   "speakers": 395,
+   "sentences": 15115
+  },
+  {
+   "locale": "os",
+   "name": "Ossetian",
+   "contributable": 1,
+   "recordedHours": 1.5,
+   "validatedHours": 1.4,
+   "speakers": 39,
+   "sentences": 1889
+  },
+  {
+   "locale": "ewo",
+   "name": "Ewondo",
+   "contributable": 1,
+   "recordedHours": 20,
+   "validatedHours": 19,
+   "speakers": 31,
+   "sentences": 883
+  },
+  {
+   "locale": "jv",
+   "name": "Javanese",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "gu-IN",
+   "name": "Gujarati",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "lzz",
+   "name": "Laz",
+   "contributable": 1,
+   "recordedHours": 90,
+   "validatedHours": 71,
+   "speakers": 173,
+   "sentences": 100498
+  },
+  {
+   "locale": "sco",
+   "name": "Scots",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "qvi",
+   "name": "Kichwa",
+   "contributable": 1,
+   "recordedHours": 13,
+   "validatedHours": 12,
+   "speakers": 15,
+   "sentences": 1149
+  },
+  {
+   "locale": "wep",
+   "name": "Westphalian",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "fuf",
+   "name": "Pular Guinea",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "guc",
+   "name": "Wayuunaiki",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "sd",
+   "name": "Sindhi",
+   "contributable": 1,
+   "recordedHours": 81,
+   "validatedHours": 0.4,
+   "speakers": 38,
+   "sentences": 13348
+  },
+  {
+   "locale": "vmw",
+   "name": "Emakhuwa",
+   "contributable": 1,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 1229
+  },
+  {
+   "locale": "crh",
+   "name": "Crimean Tatar",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "dav",
+   "name": "Kidaw'ida",
+   "contributable": 1,
+   "recordedHours": 56,
+   "validatedHours": 9.3,
+   "speakers": 24,
+   "sentences": 11773
+  },
+  {
+   "locale": "luo",
+   "name": "Dholuo",
+   "contributable": 1,
+   "recordedHours": 120,
+   "validatedHours": 30,
+   "speakers": 47,
+   "sentences": 24678
+  },
+  {
+   "locale": "kln",
+   "name": "Kalenjin",
+   "contributable": 1,
+   "recordedHours": 92,
+   "validatedHours": 43,
+   "speakers": 41,
+   "sentences": 29900
+  },
+  {
+   "locale": "azz",
+   "name": "Highland Puebla Nahuatl",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "bal",
+   "name": "Balochi",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "gos",
+   "name": "Gronings",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "nqo",
+   "name": "NKo",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "cdo",
+   "name": "Eastern Min",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "dar",
+   "name": "Dargwa",
+   "contributable": 1,
+   "recordedHours": 21,
+   "validatedHours": 16,
+   "speakers": 50,
+   "sentences": 6625
+  },
+  {
+   "locale": "shn",
+   "name": "Shan",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 7
+  },
+  {
+   "locale": "aa",
+   "name": "Afar",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "abb",
+   "name": "Bankon",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 12,
+   "speakers": 22,
+   "sentences": 996
+  },
+  {
+   "locale": "bax",
+   "name": "Bamun",
+   "contributable": 1,
+   "recordedHours": 13,
+   "validatedHours": 11,
+   "speakers": 14,
+   "sentences": 1030
+  },
+  {
+   "locale": "bba",
+   "name": "Baatonum",
+   "contributable": 1,
+   "recordedHours": 16,
+   "validatedHours": 12,
+   "speakers": 14,
+   "sentences": 971
+  },
+  {
+   "locale": "bbj",
+   "name": "Ghomala",
+   "contributable": 1,
+   "recordedHours": 13,
+   "validatedHours": 13,
+   "speakers": 31,
+   "sentences": 996
+  },
+  {
+   "locale": "bci",
+   "name": "Baoule",
+   "contributable": 1,
+   "recordedHours": 15,
+   "validatedHours": 12,
+   "speakers": 18,
+   "sentences": 876
+  },
+  {
+   "locale": "beb",
+   "name": "Bamvele",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 11,
+   "speakers": 33,
+   "sentences": 1005
+  },
+  {
+   "locale": "bfd",
+   "name": "Bafut",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 11,
+   "speakers": 36,
+   "sentences": 766
+  },
+  {
+   "locale": "bkm",
+   "name": "Kom",
+   "contributable": 1,
+   "recordedHours": 13,
+   "validatedHours": 13,
+   "speakers": 27,
+   "sentences": 940
+  },
+  {
+   "locale": "bnm",
+   "name": "Batanga",
+   "contributable": 1,
+   "recordedHours": 17,
+   "validatedHours": 17,
+   "speakers": 21,
+   "sentences": 1025
+  },
+  {
+   "locale": "bri",
+   "name": "Mokpwe",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 11,
+   "speakers": 15,
+   "sentences": 1200
+  },
+  {
+   "locale": "bum",
+   "name": "Bulu",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 22,
+   "sentences": 901
+  },
+  {
+   "locale": "dua",
+   "name": "Duala",
+   "contributable": 1,
+   "recordedHours": 16,
+   "validatedHours": 14,
+   "speakers": 13,
+   "sentences": 1003
+  },
+  {
+   "locale": "ebr",
+   "name": "Ebrie",
+   "contributable": 1,
+   "recordedHours": 3.2,
+   "validatedHours": 2.4,
+   "speakers": 7,
+   "sentences": 872
+  },
+  {
+   "locale": "eto",
+   "name": "Eton",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 26,
+   "sentences": 966
+  },
+  {
+   "locale": "fan",
+   "name": "Fang",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 12,
+   "speakers": 43,
+   "sentences": 1005
+  },
+  {
+   "locale": "fue",
+   "name": "Borgu Fulfulde",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 10,
+   "sentences": 988
+  },
+  {
+   "locale": "gya",
+   "name": "Northwest Gbaya",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 11,
+   "speakers": 35,
+   "sentences": 1054
+  },
+  {
+   "locale": "ibb",
+   "name": "Ibibio",
+   "contributable": 1,
+   "recordedHours": 28,
+   "validatedHours": 12,
+   "speakers": 19,
+   "sentences": 1031
+  },
+  {
+   "locale": "ksf",
+   "name": "Bafia",
+   "contributable": 1,
+   "recordedHours": 21,
+   "validatedHours": 20,
+   "speakers": 25,
+   "sentences": 1004
+  },
+  {
+   "locale": "mbo",
+   "name": "Mbo",
+   "contributable": 1,
+   "recordedHours": 13,
+   "validatedHours": 11,
+   "speakers": 13,
+   "sentences": 998
+  },
+  {
+   "locale": "mxu",
+   "name": "Mada",
+   "contributable": 1,
+   "recordedHours": 15,
+   "validatedHours": 14,
+   "speakers": 22,
+   "sentences": 959
+  },
+  {
+   "locale": "nnh",
+   "name": "Ngiembon",
+   "contributable": 1,
+   "recordedHours": 23,
+   "validatedHours": 23,
+   "speakers": 17,
+   "sentences": 886
+  },
+  {
+   "locale": "qxp",
+   "name": "Puno Quechua",
+   "contributable": 1,
+   "recordedHours": 35,
+   "validatedHours": 32,
+   "speakers": 81,
+   "sentences": 2067
+  },
+  {
+   "locale": "rif",
+   "name": "Tarifit",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "teg",
+   "name": "Teke",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "tui",
+   "name": "Tupuri",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 11,
+   "speakers": 51,
+   "sentences": 1971
+  },
+  {
+   "locale": "tvu",
+   "name": "Tunen",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 13,
+   "sentences": 1943
+  },
+  {
+   "locale": "wes",
+   "name": "Cameroon Pidgin",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 18,
+   "sentences": 999
+  },
+  {
+   "locale": "ee",
+   "name": "Ewe",
+   "contributable": 1,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "fub",
+   "name": "Adamawa Fulfulde",
+   "contributable": 1,
+   "recordedHours": 14,
+   "validatedHours": 14,
+   "speakers": 21,
+   "sentences": 1067
+  },
+  {
+   "locale": "pcm",
+   "name": "Nigerian Pidgin English",
+   "contributable": 1,
+   "recordedHours": 16,
+   "validatedHours": 13,
+   "speakers": 60,
+   "sentences": 987
+  },
+  {
+   "locale": "pap",
+   "name": "Papiamento",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "bbl",
+   "name": "Tush",
+   "contributable": 1,
+   "recordedHours": 13,
+   "validatedHours": 12,
+   "speakers": 23,
+   "sentences": 1661
+  },
+  {
+   "locale": "bft",
+   "name": "Balti",
+   "contributable": 1,
+   "recordedHours": 19,
+   "validatedHours": 18,
+   "speakers": 157,
+   "sentences": 7968
+  },
+  {
+   "locale": "bgp",
+   "name": "Eastern Balochi",
+   "contributable": 1,
+   "recordedHours": 15,
+   "validatedHours": 14,
+   "speakers": 30,
+   "sentences": 6997
+  },
+  {
+   "locale": "bsk",
+   "name": "Brushaski",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 11,
+   "speakers": 27,
+   "sentences": 2447
+  },
+  {
+   "locale": "cut",
+   "name": "Teutila Cuicatec",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 15,
+   "sentences": 994
+  },
+  {
+   "locale": "cux",
+   "name": "Tepeuxila Cuicatec",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 11,
+   "sentences": 2251
+  },
+  {
+   "locale": "hno",
+   "name": "Northern Hindko",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 36,
+   "sentences": 2349
+  },
+  {
+   "locale": "khw",
+   "name": "Khowar",
+   "contributable": 1,
+   "recordedHours": 21,
+   "validatedHours": 18,
+   "speakers": 51,
+   "sentences": 7059
+  },
+  {
+   "locale": "kls",
+   "name": "Kalasha",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 23,
+   "sentences": 3912
+  },
+  {
+   "locale": "mau",
+   "name": "Huautla Mazatec",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 7,
+   "sentences": 1119
+  },
+  {
+   "locale": "mqh",
+   "name": "Tlazoyaltepec Mixtec",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "ncx",
+   "name": "Central Puebla Nahuatl",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 11,
+   "speakers": 41,
+   "sentences": 1044
+  },
+  {
+   "locale": "pua",
+   "name": "Western Highland Purepecha",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 11,
+   "speakers": 9,
+   "sentences": 2201
+  },
+  {
+   "locale": "scl",
+   "name": "Shina",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 40,
+   "sentences": 3300
+  },
+  {
+   "locale": "sei",
+   "name": "Seri",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 17,
+   "sentences": 1615
+  },
+  {
+   "locale": "sva",
+   "name": "Svan",
+   "contributable": 1,
+   "recordedHours": 19,
+   "validatedHours": 16,
+   "speakers": 57,
+   "sentences": 1538
+  },
+  {
+   "locale": "trw",
+   "name": "Torwali",
+   "contributable": 1,
+   "recordedHours": 19,
+   "validatedHours": 19,
+   "speakers": 27,
+   "sentences": 7770
+  },
+  {
+   "locale": "var",
+   "name": "Huarijio",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 10,
+   "speakers": 12,
+   "sentences": 1977
+  },
+  {
+   "locale": "xhe",
+   "name": "Khetrani",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 11,
+   "sentences": 5040
+  },
+  {
+   "locale": "xmf",
+   "name": "Mingrelian",
+   "contributable": 1,
+   "recordedHours": 13,
+   "validatedHours": 12,
+   "speakers": 92,
+   "sentences": 1004
+  },
+  {
+   "locale": "yaq",
+   "name": "Yaqui",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 11,
+   "speakers": 5,
+   "sentences": 2838
+  },
+  {
+   "locale": "zoc",
+   "name": "Copainalá Zoque",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 12,
+   "sentences": 1481
+  },
+  {
+   "locale": "esu",
+   "name": "Central Alaskan Yup'ik",
+   "contributable": 1,
+   "recordedHours": 7.6,
+   "validatedHours": 7.6,
+   "speakers": 4,
+   "sentences": 6929
+  },
+  {
+   "locale": "gv",
+   "name": "Manx",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 9,
+   "sentences": 4219
+  },
+  {
+   "locale": "leu",
+   "name": "Kara",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "qup",
+   "name": "Southern Pastaza Quechua",
+   "contributable": 1,
+   "recordedHours": 16,
+   "validatedHours": 12,
+   "speakers": 15,
+   "sentences": 991
+  },
+  {
+   "locale": "szy",
+   "name": "Sakizaya",
+   "contributable": 1,
+   "recordedHours": 15,
+   "validatedHours": 14,
+   "speakers": 26,
+   "sentences": 801
+  },
+  {
+   "locale": "dml",
+   "name": "Dameli",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 5,
+   "sentences": 5670
+  },
+  {
+   "locale": "oru",
+   "name": "Ormuri",
+   "contributable": 1,
+   "recordedHours": 36,
+   "validatedHours": 22,
+   "speakers": 17,
+   "sentences": 7355
+  },
+  {
+   "locale": "phl",
+   "name": "Palula",
+   "contributable": 1,
+   "recordedHours": 30,
+   "validatedHours": 22,
+   "speakers": 20,
+   "sentences": 4745
+  },
+  {
+   "locale": "ipk",
+   "name": "Iñupiaq",
+   "contributable": 1,
+   "recordedHours": 7.2,
+   "validatedHours": 7.2,
+   "speakers": 2,
+   "sentences": 4386
+  },
+  {
+   "locale": "bew",
+   "name": "Betawi",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "top",
+   "name": "Papantla Totonac",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "aat",
+   "name": "Arvanitika",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "aln",
+   "name": "Gheg Albanian",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "hac",
+   "name": "Gorani",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "tob",
+   "name": "Toba Qom",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "bnn",
+   "name": "Bunun",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 11,
+   "speakers": 20,
+   "sentences": 3167
+  },
+  {
+   "locale": "dru",
+   "name": "Rukai",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 20,
+   "sentences": 3867
+  },
+  {
+   "locale": "pwn",
+   "name": "Paiwan",
+   "contributable": 1,
+   "recordedHours": 15,
+   "validatedHours": 15,
+   "speakers": 27,
+   "sentences": 2207
+  },
+  {
+   "locale": "tay",
+   "name": "Atayal",
+   "contributable": 1,
+   "recordedHours": 13,
+   "validatedHours": 12,
+   "speakers": 19,
+   "sentences": 3790
+  },
+  {
+   "locale": "trv",
+   "name": "Seediq",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 10,
+   "speakers": 10,
+   "sentences": 1974
+  },
+  {
+   "locale": "qxu",
+   "name": "Quechua Arequipa-La Unión",
+   "contributable": 1,
+   "recordedHours": 14,
+   "validatedHours": 11,
+   "speakers": 16,
+   "sentences": 998
+  },
+  {
+   "locale": "hch",
+   "name": "Wixárika",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "meh",
+   "name": "Mixteco Yucuhiti",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "mmc",
+   "name": "Michoacán Mazahua",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "jqr",
+   "name": "Jaqaru",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 10,
+   "speakers": 12,
+   "sentences": 999
+  },
+  {
+   "locale": "lke",
+   "name": "Kenyi",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "lth",
+   "name": "Thur",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "qux",
+   "name": "Quechua Yauyos",
+   "contributable": 1,
+   "recordedHours": 14,
+   "validatedHours": 11,
+   "speakers": 15,
+   "sentences": 978
+  },
+  {
+   "locale": "qva",
+   "name": "Quechua Ambo-Pasco",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 10,
+   "speakers": 13,
+   "sentences": 1000
+  },
+  {
+   "locale": "qvl",
+   "name": "Quechua Cajatambo",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 19,
+   "sentences": 1000
+  },
+  {
+   "locale": "qwa",
+   "name": "Quechua Corongo Ancash",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 10,
+   "speakers": 13,
+   "sentences": 1000
+  },
+  {
+   "locale": "qws",
+   "name": "Quechua Sihuas Ancash",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 12,
+   "sentences": 998
+  },
+  {
+   "locale": "qxa",
+   "name": "Quechua Chiquián",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 18,
+   "sentences": 999
+  },
+  {
+   "locale": "qxt",
+   "name": "Quechua Pasco Santa Ana de Tusi",
+   "contributable": 1,
+   "recordedHours": 14,
+   "validatedHours": 11,
+   "speakers": 16,
+   "sentences": 998
+  },
+  {
+   "locale": "qxw",
+   "name": "Quechua Jauja Wanka",
+   "contributable": 1,
+   "recordedHours": 14,
+   "validatedHours": 10,
+   "speakers": 14,
+   "sentences": 1002
+  },
+  {
+   "locale": "ruc",
+   "name": "Ruuli",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "ukv",
+   "name": "Kuku",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "bsh",
+   "name": "Kateviri",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 14,
+   "sentences": 2646
+  },
+  {
+   "locale": "dmk",
+   "name": "Dawoodi",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 10,
+   "sentences": 4139
+  },
+  {
+   "locale": "gju",
+   "name": "Gujari",
+   "contributable": 1,
+   "recordedHours": 13,
+   "validatedHours": 11,
+   "speakers": 8,
+   "sentences": 3852
+  },
+  {
+   "locale": "gwc",
+   "name": "Gawri",
+   "contributable": 1,
+   "recordedHours": 16,
+   "validatedHours": 12,
+   "speakers": 22,
+   "sentences": 5574
+  },
+  {
+   "locale": "gwt",
+   "name": "Gawarbaiti",
+   "contributable": 1,
+   "recordedHours": 13,
+   "validatedHours": 13,
+   "speakers": 5,
+   "sentences": 3719
+  },
+  {
+   "locale": "kcn",
+   "name": "Nubi",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "lss",
+   "name": "Lassi",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 10,
+   "speakers": 15,
+   "sentences": 2029
+  },
+  {
+   "locale": "mvy",
+   "name": "Indus Kohistani",
+   "contributable": 1,
+   "recordedHours": 26,
+   "validatedHours": 23,
+   "speakers": 57,
+   "sentences": 6635
+  },
+  {
+   "locale": "plk",
+   "name": "Kohistani Shina",
+   "contributable": 1,
+   "recordedHours": 17,
+   "validatedHours": 13,
+   "speakers": 10,
+   "sentences": 4657
+  },
+  {
+   "locale": "ush",
+   "name": "Ushojo",
+   "contributable": 1,
+   "recordedHours": 6.8,
+   "validatedHours": 6.7,
+   "speakers": 23,
+   "sentences": 1170
+  },
+  {
+   "locale": "wbl",
+   "name": "Wakhi",
+   "contributable": 1,
+   "recordedHours": 16,
+   "validatedHours": 13,
+   "speakers": 15,
+   "sentences": 5493
+  },
+  {
+   "locale": "xka",
+   "name": "Kalkoti",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 9,
+   "sentences": 1980
+  },
+  {
+   "locale": "gsw",
+   "name": "Alsatian",
+   "contributable": 1,
+   "recordedHours": 1.8,
+   "validatedHours": 0.8,
+   "speakers": 46,
+   "sentences": 87
+  },
+  {
+   "locale": "krc",
+   "name": "Karachay-Balkar",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "rup",
+   "name": "Aromanian",
+   "contributable": 1,
+   "recordedHours": 0.3,
+   "validatedHours": 0.1,
+   "speakers": 9,
+   "sentences": 3507
+  },
+  {
+   "locale": "din",
+   "name": "Dinka",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "hrx",
+   "name": "Hunsrik",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "kam",
+   "name": "Kikamba",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "ks",
+   "name": "Kashmiri",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "lld",
+   "name": "Ladin",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "new",
+   "name": "Newari",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "rn",
+   "name": "Kirundi",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "lrl",
+   "name": "Achomi",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "btv",
+   "name": "Bateri",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 16,
+   "sentences": 1053
+  },
+  {
+   "locale": "ggg",
+   "name": "Gurgula",
+   "contributable": 1,
+   "recordedHours": 13,
+   "validatedHours": 13,
+   "speakers": 24,
+   "sentences": 2005
+  },
+  {
+   "locale": "gig",
+   "name": "Goaria",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 20,
+   "sentences": 2005
+  },
+  {
+   "locale": "gjk",
+   "name": "Kachhi",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 11,
+   "speakers": 23,
+   "sentences": 2004
+  },
+  {
+   "locale": "kvx",
+   "name": "Parkari Koli",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 12,
+   "speakers": 22,
+   "sentences": 2025
+  },
+  {
+   "locale": "kxp",
+   "name": "Wadiyara Koli",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 12,
+   "speakers": 22,
+   "sentences": 2079
+  },
+  {
+   "locale": "lrk",
+   "name": "Loarki",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 12,
+   "speakers": 20,
+   "sentences": 2006
+  },
+  {
+   "locale": "mki",
+   "name": "Dhatki",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 12,
+   "sentences": 2055
+  },
+  {
+   "locale": "mve",
+   "name": "Marwari",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 20,
+   "sentences": 2003
+  },
+  {
+   "locale": "odk",
+   "name": "Oadki",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 12,
+   "speakers": 20,
+   "sentences": 2047
+  },
+  {
+   "locale": "phr",
+   "name": "Pahari-Pothwari",
+   "contributable": 1,
+   "recordedHours": 15,
+   "validatedHours": 15,
+   "speakers": 63,
+   "sentences": 2077
+  },
+  {
+   "locale": "sbn",
+   "name": "Sindhi Bhil",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 21,
+   "sentences": 2001
+  },
+  {
+   "locale": "ssi",
+   "name": "Sansi",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 21,
+   "sentences": 2007
+  },
+  {
+   "locale": "ydg",
+   "name": "Yadgha",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 11,
+   "speakers": 18,
+   "sentences": 2000
+  },
+  {
+   "locale": "bag",
+   "name": "Tuki",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 12,
+   "speakers": 14,
+   "sentences": 1006
+  },
+  {
+   "locale": "ajg",
+   "name": "Adja",
+   "contributable": 1,
+   "recordedHours": 13,
+   "validatedHours": 13,
+   "speakers": 23,
+   "sentences": 3213
+  },
+  {
+   "locale": "bkh",
+   "name": "Bakoko",
+   "contributable": 1,
+   "recordedHours": 15,
+   "validatedHours": 11,
+   "speakers": 13,
+   "sentences": 986
+  },
+  {
+   "locale": "bxk",
+   "name": "Bukusu",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "cgg",
+   "name": "Chiga",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "cjk",
+   "name": "Chokwe",
+   "contributable": 1,
+   "recordedHours": 15,
+   "validatedHours": 13,
+   "speakers": 45,
+   "sentences": 1141
+  },
+  {
+   "locale": "cpy",
+   "name": "Asheninka South Ucayali",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 15,
+   "sentences": 1000
+  },
+  {
+   "locale": "fmp",
+   "name": "Fe'efe'e",
+   "contributable": 1,
+   "recordedHours": 13,
+   "validatedHours": 12,
+   "speakers": 32,
+   "sentences": 1004
+  },
+  {
+   "locale": "gej",
+   "name": "Mina",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 12,
+   "speakers": 20,
+   "sentences": 3188
+  },
+  {
+   "locale": "gid",
+   "name": "Guidar",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 16,
+   "sentences": 917
+  },
+  {
+   "locale": "giz",
+   "name": "Guiziga",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 32,
+   "sentences": 991
+  },
+  {
+   "locale": "hem",
+   "name": "Kihemba",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 41,
+   "sentences": 1020
+  },
+  {
+   "locale": "hux",
+   "name": "Nüpode Huitoto",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 10,
+   "speakers": 13,
+   "sentences": 995
+  },
+  {
+   "locale": "jgo",
+   "name": "Ngomba",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 12,
+   "speakers": 16,
+   "sentences": 1035
+  },
+  {
+   "locale": "kdh",
+   "name": "Kotokoli",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 20,
+   "sentences": 1219
+  },
+  {
+   "locale": "koo",
+   "name": "Konzo",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "lua",
+   "name": "Tshiluba",
+   "contributable": 1,
+   "recordedHours": 14,
+   "validatedHours": 11,
+   "speakers": 46,
+   "sentences": 880
+  },
+  {
+   "locale": "mcf",
+   "name": "Matses",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 21,
+   "sentences": 997
+  },
+  {
+   "locale": "mcn",
+   "name": "Massa",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 35,
+   "sentences": 959
+  },
+  {
+   "locale": "mcx",
+   "name": "Mpiemo",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 10,
+   "sentences": 903
+  },
+  {
+   "locale": "mdd",
+   "name": "Mbum",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 7,
+   "sentences": 923
+  },
+  {
+   "locale": "mgg",
+   "name": "Kunabembe",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 9,
+   "sentences": 991
+  },
+  {
+   "locale": "mhk",
+   "name": "Mungaka",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 12,
+   "speakers": 9,
+   "sentences": 1000
+  },
+  {
+   "locale": "mse",
+   "name": "Moussey",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 18,
+   "sentences": 1002
+  },
+  {
+   "locale": "mua",
+   "name": "Mundang",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 17,
+   "sentences": 995
+  },
+  {
+   "locale": "mug",
+   "name": "Musgum",
+   "contributable": 1,
+   "recordedHours": 13,
+   "validatedHours": 12,
+   "speakers": 18,
+   "sentences": 1002
+  },
+  {
+   "locale": "nla",
+   "name": "Ngombale",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 10,
+   "speakers": 15,
+   "sentences": 984
+  },
+  {
+   "locale": "nmz",
+   "name": "Losso",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 12,
+   "speakers": 35,
+   "sentences": 2446
+  },
+  {
+   "locale": "prq",
+   "name": "Asheninka Perene",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 13,
+   "sentences": 986
+  },
+  {
+   "locale": "qug",
+   "name": "Quichua Chimborazo Highland",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "qur",
+   "name": "Quechua Yanahuanca",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 12,
+   "sentences": 1010
+  },
+  {
+   "locale": "qus",
+   "name": "Quechua Santiago del Estero",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 12,
+   "speakers": 24,
+   "sentences": 998
+  },
+  {
+   "locale": "rof",
+   "name": "Kirombo",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 11,
+   "speakers": 24,
+   "sentences": 1399
+  },
+  {
+   "locale": "rwm",
+   "name": "Amba",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "tar",
+   "name": "Central Tarahumara",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 10,
+   "speakers": 17,
+   "sentences": 1258
+  },
+  {
+   "locale": "tli",
+   "name": "Tlingit",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 3,
+   "sentences": 7863
+  },
+  {
+   "locale": "ttj",
+   "name": "Rutoro",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "udl",
+   "name": "Ouldémé",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 20,
+   "sentences": 1011
+  },
+  {
+   "locale": "yav",
+   "name": "Nuasue",
+   "contributable": 1,
+   "recordedHours": 14,
+   "validatedHours": 12,
+   "speakers": 10,
+   "sentences": 1013
+  },
+  {
+   "locale": "nlv",
+   "name": "Orizaba Nahuatl",
+   "contributable": 1,
+   "recordedHours": 13,
+   "validatedHours": 12,
+   "speakers": 16,
+   "sentences": 1006
+  },
+  {
+   "locale": "iba",
+   "name": "Iban",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "jam",
+   "name": "Jamaican Patois",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "brh",
+   "name": "Brahui",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 18,
+   "sentences": 3095
+  },
+  {
+   "locale": "eko",
+   "name": "Ekoti",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 7,
+   "sentences": 1288
+  },
+  {
+   "locale": "haz",
+   "name": "Hazargi",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 9,
+   "sentences": 1361
+  },
+  {
+   "locale": "led",
+   "name": "Lendu",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "nmg",
+   "name": "Kwasio",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 11,
+   "sentences": 1025
+  },
+  {
+   "locale": "nyu",
+   "name": "Nyungwe",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 5,
+   "sentences": 1271
+  },
+  {
+   "locale": "qvj",
+   "name": "Loja Highland Kichwa",
+   "contributable": 1,
+   "recordedHours": 12,
+   "validatedHours": 11,
+   "speakers": 16,
+   "sentences": 1059
+  },
+  {
+   "locale": "sn",
+   "name": "Shona",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "bce",
+   "name": "Mengambo",
+   "contributable": 1,
+   "recordedHours": 11,
+   "validatedHours": 11,
+   "speakers": 14,
+   "sentences": 986
+  },
+  {
+   "locale": "brx",
+   "name": "Bodo",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "mrh",
+   "name": "Mara",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "abq",
+   "name": "Abaza",
+   "contributable": 1,
+   "recordedHours": 23,
+   "validatedHours": 3.6,
+   "speakers": 58,
+   "sentences": 19178
+  },
+  {
+   "locale": "gaa",
+   "name": "Ga",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "mfe",
+   "name": "Kreol Morisien",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "xsm",
+   "name": "Kasem",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "qxq",
+   "name": "Qashqai",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "xdq",
+   "name": "Kaitag",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "mbf",
+   "name": "Baba Malay",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "pcd",
+   "name": "Picard",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "bsy",
+   "name": "Sabah Bisaya",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "cpx",
+   "name": "Heng Hua",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "kzi",
+   "name": "Kelabit",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "mel",
+   "name": "Melanau",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "msi",
+   "name": "Sabah Malay",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "pez",
+   "name": "Eastern Penan",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "pne",
+   "name": "Western Penan",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "sdo",
+   "name": "Serian Bidayuh",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "snv",
+   "name": "Sa'ban",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "xkl",
+   "name": "Kenyah",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "seh",
+   "name": "Sena",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "hak",
+   "name": "Hakka",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "su",
+   "name": "Sundanese",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "glk",
+   "name": "Gilaki",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "pau",
+   "name": "Palauan",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "tum",
+   "name": "Tumbuka",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "laj",
+   "name": "Lango",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "aii",
+   "name": "Suret",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "efk",
+   "name": "Efik",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "ce",
+   "name": "Chechen",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 18
+  },
+  {
+   "locale": "kjh",
+   "name": "Khakas",
+   "contributable": 1,
+   "recordedHours": 7,
+   "validatedHours": 3.6,
+   "speakers": 69,
+   "sentences": 3572
+  },
+  {
+   "locale": "sba",
+   "name": "Ngambay",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "tuq",
+   "name": "Tudaga",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "usp",
+   "name": "Uspanteko",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "rki",
+   "name": "Rakhine",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 6
+  },
+  {
+   "locale": "mnw",
+   "name": "Mon",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "swb",
+   "name": "Shimaore",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "bin",
+   "name": "Edo",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "gcf",
+   "name": "Martinican Creole",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "sg",
+   "name": "Sango",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "tiv",
+   "name": "Tiv",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "bfq",
+   "name": "Badaga",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "dz",
+   "name": "Dzongkha",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "kl",
+   "name": "Kalaallisut",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "mui",
+   "name": "Musi",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "vls",
+   "name": "West Flemish",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "blk",
+   "name": "Pa'O",
+   "contributable": 1,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 2,
+   "sentences": 2204
+  },
+  {
+   "locale": "mzn",
+   "name": "Mazandarani",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "apc",
+   "name": "Levantine Arabic",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "kum",
+   "name": "Kumyk",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  },
+  {
+   "locale": "nyb",
+   "name": "Nyagbo",
+   "contributable": 0,
+   "recordedHours": 0,
+   "validatedHours": 0,
+   "speakers": 0,
+   "sentences": 0
+  }
+ ]
+}

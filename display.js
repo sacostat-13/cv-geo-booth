@@ -96,7 +96,13 @@
       // "did not say" is shown rather than hidden. A quarter of a language's
       // recordings having no age attached is a fact about the dataset, and
       // the dataset's gaps are what the booth is about.
-      const label = unsaid ? 'did not say' : (map[x.label] || x.label.replace(/_/g, ' '));
+      //
+      // x.name is the accent or variant's real name, in its own script, as
+      // Common Voice's own language data has it — "Nord-Occidental", not
+      // "ca-nwestern". Where there is none, the raw token at least loses its
+      // underscores rather than going on the wall as database spelling.
+      const label = unsaid ? 'did not say'
+        : (x.name || map[x.label] || x.label.replace(/_/g, ' '));
       return `<div class="bar${unsaid ? ' unsaid' : ''}">
         <span class="lbl">${esc(label)}</span><span class="val">${Q.pct(x.share)}</span>
         <span class="track"><i style="width:${Math.round(x.share * 100)}%"></i></span>

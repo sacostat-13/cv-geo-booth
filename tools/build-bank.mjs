@@ -81,8 +81,37 @@ const corpus = newestRelease('cv-corpus-');
 const sps = newestRelease('sps-corpus-');
 const TABLE = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools', 'languages.json'), 'utf8')).languages;
 
+const readJson = (f, what) => {
+  const p = path.join(ROOT, 'data', f);
+  if (!fs.existsSync(p)) { console.warn(`no data/${f} — ${what} will be missing`); return null; }
+  return JSON.parse(fs.readFileSync(p, 'utf8'));
+};
+
+/* Two sources beyond the release, both committed snapshots.
+
+   cv-languages-live.json is /api/v1/stats/languages. It is the only place
+   that says whether a language is OPEN FOR RECORDING right now, and it knows
+   about 445 locales to the release's 295 — the ones with a page on Common
+   Voice but no dataset yet. Its hours do not agree with the release's (it
+   reported 3,020 validated hours of Catalan on the day the 27.0 release said
+   3,392), so the release stays the authority for anything the screen shows as
+   a number next to a release label, and this is used for status and
+   sentence counts. --live re-fetches it; the snapshot is the fallback and is
+   what a build with no network uses.
+
+   language-data.json is accents.ts and variants.ts from the Common Voice
+   repo. Without it the screen shows a contributor's accent as "ca-nwestern"
+   rather than "Nord-Occidental" — a token meant for a database, on a two-
+   metre screen, in front of the people who chose it. */
+const LIVE = readJson('cv-languages-live.json', 'open-for-recording status');
+const LANGDATA = readJson('language-data.json', 'accent and variant names');
+
+const live = {};
+for (const row of (LIVE && LIVE.locales) || []) live[row.locale] = row;
+
 console.log(`release   ${corpus.name}`);
 console.log(`spontaneous ${sps.name}`);
+if (LIVE) console.log(`live      ${Object.keys(live).length} locales, fetched ${LIVE.fetched}`);
 
 // ---- per-language Common Voice figures ------------------------------------
 
@@ -91,16 +120,26 @@ console.log(`spontaneous ${sps.name}`);
    reveal panel draws them the same way. A blank label means the contributor
    did not say, which is itself worth showing — the gaps in the dataset are
    half of what the booth is about. */
-function shareList(obj, { asFraction }) {
+function shareList(obj, { asFraction, names }) {
   if (!obj) return [];
   const entries = Object.entries(obj).filter(([, v]) => v > 0);
   const total = asFraction ? 1 : entries.reduce((s, [, v]) => s + v, 0);
   if (!total) return [];
   return entries
-    .map(([label, v]) => ({ label: label || '', share: +(v / total).toFixed(4) }))
+    .map(([label, v]) => {
+      const row = { label: label || '', share: +(v / total).toFixed(4) };
+      // The human name for an accent or variant token, in the language's own
+      // script, as its speakers wrote it when they added it to Common Voice.
+      const name = names && label && names[label];
+      if (name && name !== label) row.name = name;
+      return row;
+    })
     .sort((a, b) => b.share - a.share)
     .slice(0, 8);
 }
+
+const accentNames = (LANGDATA && LANGDATA.accents) || {};
+const variantNames = (LANGDATA && LANGDATA.variants) || {};
 
 const LANGS = {};
 const missing = [];
@@ -121,10 +160,17 @@ for (const L of TABLE) {
     users: c.users || 0,
     avgDurationSecs: c.avgDurationSecs || null,
     sps: !!sps.json.locales[L.locale],
+    // Whether someone could walk away from the booth and record this today.
+    // A language can be in the release and since have been closed, or be open
+    // with nothing recorded yet, so this is its own fact and not a hours test.
+    open: live[L.locale] ? !!live[L.locale].contributable : null,
+    speakers: live[L.locale] ? live[L.locale].speakers : null,
+    sentences: live[L.locale] ? live[L.locale].sentences : null,
+    liveValidHours: live[L.locale] ? live[L.locale].validatedHours : null,
     gender: shareList(c.splits && c.splits.gender, { asFraction: true }),
     age: shareList(c.splits && c.splits.age, { asFraction: true }),
-    accents: shareList(c.splits && c.splits.accent, { asFraction: false }),
-    variants: shareList(c.splits && c.splits.variant, { asFraction: false })
+    accents: shareList(c.splits && c.splits.accent, { asFraction: false, names: accentNames[L.locale] }),
+    variants: shareList(c.splits && c.splits.variant, { asFraction: false, names: variantNames[L.locale] })
   };
 }
 if (missing.length) console.warn(`not in this release, skipped: ${missing.join(', ')}`);

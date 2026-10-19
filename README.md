@@ -68,6 +68,17 @@ who took it — and the language just answered keeps the rest of the screen.
 Who won matters for ten seconds; what Setswana is matters after they have
 left. The band comes down twelve seconds after the result.
 
+**Noto, subset to the bank.** The booth asks people to read 114 languages in
+23 scripts. A system font stack has no Tifinagh, Thaana, Ethiopic or Odia on
+an iPad, and a missing script does not degrade — it renders as a row of
+boxes, which is not a hard question, it is a broken one. All of Noto is about
+40MB, most of it CJK; but the bank is fixed at build time, so
+`tools/build-fonts.mjs` cuts each family down to exactly the characters that
+build contains. The whole set, every script, is **705kB**. Shaping tables are
+kept, so Arabic joins and Devanagari reorders — a subset that drops those
+renders the right characters in the wrong shapes, which is worse than boxes
+because it looks fine to someone who cannot read it.
+
 **Light, not dark.** A hall is lit and the screen is large: dark panels at
 three metres read as switched off, and near-black text on paper beats pale
 text on black at that distance. The brand reds are darkened from `#FF4F5E`,
@@ -115,7 +126,16 @@ netlify dev --live               # same, over an HTTPS tunnel
 
 ```
 node tools/build-bank.mjs --sentences ../common-voice/server/data
+node tools/build-fonts.mjs                      # always, straight after
+```
+
+**In that order, always.** The fonts are cut to the characters in the bank, so
+a bank with a new language and a font set built before it renders that
+language as boxes. With clips:
+
+```
 node tools/build-bank.mjs --sentences ../common-voice/server/data --clips ./clips
+node tools/build-fonts.mjs
 ```
 
 `--sentences` points at `server/data` from a clone of
@@ -125,10 +145,28 @@ booth is read-only and says so.
 
 Writes `bank.js` (the questions) and `quiz-data.js` (per-language hours,
 contributor counts and the gender, age, accent and variant splits the reveal
-panel draws). Both come from the release JSONs in `data/`, downloaded from
-`github.com/common-voice/cv-dataset`. **Drop in a newer release and rebuild
-before the festival** — the figures on the screen are dated and visitors can
-check them.
+panel draws).
+
+### Where each number comes from
+
+Four sources, all committed under `data/` so a build needs no network:
+
+| | Source | What it gives |
+|---|---|---|
+| **Hours, clips, contributors, demographics** | `cv-corpus-*.json` from [cv-dataset](https://github.com/common-voice/cv-dataset) | Everything the reveal panel shows as a number |
+| **Spontaneous speech** | `sps-corpus-*.json`, same repo | The SPS badge |
+| **Accent and variant names** | `language-data.json`, derived from `accents.ts` / `variants.ts` in the [Common Voice repo](https://github.com/common-voice/common-voice/tree/main/server/src/lib/model/db/language-data) | "Nord-Occidental" instead of `ca-nwestern` |
+| **Open for recording, sentence counts** | `cv-languages-live.json`, a snapshot of [`/api/v1/stats/languages`](https://commonvoice.mozilla.org/api/v1/stats/languages) | Whether you could record it today; how many sentences are waiting |
+
+**The release is the authority for hours, not the live API.** The two do not
+agree — on the day this was built the live endpoint reported 3,020 validated
+hours of Catalan where release 27.0 said 3,392 — and the screen carries the
+release label in its corner with a QR code beside it, so the figures have to
+be the ones a visitor finds when they scan. The live snapshot is used for
+status and sentence counts only.
+
+**Drop in a newer release and rebuild before the festival** — the figures on
+the screen are dated and visitors can check them.
 
 `tools/languages.json` is the curated language table: family, region, script
 and how widely known each language is. Adding a language is a line there plus

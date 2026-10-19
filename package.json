@@ -1,12 +1,39 @@
 {
   "name": "cv-geo-booth",
   "private": true,
-  "description": "Common Voice booth wall — static pages plus two Netlify functions.",
+  "description": "Common Voice booth — guess the language. Two iPads and a 42\" screen.",
   "scripts": {
     "build": "node tools/build-config.js",
+    "bank": "node tools/build-bank.mjs",
+    "fonts": "node tools/build-fonts.mjs",
     "dev": "node tools/build-config.js && python3 -m http.server 8080"
   },
   "dependencies": {
     "@netlify/blobs": "^11.1.0"
+  },
+  "comment": "The @expo-google-fonts packages are the Noto source TTFs that tools/build-fonts.mjs subsets. They are devDependencies because the booth ships the cut woff2 files in fonts/ — Netlify never installs these.",
+  "devDependencies": {
+    "@expo-google-fonts/noto-sans": "^0.2.3",
+    "@expo-google-fonts/noto-sans-arabic": "^0.2.3",
+    "@expo-google-fonts/noto-sans-armenian": "^0.2.3",
+    "@expo-google-fonts/noto-sans-bengali": "^0.2.3",
+    "@expo-google-fonts/noto-sans-devanagari": "^0.2.3",
+    "@expo-google-fonts/noto-sans-ethiopic": "^0.2.3",
+    "@expo-google-fonts/noto-sans-georgian": "^0.2.3",
+    "@expo-google-fonts/noto-sans-gurmukhi": "^0.2.3",
+    "@expo-google-fonts/noto-sans-hebrew": "^0.2.3",
+    "@expo-google-fonts/noto-sans-jp": "^0.2.3",
+    "@expo-google-fonts/noto-sans-khmer": "^0.2.3",
+    "@expo-google-fonts/noto-sans-kr": "^0.2.3",
+    "@expo-google-fonts/noto-sans-lao": "^0.2.3",
+    "@expo-google-fonts/noto-sans-malayalam": "^0.2.3",
+    "@expo-google-fonts/noto-sans-myanmar": "^0.2.3",
+    "@expo-google-fonts/noto-sans-oriya": "^0.2.3",
+    "@expo-google-fonts/noto-sans-sc": "^0.2.3",
+    "@expo-google-fonts/noto-sans-tamil": "^0.2.3",
+    "@expo-google-fonts/noto-sans-tc": "^0.2.3",
+    "@expo-google-fonts/noto-sans-thaana": "^0.2.3",
+    "@expo-google-fonts/noto-sans-thai": "^0.2.3",
+    "@expo-google-fonts/noto-sans-tifinagh": "^0.2.3"
   }
 }

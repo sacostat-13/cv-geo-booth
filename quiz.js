@@ -147,6 +147,10 @@
     const a = top(l.age);
     if (a && a.share >= 0.3) facts.push(`${pct(a.share)} of ${l.name} recordings come from ${label(AGE_LABEL, a.label)}.`);
 
+    // Sentences waiting to be read is the one figure that points straight at
+    // what the QR code offers: something the visitor could go and do tonight.
+    if (l.sentences > 1000) facts.push(`${fmtInt(l.sentences)} ${l.name} sentences are waiting to be read aloud.`);
+
     if (l.variants && l.variants.length > 2) facts.push(`Common Voice tracks ${l.variants.length} varieties of ${l.name}.`);
     else if (l.accents && l.accents.filter(x => x.label).length > 2) facts.push(`Contributors have tagged ${l.accents.filter(x => x.label).length} accents of ${l.name}.`);
 
