@@ -13,6 +13,7 @@
   const CFG = window.BOOTH;
   const DUEL_WINDOW_MS = 3500;
   const LIVE_STALE_MS = 25000;
+  const DUEL_SETTLE_MS = 12000;   // a settled duel comes down off the screen
   const HOUR_MS = 3600000;
   const KEY_LIVE = 'cvquiz.live.v1';
   const KEY_BOARD = 'cvquiz.board.v1';
@@ -121,6 +122,7 @@
         if (now - (live.pads[k].at || 0) > LIVE_STALE_MS) delete live.pads[k];
       }
       if (live.duel && now - (live.duel.at || 0) > LIVE_STALE_MS) live.duel = null;
+      if (live.duel && live.duel.winner && now - (live.duel.settledAt || live.duel.at || 0) > DUEL_SETTLE_MS) live.duel = null;
       if (live.reveal && now - (live.reveal.at || 0) > LIVE_STALE_MS * 2) live.reveal = null;
       return live;
     }

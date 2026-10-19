@@ -62,6 +62,19 @@ with swag attached, *adds runs up* under the same initials — which is what
 makes "go and get your friend to play for you" work. The social mechanic
 lives on the day board where it cannot crowd out the live one.
 
+**A duel is a scoreline, not a takeover.** When two people race, the band
+across the top of the panel carries the two scores and one short line about
+who took it — and the language just answered keeps the rest of the screen.
+Who won matters for ten seconds; what Setswana is matters after they have
+left. The band comes down twelve seconds after the result.
+
+**Light, not dark.** A hall is lit and the screen is large: dark panels at
+three metres read as switched off, and near-black text on paper beats pale
+text on black at that distance. The brand reds are darkened from `#FF4F5E`,
+which is about 3:1 on white and under the line for text. The pads match —
+one booth should not be black on the table and white on the wall, and at
+arm's length a near-black iPad is a mirror of the room.
+
 **No welcome splash.** A full-screen call to action is the worst-performing
 attract screen there is; people look at it and walk past. The screen stays
 live — reacting to whatever the pads are doing — and the instruction sits in

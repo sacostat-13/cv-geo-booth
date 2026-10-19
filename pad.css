@@ -5,18 +5,21 @@
    and nothing on screen asks a question the person has not already been
    asked out loud by the booth. */
 
+/* Light, matching the 42". One booth should not be black on the table and
+   white on the wall. A lit hall also means a dark pad is a mirror: at arm's
+   length a near-black screen shows the room back at the person reading it. */
 :root {
-  --ink: #0C0C11;
-  --surface: #17171F;
-  --surface-2: #20202B;
-  --line: #2E2E3C;
-  --text: #F4F4F7;
-  --muted: #9B9BAD;
-  --accent: #FF4F5E;
-  --accent-2: #FF8A3D;
-  --ok: #3FD98B;
-  --no: #FF5A5F;
-  --focus: #7FB2FF;
+  --paper: #FAF7F5;
+  --surface: #FFFFFF;
+  --surface-2: #F1EDEA;
+  --line: #DFD8D3;
+  --text: #16161C;
+  --muted: #5F5F70;
+  --accent: #D6283C;
+  --accent-2: #D9541B;
+  --ok: #117A52;
+  --no: #C32430;
+  --focus: #2B5FBF;
   --r: 20px;
   --pad: clamp(20px, 3.2vw, 40px);
 }
@@ -34,7 +37,7 @@ html, body {
 }
 
 body {
-  background: radial-gradient(130% 90% at 50% -10%, #241A2E 0%, var(--ink) 55%);
+  background: radial-gradient(130% 90% at 50% -10%, #FFF3EC 0%, var(--paper) 55%);
   color: var(--text);
   font: 400 18px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   display: flex;
@@ -125,6 +128,7 @@ button:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .mode {
   background: var(--surface);
   border: 2px solid var(--line);
+  box-shadow: 0 6px 20px -12px rgba(40, 20, 10, .35);
   border-radius: var(--r);
   /* 75mm minimum touch target, with room to spare: these are the two taps
      that matter and they are made from a metre away by people in coats. */
@@ -221,6 +225,7 @@ button:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .options { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.8vw, 20px); }
 .opt {
   background: var(--surface); border: 2px solid var(--line); border-radius: var(--r);
+  box-shadow: 0 4px 14px -10px rgba(40, 20, 10, .4);
   /* Four quadrants, each well over the 75mm minimum, in fixed positions so a
      returning player's thumb already knows where the answers live. */
   min-height: clamp(96px, 13vh, 132px);
@@ -230,9 +235,9 @@ button:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
   transition: transform .12s, border-color .12s, background .12s;
 }
 .opt:active { transform: scale(.97); }
-.opt.ok { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 18%, var(--surface)); }
-.opt.no { border-color: var(--no); background: color-mix(in srgb, var(--no) 16%, var(--surface)); animation: shake .4s; }
-.opt.dim { opacity: .35; }
+.opt.ok { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 12%, var(--surface)); }
+.opt.no { border-color: var(--no); background: color-mix(in srgb, var(--no) 10%, var(--surface)); animation: shake .4s; }
+.opt.dim { opacity: .4; }
 @keyframes shake { 10%,90% { transform: translateX(-3px); } 30%,70% { transform: translateX(6px); } 50% { transform: translateX(-6px); } }
 
 /* ---- reveal ------------------------------------------------------------- */
@@ -274,6 +279,7 @@ button:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .missed h2 { font-size: clamp(15px, 1.7vw, 18px); margin: 0; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
 .missed .card {
   background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: 0 3px 12px -9px rgba(40, 20, 10, .4);
   padding: 12px 16px;
 }
 .missed .card b { font-size: clamp(17px, 2vw, 21px); }
@@ -286,6 +292,7 @@ button:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .keys { display: grid; grid-template-columns: repeat(9, 1fr); gap: 7px; width: min(100%, 720px); }
 .keys button {
   background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: 0 2px 6px -4px rgba(40, 20, 10, .4);
   min-height: 56px; font-size: 20px; font-weight: 600;
 }
 .keys button:active { background: var(--surface-2); border-color: var(--accent); }
@@ -307,8 +314,8 @@ button:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
 body.flash-ok #app { animation: flashOk .5s ease-out; }
 body.flash-no #app { animation: flashNo .4s ease-out; }
-@keyframes flashOk { 0% { background: color-mix(in srgb, var(--ok) 14%, transparent); } 100% { background: transparent; } }
-@keyframes flashNo { 0% { background: color-mix(in srgb, var(--no) 14%, transparent); } 100% { background: transparent; } }
+@keyframes flashOk { 0% { background: color-mix(in srgb, var(--ok) 12%, transparent); } 100% { background: transparent; } }
+@keyframes flashNo { 0% { background: color-mix(in srgb, var(--no) 10%, transparent); } 100% { background: transparent; } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }

@@ -444,7 +444,9 @@
 
   // ---- confetti -----------------------------------------------------------
 
-  const COLOURS = ['#FF4F5E', '#FF8A3D', '#3FD98B', '#7FB2FF', '#FFD166'];
+  // Saturated enough to carry against a light background; the pastel end of
+  // a confetti palette vanishes on paper.
+  const COLOURS = ['#D6283C', '#D9541B', '#117A52', '#2B5FBF', '#B88A00'];
   function confetti(n) {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const box = $('burst');

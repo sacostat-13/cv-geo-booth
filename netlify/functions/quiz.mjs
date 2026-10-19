@@ -22,6 +22,9 @@ import { getStore } from '@netlify/blobs';
 
 const DUEL_WINDOW_MS = 3500;   // how long a pad waits to find a challenger
 const LIVE_STALE_MS = 25000;   // a run nobody finished stops being "live"
+// A settled duel comes down off the screen after this, so the band does not
+// sit over an idle booth announcing a result nobody is still standing for.
+const DUEL_SETTLE_MS = 12000;
 const BOARD_MAX = 2000;
 const HOUR_MS = 3600000;
 
@@ -80,6 +83,7 @@ function prune(live) {
     if (now - (pad.at || 0) > LIVE_STALE_MS) delete live.pads[k];
   }
   if (live.duel && now - (live.duel.at || 0) > LIVE_STALE_MS) live.duel = null;
+  if (live.duel && live.duel.winner && now - (live.duel.settledAt || live.duel.at || 0) > DUEL_SETTLE_MS) live.duel = null;
   if (live.reveal && now - (live.reveal.at || 0) > LIVE_STALE_MS * 2) live.reveal = null;
   return live;
 }

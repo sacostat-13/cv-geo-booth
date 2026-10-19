@@ -162,7 +162,14 @@
 
   // ---- duel ----------------------------------------------------------------
 
+  /* The band, not a card. It appears above whatever the panel is already
+     showing and disappears when the duel ages out; the language underneath
+     is never displaced by it. */
   function paintDuel(d) {
+    const band = $('duelBand');
+    band.hidden = !d;
+    feature.classList.toggle('has-duel', !!d);
+    if (!d) return;
     // Sorted, so Station A is always the left column. Which pad joined first
     // is not something a crowd should have to work out from the screen.
     const [a, b] = (d.stations || ['A', 'B']).slice().sort();
@@ -172,23 +179,21 @@
       if (!el) continue;
       el.querySelector('.st').textContent = 'Station ' + st;
       el.querySelector('.sc').textContent = (d.scores && d.scores[st]) || 0;
-      const n = (d.answered && d.answered[st]) || 0;
-      el.querySelector('.qn').textContent = d.winner ? 'done' : `question ${Math.min(n + 1, CFG.run.questions)} of ${CFG.run.questions}`;
       el.classList.remove('lead', 'won');
     }
     const sa = (d.scores && d.scores[a]) || 0, sb = (d.scores && d.scores[b]) || 0;
     if (!d.winner && sa !== sb) sides[sa > sb ? a : b].classList.add('lead');
 
+    // One short line. The winner is worth a sentence, not a headline — the
+    // headline belongs to the language.
     if (d.winner === 'draw') {
       $('duelResult').textContent = 'A draw';
-      $('duelSub').textContent = 'Same score, same time. Both of you were right about the same things.';
     } else if (d.winner) {
       sides[d.winner] && sides[d.winner].classList.add('won');
       $('duelResult').textContent = 'Station ' + d.winner + ' takes it';
-      $('duelSub').textContent = 'Both players keep their points.';
     } else {
-      $('duelResult').textContent = '';
-      $('duelSub').textContent = 'Same five questions, same second.';
+      const n = Math.max(...[a, b].map(st => (d.answered && d.answered[st]) || 0));
+      $('duelResult').textContent = `question ${Math.min(n + 1, CFG.run.questions)} of ${CFG.run.questions}`;
     }
   }
 
@@ -259,10 +264,16 @@
 
     const anyLive = Object.values(st.pads || {}).some(p => !p.finished && Date.now() - p.at < 20000);
 
-    if (st.duel) {
-      paintDuel(st.duel);
-      show('duel', st.duel.winner ? 6000 : 2000);
-    } else if (st.reveal && Date.now() - st.reveal.at < CFG.screen.revealMs) {
+    paintDuel(st.duel);
+
+    /* A duel no longer takes the panel. It raises the band and leaves the
+       precedence below it alone, so the screen goes on showing whichever
+       language was last answered — which is the part a visitor takes away.
+       During a duel the reveal is also allowed to hold longer, because both
+       players are still answering and nothing else is competing for it. */
+    const revealHold = st.duel ? CFG.screen.revealMs * 1.6 : CFG.screen.revealMs;
+
+    if (st.reveal && Date.now() - st.reveal.at < revealHold) {
       paintReveal(st.reveal);
       show('reveal', 4000);
     } else if (anyLive) {

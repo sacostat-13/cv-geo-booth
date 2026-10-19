@@ -29,8 +29,17 @@
     <ol class="rows podium" id="dayRows"></ol>
   </section>
 
-  <!-- right: one of four things -->
+  <!-- right: the language, always. A duel adds a band above it. -->
   <section class="panel feature" id="feature">
+
+    <!-- A duel is a scoreline across the top, not a takeover. The language
+         stays the thing the screen is about: who won matters for ten seconds,
+         what Setswana is matters after they have left. -->
+    <div class="duelband" id="duelBand" hidden>
+      <div class="dside" id="sideA"><span class="st">Station A</span><b class="sc">0</b></div>
+      <div class="dmid"><span class="dlabel">Duel</span><span class="dres" id="duelResult"></span></div>
+      <div class="dside" id="sideB"><span class="st">Station B</span><b class="sc">0</b></div>
+    </div>
 
     <!-- a language, just revealed -->
     <div class="card reveal" data-card="reveal">
@@ -50,18 +59,6 @@
         <div class="qr" id="qr"><div class="qr-fallback" id="qrFallback">QR</div></div>
         <p class="qrtext">Scan for <b id="qrLang">this language</b> on Common Voice — the data, and how to add your voice.</p>
       </div>
-    </div>
-
-    <!-- a duel in progress -->
-    <div class="card duel" data-card="duel">
-      <p class="kicker">Duel</p>
-      <div class="duelgrid">
-        <div class="side" id="sideA"><span class="st">Station A</span><b class="sc">0</b><span class="qn">—</span></div>
-        <div class="vs">vs</div>
-        <div class="side" id="sideB"><span class="st">Station B</span><b class="sc">0</b><span class="qn">—</span></div>
-      </div>
-      <h1 class="duelresult" id="duelResult"></h1>
-      <p class="sub" id="duelSub">Same five questions, same second.</p>
     </div>
 
     <!-- somebody is playing, nothing revealed yet -->

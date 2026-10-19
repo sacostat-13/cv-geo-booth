@@ -8,26 +8,38 @@
    text — the number that stops a booth screen being a thing only the people
    standing at it can read. */
 
+/* Light, not dark. A hall is lit, the screen is large, and dark panels at
+   three metres read as switched off — the eye finds a bright rectangle first
+   and the contrast of near-black text on paper beats pale text on black at
+   that distance. The accent colours are darkened from the brand values so
+   they still carry against white: #FF4F5E on paper is about 3:1, which is
+   under the line for text. */
 :root {
-  --ink: #0B0B10;
-  --surface: #15151D;
-  --surface-2: #1D1D28;
-  --line: #2C2C3B;
-  --text: #F5F5F8;
-  --muted: #9A9AAE;
-  --accent: #FF4F5E;
-  --accent-2: #FF8A3D;
-  --ok: #3FD98B;
-  --blue: #7FB2FF;
-  --gold: #FFD166;
+  --paper: #FAF7F5;
+  --surface: #FFFFFF;
+  --surface-2: #F1EDEA;
+  --line: #DFD8D3;
+  --text: #16161C;
+  --muted: #5F5F70;
+  --accent: #D6283C;
+  --accent-2: #D9541B;
+  --ok: #117A52;
+  --blue: #2B5FBF;
+  --gold: #8A6200;
+  --gold-wash: #F6E7C2;
 }
 
 * { box-sizing: border-box; }
 
+/* `display: grid` on .duelband would otherwise beat the browser's own rule
+   for the hidden attribute, and an idle screen would carry a duel scoreline
+   with nobody playing. */
+[hidden] { display: none !important; }
+
 html, body { height: 100%; margin: 0; overflow: hidden; }
 
 body {
-  background: radial-gradient(120% 80% at 70% -10%, #2A1B30 0%, var(--ink) 58%);
+  background: radial-gradient(130% 90% at 72% -15%, #FFF3EC 0%, var(--paper) 55%);
   color: var(--text);
   font: 400 1.6vmin/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   display: grid;
@@ -70,6 +82,9 @@ body {
 .panel {
   background: var(--surface);
   border: 1px solid var(--line);
+  /* A little lift, so the white panels separate from the white-ish room
+     behind them without needing a heavy border. */
+  box-shadow: 0 .6vmin 2.4vmin -1.2vmin rgba(40, 20, 10, .18);
   border-radius: 2.4vmin;
   padding: 2.4vmin 2.6vmin;
   min-height: 0;
@@ -112,7 +127,7 @@ body {
 .rows li .who { font-weight: 700; letter-spacing: .12em; }
 .rows li .pts { font-weight: 700; }
 .rows li .runs { color: var(--muted); font-size: 1.5vmin; letter-spacing: 0; font-weight: 400; margin-left: .6vmin; }
-.rows li.me { background: color-mix(in srgb, var(--accent) 22%, var(--surface-2)); }
+.rows li.me { background: color-mix(in srgb, var(--accent) 14%, var(--surface-2)); }
 
 /* A new name sliding in is the moment someone looks up from the pad and sees
    themselves on the wall. It is worth an animation. */
@@ -122,13 +137,15 @@ body {
   60% { opacity: 1; transform: none; }
   100% { background: var(--surface-2); }
 }
-.rows.podium li { background: linear-gradient(90deg, color-mix(in srgb, var(--gold) 16%, var(--surface-2)), var(--surface-2)); }
-.rows.podium li:first-child { background: linear-gradient(90deg, color-mix(in srgb, var(--gold) 34%, var(--surface-2)), var(--surface-2)); }
+.rows.podium li { background: linear-gradient(90deg, color-mix(in srgb, var(--gold-wash) 55%, var(--surface-2)), var(--surface-2)); }
+.rows.podium li:first-child { background: linear-gradient(90deg, var(--gold-wash), var(--surface-2)); }
 .rows li.empty { background: none; border: 1px dashed var(--line); color: var(--muted); font-size: 1.8vmin; grid-template-columns: 1fr; justify-items: center; }
 
 /* ---- feature panel ------------------------------------------------------ */
 
 .feature { position: relative; overflow: hidden; }
+/* The cards fill the panel; when the duel band is up they start below it. */
+.feature.has-duel .card { top: 11vmin; }
 .card {
   position: absolute; inset: 2.4vmin 2.6vmin;
   display: none; flex-direction: column; gap: 1.4vmin;
@@ -159,29 +176,46 @@ body {
 .bar .val { color: var(--muted); font-variant-numeric: tabular-nums; }
 .bar .track { grid-column: 1 / -1; height: .9vmin; border-radius: .5vmin; background: var(--line); overflow: hidden; }
 .bar .track i { display: block; height: 100%; border-radius: .5vmin; background: linear-gradient(90deg, var(--accent-2), var(--accent)); transform-origin: left; animation: grow .7s cubic-bezier(.2,.8,.25,1) both; }
-.bar.unsaid .track i { background: var(--line); border: 1px dashed var(--muted); }
+.bar.unsaid .track i { background: repeating-linear-gradient(45deg, var(--line) 0 .5vmin, transparent .5vmin 1vmin); }
 .bar.unsaid .lbl { color: var(--muted); font-style: italic; }
 @keyframes grow { from { transform: scaleX(0); } }
 
 .qrrow { display: grid; grid-template-columns: auto 1fr; gap: 2vmin; align-items: center; }
-.qr { background: #fff; padding: 1.2vmin; border-radius: 1.4vmin; line-height: 0; }
+/* The QR needs white quiet zone of its own even on a white panel, so it
+   keeps the border that separates the two. */
+.qr { background: #fff; border: 1px solid var(--line); padding: 1.2vmin; border-radius: 1.4vmin; line-height: 0; }
 .qr img, .qr canvas { width: 16vmin; height: 16vmin; display: block; image-rendering: pixelated; }
 .qr-fallback { width: 16vmin; height: 16vmin; display: grid; place-items: center; color: #111; font-size: 1.6vmin; }
 .qrtext { margin: 0; font-size: 2vmin; color: var(--muted); max-width: 30ch; }
 .qrtext b { color: var(--text); }
 
-/* ---- duel --------------------------------------------------------------- */
+/* ---- duel band ---------------------------------------------------------- */
 
-.card.duel { justify-content: center; align-items: center; text-align: center; }
-.duelgrid { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 3vmin; width: 100%; }
-.side { display: grid; gap: .6vmin; justify-items: center; padding: 2.4vmin 1.6vmin; border-radius: 2vmin; background: var(--surface-2); border: .3vmin solid transparent; }
-.side .st { font-size: 2vmin; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; }
-.side .sc { font-size: 10vmin; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
-.side .qn { font-size: 1.8vmin; color: var(--muted); }
-.side.lead { border-color: var(--accent); }
-.side.won { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 14%, var(--surface-2)); }
-.vs { font-size: 3vmin; color: var(--muted); font-weight: 700; }
-.duelresult { margin: 1.4vmin 0 0; font-size: 5vmin; font-weight: 800; min-height: 1.1em; }
+/* A scoreline across the top of the panel, not a card of its own. The duel
+   is the reason two strangers are standing there; the language is the reason
+   the booth exists, so the language keeps the space. */
+.duelband {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 2vmin;
+  padding: 1.2vmin 2vmin;
+  margin-bottom: 1.6vmin;
+  border-radius: 1.6vmin;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  flex: 0 0 auto;
+  animation: fade .4s ease-out both;
+}
+.dside { display: flex; align-items: baseline; gap: 1.2vmin; }
+.dside:last-child { justify-content: flex-end; }
+.dside .st { font-size: 1.6vmin; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; }
+.dside .sc { font-size: 4.2vmin; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.dside.lead .sc { color: var(--accent); }
+.dside.won .sc { color: var(--ok); }
+.dmid { display: grid; justify-items: center; gap: .2vmin; }
+.dlabel { font-size: 1.5vmin; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); }
+.dres { font-size: 1.9vmin; font-weight: 700; min-height: 1.2em; white-space: nowrap; }
 
 /* ---- playing / idle ----------------------------------------------------- */
 
@@ -222,7 +256,8 @@ body {
 
 /* Waiting places on the board: visible, numbered, and plainly empty. */
 .rows li.slot { background: none; border: 1px dashed var(--line); color: var(--line); }
-.rows li.slot .who { color: #3A3A4C; letter-spacing: 0; }
+.rows li.slot .who { color: #C4BCB6; letter-spacing: 0; }
+.rows li.slot .n { color: #C4BCB6; }
 
 /* With the varieties column hidden the other two take the width rather than
    leaving a gap where a fact would have been. */
