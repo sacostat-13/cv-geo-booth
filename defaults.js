@@ -1,75 +1,93 @@
-/* Booth defaults. Committed, and safe to open with no configuration at all —
-   with nothing set the pages run against this browser's own storage.
+/* Every number the booth runs on, in one place, with the reason it has that
+   value. config.js (written at build time from environment variables)
+   overrides any of it; nothing here needs editing to run the booth.
 
-   Netlify overrides these at build time: tools/build-config.js reads the site's
-   environment variables and writes config.js, which calls BOOTH_CONFIGURE below.
-   The wall always starts empty — the phone page is the only way onto it.
-   Nothing here is secret; the Supabase anon key is a publishable key whose
-   permissions are set by the row-level security policies in supabase.sql. */
-window.BOOTH = {
-  // "local"    no backend: submissions live in this browser's localStorage, so the
-  //            screen only sees phones in the same browser. Fine for a walkthrough.
-  // "netlify"  two functions in this same site, storing the wall in Netlify Blobs.
-  //            Nothing to sign up for; chosen automatically on a Netlify build.
-  // "supabase" a Postgres table, for when the booth outgrows the above.
-  mode: 'local',
+   Load order on every page: defaults.js, then config.js, then the rest. */
+(function () {
+  const DEFAULTS = {
+    // local | netlify | supabase — set by tools/build-config.js
+    mode: 'local',
 
-  netlify: {
-    base: '/api',   // where submit.mjs and wall.mjs are served
-    pollMs: 3000,   // how often the screen asks for the wall
-  },
+    event: {
+      name: 'MozFest 2026',
+      booth: 'Common Voice',
+      slug: 'mozfest-2026',
+      // The swag goes to the top three of the day, so the day board must not
+      // carry yesterday's rehearsal into the morning.
+      resetDaily: true
+    },
 
-  supabase: {
-    url: '',
-    anonKey: '',
-    table: 'submissions',
-    pollMs: 3000,
-  },
+    run: {
+      // Five questions. At roughly 15s each that is a 75-90s turn, which is
+      // where trade-show operators put anything with a queue behind it, and
+      // it leaves room for two pads to serve ~80 people an hour.
+      questions: 5,
+      // 20s to answer. Long enough to listen twice and think; short enough
+      // that a stalled player does not hold the pad.
+      answerMs: 20000,
+      // How long the right answer sits on the pad before the next question.
+      // Immediate correction is the whole reason the quiz teaches anything.
+      revealMs: 3500,
+      // Clips are cut to this on the way in; the player may replay twice.
+      // Past about six seconds a listener who does not know the language
+      // gains very little, and every extra second comes out of the queue.
+      clipSecs: 6,
+      replays: 2,
+      // 100 for knowing it, up to 50 for being quick. Knowledge has to
+      // outweigh speed or the booth rewards reflexes instead of ears.
+      pointsCorrect: 100,
+      pointsSpeedMax: 50,
+      // The first two questions come from languages most people have heard.
+      // Nobody should walk away from a Common Voice booth having scored zero.
+      easyFirst: 2
+    },
 
-  // Where the phone page lives. Empty means "wherever this page is served from",
-  // so the same commit works on a deploy preview, the live site and a custom
-  // domain with nothing to change. The QR code is drawn from this at runtime.
-  phoneUrl: '',
+    duel: {
+      // Both pads choosing the same mode within this window become a duel.
+      windowMs: 3500,
+      // Then a shared countdown, so the first question lands on both pads at
+      // the same instant. Any visible gap reads as cheating.
+      readyMs: 5000
+    },
 
-  event: {
-    name: 'MozFest 2026',
-    booth: 'Common Voice',
-    resetDaily: false,
-  },
+    screen: {
+      // The screen is the only thing polling continuously. 1s while someone
+      // is playing, 3s when nobody is: fast enough to look live, slow enough
+      // to stay inside a free Netlify plan over a three-day festival.
+      pollMs: 1000,
+      idlePollMs: 3000,
+      // How long a revealed language holds the right-hand panel.
+      revealMs: 12000,
+      // With nothing happening the screen alternates: the board, then a fact
+      // about Common Voice itself.
+      idleCardMs: 9000,
+      // The headline board is the last hour, so a morning hero cannot sit on
+      // it until closing. The day board, which is the one with swag attached,
+      // sits underneath it and is deliberately smaller.
+      hourTop: 10,
+      dayTop: 3
+    },
 
-  display: {
-    // The map is the booth again. The language wall is still here behind V,
-    // unchanged, because it took a while to get right and may come back.
-    scene: 'geo',          // "geo" (the map) or "wall" (languages) — press V to switch
-    projection: 'globe',   // "globe" or "map" — press P on the screen to switch
-    highlightMs: 10000,    // how long one submission holds the screen
-    minHighlightMs: 4000,  // compressed to this when the queue backs up
-    queuePressure: 5,      // queue length at which compression starts
-    pinMax: 40,            // pins per country; above this the country fills with intensity
-    idleSpinSpeed: 2.6,    // degrees per second
-    idleRestMs: 25000,     // the globe simply turns for this long between languages
-    idleTourMs: 7000,      // how long one language holds the screen before the globe returns
-    pickHoldMs: 20000,     // how long a country someone tapped stays up
-    debutMs: 3600,         // extra time for a language Common Voice has never heard
-    captionMs: 13000,      // how long one vulnerable-language caption holds, within a rest
-  },
+    // Where the QR code beside a revealed language points. {locale} is
+    // replaced with the Common Voice locale code.
+    languageUrl: 'https://commonvoice.mozilla.org/{locale}/datasets',
+    contributeUrl: 'https://commonvoice.mozilla.org/{locale}/speak'
+  };
 
-  // Where the phone sends people next. {locale} is replaced with the Common
-  // Voice locale they picked.
-  loginUrl: 'https://commonvoice.mozilla.org/login',
-  writeUrl: 'https://commonvoice.mozilla.org/{locale}/write',
-  addLanguageUrl: 'https://commonvoice.mozilla.org/en/languages',
-};
-
-/* Merge an override object over the defaults, one level deep per section. */
-window.BOOTH_CONFIGURE = function (over) {
-  for (const key in over) {
-    const v = over[key];
-    if (v && typeof v === 'object' && !Array.isArray(v) && window.BOOTH[key] && typeof window.BOOTH[key] === 'object') {
-      Object.assign(window.BOOTH[key], v);
-    } else if (v !== undefined && v !== null && v !== '') {
-      window.BOOTH[key] = v;
+  function merge(base, over) {
+    const out = Array.isArray(base) ? base.slice() : Object.assign({}, base);
+    for (const k in over) {
+      if (over[k] && typeof over[k] === 'object' && !Array.isArray(over[k]) && typeof base[k] === 'object') {
+        out[k] = merge(base[k], over[k]);
+      } else if (over[k] !== undefined) {
+        out[k] = over[k];
+      }
     }
+    return out;
   }
-  return window.BOOTH;
-};
+
+  window.BOOTH = DEFAULTS;
+  window.BOOTH_CONFIGURE = function (cfg) {
+    window.BOOTH = merge(DEFAULTS, cfg || {});
+  };
+})();

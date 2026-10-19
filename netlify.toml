@@ -7,7 +7,7 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# submit.mjs and wall.mjs declare their own /api/* routes.
+# quiz.mjs declares its own /api/quiz/* route.
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
@@ -18,14 +18,26 @@
   to = "/index.html"
   status = 404
 [[redirects]]
-  from = "/build/*"
+  from = "/tools/*"
+  to = "/index.html"
+  status = 404
+[[redirects]]
+  from = "/data/*"
   to = "/index.html"
   status = 404
 
-# Tidy URL for the booth screen: /screen instead of /display.html
+# Tidy URLs for the three things that get opened on hardware.
 [[redirects]]
   from = "/screen"
   to = "/display.html"
+  status = 200
+[[redirects]]
+  from = "/a"
+  to = "/pad.html?station=A"
+  status = 200
+[[redirects]]
+  from = "/b"
+  to = "/pad.html?station=B"
   status = 200
 
 [[headers]]
@@ -36,15 +48,21 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
-# The data files are frozen snapshots; let phones and the screen cache them hard.
+# The bank and the figures are frozen snapshots, rebuilt only by a deploy.
+# Caching them hard is what lets an iPad that has been open all day stop
+# asking for them.
 [[headers]]
-  for = "/cv-data.js"
-  [headers.values]
-    Cache-Control = "public, max-age=3600"
-[[headers]]
-  for = "/world.js"
+  for = "/bank.js"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+[[headers]]
+  for = "/quiz-data.js"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+[[headers]]
+  for = "/media/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, immutable"
 [[headers]]
   for = "/vendor/*"
   [headers.values]
@@ -56,7 +74,7 @@
   [headers.values]
     Cache-Control = "no-store"
 
-# The wall is live data; never let a CDN or a browser hold on to it.
+# The board is live; never let a CDN or a browser hold on to it.
 [[headers]]
   for = "/api/*"
   [headers.values]

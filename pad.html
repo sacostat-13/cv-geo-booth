@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Common Voice — guess the language</title>
+<link rel="stylesheet" href="pad.css">
+</head>
+<body class="screen-start">
+
+<header class="bar">
+  <span class="wordmark"><span class="dot"></span>Common Voice</span>
+  <span class="station" id="station">Station A</span>
+</header>
+
+<main id="app">
+
+  <!-- 1. start ------------------------------------------------------------->
+  <section class="view" data-view="start">
+    <h1 class="lede">Can you tell which language this is?</h1>
+    <p class="sub">Five questions. Four choices each. Pick how you want them.</p>
+    <div class="modes">
+      <button class="mode" data-mode="listen" id="modeListen">
+        <span class="mode-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+            <path d="M8 20v8M16 14v20M24 8v32M32 14v20M40 20v8"/>
+          </svg>
+        </span>
+        <span class="mode-name">Listen</span>
+        <span class="mode-note">A real recording, six seconds</span>
+      </button>
+      <button class="mode" data-mode="read" id="modeRead">
+        <span class="mode-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 10h16a6 6 0 0 1 6 6v22a5 5 0 0 0-5-5H6z"/>
+            <path d="M42 10H26a6 6 0 0 0-6 6v22a5 5 0 0 1 5-5h17z"/>
+          </svg>
+        </span>
+        <span class="mode-name">Read</span>
+        <span class="mode-note">A sentence, in its own script</span>
+      </button>
+    </div>
+    <p class="foot" id="startFoot">Headphones on the hook beside you. Both work the same.</p>
+  </section>
+
+  <!-- 2. pairing ----------------------------------------------------------->
+  <section class="view" data-view="pairing">
+    <div class="pulse"></div>
+    <h1 class="lede">Looking for a challenger…</h1>
+    <p class="sub">If the other pad starts <b id="pairMode">reading</b> too, you duel.</p>
+    <button class="ghost" id="skipPair">Just play on my own</button>
+  </section>
+
+  <!-- 3. duel ready -------------------------------------------------------->
+  <section class="view" data-view="ready">
+    <p class="kicker">Duel</p>
+    <h1 class="lede"><span id="readyVs">Station A vs Station B</span></h1>
+    <p class="sub">Same five questions, same moment. Ready…</p>
+    <div class="count" id="readyCount">5</div>
+  </section>
+
+  <!-- 4. question ---------------------------------------------------------->
+  <section class="view" data-view="question">
+    <div class="qhead">
+      <div class="dots" id="dots"></div>
+      <div class="clock"><svg viewBox="0 0 44 44"><circle class="clock-bg" cx="22" cy="22" r="19"/><circle class="clock-fg" id="clockArc" cx="22" cy="22" r="19"/></svg><span id="clockNum">20</span></div>
+      <div class="score" id="liveScore">0</div>
+    </div>
+
+    <div class="stimulus" id="stimulus">
+      <!-- listen -->
+      <div class="listen" id="listenBox" hidden>
+        <button class="play" id="playBtn" aria-label="Play the clip">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M24 18l24 14-24 14z" fill="currentColor"/></svg>
+        </button>
+        <div class="wave" id="wave" aria-hidden="true"></div>
+        <button class="ghost small" id="replayBtn">Replay <span id="replaysLeft">(2 left)</span></button>
+        <audio id="audio" preload="auto"></audio>
+      </div>
+      <!-- read -->
+      <p class="sentence" id="sentence" hidden></p>
+    </div>
+
+    <div class="options" id="options"></div>
+  </section>
+
+  <!-- 5. reveal ------------------------------------------------------------>
+  <section class="view" data-view="reveal">
+    <div class="verdict" id="verdict">Right</div>
+    <h1 class="answer" id="answerName">Catalan</h1>
+    <p class="autonym" id="answerAutonym">català</p>
+    <p class="because" id="because"></p>
+    <p class="transcript" id="transcript" hidden></p>
+    <div class="gain" id="gain"></div>
+  </section>
+
+  <!-- 6. end --------------------------------------------------------------->
+  <section class="view" data-view="end">
+    <div class="endgrid">
+      <div class="endscore">
+        <p class="kicker" id="endKicker">Your run</p>
+        <div class="big" id="endScore">0</div>
+        <p class="sub" id="endLine">0 of 5 right</p>
+        <div class="duelbars" id="duelBars" hidden></div>
+      </div>
+      <div class="missed" id="missed"></div>
+    </div>
+
+    <div class="initials">
+      <p class="sub">Three letters for the board</p>
+      <div class="slots" id="slots"><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span></div>
+      <div class="keys" id="keys"></div>
+      <div class="endactions">
+        <button class="ghost" id="skipBoard">No thanks</button>
+        <button class="primary" id="postBoard" disabled>Put me on the board</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. posted ------------------------------------------------------------>
+  <section class="view" data-view="posted">
+    <div class="verdict ok" id="postedVerdict">You're on the board</div>
+    <h1 class="answer" id="postedRank">#4 this hour</h1>
+    <p class="sub" id="postedBeat"></p>
+    <p class="foot">Look up — you're on the big screen.</p>
+    <button class="primary" id="again">Play again</button>
+  </section>
+
+</main>
+
+<div class="burst" id="burst" aria-hidden="true"></div>
+
+<script src="defaults.js"></script>
+<script src="config.js"></script>
+<script src="quiz-data.js"></script>
+<script src="bank.js"></script>
+<script src="quiz.js"></script>
+<script src="store.js"></script>
+<script src="pad.js"></script>
+</body>
+</html>

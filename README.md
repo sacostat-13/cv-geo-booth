@@ -1,149 +1,162 @@
-# Voices in the Room — Common Voice booth prototype
+# Common Voice booth — guess the language
 
-Two pages that talk to each other through one table:
+Two iPads and a 42" screen. A visitor listens to a six-second recording, or
+reads a sentence, and picks which of four languages it is. The screen tells
+them what it was, who has recorded it for Common Voice, and who has not.
 
-| File | Runs on | What it does |
-|---|---|---|
-| `display.html` (`/screen`) | the 42″ screen, 1080p landscape | rotating globe or flat map, pins, live counters, QR code |
-| `index.html` (`/`) | visitors' phones (the QR target) | pin (skippable) → languages → varieties → initials → contribute |
+If both pads start at the same moment it becomes a duel.
 
-`cv-booth-display.standalone.html` is the screen flattened into one file — handy
-for a quick look or for a laptop with no web server. It cannot receive phone
-submissions; use `display.html` for the real thing.
-
-Nothing ever appears on the wall except what someone submits from a phone. There
-is no seeded data and no simulate key, so what you see on the screen is real.
-
-`cv-detail.js` carries what the stats endpoint does not — ISO codes, which
-corpora a language is collected in, release hours, variants, accents and the
-demographic shape of its data. It ships **empty**, so most of the language
-panel shows em-dashes or stays hidden until someone fills it. To see the panel
-working, point `display.html` at `cv-detail.sample.js` instead and change it
-back before committing; everything in the sample is invented.
-
-`vulnerable.js` is the one exception, and it is editorial rather than data: a
-reviewed list of endangered languages the booth wants people to know about,
-shown one at a time as a caption under the wall while it rests between
-arrivals. It ships empty on purpose — the caption does not appear until
-someone fills it from sources they can cite. The file explains what belongs in
-it.
-
-## Try it in 30 seconds
-
-```bash
-node tools/build-config.js    # writes config.js — local mode with no env vars set
-python3 -m http.server 8080
+```
+/a        pad, station A        /pad.html?station=A
+/b        pad, station B        /pad.html?station=B
+/screen   the 42"               /display.html
+/         which is which        index.html
 ```
 
-Open `http://localhost:8080/display.html` for the screen and
-`http://localhost:8080/` in a second tab for the phone flow. The wall starts
-empty; add a language on the phone tab and watch it land. In local mode the two
-tabs share the browser's own storage, so no backend is needed to walk through it.
+## Why it is built this way
 
-On the screen: **P** switches between globe and flat map, **F** is fullscreen,
-**Esc** drops a country you tapped.
+**The booth does not depend on the venue.** Every question, every clip and
+every figure on the screen is in the repo, generated once by
+`tools/build-bank.mjs` and deployed. The only thing that crosses the network
+is the handful of calls that let the three devices agree on what is
+happening. If all of those fail the quiz still plays, still corrects a wrong
+answer and still teaches; it just does not reach the board. That is the right
+failure for a booth and the wrong one to discover on the day.
 
-## What the screen does
+**Every wrong answer is corrected, in under three seconds, by name.** Testing
+with no feedback leaves people remembering the option they picked: in Butler
+and Roediger's work, intrusions from the wrong lure outnumbered correct
+answers in the no-feedback condition, and about three quarters of those
+intrusions were the specific wrong option the person had chosen. A guess-the-
+language quiz with no correction actively teaches people that Tagalog is
+Indonesian. So the pad names the answer every time, says why the mistake was
+a fair one, and shows the missed languages again on the end card — immediate
+correction plus a second look, inside ninety seconds, which is all the
+"later" a booth has.
 
-- A new submission takes over: the globe flies to the country, it lights up warm,
-  a pin drops, and the card shows that language's Common Voice figures.
-- With nothing arriving, the globe simply turns for `idleRestMs` (25s), then
-  one language from the room takes the screen for `idleTourMs` (7s) — flying to
-  a country where it is spoken and lighting it in the quieter accent, so an
-  actual arrival still reads as an arrival — and then the globe takes over
-  again. One language per turn rather than the whole list, so the map is
-  visible about three quarters of the time and everyone who contributed still
-  sees theirs come round.
-- A backlog is played one at a time, never collapsed: ten phones submitting at
-  once produce ten celebrations in order, each shortened toward
-  `minHighlightMs` while the queue is deep.
-- Tapping or clicking a country shows how it stands: the voices and languages
-  collected from there, or, where the room has none yet, the Common Voice
-  languages spoken there and how much each has recorded. It holds for
-  `pickHoldMs` (20s) and a live submission always wins.
+**Distractors are chosen, not drawn.** One of the three wrong answers is
+always from the same family as the right one. That is the confusion worth
+having — someone who picks Portuguese for Catalan has learned something when
+the screen explains it; someone who picks Korean for Catalan has only learned
+that they were guessing. In read mode a second distractor shares the script
+where one exists, so an Armenian sentence with three Latin-script options is
+not answerable by recognising the alphabet.
 
-## Going live
+**Six-second clips.** Past about six seconds a listener who does not know the
+language gains very little, and every extra second comes straight out of the
+queue. Two replays, no time penalty.
 
-`DEPLOY.md` has the full walkthrough. In short: connect the repo to Netlify and
-deploy. **Nothing else is required** — on a Netlify build the site uses its own
-two functions, backed by Netlify Blobs, as the wall.
+**Five questions, twenty seconds each.** Roughly a 75–90 second turn, which
+is where expo operators put anything with a line behind it. Two pads at that
+rate serve about 80 people an hour.
 
-## The three backends
+**The run ramps.** The first two questions come from languages most people
+have heard spoken; the last from one they probably have not. Nobody should
+walk away from a Common Voice booth having scored zero, and nobody should
+walk away without having met a language they did not know was in there.
 
-| Mode | Where the wall lives | When it is chosen |
-|---|---|---|
-| `local` | the browser's own storage | a plain static server, no Netlify |
-| `netlify` | Netlify Blobs, via `/api/submit` and `/api/wall` | automatically on a Netlify build |
-| `supabase` | a Postgres table | when `SUPABASE_URL` and `SUPABASE_ANON_KEY` are set |
+**Two boards, two rules.** `This hour` keeps each set of initials' *best*
+single run, so playing six times cannot fill the top six and the board stays
+a reason for the next person in the queue to play. `Today`, which is the one
+with swag attached, *adds runs up* under the same initials — which is what
+makes "go and get your friend to play for you" work. The social mechanic
+lives on the day board where it cannot crowd out the live one.
 
-`local` is the only one that is not shared between devices: a phone's submission
-stays on that phone. Both pages say so plainly when that happens, because a
-silent failure here looks exactly like a working booth.
+**No welcome splash.** A full-screen call to action is the worst-performing
+attract screen there is; people look at it and walk past. The screen stays
+live — reacting to whatever the pads are doing — and the instruction sits in
+a strip along the bottom.
 
+## Reading mode is not a fallback
 
-There is no URL to configure. `phoneUrl` defaults to empty, meaning "wherever
-this page is served from", and the QR code is generated in the browser from that
-— so the same commit works on a deploy preview, the renamed site and a custom
-domain with nothing to change.
+It is offered first, beside Listen, with the same scoring and the same board.
+A festival hall is loud, and a visitor who cannot use the audio should not be
+sorted onto a separate leaderboard. Clips are captioned with their transcript
+after the answer, which doubles as the teaching moment for everyone.
 
-Serve both pages over **HTTPS** in the field. Netlify does that for you, and it
-keeps QR scanners from warning people at the booth.
+Headphones on both pads, with the pad's own volume control. Speakers are both
+an access problem and a sound-overlap problem in a hall.
 
-To work on it locally without deploying, use `netlify dev` — `DEPLOY.md` has the
-details, including how to get a real phone onto your laptop's build.
+## Running it
 
-## Configuration
+```
+npm install
+node tools/build-config.js
+npx http-server -p 8080          # or any static server
+```
 
-`defaults.js` holds every setting and is committed. `config.js` is generated on
-each deploy by `tools/build-config.js` from the site's environment variables and
-overrides the defaults; it is gitignored and should never be edited by hand.
-`.env.example` lists the variables.
+Open `/pad.html?station=A`, `/pad.html?station=B` and `/display.html` in three
+tabs of the same browser. In local mode the three pages talk over a
+BroadcastChannel and run the same pairing and scoring rules in the page, so
+the whole booth — duels included — rehearses on a laptop with no deploy and
+no network.
 
-## Things worth knowing before the festival
+With the real backend:
 
-- **The screen polls, it does not stream.** Default is every 3 seconds
-  (`supabase.pollMs`). At a booth that is indistinguishable from live and it
-  survives a flaky connection — a failed poll shows "Reconnecting" and retries
-  rather than going blank.
-- **The queue.** Submissions are celebrated one at a time for 10 seconds. When
-  more than 5 are waiting the hold compresses toward 4 seconds so the wall never
-  falls behind a queue of visitors. Both numbers are in `config.js`.
-- **Pins then intensity.** Up to 40 pins per country (`display.pinMax`); above
-  that the country fills with colour and shows a count instead, so the UK does
-  not turn into a blob on day two.
-- **Pin positions are stable.** Each pin's spot is derived from its row id, so
-  reloading the screen does not reshuffle the map. New pins are placed as far as
-  possible from the ones already in that country.
-- **Gold means missing.** A language that is not in Common Voice is a gold pin
-  and a gold card. That is the most useful thing this collects: a list of
-  languages people at MozFest speak that Common Voice cannot yet hear.
+```
+netlify dev                      # functions + blobs, mode=netlify
+netlify dev --live               # same, over an HTTPS tunnel
+```
 
-## The data
+## Rebuilding the question bank
 
-`cv-data.js` is a frozen snapshot of the Common Voice language statistics
-(`https://commonvoice.mozilla.org/api/v1/stats/languages`), taken **2026-10-08**:
-281 locales with recorded hours, validated hours and speaker counts. It is baked
-in on purpose — the booth should not depend on venue wifi to draw its own
-headline numbers. Rebuild it with `node build/make-data.js` when you want fresher
-figures.
+```
+node tools/build-bank.mjs --sentences ../common-voice/server/data
+node tools/build-bank.mjs --sentences ../common-voice/server/data --clips ./clips
+```
 
-The country → language suggestions in the same file are hand-curated: for each
-Common Voice locale, the countries where it is widely spoken. It is a starting
-point for the picker, not a claim about who speaks what — anyone can search all
-281 languages, or type a language that is not there at all.
+`--sentences` points at `server/data` from a clone of
+`github.com/common-voice/common-voice` — CC0 sentence files, one folder per
+locale. `--clips` is described in `tools/fetch-clips.md`; without it the
+booth is read-only and says so.
 
-The QR code is drawn at runtime by
-[qrcode-generator](https://github.com/kazuhikoarase/qrcode-generator) (MIT),
-vendored under `vendor/` so the booth never depends on a CDN.
+Writes `bank.js` (the questions) and `quiz-data.js` (per-language hours,
+contributor counts and the gender, age, accent and variant splits the reveal
+panel draws). Both come from the release JSONs in `data/`, downloaded from
+`github.com/common-voice/cv-dataset`. **Drop in a newer release and rebuild
+before the festival** — the figures on the screen are dated and visitors can
+check them.
 
-Map geometry is Natural Earth 1:50m via
-[world-atlas](https://github.com/topojson/world-atlas) (public domain),
-simplified and projected with Equal Earth (flat) or orthographic (globe).
+`tools/languages.json` is the curated language table: family, region, script
+and how widely known each language is. Adding a language is a line there plus
+a rebuild.
 
-## What is not built
+## Layout
 
-- No moderation queue. Initials and the typed-in language name reach the screen
-  directly. The SQL caps their length; that is all.
-- No analytics or export beyond "select from the table".
-- The second-level variety list is curated for about 80 languages. Everything
-  else gets the free-text field only.
+```
+index.html        which URL goes on which device
+pad.html/js/css   the iPad quiz
+display.html/js/css   the 42" screen
+quiz.js           run building, scoring, and the facts — shared by both
+store.js          transport: netlify, or local for rehearsal
+defaults.js       every number the booth runs on, with the reason for it
+config.js         generated per deploy from environment variables
+bank.js           generated: the questions
+quiz-data.js      generated: Common Voice figures per language
+data/             the Common Voice release JSONs the above are built from
+media/clips/      generated: the audio, when there is any
+netlify/functions/quiz.mjs   the whole API: join, pair, round, finish, state
+tools/            the generators, the language table, the clip notes
+```
+
+`defaults.js` is the file to read first. Every timing, score and threshold is
+there with a sentence saying why it has that value, and every one of them can
+be overridden by an environment variable at deploy time — see
+`tools/build-config.js`.
+
+## What is not done
+
+- **No clips yet.** Listen mode is built and tested but `media/clips/` is
+  empty until someone runs `tools/prepare-clips.sh` against a Common Voice
+  download. See `tools/fetch-clips.md`. The pads disable the Listen button
+  and say so.
+- **No designer pass.** The palette is a stand-in and `img/common-voice.svg`
+  does not exist yet; the header holds space for the real mark.
+- **`/api/quiz/*` is open** — no auth, no rate limit. Fine for a booth on a
+  URL nobody has; not fine for a public link.
+- **The initials denylist is short.** It covers the obvious three-letter
+  combinations and folds anything blocked to `CV` rather than arguing with
+  someone at a booth. There is no staff "remove this entry" control yet; the
+  way to clear a bad entry today is to delete the `board` blob.
+- **Two copies of the scoring rules** — `netlify/functions/quiz.mjs` and the
+  local half of `store.js`. Change one, change the other.

@@ -1,195 +1,276 @@
-/* Store: one small interface, three backends.
-   local    — this browser only
-   netlify  — two functions in this site, backed by Netlify Blobs
-   supabase — a Postgres table, for when the booth outgrows the above
-   A submission is { id, ts, initials, langs: [{ locale, langName, dialect,
-   missing }] } plus an optional lon/lat where someone placed a pin, with the
-   first language also repeated flat as locale/langName/dialect/missing so rows
-   written either way read the same. Older rows carry a country instead.
-   The wall starts empty in every mode; the only way in is the phone page.
-   `missing` is the typed-in name when the language is not in Common Voice yet. */
+/* The booth's transport. One interface, two backends.
+
+   netlify — the real thing: /api/quiz/*, backed by Netlify Blobs.
+   local   — one machine, several tabs: localStorage plus a BroadcastChannel,
+             running the same pairing and scoring rules in the page. It exists
+             so the whole booth — two pads and the screen — can be driven from
+             a laptop with no deploy and no network, which is how it gets
+             tested and how it survives a venue with no wifi.
+
+   Both answer the same five calls: join, pair, round, finish, state.
+   Both are exposed as window.BoothStore. */
 (function () {
   const CFG = window.BOOTH;
-  const KEY = 'cvbooth.submissions.v1';
+  const DUEL_WINDOW_MS = 3500;
+  const LIVE_STALE_MS = 25000;
+  const HOUR_MS = 3600000;
+  const KEY_LIVE = 'cvquiz.live.v1';
+  const KEY_BOARD = 'cvquiz.board.v1';
 
-  function dayStamp(ts) {
-    const d = new Date(ts);
-    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
-  }
-  function withinScope(s) {
-    if (!CFG.event.resetDaily) return true;
-    return dayStamp(s.ts) === dayStamp(Date.now());
-  }
-  const slug = s => String(s || 'default').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 64) || 'default';
+  const newId = () => Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
+  const sameDay = (a, b) => new Date(a).toDateString() === new Date(b).toDateString();
 
-  function newId() {
-    return Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
-  }
-
-  // ---- localStorage helpers (demo + local) --------------------------------
-  function readLocal() {
-    try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; }
-  }
-  function writeLocal(rows) {
-    try { localStorage.setItem(KEY, JSON.stringify(rows.slice(-5000))); } catch (e) { /* private mode */ }
+  const BLOCKED = new Set(['ASS','FUK','FUC','FCK','CNT','KKK','SHT','SEX','TIT','FAG','JEW','NIG','NGR','WOP','PIS','DIK','DIC','COC','CUM','POO','WAN','BUM','HOE','SLT','RAP','GAS','NAZ','HIT','ISI','PRN','XXX']);
+  function cleanInitials(v) {
+    const up = String(v || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 3);
+    if (up.length < 2) return 'CV';
+    return BLOCKED.has(up) ? 'CV' : up;
   }
 
-  function LocalStore() {
-    let rows = readLocal();
-    const listeners = new Set();
-    let channel = null;
-    try { channel = new BroadcastChannel('cvbooth'); } catch (e) { /* unsupported */ }
-    const emit = () => { const snap = rows.filter(withinScope); listeners.forEach(fn => fn(snap)); };
-    if (channel) channel.onmessage = e => {
-      if (e.data && e.data.type === 'add') { rows.push(e.data.row); emit(); }
-      if (e.data && e.data.type === 'clear') { rows = []; emit(); }
-    };
-    window.addEventListener('storage', e => {
-      if (e.key === KEY) { rows = readLocal(); emit(); }
-    });
-    return {
-      kind: 'local',
-      shared: false,
-      async add(sub) {
-        const row = Object.assign({ id: newId(), ts: Date.now() }, sub);
-        rows.push(row); writeLocal(rows);
-        if (channel) channel.postMessage({ type: 'add', row });
-        emit();
-        return row;
-      },
-      async all() { return rows.filter(withinScope); },
-      subscribe(fn) { listeners.add(fn); fn(rows.filter(withinScope)); return () => listeners.delete(fn); },
-      async clear() { rows = []; writeLocal(rows); if (channel) channel.postMessage({ type: 'clear' }); emit(); },
-    };
+  function rank(rows, since, now) {
+    const best = new Map();
+    for (const r of rows) {
+      if (r.ts < since || !sameDay(r.ts, now)) continue;
+      const prev = best.get(r.initials);
+      if (!prev || r.score > prev.score || (r.score === prev.score && r.timeMs < prev.timeMs)) best.set(r.initials, r);
+    }
+    return [...best.values()]
+      .sort((a, b) => b.score - a.score || a.timeMs - b.timeMs || a.ts - b.ts)
+      .map((r, i) => ({ rank: i + 1, initials: r.initials, score: r.score, correct: r.correct, of: r.of, timeMs: r.timeMs, ts: r.ts, duelWin: !!r.duelWin }));
   }
 
+  // The day board adds runs up under the same initials; the hour board keeps
+  // the best single one. Same split as netlify/functions/quiz.mjs.
+  function rankTotal(rows, now) {
+    const tot = new Map();
+    for (const r of rows) {
+      if (!sameDay(r.ts, now)) continue;
+      const t = tot.get(r.initials) || { initials: r.initials, score: 0, correct: 0, of: 0, runs: 0, timeMs: 0, ts: r.ts };
+      t.score += r.score; t.correct += r.correct; t.of += r.of; t.runs++;
+      t.timeMs += r.timeMs; t.ts = Math.min(t.ts, r.ts);
+      tot.set(r.initials, t);
+    }
+    return [...tot.values()]
+      .sort((a, b) => b.score - a.score || b.correct - a.correct || a.ts - b.ts)
+      .map((r, i) => Object.assign({ rank: i + 1 }, r));
+  }
 
-  // ---- Netlify Blobs (two functions in this same site) --------------------
+  // ---- netlify ------------------------------------------------------------
+
   function NetlifyStore() {
-    const base = (CFG.netlify && CFG.netlify.base) || '/api';
-    const pollMs = (CFG.netlify && CFG.netlify.pollMs) || 3000;
-    const event = slug(CFG.event.name);
-    const listeners = new Set();
-    let rows = [];
-    let timer = null;
-    let failures = 0;
-    let primed = false;
+    const ev = encodeURIComponent(CFG.event.slug || 'default');
+    const base = '/api/quiz';
+    const q = path => `${base}/${path}${path.includes('?') ? '&' : '?'}event=${ev}`;
 
-    async function pull() {
-      const since = CFG.event.resetDaily ? new Date().setHours(0, 0, 0, 0) : 0;
-      const res = await fetch(base + '/wall?event=' + encodeURIComponent(event) + '&since=' + since, { headers: { accept: 'application/json' } });
-      if (!res.ok) throw new Error('wall ' + res.status);
-      const body = await res.json();
-      if (!Array.isArray(body)) throw new Error('wall returned ' + typeof body);
-      rows = body;
-      primed = true;
-      if (failures) window.dispatchEvent(new CustomEvent('booth:online'));
-      failures = 0;
-      listeners.forEach(fn => fn(rows));
+    async function post(path, body) {
+      const r = await fetch(q(path), {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      if (!r.ok) throw new Error(path + ' ' + r.status);
+      return r.json();
     }
-    function loop() {
-      clearTimeout(timer);
-      pull().catch(err => {
-        failures++;
-        console.warn('[booth] poll failed', err.message);
-        window.dispatchEvent(new CustomEvent('booth:offline', { detail: { failures } }));
-      }).finally(() => { timer = setTimeout(loop, pollMs); });
+    async function get(path) {
+      const r = await fetch(q(path), { cache: 'no-store' });
+      if (!r.ok) throw new Error(path + ' ' + r.status);
+      return r.json();
     }
+
     return {
       kind: 'netlify',
       shared: true,
-      async add(sub) {
-        const res = await fetch(base + '/submit', {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify(Object.assign({ event }, sub)),
-        });
-        if (!res.ok) {
-          let msg = 'could not save (' + res.status + ')';
-          try { const e = await res.json(); if (e && e.error) msg = e.error; } catch (e) { /* not json */ }
-          throw new Error(msg);
-        }
-        return res.json();
-      },
-      async all() { return rows; },
-      subscribe(fn) { listeners.add(fn); if (primed) fn(rows); if (!timer) loop(); return () => listeners.delete(fn); },
-      async clear() { throw new Error('clear the wall from the Netlify Blobs store, not from the booth'); },
+      join: body => post('join', body),
+      pair: (station, runId) => get(`pair?station=${encodeURIComponent(station)}&runId=${encodeURIComponent(runId)}`),
+      round: body => post('round', body),
+      finish: body => post('finish', body),
+      state: () => get('state')
     };
   }
 
-  // ---- Supabase (PostgREST over fetch; no SDK, no CDN) --------------------
-  function SupabaseStore() {
-    const { url, anonKey, table, pollMs } = CFG.supabase;
-    const endpoint = url.replace(/\/$/, '') + '/rest/v1/' + table;
-    const headers = { apikey: anonKey, Authorization: 'Bearer ' + anonKey, 'Content-Type': 'application/json' };
-    const listeners = new Set();
-    let rows = [];
-    let timer = null;
-    let failures = 0;
-    // Until the first poll lands we have nothing to say. Handing a subscriber an
-    // empty list first would make the screen treat the whole festival's history
-    // as new arrivals and replay it one celebration at a time.
-    let primed = false;
+  // ---- local --------------------------------------------------------------
 
-    function mapRow(r) {
-      return {
-        id: r.id, ts: new Date(r.created_at).getTime(), country: r.country, locale: r.locale,
-        langName: r.lang_name, dialect: r.dialect || '', initials: r.initials || '', missing: r.missing || '',
-        langs: Array.isArray(r.langs) && r.langs.length ? r.langs : undefined,
-        lon: typeof r.lon === 'number' ? r.lon : undefined,
-        lat: typeof r.lat === 'number' ? r.lat : undefined,
-      };
-    }
-    async function pull() {
-      const since = CFG.event.resetDaily ? new Date(new Date().setHours(0, 0, 0, 0)).toISOString() : '1970-01-01T00:00:00Z';
-      const q = endpoint + '?select=*&created_at=gte.' + since + '&order=created_at.asc&limit=5000';
-      const res = await fetch(q, { headers });
-      if (!res.ok) throw new Error('supabase ' + res.status + ' ' + (await res.text()).slice(0, 200));
-      rows = (await res.json()).map(mapRow);
-      primed = true;
-      if (failures) window.dispatchEvent(new CustomEvent('booth:online'));
-      failures = 0;
-      listeners.forEach(fn => fn(rows));
-    }
-    function loop() {
-      clearTimeout(timer);
-      pull().catch(err => {
-        failures++;
-        console.warn('[booth] poll failed', err.message);
-        window.dispatchEvent(new CustomEvent('booth:offline', { detail: { failures } }));
-      }).finally(() => { timer = setTimeout(loop, pollMs); });
-    }
-    return {
-      kind: 'supabase',
-      shared: true,
-      async add(sub) {
-        const body = {
-          country: sub.country, locale: sub.locale, lang_name: sub.langName,
-          dialect: sub.dialect || null, initials: sub.initials || null, missing: sub.missing || null,
-          langs: sub.langs || null,
-          lon: typeof sub.lon === 'number' ? sub.lon : null,
-          lat: typeof sub.lat === 'number' ? sub.lat : null,
-          event: CFG.event.name,
-        };
-        const res = await fetch(endpoint, { method: 'POST', headers: Object.assign({ Prefer: 'return=representation' }, headers), body: JSON.stringify(body) });
-        if (!res.ok) throw new Error('could not save (' + res.status + ')');
-        return mapRow((await res.json())[0]);
-      },
-      async all() { return rows; },
-      subscribe(fn) { listeners.add(fn); if (primed) fn(rows); if (!timer) loop(); return () => listeners.delete(fn); },
-      async clear() { throw new Error('clear the table in Supabase, not from the booth'); },
+  /* The same rules as netlify/functions/quiz.mjs, re-stated in the page.
+     Two copies of one set of rules is a cost; the alternative — a booth that
+     cannot be rehearsed without a deploy — is a bigger one. If the duel or
+     scoring rules change, both copies change. */
+  function LocalStore() {
+    let channel = null;
+    try { channel = new BroadcastChannel('cvquiz'); } catch (e) { /* unsupported */ }
+
+    const readLive = () => {
+      try { return JSON.parse(localStorage.getItem(KEY_LIVE) || 'null') || { pads: {}, duel: null, reveal: null }; }
+      catch (e) { return { pads: {}, duel: null, reveal: null }; }
     };
-  }
+    const writeLive = live => {
+      live.updatedAt = Date.now();
+      try { localStorage.setItem(KEY_LIVE, JSON.stringify(live)); } catch (e) { /* private mode */ }
+      if (channel) channel.postMessage({ type: 'live' });
+    };
+    const readBoard = () => {
+      try { return JSON.parse(localStorage.getItem(KEY_BOARD) || '[]'); } catch (e) { return []; }
+    };
+    const writeBoard = rows => {
+      try { localStorage.setItem(KEY_BOARD, JSON.stringify(rows.slice(-2000))); } catch (e) { /* private mode */ }
+      if (channel) channel.postMessage({ type: 'board' });
+    };
 
-  window.Store = (function () {
-    if (CFG.mode === 'netlify') return NetlifyStore();
-    if (CFG.mode === 'supabase') {
-      if (!CFG.supabase.url || !CFG.supabase.anonKey) {
-        console.warn('[booth] supabase mode without credentials — falling back to local');
-        return LocalStore();
+    function prune(live) {
+      const now = Date.now();
+      for (const k of Object.keys(live.pads)) {
+        if (now - (live.pads[k].at || 0) > LIVE_STALE_MS) delete live.pads[k];
       }
-      return SupabaseStore();
+      if (live.duel && now - (live.duel.at || 0) > LIVE_STALE_MS) live.duel = null;
+      if (live.reveal && now - (live.reveal.at || 0) > LIVE_STALE_MS * 2) live.reveal = null;
+      return live;
     }
-    return LocalStore();
-  })();
+    const publicDuel = d => d && ({
+      id: d.id, mode: d.mode, startAt: d.startAt, stations: Object.keys(d.runs),
+      scores: d.scores, answered: d.answered, winner: d.winner, questions: d.questions
+    });
+
+    return {
+      kind: 'local',
+      shared: false,
+
+      async join(body) {
+        const station = String(body.station || 'A').toUpperCase();
+        const mode = body.mode === 'listen' ? 'listen' : 'read';
+        const runId = newId();
+        const now = Date.now();
+        const live = prune(readLive());
+
+        const found = Object.entries(live.pads).find(([k, p]) =>
+          k !== station && p.waiting && p.mode === mode && now - p.at < DUEL_WINDOW_MS);
+
+        if (found) {
+          const [other, pad] = found;
+          const duel = {
+            id: newId(), mode, at: now, startAt: now + 1200,
+            questions: pad.questions || [],
+            runs: { [other]: pad.runId, [station]: runId },
+            scores: { [other]: 0, [station]: 0 },
+            answered: { [other]: 0, [station]: 0 },
+            done: {}, winner: null
+          };
+          live.duel = duel;
+          live.pads[other] = Object.assign({}, pad, { waiting: false, duelId: duel.id, at: now });
+          live.pads[station] = { station, mode, runId, waiting: false, duelId: duel.id, score: 0, answered: 0, at: now };
+          writeLive(live);
+          return { runId, station, mode, duel: publicDuel(duel), questions: duel.questions };
+        }
+
+        live.pads[station] = {
+          station, mode, runId, waiting: true, duelId: null, score: 0, answered: 0, at: now,
+          questions: (body.questions || []).slice(0, 10)
+        };
+        writeLive(live);
+        return { runId, station, mode, duel: null, waitMs: DUEL_WINDOW_MS };
+      },
+
+      async pair(station, runId) {
+        const live = prune(readLive());
+        const pad = live.pads[String(station).toUpperCase()];
+        if (!pad || pad.runId !== runId) return { duel: null, stale: true };
+        if (pad.duelId && live.duel && live.duel.id === pad.duelId) return { duel: publicDuel(live.duel) };
+        return { duel: null };
+      },
+
+      async round(body) {
+        const station = String(body.station || 'A').toUpperCase();
+        const live = prune(readLive());
+        const pad = live.pads[station];
+        if (!pad || pad.runId !== body.runId) return { ok: false, stale: true };
+        pad.score = body.score || 0;
+        pad.answered = body.answered || 0;
+        pad.at = Date.now();
+        if (body.answer) {
+          live.reveal = { locale: body.answer, mode: pad.mode, correct: !!body.correct, station, chose: body.chose || '', at: Date.now() };
+        }
+        if (pad.duelId && live.duel && live.duel.id === pad.duelId) {
+          live.duel.scores[station] = pad.score;
+          live.duel.answered[station] = pad.answered;
+          live.duel.at = Date.now();
+        }
+        writeLive(live);
+        return { ok: true, duel: publicDuel(live.duel) };
+      },
+
+      async finish(body) {
+        const now = Date.now();
+        const station = String(body.station || 'A').toUpperCase();
+        const entry = {
+          id: newId(), ts: now, station, runId: body.runId,
+          initials: cleanInitials(body.initials),
+          mode: body.mode === 'listen' ? 'listen' : 'read',
+          score: body.score || 0, correct: body.correct || 0, of: body.of || 5,
+          timeMs: body.timeMs || 0, duelId: body.duelId || null,
+          missed: (body.missed || []).slice(0, 10)
+        };
+
+        const live = prune(readLive());
+        const pad = live.pads[station];
+        if (pad && pad.duelId && live.duel && live.duel.id === pad.duelId) {
+          const d = live.duel;
+          d.done[station] = { initials: entry.initials, score: entry.score, timeMs: entry.timeMs, correct: entry.correct };
+          d.scores[station] = entry.score;
+          d.at = now;
+          const stations = Object.keys(d.runs);
+          if (stations.every(st => d.done[st])) {
+            const [a, b] = stations, A = d.done[a], B = d.done[b];
+            d.winner = A.score > B.score ? a : B.score > A.score ? b
+              : A.timeMs < B.timeMs ? a : B.timeMs < A.timeMs ? b : 'draw';
+            d.settledAt = now;
+            entry.duelWin = d.winner === station;
+          }
+        }
+        if (pad) { pad.waiting = false; pad.finished = true; pad.at = now; pad.score = entry.score; }
+        live.lastEntry = { initials: entry.initials, score: entry.score, correct: entry.correct, of: entry.of, at: now };
+        writeLive(live);
+
+        const board = readBoard();
+        board.push(entry);
+        writeBoard(board);
+
+        const hour = rank(board, now - HOUR_MS, now);
+        const day = rankTotal(board, now);
+        const mine = hour.find(r => r.initials === entry.initials && r.score === entry.score);
+        return {
+          ok: true,
+          entry: { initials: entry.initials, score: entry.score, duelWin: !!entry.duelWin },
+          rank: mine ? mine.rank : null,
+          of: hour.length,
+          beat: hour.length > 1 ? Math.round(100 * (hour.length - (mine ? mine.rank : hour.length)) / (hour.length - 1)) : null,
+          hour: hour.slice(0, 10), day: day.slice(0, 3),
+          duel: publicDuel(live.duel)
+        };
+      },
+
+      async state() {
+        const now = Date.now();
+        const live = prune(readLive());
+        const board = readBoard();
+        const hour = rank(board, now - HOUR_MS, now);
+        const day = rankTotal(board, now);
+        const pads = {};
+        for (const [k, p] of Object.entries(live.pads)) {
+          pads[k] = { mode: p.mode, score: p.score, answered: p.answered, waiting: !!p.waiting, finished: !!p.finished, duelId: p.duelId, at: p.at };
+        }
+        return {
+          now, pads,
+          duel: publicDuel(live.duel),
+          duelDone: live.duel ? !!live.duel.winner : false,
+          reveal: live.reveal,
+          lastEntry: live.lastEntry || null,
+          hour: hour.slice(0, 10), day: day.slice(0, 3),
+          plays: board.filter(r => sameDay(r.ts, now)).length
+        };
+      },
+
+      onChange(fn) { if (channel) channel.onmessage = () => fn(); }
+    };
+  }
+
+  window.BoothStore = (CFG.mode === 'netlify' || CFG.mode === 'supabase') ? NetlifyStore() : LocalStore();
+  window.BoothStore.cleanInitials = cleanInitials;
 })();

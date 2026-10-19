@@ -2,266 +2,100 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Voices in the Room</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>
-/* Layout: full-bleed map canvas as the ground; four overlay corners float on top.
-   Everything sizes from --u so the same page fits 1080p, 4K or a laptop. */
-:root{
-  --ink:#120F1C; --ink-2:#1A1529; --sea:#0C0A14;
-  --land:#2B2440; --land-edge:#3B3157; --grid:#241E38;
-  --fg:#F4F1FB; --muted:#A79FC4; --dim:#6F6790;
-  --voice:#38E3C0;        /* languages Common Voice already has */
-  --ember:#FF8A5B;        /* the submission being celebrated */
-  --gold:#FFC861;         /* languages Common Voice does not have yet */
-  --display:"Zilla Slab",Georgia,serif;
-  --ui:"IBM Plex Sans","Noto Sans",system-ui,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,monospace;
-  --u:calc(100vh / 1080);
-  color-scheme:dark;
-}
-html,body{height:100%;margin:0;background:var(--ink);color:var(--fg);font-family:var(--ui);overflow:hidden}
-#stage{position:fixed;inset:0}
-#map{position:absolute;inset:0;width:100%;height:100%;display:block}
-.veil{position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(120% 90% at 50% 45%,transparent 35%,rgba(10,8,18,.82) 100%)}
-
-.corner{position:absolute;pointer-events:none;max-width:calc(560*var(--u))}
-.tl{top:calc(44*var(--u));left:calc(52*var(--u))}
-.bl{bottom:calc(44*var(--u));left:calc(52*var(--u))}
-.br{bottom:calc(92*var(--u));right:calc(52*var(--u));text-align:right;max-width:calc(420*var(--u))}
-.tr{top:calc(44*var(--u));right:calc(52*var(--u));width:calc(530*var(--u))}
-
-.eyebrow{font:600 calc(17*var(--u))/1 var(--ui);letter-spacing:.18em;text-transform:uppercase;color:var(--voice)}
-h1{font:700 calc(58*var(--u))/1.04 var(--display);margin:calc(14*var(--u)) 0 calc(10*var(--u));text-wrap:balance;max-width:14ch}
-.sub{font:400 calc(21*var(--u))/1.45 var(--ui);color:var(--muted);max-width:30ch}
-
-/* Counters */
-.counts{display:flex;gap:calc(46*var(--u));align-items:flex-end}
-.count b{display:block;font:600 calc(76*var(--u))/.92 var(--display);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-.count span{display:block;font:500 calc(15*var(--u))/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:calc(10*var(--u))}
-.count.a b{color:var(--voice)} .count.b b{color:var(--fg)} .count.c b{color:var(--gold)}
-
-/* The card that celebrates one submission */
-.card{background:linear-gradient(170deg,rgba(38,31,60,.93),rgba(21,17,34,.93));
-  border:1px solid rgba(255,255,255,.1);border-radius:calc(22*var(--u));
-  padding:calc(30*var(--u)) calc(32*var(--u));backdrop-filter:blur(calc(14*var(--u)));
-  box-shadow:0 calc(30*var(--u)) calc(70*var(--u)) rgba(0,0,0,.5);
-  opacity:0;transform:translateY(calc(18*var(--u)));transition:opacity .45s ease,transform .45s ease}
-.card.on{opacity:1;transform:none}
-.card .from{font:500 calc(17*var(--u))/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--ember)}
-.card .lang{font:700 calc(54*var(--u))/1.06 var(--display);margin:calc(12*var(--u)) 0 calc(4*var(--u));text-wrap:balance}
-.card .lang.multi{font-size:calc(38*var(--u));line-height:1.12}
-.card .variety{font:400 calc(22*var(--u))/1.3 var(--ui);color:var(--muted)}
-.card .flagline{font:500 calc(24*var(--u))/1.3 var(--ui);color:var(--fg);margin-top:calc(4*var(--u))}
-.card .stats{display:flex;gap:calc(30*var(--u));margin-top:calc(24*var(--u));padding-top:calc(22*var(--u));border-top:1px solid rgba(255,255,255,.1)}
-.card .stat b{display:block;font:500 calc(34*var(--u))/1 var(--mono);font-variant-numeric:tabular-nums;color:var(--voice)}
-.card .stat span{white-space:nowrap;display:block;font:500 calc(13*var(--u))/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:calc(8*var(--u))}
-.card.new .stat b{color:var(--gold)}
-.card.debut{border-color:rgba(255,200,97,.45);box-shadow:0 calc(30*var(--u)) calc(70*var(--u)) rgba(0,0,0,.5),0 0 calc(40*var(--u)) rgba(255,200,97,.12)}
-.card.debut .from{color:var(--gold)}
-.card .note{margin-top:calc(22*var(--u));padding-top:calc(20*var(--u));border-top:1px solid rgba(255,255,255,.1);
-  font:400 calc(20*var(--u))/1.45 var(--ui);color:var(--gold)}
-.card .list{display:flex;flex-direction:column;gap:calc(8*var(--u));margin-top:calc(14*var(--u))}
-.card .list div{display:flex;justify-content:space-between;gap:calc(16*var(--u));align-items:baseline}
-.card .list b{font:600 calc(21*var(--u))/1.2 var(--ui);color:var(--fg)}
-.card .list span{font:400 calc(17*var(--u))/1.2 var(--ui);color:var(--muted);white-space:nowrap}
-
-/* The language panel's own lines: what it is called elsewhere, and which
-   Common Voice corpora it is collected in. */
-.card .iso{font:500 calc(16*var(--u))/1.3 var(--mono);color:var(--dim);letter-spacing:.06em;margin-top:calc(6*var(--u))}
-.card .corpora{display:flex;gap:calc(8*var(--u));margin-top:calc(12*var(--u));flex-wrap:wrap}
-.card .corpora span{font:600 calc(14*var(--u))/1 var(--ui);letter-spacing:.1em;text-transform:uppercase;
-  padding:calc(7*var(--u)) calc(11*var(--u));border-radius:999px;border:1px solid rgba(255,255,255,.14);color:var(--dim)}
-.card .corpora span.on{border-color:rgba(56,227,192,.4);background:rgba(56,227,192,.1);color:var(--voice)}
-.card .corpora span.none{border-color:rgba(255,200,97,.32);color:var(--gold)}
-.card .langlink{display:flex;gap:calc(14*var(--u));align-items:center;margin-top:calc(20*var(--u));
-  padding-top:calc(18*var(--u));border-top:1px solid rgba(255,255,255,.1);
-  font:400 calc(17*var(--u))/1.35 var(--ui);color:var(--muted)}
-.card .langlink b{color:var(--fg);font-weight:600}
-.qr.sm{padding:calc(8*var(--u));border-radius:calc(10*var(--u))}
-.card .langlink[hidden]{display:none}
-
-/* Coverage: one dot per hundred of the world's languages. */
-.coverage{margin-bottom:calc(22*var(--u));max-width:calc(430*var(--u))}
-.dots{display:flex;flex-wrap:wrap;gap:calc(5*var(--u));margin-bottom:calc(10*var(--u))}
-.dots i{width:calc(9*var(--u));height:calc(9*var(--u));border-radius:50%;background:rgba(167,159,196,.2)}
-.dots i.cv{background:var(--voice);box-shadow:0 0 calc(8*var(--u)) rgba(56,227,192,.6)}
-.dots i.here{background:var(--ember);box-shadow:0 0 calc(8*var(--u)) rgba(255,138,91,.6)}
-/* Fewer than a hundred languages in the room is less than one dot, and must
-   not be drawn as a whole one. */
-.dots i.partial{background:rgba(167,159,196,.2);position:relative}
-.dots i.partial::after{content:"";position:absolute;inset:calc(2.5*var(--u));border-radius:50%;
-  background:var(--ember);box-shadow:0 0 calc(7*var(--u)) rgba(255,138,91,.7)}
-.coverCap{font:400 calc(14*var(--u))/1.5 var(--ui);color:var(--dim)}
-
-/* Going deeper into one language, with the visitor, at the booth. */
-.explore{position:absolute;top:calc(70*var(--u));left:calc(60*var(--u));right:calc(60*var(--u));
-  bottom:auto;max-height:calc(100% - calc(140*var(--u)));overflow:auto;z-index:5;
-  background:linear-gradient(170deg,rgba(26,21,41,.975),rgba(14,11,24,.985));
-  border:1px solid rgba(255,255,255,.12);border-radius:calc(26*var(--u));
-  padding:calc(44*var(--u)) calc(52*var(--u));backdrop-filter:blur(calc(18*var(--u)));
-  box-shadow:0 calc(40*var(--u)) calc(100*var(--u)) rgba(0,0,0,.6);
-  display:flex;flex-direction:column;gap:calc(26*var(--u))}
-.explore[hidden]{display:none}
-.ex-top{display:flex;justify-content:space-between;align-items:flex-start;gap:calc(40*var(--u))}
-.explore h2{font:700 calc(62*var(--u))/1.05 var(--display);margin:calc(10*var(--u)) 0 calc(6*var(--u))}
-.ex-sub{font:400 calc(20*var(--u))/1.4 var(--ui);color:var(--muted)}
-.ex-head-stats{display:flex;gap:calc(36*var(--u));text-align:right}
-.ex-head-stats b{display:block;font:500 calc(40*var(--u))/1 var(--mono);color:var(--voice)}
-.ex-head-stats span{display:block;font:500 calc(13*var(--u))/1.3 var(--ui);letter-spacing:.1em;
-  text-transform:uppercase;color:var(--dim);margin-top:calc(8*var(--u))}
-.ex-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(44*var(--u));align-items:start}
-.ex-col h3{font:600 calc(16*var(--u))/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;
-  color:var(--dim);margin:0 0 calc(18*var(--u))}
-.ex-row{margin-bottom:calc(14*var(--u))}
-.ex-row .lab{display:flex;justify-content:space-between;gap:calc(14*var(--u));align-items:baseline;
-  font:400 calc(19*var(--u))/1.3 var(--ui);color:var(--fg);margin-bottom:calc(6*var(--u))}
-.ex-row .lab i{font-style:normal;font-family:var(--mono);color:var(--voice);font-variant-numeric:tabular-nums}
-.ex-bar{height:calc(10*var(--u));border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden}
-.ex-bar b{display:block;height:100%;border-radius:999px;background:var(--voice)}
-.ex-empty{font:400 calc(18*var(--u))/1.5 var(--ui);color:var(--dim)}
-.ex-needs{font:400 calc(21*var(--u))/1.5 var(--ui);color:var(--gold);
-  padding-top:calc(22*var(--u));border-top:1px solid rgba(255,255,255,.1)}
-.ex-hint{font:400 calc(14*var(--u))/1 var(--mono);color:#3C3558;text-align:right}
-
-/* Ticker of what the room speaks */
-.ticker{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(44*var(--u));
-  display:flex;gap:calc(10*var(--u));flex-wrap:wrap;justify-content:center;max-width:calc(900*var(--u));pointer-events:none}
-.chip{font:500 calc(19*var(--u))/1 var(--ui);padding:calc(11*var(--u)) calc(18*var(--u));border-radius:999px;
-  background:rgba(56,227,192,.1);border:1px solid rgba(56,227,192,.26);color:#BDF6E9;white-space:nowrap}
-.chip b{font-weight:600;color:var(--voice);font-variant-numeric:tabular-nums}
-.chip.new{background:rgba(255,200,97,.12);border-color:rgba(255,200,97,.3);color:#FFE2A8}
-.chip.new b{color:var(--gold)}
-.chip{pointer-events:auto;cursor:pointer}
-.ticker{pointer-events:none}
-
-/* QR */
-.qr{display:inline-block;background:#fff;padding:calc(14*var(--u));border-radius:calc(16*var(--u));line-height:0}
-.qr img{width:calc(200*var(--u));height:calc(200*var(--u));display:block;image-rendering:pixelated}
-.qr canvas{display:block;position:static}
-.qr-fallback{font:500 calc(16*var(--u))/1.4 var(--mono);color:#120F1C;width:calc(200*var(--u));
-  display:flex;align-items:center;justify-content:center;text-align:center;padding:calc(8*var(--u));word-break:break-all;min-height:calc(200*var(--u))}
-.br .call{font:600 calc(27*var(--u))/1.25 var(--display);margin-bottom:calc(14*var(--u));color:var(--fg)}
-.br .url{font:400 calc(15*var(--u))/1.3 var(--mono);color:var(--dim);margin-top:calc(12*var(--u));word-break:break-all}
-
-.state{position:absolute;top:calc(44*var(--u));left:50%;transform:translateX(-50%);
-  font:500 calc(15*var(--u))/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);
-  display:flex;gap:calc(10*var(--u));align-items:center}
-.dot{width:calc(9*var(--u));height:calc(9*var(--u));border-radius:50%;background:var(--voice);
-  box-shadow:0 0 calc(14*var(--u)) var(--voice);animation:pulse 2.4s ease-in-out infinite}
-.dot.warn{background:var(--ember);box-shadow:0 0 calc(14*var(--u)) var(--ember)}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.hint{position:absolute;bottom:calc(14*var(--u));left:50%;transform:translateX(-50%);
-  font:400 calc(13*var(--u))/1 var(--mono);color:#3C3558}
-
-/* ---- the language wall ------------------------------------------------
-   The wall needs the middle band at full width, so the corners rearrange:
-   the counters join the header, the card drops to the foot beside the QR.
-   wall.js mirrors these insets in region(). */
-body.scene-wall .veil,body.scene-wall .ticker,body.scene-wall .sub{display:none}
-body.scene-wall h1{font-size:calc(36*var(--u));margin:calc(10*var(--u)) 0 0;max-width:19ch}
-body.scene-wall .bl{top:calc(40*var(--u));right:calc(52*var(--u));left:auto;bottom:auto;text-align:right}
-body.scene-wall .counts{justify-content:flex-end;gap:calc(38*var(--u))}
-body.scene-wall .count b{font-size:calc(56*var(--u))}
-body.scene-wall .tr{top:auto;bottom:calc(40*var(--u));left:calc(52*var(--u));right:auto;
-  width:calc(900*var(--u));max-width:calc(900*var(--u))}
-body.scene-wall .card{padding:calc(22*var(--u)) calc(30*var(--u))}
-body.scene-wall .card .lang{font-size:calc(42*var(--u));margin:calc(8*var(--u)) 0 calc(2*var(--u))}
-body.scene-wall .card .lang.multi{font-size:calc(32*var(--u))}
-body.scene-wall .card .stats{margin-top:calc(16*var(--u));padding-top:calc(14*var(--u))}
-body.scene-wall .card .note{margin-top:calc(14*var(--u));padding-top:calc(12*var(--u));
-  font-size:calc(18*var(--u));max-height:calc(104*var(--u));overflow:hidden}
-body.scene-wall .card .list{gap:calc(5*var(--u))}
-body.scene-wall .br{bottom:calc(36*var(--u))}
-body.scene-wall .br .call{font:600 calc(20*var(--u))/1.25 var(--display);margin-bottom:calc(10*var(--u))}
-body.scene-wall .qr img,body.scene-wall .qr-fallback{width:calc(150*var(--u));height:calc(150*var(--u));min-height:calc(150*var(--u))}
-body.scene-wall .br .url{display:none}
-
-@media (prefers-reduced-motion:reduce){.dot{animation:none}.card{transition:none}}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Common Voice — the booth screen</title>
+<link rel="stylesheet" href="display.css">
 </head>
 <body>
-<div id="stage">
-  <canvas id="map"></canvas>
-  <div class="veil"></div>
 
-  <div class="corner tl">
-    <div class="eyebrow" id="eyebrow">Common Voice · MozFest 2026</div>
-    <h1 id="h1">Which languages are in this room?</h1>
-    <p class="sub">Every voice here is a language Common Voice could learn to hear. Add yours.</p>
+<header class="top">
+  <div class="brand">
+    <!-- Space held for the Common Voice mark; the gradient disc stands in
+         until the designer's asset drops into img/common-voice.svg. -->
+    <span class="mark" id="mark"></span>
+    <span class="name">Common Voice</span>
   </div>
+  <div class="event" id="eventName">MozFest 2026</div>
+  <div class="tally"><b id="plays">0</b><span>guesses today</span></div>
+</header>
 
-  <div class="state"><span class="dot" id="statusDot"></span><span id="statusText">Listening for the room</span></div>
+<main class="stage">
 
-  <div class="corner tr">
-    <div class="card" id="card">
-      <div class="from" id="cardFrom">Just added</div>
-      <div class="lang" id="cardLang">—</div>
-      <div class="iso" id="cardIso"></div>
-      <div class="corpora" id="cardCorpora"></div>
-      <div class="variety" id="cardVariety"></div>
-      <div class="flagline" id="cardFlag"></div>
-      <div class="stats" id="cardStats"></div>
-      <div class="note" id="cardNote" hidden></div>
-      <div class="langlink" id="cardLink" hidden>
-        <div class="qr sm" id="cardQr"></div>
-        <span>See <b id="cardLinkName"></b><br>on Common Voice</span>
+  <!-- left: the board, always -->
+  <section class="panel board">
+    <h2 class="h">This hour<i class="reset" id="resetIn"></i></h2>
+    <ol class="rows" id="hourRows"></ol>
+    <h2 class="h day">Today — swag at close</h2>
+    <ol class="rows podium" id="dayRows"></ol>
+  </section>
+
+  <!-- right: one of four things -->
+  <section class="panel feature" id="feature">
+
+    <!-- a language, just revealed -->
+    <div class="card reveal" data-card="reveal">
+      <p class="kicker" id="revealKicker">The answer was</p>
+      <h1 class="lang" id="revealName">Catalan</h1>
+      <p class="autonym" id="revealAutonym">català</p>
+
+      <div class="stats" id="revealStats"></div>
+
+      <div class="splits">
+        <div class="split"><h3>Who recorded it</h3><div class="bars" id="barsGender"></div></div>
+        <div class="split"><h3>How old they are</h3><div class="bars" id="barsAge"></div></div>
+        <div class="split" id="variantSplit"><h3 id="variantTitle">Varieties</h3><div class="bars" id="barsVariant"></div></div>
+      </div>
+
+      <div class="qrrow">
+        <div class="qr" id="qr"><div class="qr-fallback" id="qrFallback">QR</div></div>
+        <p class="qrtext">Scan for <b id="qrLang">this language</b> on Common Voice — the data, and how to add your voice.</p>
       </div>
     </div>
-  </div>
 
-  <!-- What the booth opens when someone wants to go deeper into one language.
-       Driven by the person at the booth, not by the visitor's phone. -->
-  <div class="explore" id="explore" hidden>
-    <div class="ex-top">
-      <div>
-        <div class="eyebrow" id="exEyebrow">In the Common Voice dataset</div>
-        <h2 id="exName">—</h2>
-        <div class="ex-sub" id="exSub"></div>
+    <!-- a duel in progress -->
+    <div class="card duel" data-card="duel">
+      <p class="kicker">Duel</p>
+      <div class="duelgrid">
+        <div class="side" id="sideA"><span class="st">Station A</span><b class="sc">0</b><span class="qn">—</span></div>
+        <div class="vs">vs</div>
+        <div class="side" id="sideB"><span class="st">Station B</span><b class="sc">0</b><span class="qn">—</span></div>
       </div>
-      <div class="ex-head-stats" id="exHeadStats"></div>
+      <h1 class="duelresult" id="duelResult"></h1>
+      <p class="sub" id="duelSub">Same five questions, same second.</p>
     </div>
-    <div class="ex-cols" id="exCols"></div>
-    <div class="ex-needs" id="exNeeds" hidden></div>
-    <div class="ex-hint">Click the map or press Esc to close</div>
-  </div>
 
-  <div class="corner bl">
-    <div class="coverage" id="coverage" hidden>
-      <div class="dots" id="coverDots"></div>
-      <div class="coverCap" id="coverCap"></div>
+    <!-- somebody is playing, nothing revealed yet -->
+    <div class="card playing" data-card="playing">
+      <p class="kicker">Live</p>
+      <h1 class="lang" id="playingLine">Someone is guessing right now</h1>
+      <div class="wave big" id="liveWave"></div>
+      <p class="sub" id="playingSub">Question 1 of 5</p>
     </div>
-    <div class="counts">
-      <div class="count a"><b id="nVoices">0</b><span>voices</span></div>
-      <div class="count b"><b id="nLangs">0</b><span>languages</span></div>
-      <div class="count c"><b id="nNew">0</b><span>not in CV yet</span></div>
+
+    <!-- nobody is playing -->
+    <div class="card idle" data-card="idle">
+      <p class="kicker" id="idleKicker">Common Voice</p>
+      <div class="bignum" id="idleBig">0</div>
+      <p class="bigsub" id="idleSub"></p>
+      <p class="cta">Six seconds. Four languages. Pick the right one.</p>
     </div>
-  </div>
 
-  <div class="corner br">
-    <div class="call" id="call">Scan to put your<br>language on the map</div>
-    <div class="qr" id="qr"><div class="qr-fallback" id="qrFallback">QR goes here</div></div>
-    <div class="url" id="qrUrl"></div>
-  </div>
+  </section>
+</main>
 
-  <div class="ticker" id="ticker"></div>
-  <div class="hint" id="hint">Tap a country for its languages · P projection · V languages · F fullscreen</div>
-</div>
+<footer class="strip">
+  <span id="stripLeft">Take a pad. Listen or read. Five questions.</span>
+  <span class="joiner" id="joiner" hidden></span>
+  <span id="release"></span>
+</footer>
 
-<script src="defaults.js"></script>
-<script src="config.js" onerror="void 0"></script>
-<script src="cv-data.js"></script>
-<script src="vulnerable.js"></script>
-<script src="cv-detail.js"></script>
-<script src="world.js"></script>
-<script src="geo.js"></script>
-<script src="wall.js"></script>
-<script src="store.js"></script>
 <script src="vendor/qrcode-generator.js"></script>
+<script src="defaults.js"></script>
+<script src="config.js"></script>
+<script src="quiz-data.js"></script>
+<script src="bank.js"></script>
+<script src="quiz.js"></script>
+<script src="store.js"></script>
 <script src="display.js"></script>
 </body>
 </html>

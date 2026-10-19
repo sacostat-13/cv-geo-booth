@@ -1,0 +1,229 @@
+/* The 42" screen, 1920x1080, read from two to four metres away across a
+   festival hall.
+
+   Everything is sized in `vmin` off the viewport rather than in pixels, so the
+   same page is legible on the venue's screen whatever it turns out to be, and
+   on a laptop while it is being built. The headline sits near 28mm of
+   x-height at three metres, which is the Smithsonian figure for exhibition
+   text — the number that stops a booth screen being a thing only the people
+   standing at it can read. */
+
+:root {
+  --ink: #0B0B10;
+  --surface: #15151D;
+  --surface-2: #1D1D28;
+  --line: #2C2C3B;
+  --text: #F5F5F8;
+  --muted: #9A9AAE;
+  --accent: #FF4F5E;
+  --accent-2: #FF8A3D;
+  --ok: #3FD98B;
+  --blue: #7FB2FF;
+  --gold: #FFD166;
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; margin: 0; overflow: hidden; }
+
+body {
+  background: radial-gradient(120% 80% at 70% -10%, #2A1B30 0%, var(--ink) 58%);
+  color: var(--text);
+  font: 400 1.6vmin/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  cursor: none;            /* a booth screen has no pointer */
+  user-select: none;
+}
+
+/* ---- header ------------------------------------------------------------- */
+
+.top {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 2.2vmin 3vmin 1.4vmin;
+  gap: 2vmin;
+}
+.brand { display: flex; align-items: center; gap: 1.4vmin; }
+.mark {
+  width: 4.4vmin; height: 4.4vmin; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  background-size: cover;
+  flex: 0 0 auto;
+}
+.brand .name { font-size: 3.1vmin; font-weight: 700; letter-spacing: -.01em; }
+.event { font-size: 2vmin; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; }
+.tally { justify-self: end; text-align: right; line-height: 1; }
+.tally b { display: block; font-size: 3.4vmin; font-weight: 800; font-variant-numeric: tabular-nums; }
+.tally span { font-size: 1.5vmin; color: var(--muted); }
+
+/* ---- stage -------------------------------------------------------------- */
+
+.stage {
+  display: grid;
+  grid-template-columns: 38fr 62fr;
+  gap: 2.4vmin;
+  padding: 0 3vmin 1.6vmin;
+  min-height: 0;
+}
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 2.4vmin;
+  padding: 2.4vmin 2.6vmin;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- board -------------------------------------------------------------- */
+
+.h {
+  margin: 0 0 1.4vmin;
+  font-size: 1.9vmin; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .16em;
+  color: var(--muted);
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1vmin;
+}
+.h.day { margin-top: 2vmin; flex: 0 0 auto; color: var(--gold); }
+.reset { font-style: normal; font-size: 1.5vmin; letter-spacing: .06em; color: var(--muted); }
+
+.rows { list-style: none; margin: 0; padding: 0; display: grid; gap: .7vmin; min-height: 0; }
+/* The hour board takes whatever height is left and divides it between its
+   rows, so ten rows plus the podium always fit the panel — whatever the
+   venue's screen turns out to be. */
+#hourRows { flex: 1 1 auto; grid-auto-rows: minmax(0, 1fr); }
+#dayRows { flex: 0 0 auto; grid-auto-rows: minmax(0, auto); }
+.rows li {
+  display: grid;
+  grid-template-columns: 3.2vmin 1fr auto;
+  align-items: center;
+  gap: 1.4vmin;
+  padding: .9vmin 1.4vmin;
+  border-radius: 1.2vmin;
+  background: var(--surface-2);
+  font-size: 2.4vmin;
+  font-variant-numeric: tabular-nums;
+  min-height: 0;
+  overflow: hidden;
+}
+.rows li .n { color: var(--muted); font-size: 1.9vmin; text-align: right; }
+.rows li .who { font-weight: 700; letter-spacing: .12em; }
+.rows li .pts { font-weight: 700; }
+.rows li .runs { color: var(--muted); font-size: 1.5vmin; letter-spacing: 0; font-weight: 400; margin-left: .6vmin; }
+.rows li.me { background: color-mix(in srgb, var(--accent) 22%, var(--surface-2)); }
+
+/* A new name sliding in is the moment someone looks up from the pad and sees
+   themselves on the wall. It is worth an animation. */
+.rows li.fresh { animation: slotIn .7s cubic-bezier(.2,.8,.25,1) both; }
+@keyframes slotIn {
+  0% { opacity: 0; transform: translateX(-3vmin) scale(.96); background: var(--accent); }
+  60% { opacity: 1; transform: none; }
+  100% { background: var(--surface-2); }
+}
+.rows.podium li { background: linear-gradient(90deg, color-mix(in srgb, var(--gold) 16%, var(--surface-2)), var(--surface-2)); }
+.rows.podium li:first-child { background: linear-gradient(90deg, color-mix(in srgb, var(--gold) 34%, var(--surface-2)), var(--surface-2)); }
+.rows li.empty { background: none; border: 1px dashed var(--line); color: var(--muted); font-size: 1.8vmin; grid-template-columns: 1fr; justify-items: center; }
+
+/* ---- feature panel ------------------------------------------------------ */
+
+.feature { position: relative; overflow: hidden; }
+.card {
+  position: absolute; inset: 2.4vmin 2.6vmin;
+  display: none; flex-direction: column; gap: 1.4vmin;
+  min-height: 0;
+}
+.feature[data-show="reveal"]  .card[data-card="reveal"],
+.feature[data-show="duel"]    .card[data-card="duel"],
+.feature[data-show="playing"] .card[data-card="playing"],
+.feature[data-show="idle"]    .card[data-card="idle"] { display: flex; animation: fade .45s ease-out both; }
+@keyframes fade { from { opacity: 0; transform: translateY(1.6vmin); } to { opacity: 1; transform: none; } }
+
+.kicker { margin: 0; font-size: 1.8vmin; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); }
+.lang { margin: 0; font-size: 7.4vmin; font-weight: 800; letter-spacing: -.02em; line-height: 1.02; }
+.autonym { margin: 0; font-size: 3.2vmin; color: var(--muted); }
+.sub { margin: 0; font-size: 2.2vmin; color: var(--muted); }
+
+.stats { display: flex; gap: 2.6vmin; flex-wrap: wrap; margin-top: .4vmin; }
+.stat { line-height: 1.05; }
+.stat b { display: block; font-size: 3.6vmin; font-weight: 800; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 1.6vmin; color: var(--muted); }
+.stat.flag b { color: var(--ok); font-size: 2.6vmin; }
+
+.splits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2vmin; flex: 1 1 auto; min-height: 0; align-content: start; }
+.split h3 { margin: 0 0 .9vmin; font-size: 1.5vmin; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
+.bars { display: grid; gap: .7vmin; align-content: start; }
+.bar { display: grid; grid-template-columns: 1fr auto; gap: .8vmin; align-items: center; font-size: 1.7vmin; }
+.bar .lbl { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar .val { color: var(--muted); font-variant-numeric: tabular-nums; }
+.bar .track { grid-column: 1 / -1; height: .9vmin; border-radius: .5vmin; background: var(--line); overflow: hidden; }
+.bar .track i { display: block; height: 100%; border-radius: .5vmin; background: linear-gradient(90deg, var(--accent-2), var(--accent)); transform-origin: left; animation: grow .7s cubic-bezier(.2,.8,.25,1) both; }
+.bar.unsaid .track i { background: var(--line); border: 1px dashed var(--muted); }
+.bar.unsaid .lbl { color: var(--muted); font-style: italic; }
+@keyframes grow { from { transform: scaleX(0); } }
+
+.qrrow { display: grid; grid-template-columns: auto 1fr; gap: 2vmin; align-items: center; }
+.qr { background: #fff; padding: 1.2vmin; border-radius: 1.4vmin; line-height: 0; }
+.qr img, .qr canvas { width: 16vmin; height: 16vmin; display: block; image-rendering: pixelated; }
+.qr-fallback { width: 16vmin; height: 16vmin; display: grid; place-items: center; color: #111; font-size: 1.6vmin; }
+.qrtext { margin: 0; font-size: 2vmin; color: var(--muted); max-width: 30ch; }
+.qrtext b { color: var(--text); }
+
+/* ---- duel --------------------------------------------------------------- */
+
+.card.duel { justify-content: center; align-items: center; text-align: center; }
+.duelgrid { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 3vmin; width: 100%; }
+.side { display: grid; gap: .6vmin; justify-items: center; padding: 2.4vmin 1.6vmin; border-radius: 2vmin; background: var(--surface-2); border: .3vmin solid transparent; }
+.side .st { font-size: 2vmin; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; }
+.side .sc { font-size: 10vmin; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.side .qn { font-size: 1.8vmin; color: var(--muted); }
+.side.lead { border-color: var(--accent); }
+.side.won { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 14%, var(--surface-2)); }
+.vs { font-size: 3vmin; color: var(--muted); font-weight: 700; }
+.duelresult { margin: 1.4vmin 0 0; font-size: 5vmin; font-weight: 800; min-height: 1.1em; }
+
+/* ---- playing / idle ----------------------------------------------------- */
+
+.card.playing, .card.idle { justify-content: center; align-items: flex-start; gap: 2vmin; }
+/* The idle card is one number and one line. Centred, it reads as a fact
+   someone put there; pinned to the top with the rest of the panel empty it
+   reads as a page that failed to load. */
+.card.idle .cta { margin-top: 3vmin; }
+.wave.big { display: flex; align-items: flex-end; gap: .8vmin; height: 12vmin; width: 100%; }
+.wave.big i { flex: 1 1 auto; border-radius: .5vmin; background: linear-gradient(180deg, var(--accent-2), var(--accent)); height: 20%; animation: pump 1s ease-in-out infinite alternate; }
+@keyframes pump { to { height: 100%; } }
+
+.bignum {
+  font-size: 15vmin; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.bigsub { margin: 0; font-size: 3.2vmin; max-width: 24ch; line-height: 1.2; }
+.cta { font-size: 2.6vmin; color: var(--muted); }
+
+/* ---- footer strip ------------------------------------------------------- */
+
+/* A strip, not a splash. A full-screen welcome page is the worst performing
+   attract screen there is: people look at it and walk on. The screen stays
+   live and the instruction sits along the bottom. */
+.strip {
+  display: flex; align-items: center; justify-content: space-between; gap: 2vmin;
+  padding: 1.2vmin 3vmin 2vmin;
+  font-size: 1.7vmin; color: var(--muted);
+}
+.joiner { color: var(--accent); font-weight: 700; }
+.joiner.show { animation: pop .8s ease-out both; }
+@keyframes pop { 0% { opacity: 0; transform: scale(.9); } 40% { opacity: 1; transform: scale(1.04); } 100% { transform: scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
+
+/* Waiting places on the board: visible, numbered, and plainly empty. */
+.rows li.slot { background: none; border: 1px dashed var(--line); color: var(--line); }
+.rows li.slot .who { color: #3A3A4C; letter-spacing: 0; }
+
+/* With the varieties column hidden the other two take the width rather than
+   leaving a gap where a fact would have been. */
+.splits:has(.split[hidden]) { grid-template-columns: repeat(2, 1fr); }

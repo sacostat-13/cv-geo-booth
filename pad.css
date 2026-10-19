@@ -1,0 +1,323 @@
+/* The pad. Built for a 10.9" iPad in portrait on a stand, at arm's length,
+   in a bright hall, tapped by someone who has not read any instructions.
+
+   Two rules run through all of it: nothing smaller than 75mm is tappable,
+   and nothing on screen asks a question the person has not already been
+   asked out loud by the booth. */
+
+:root {
+  --ink: #0C0C11;
+  --surface: #17171F;
+  --surface-2: #20202B;
+  --line: #2E2E3C;
+  --text: #F4F4F7;
+  --muted: #9B9BAD;
+  --accent: #FF4F5E;
+  --accent-2: #FF8A3D;
+  --ok: #3FD98B;
+  --no: #FF5A5F;
+  --focus: #7FB2FF;
+  --r: 20px;
+  --pad: clamp(20px, 3.2vw, 40px);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+/* `display:flex` on .listen would otherwise beat the browser's own rule for
+   the hidden attribute, and the audio player would sit on top of a reading
+   question. */
+[hidden] { display: none !important; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: radial-gradient(130% 90% at 50% -10%, #241A2E 0%, var(--ink) 55%);
+  color: var(--text);
+  font: 400 18px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* A booth pad should never scroll, select, or offer a context menu. */
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+/* ---- chrome ------------------------------------------------------------- */
+
+.bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: max(14px, env(safe-area-inset-top)) var(--pad) 14px;
+  font-size: clamp(15px, 1.8vw, 19px);
+  letter-spacing: .02em;
+}
+.wordmark { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; }
+/* Space for the real mark when the design pass lands; a dot until then. */
+.dot {
+  width: 1.1em; height: 1.1em; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+}
+.station { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+#app {
+  flex: 1 1 auto;
+  position: relative;
+  min-height: 0;
+}
+
+.view {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 2.2vh, 26px);
+  padding: var(--pad);
+  text-align: center;
+}
+body.screen-start   .view[data-view="start"],
+body.screen-pairing .view[data-view="pairing"],
+body.screen-ready   .view[data-view="ready"],
+body.screen-question .view[data-view="question"],
+body.screen-reveal  .view[data-view="reveal"],
+body.screen-end     .view[data-view="end"],
+body.screen-posted  .view[data-view="posted"] { display: flex; animation: rise .32s cubic-bezier(.2,.7,.3,1) both; }
+
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+.lede { font-size: clamp(30px, 4.6vw, 54px); line-height: 1.1; margin: 0; font-weight: 700; letter-spacing: -.02em; max-width: 18ch; }
+.sub { font-size: clamp(17px, 2.1vw, 24px); color: var(--muted); margin: 0; max-width: 32ch; }
+.foot { font-size: clamp(14px, 1.7vw, 18px); color: var(--muted); margin: 0; }
+.kicker { text-transform: uppercase; letter-spacing: .18em; font-size: clamp(13px, 1.5vw, 16px); color: var(--accent); margin: 0; font-weight: 700; }
+
+/* ---- buttons ------------------------------------------------------------ */
+
+button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; }
+button:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+.primary {
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  color: #fff; font-weight: 700;
+  padding: 20px 34px; border-radius: 999px;
+  font-size: clamp(18px, 2.1vw, 22px);
+  min-height: 75px; min-width: 240px;
+  box-shadow: 0 10px 30px -12px var(--accent);
+}
+.primary[disabled] { opacity: .35; box-shadow: none; }
+.ghost {
+  border: 2px solid var(--line); border-radius: 999px;
+  padding: 16px 28px; color: var(--muted);
+  min-height: 60px;
+}
+.ghost.small { padding: 12px 22px; min-height: 52px; font-size: 16px; }
+
+/* ---- start -------------------------------------------------------------- */
+
+.modes { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 2vw, 24px); width: min(100%, 760px); }
+.mode {
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--r);
+  /* 75mm minimum touch target, with room to spare: these are the two taps
+     that matter and they are made from a metre away by people in coats. */
+  min-height: clamp(220px, 30vh, 320px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+  padding: 24px;
+  transition: transform .14s, border-color .14s, background .14s;
+}
+.mode:active { transform: scale(.97); border-color: var(--accent); background: var(--surface-2); }
+.mode-icon { width: clamp(52px, 7vw, 76px); color: var(--accent); }
+.mode-icon svg { width: 100%; height: auto; display: block; }
+.mode-name { font-size: clamp(26px, 3.4vw, 38px); font-weight: 700; }
+.mode-note { font-size: clamp(14px, 1.7vw, 17px); color: var(--muted); }
+
+/* ---- pairing ------------------------------------------------------------ */
+
+.pulse {
+  width: clamp(90px, 14vw, 140px); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+  animation: pulse 1.1s ease-out infinite;
+}
+@keyframes pulse { 0% { transform: scale(.7); opacity: .9; } 100% { transform: scale(1.6); opacity: 0; } }
+
+.count {
+  font-size: clamp(90px, 18vw, 190px); font-weight: 800; line-height: 1;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: tick .9s ease-out;
+}
+@keyframes tick { from { transform: scale(1.35); opacity: .2; } to { transform: scale(1); opacity: 1; } }
+
+/* ---- question ----------------------------------------------------------- */
+
+.view[data-view="question"] { justify-content: flex-start; gap: clamp(12px, 2vh, 22px); }
+
+.qhead { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.dots { display: flex; gap: 8px; }
+.dots i { width: 14px; height: 14px; border-radius: 50%; background: var(--line); display: block; transition: background .2s, transform .2s; }
+.dots i.done { background: var(--muted); }
+.dots i.ok { background: var(--ok); }
+.dots i.no { background: var(--no); }
+.dots i.now { background: var(--accent); transform: scale(1.3); }
+
+.clock { position: relative; width: 64px; height: 64px; }
+.clock svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.clock circle { fill: none; stroke-width: 5; }
+.clock-bg { stroke: var(--line); }
+.clock-fg { stroke: var(--accent); stroke-linecap: round; stroke-dasharray: 119.4; stroke-dashoffset: 0; }
+.clock.low .clock-fg { stroke: var(--no); }
+.clock span {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums;
+}
+.score { font-size: clamp(22px, 2.6vw, 30px); font-weight: 700; font-variant-numeric: tabular-nums; min-width: 3ch; text-align: right; }
+
+.stimulus {
+  flex: 1 1 auto; width: 100%;
+  display: grid; place-items: center;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.listen { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.play {
+  width: clamp(120px, 17vw, 172px); aspect-ratio: 1; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  color: #fff; display: grid; place-items: center;
+  box-shadow: 0 14px 40px -14px var(--accent);
+  transition: transform .14s;
+}
+.play svg { width: 48%; }
+.play:active { transform: scale(.94); }
+.play.playing { animation: breathe 1s ease-in-out infinite; }
+@keyframes breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.045); } }
+
+.wave { display: flex; align-items: flex-end; gap: 5px; height: 48px; }
+.wave i { width: 6px; border-radius: 3px; background: var(--line); height: 20%; transition: height .12s; display: block; }
+.wave.on i { background: var(--accent); animation: bar .7s ease-in-out infinite alternate; }
+.wave.on i:nth-child(odd) { animation-duration: .5s; }
+.wave.on i:nth-child(3n) { animation-duration: .9s; }
+@keyframes bar { from { height: 15%; } to { height: 100%; } }
+
+/* Sentences run from fourteen characters of Cantonese to a hundred and
+   thirty of Hungarian, and all of them have to fit above the four buttons
+   without scrolling. --fit is set per question from the length of the text. */
+.sentence {
+  font-size: calc(clamp(24px, 4.2vw, 46px) * var(--fit, 1));
+  line-height: 1.35; margin: 0; font-weight: 500;
+  max-width: 22ch; text-wrap: balance;
+  max-height: 100%; overflow: hidden;
+}
+
+.options { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.8vw, 20px); }
+.opt {
+  background: var(--surface); border: 2px solid var(--line); border-radius: var(--r);
+  /* Four quadrants, each well over the 75mm minimum, in fixed positions so a
+     returning player's thumb already knows where the answers live. */
+  min-height: clamp(96px, 13vh, 132px);
+  font-size: clamp(19px, 2.4vw, 28px); font-weight: 600;
+  padding: 12px 18px;
+  display: grid; place-items: center;
+  transition: transform .12s, border-color .12s, background .12s;
+}
+.opt:active { transform: scale(.97); }
+.opt.ok { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 18%, var(--surface)); }
+.opt.no { border-color: var(--no); background: color-mix(in srgb, var(--no) 16%, var(--surface)); animation: shake .4s; }
+.opt.dim { opacity: .35; }
+@keyframes shake { 10%,90% { transform: translateX(-3px); } 30%,70% { transform: translateX(6px); } 50% { transform: translateX(-6px); } }
+
+/* ---- reveal ------------------------------------------------------------- */
+
+.verdict {
+  font-size: clamp(16px, 2vw, 20px); font-weight: 800;
+  text-transform: uppercase; letter-spacing: .2em;
+  padding: 12px 26px; border-radius: 999px;
+  border: 2px solid var(--no); color: var(--no);
+}
+.verdict.ok { border-color: var(--ok); color: var(--ok); }
+.answer { font-size: clamp(38px, 6.4vw, 74px); margin: 0; font-weight: 800; letter-spacing: -.02em; }
+.autonym { font-size: clamp(20px, 2.8vw, 30px); color: var(--muted); margin: 0; }
+.because { font-size: clamp(17px, 2.1vw, 24px); margin: 0; max-width: 28ch; color: var(--text); }
+.transcript {
+  font-size: clamp(15px, 1.8vw, 20px); color: var(--muted); margin: 0;
+  max-width: 30ch; border-top: 1px solid var(--line); padding-top: 14px;
+}
+.gain { font-size: clamp(22px, 3vw, 34px); font-weight: 800; color: var(--ok); min-height: 1.2em; }
+
+/* ---- end ---------------------------------------------------------------- */
+
+.view[data-view="end"] { justify-content: space-between; gap: 16px; }
+.endgrid { width: 100%; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.25fr); gap: clamp(14px, 2vw, 28px); align-items: start; flex: 0 0 auto; }
+.endscore { text-align: left; }
+.big {
+  font-size: clamp(56px, 9vw, 104px); font-weight: 800; line-height: 1;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.duelbars { margin-top: 14px; display: grid; gap: 8px; }
+.duelbars .row { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; font-size: 17px; }
+.duelbars .meter { height: 12px; border-radius: 6px; background: var(--line); overflow: hidden; }
+.duelbars .meter i { display: block; height: 100%; background: var(--muted); border-radius: 6px; }
+.duelbars .row.win .meter i { background: linear-gradient(90deg, var(--accent-2), var(--accent)); }
+
+.missed { text-align: left; display: grid; gap: 10px; }
+.missed h2 { font-size: clamp(15px, 1.7vw, 18px); margin: 0; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
+.missed .card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  padding: 12px 16px;
+}
+.missed .card b { font-size: clamp(17px, 2vw, 21px); }
+.missed .card span { display: block; color: var(--muted); font-size: clamp(14px, 1.6vw, 17px); margin-top: 2px; }
+
+.initials { width: 100%; display: grid; gap: 12px; justify-items: center; flex: 0 0 auto; }
+.slots { display: flex; gap: 14px; font-size: clamp(42px, 6vw, 64px); font-weight: 800; letter-spacing: .1em; }
+.slots span { width: 1.1em; text-align: center; border-bottom: 4px solid var(--line); line-height: 1.1; }
+.slots span.filled { border-color: var(--accent); }
+.keys { display: grid; grid-template-columns: repeat(9, 1fr); gap: 7px; width: min(100%, 720px); }
+.keys button {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  min-height: 56px; font-size: 20px; font-weight: 600;
+}
+.keys button:active { background: var(--surface-2); border-color: var(--accent); }
+.keys button.wide { grid-column: span 2; font-size: 16px; color: var(--muted); }
+.endactions { display: flex; gap: 14px; align-items: center; }
+
+/* ---- celebration -------------------------------------------------------- */
+
+/* Confetti without a canvas: twenty divs, one animation, removed when done.
+   It has to be cheap — this runs on an iPad that has been awake all day. */
+.burst { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 50; }
+.burst i {
+  position: absolute; top: -12px; width: 10px; height: 16px; border-radius: 2px;
+  animation: fall linear forwards;
+}
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(var(--spin)); opacity: 0; }
+}
+
+body.flash-ok #app { animation: flashOk .5s ease-out; }
+body.flash-no #app { animation: flashNo .4s ease-out; }
+@keyframes flashOk { 0% { background: color-mix(in srgb, var(--ok) 14%, transparent); } 100% { background: transparent; } }
+@keyframes flashNo { 0% { background: color-mix(in srgb, var(--no) 14%, transparent); } 100% { background: transparent; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+/* Landscape iPad: the options go to one row of four and the stimulus shares
+   the width, so nothing needs scrolling in either orientation. */
+@media (orientation: landscape) and (min-width: 900px) {
+  .options { grid-template-columns: repeat(4, 1fr); }
+  .opt { min-height: clamp(92px, 16vh, 120px); }
+  .modes { grid-template-columns: 1fr 1fr; }
+}

@@ -1,225 +1,100 @@
-# Deploying from the repo to Netlify
+# Deploying and running the booth
 
-No framework, no bundler. The only build step turns the site's environment
-variables into `config.js`, because static pages cannot read environment
-variables at runtime.
+## Netlify
 
-## 1. Connect the repo (5 min)
+Connect the repo. The build command is `node tools/build-config.js` and the
+publish directory is `.` — both are already in `netlify.toml`, so a fresh
+site needs nothing typed in.
 
-In Netlify: **Add new site → Import an existing project** → pick your Git
-provider → choose the repo. `netlify.toml` supplies the build command, the
-publish directory, the Node version and the functions directory, so leave all of
-them alone.
+One function, `netlify/functions/quiz.mjs`, serving `/api/quiz/*`. State lives
+in Netlify Blobs; there is no database and nothing to provision.
 
-That is the whole setup. On a Netlify build the site stores the wall in
-**Netlify Blobs** through its own two functions — `POST /api/submit` and
-`GET /api/wall` — which need no account, no credentials and no configuration.
-The functions get the site's credentials automatically.
+### Environment variables
 
-Every push to the production branch redeploys, and every pull request gets its
-own deploy preview with its own URL and its own blob store.
+All optional. The booth runs with none of them set.
 
-### Clearing the wall between the test run and the real event
-
-The wall is keyed by `BOOTH_EVENT_NAME`, so the simplest reset is to change that
-variable — "MozFest 2026 day 1" and "MozFest 2026" are separate walls. To delete
-the old entries properly, use the Netlify CLI:
-
-```bash
-netlify blobs:list cv-booth
-netlify blobs:delete cv-booth "<key>"
-```
-
-## 2. If you would rather use Supabase
-
-Netlify Blobs is the default and needs nothing. Supabase is worth moving to when
-you want SQL over the results, or a wall that outlives the Netlify site.
-
-1. Create a project at supabase.com. The free plan allows two active projects;
-   pausing an idle one frees a slot and paused projects can be restored later.
-2. SQL Editor → paste `supabase.sql` → Run.
-3. Project Settings → API → copy the **Project URL** and the **anon /
-   publishable key**. The anon key is meant to ship in the client; the RLS
-   policies in that SQL are what constrain it — insert and select only.
-4. Set the two variables below and redeploy. That switches the site from the
-   Netlify functions to the Supabase table.
-
-## 3. Optional environment variables
-
-Site configuration → **Environment variables**. None of these are required.
-
-| Variable | Value | Why |
+| Variable | Default | What it is |
 |---|---|---|
-| `BOOTH_EVENT_NAME` | `MozFest 2026` | names the wall; changing it starts a fresh one |
-| `BOOTH_NAME` | `Common Voice` | the eyebrow text on the screen |
-| `SUPABASE_URL` / `SUPABASE_ANON_KEY` | from Supabase | switches off Netlify Blobs and uses Supabase instead |
+| `BOOTH_EVENT_NAME` | `MozFest 2026` | Shown across the top of the screen |
+| `BOOTH_EVENT_SLUG` | `mozfest-2026` | Which bucket of scores this booth writes to. **Change it for a rehearsal** so practice runs do not land on the festival board |
+| `BOOTH_QUESTIONS` | `5` | Questions per run |
+| `BOOTH_ANSWER_MS` | `20000` | Clock per question |
+| `BOOTH_REVEAL_MS` | `3500` | How long the answer holds the pad |
+| `BOOTH_CLIP_SECS` | `6` | Must match how the clips were cut |
+| `BOOTH_REPLAYS` | `2` | Replays per clip |
+| `BOOTH_DUEL_WINDOW_MS` | `3500` | How long a pad waits for a challenger |
+| `BOOTH_DUEL_READY_MS` | `5000` | The shared countdown before question one |
+| `BOOTH_POLL_MS` | `1000` | Screen poll while someone is playing |
+| `BOOTH_IDLE_POLL_MS` | `3000` | Screen poll while nobody is |
+| `BOOTH_HOUR_TOP` | `10` | Rows on the hour board |
+| `BOOTH_DAY_TOP` | `3` | Rows on the day board |
+| `BOOTH_LANGUAGE_URL` | Common Voice datasets page | Where the QR points; `{locale}` is substituted |
 
-You never set a mode flag. With no variables the site uses its own functions; set
-the two Supabase ones and it uses Supabase. `.env.example` lists the optional ones — poll interval,
-projection, highlight duration, pins per country, daily reset — all of which have
-sensible defaults in `defaults.js`.
+### What the free plan can take
 
-**Environment variables are read at build time, so changing one needs a
-redeploy** (Deploys → Trigger deploy). That is a 20-second rebuild of a static
-site, and it means the screen never has to be touched to change the booth's
-behaviour — change `BOOTH_PROJECTION` to `map`, trigger a deploy, refresh the
-screen.
+The binding limit on this repo's history has been **production deploys at 15
+credits each**, out of 300 a month — about twenty deploys. Deploy
+deliberately; use deploy previews while building.
 
-Leave them unset on deploy previews and the preview keeps its submissions in the
-viewer's own browser instead of the shared table — useful for showing the thing
-to people without writing to the real wall. Set them per-context in Netlify if
-you want previews pointed at a scratch Supabase project instead.
+Function invocations are the other number worth watching, and the screen is
+the only thing polling continuously. At 1s while someone is playing and 3s
+while nobody is, a seven-hour day is roughly 20,000 calls, so a three-day
+festival sits near 60,000 against a 125,000/month allowance. The pads are
+cheap: a run is one `join`, a few `pair` polls during the duel window, five
+`round` posts and one `finish`.
 
-## 4. The URL takes care of itself
-
-There is nothing to update when the Netlify URL changes. `phoneUrl` is empty by
-default, which means "wherever this page is served from", and the QR code is
-drawn in the browser from that. The same commit therefore works on:
-
-- `https://random-name-1a2b3c.netlify.app` — straight after import
-- `https://voices-mozfest.netlify.app` — after you rename the site
-- `https://deploy-preview-7--voices-mozfest.netlify.app` — every PR preview
-- `https://voices.mozillafoundation.org` — after a custom domain is attached
-
-Rename the site under Site configuration → Change site name, and add a custom
-domain under Domain management, whenever you like. The QR follows.
-
-Set `BOOTH_PHONE_URL` only in the one case where that logic is wrong: if the
-phone page is served from a different host than the screen.
-
-- `/` is the phone page (the QR target)
-- `/screen` is the booth display
-
-## 5. Check the loop end to end
-
-Open `/screen` on a laptop and `/` on your phone — on cellular, not the same
-wifi, so you are testing the real path. Submit a language. Within about three
-seconds the country should light up, a pin should drop, and the card should show
-that language's figures.
-
-**If the pin does not appear and the phone showed no error, the site is running
-without a shared backend.** Both pages then fall back to the browser's own
-storage, so the phone saves it locally and the screen never hears about it. The
-screen says "Not connected to a shared wall — this screen only" across the top
-and the phone says so on its confirmation, so this should be obvious rather than
-mysterious. Open `https://your-site/config.js`: it should say `"mode":"netlify"`
-(or `"supabase"` with your credentials). If it says `"mode":"local"`, the build
-did not run on Netlify — check the deploy log for `[build-config] mode=`.
-
-If the phone shows an error instead, the functions are the place to look:
-`curl https://your-site/api/wall` should return `[]` on a fresh site.
-
-Then the two things that actually go wrong at a booth:
-
-- **Reload the screen.** It should come back with the accumulated map and sit
-  quietly, not replay every submission one at a time.
-- **Turn the laptop's wifi off for ten seconds.** It should say "Reconnecting to
-  the booth" and recover on its own, with nothing lost — the map is rebuilt from
-  the table on every poll.
-
-## Working on it locally, without deploying
-
-### With the functions (what the booth actually runs)
-
-```bash
-npm install -g netlify-cli      # once
-npm install                     # once per clone — the functions need @netlify/blobs
-netlify dev
-```
-
-Without that second line the two functions cannot resolve `@netlify/blobs` and
-every call to `/api/submit` and `/api/wall` answers **500**, with
-`Cannot find package '@netlify/blobs'` in the `netlify dev` terminal. The
-bundler leaves dependencies external, so they have to be on disk. `npm install`
-then restart `netlify dev` — the bundle under `.netlify/functions-serve` is
-cached from the failed start.
-
-`netlify dev` runs the build step, serves the site on `http://localhost:8888`
-and runs `submit.mjs` and `wall.mjs` for real, against a **local sandboxed blob
-store** — separate from production, so you cannot pollute the real wall. It also
-sets `NETLIFY=true`, so `config.js` comes out in `netlify` mode exactly as it
-would on a deploy.
-
-Open `http://localhost:8888/screen` and `http://localhost:8888/` in two tabs and
-the full loop works.
-
-### Testing from a real phone
-
-A phone cannot reach `localhost` on your laptop. Two ways round it:
-
-```bash
-netlify dev --live
-```
-
-gives you a public HTTPS tunnel URL. Because `phoneUrl` is derived from wherever
-the page is served, **the QR code on the screen points at the tunnel
-automatically** — scan it and your phone is on the local build, with nothing
-deployed and no credits spent.
-
-Failing that, serve on your LAN and visit `http://<your-laptop-ip>:8888` from the
-phone, with both on the same wifi. Most phone cameras will open an `http://` QR
-target, though some scanners warn about it; the tunnel avoids the question.
-
-### Without the functions
-
-```bash
-node tools/build-config.js     # local mode: browser storage only
-python3 -m http.server 8080
-```
-
-Good enough for layout and copy work. Submissions stay in that one browser, and
-both pages say so.
-
-`config.js` is in `.gitignore` — it is generated on every deploy and should never
-be committed.
-
-## Does any of this need React?
-
-No. The screen is a canvas drawn by hand and the phone page is four steps of
-plain DOM; a framework would add a toolchain without changing what either one
-does. The things you might want next — a WebSocket feed instead of polling, a
-moderation queue, an admin view — are all additions to the same static pages.
-
-The case for rebuilding comes if this stops being a booth prototype and becomes
-something Common Voice maintains. The argument then is for the team's existing
-stack, not for React in the abstract.
-
-## Live updates: polling vs. realtime
-
-The screen polls every 3 seconds and rebuilds the whole wall from each poll, so a
-dropped connection costs a few seconds and nothing else. Supabase Realtime over
-WebSocket is instant and is a short change in `store.js`, but a dropped socket
-needs reconnect and catch-up logic that polling gets for free. For three days on
-shared venue wifi, polling is the safer bet; if 3 seconds feels slow, set
-`BOOTH_POLL_MS=1000` before reaching for sockets.
-
-## Cost on Netlify's free plan
-
-The free plan is 300 credits a month. What this site spends:
-
-- **Production deploys cost 15 credits each**, so roughly 20 a month. This is the
-  binding limit, not traffic — batch changes rather than pushing one-line fixes.
-- Web requests are 2 credits per 10,000. The screen polls every 3 seconds, which
-  is 1,200 requests an hour; a three-day festival at ten hours a day is about
-  36,000 requests, or roughly 7 credits.
-- Function compute is metered by GB-hour and is negligible at this volume.
-- Blob storage is included; a submission is a few hundred bytes.
-
-Supabase's free tier also covers this comfortably if you switch to it later.
-
-## Known limits of this prototype
-
-- `/api/submit` is open: anyone with the URL can add a voice, and there is no
-  rate limit or moderation. The function caps field lengths and strips control
-  characters, which is enough for a staffed booth and not enough for a link
-  posted publicly.
-- A screen reload re-reads the whole wall, so it costs one extra request, not a
-  replay of every celebration.
+If it looks tight, raise `BOOTH_IDLE_POLL_MS` first — nobody is watching the
+screen closely when nobody is playing.
 
 ## Before the festival
 
-- Rebuild the Common Voice snapshot (`cd build && npm install && node make-data.js`)
-  so the figures are current.
-- Decide who owns the Netlify site. It would currently be a personal account.
-- Clear the wall, either by changing `BOOTH_EVENT_NAME` or with
-  `netlify blobs:delete`.
+1. **Rebuild the bank from a current release.** Download the newest
+   `cv-corpus-*.json` and `sps-corpus-*.json` from
+   `github.com/common-voice/cv-dataset` into `data/`, then
+   `node tools/build-bank.mjs --sentences ../common-voice/server/data --clips ./clips`.
+   The hours and contributor counts are on a two-metre screen with a QR code
+   beside them; a visitor can check them.
+2. **Add the clips.** `tools/fetch-clips.md`. Without them Listen mode is
+   disabled and half the booth is missing.
+3. **Rehearse against `netlify dev --live`** with the real iPads on the real
+   stand, including a duel. The multi-language and duel paths have been
+   tested against the local store and the function's own code, but not yet
+   against deployed Netlify Blobs.
+4. **Set `BOOTH_EVENT_SLUG` to something else while rehearsing**, then change
+   it back.
+5. **Decide whose Netlify account owns the site.** It is a personal account
+   today.
+
+## On the day
+
+- Open `/a` on the left pad and `/b` on the right, **add each to the home
+  screen** and launch from there: full screen, no address bar, nothing to
+  swipe back to. Guided Access locks a visitor out of the rest of the iPad.
+- Set both pads to never sleep, plug them in, and turn the volume up to where
+  the headphones are comfortable. Lock the volume if Guided Access allows it.
+- Open `/screen` on the 42", full screen, and leave it.
+- All three must point at the **same origin**. A pad on `localhost` and a pad
+  on the deployed URL are two different booths and will never duel.
+- Headphones on both pads. Wipes beside them.
+
+## If something goes wrong
+
+**The board is offline.** The screen says so in the bottom strip and keeps
+the last picture it had. The pads keep working: the quiz, the corrections and
+the end card are all local. Scores posted while the backend is down are lost,
+and the pad tells the player so rather than pretending.
+
+**A pad is stuck mid-run.** It returns to the start screen by itself after 90
+seconds of no touches. Reloading is harmless; the station is remembered.
+
+**A duel will not start.** Both pads must choose the *same mode* within
+`BOOTH_DUEL_WINDOW_MS` of each other. Different modes, or four seconds apart,
+is two solo runs — which is the intended behaviour, not a fault.
+
+**Someone has put something unpleasant on the board.** There is no remove
+button yet. Delete the `<event-slug>/board` blob from the Netlify Blobs UI;
+the individual runs under `<event-slug>/runs/` survive, so the day's totals
+can be rebuilt by hand if it matters.
+
+**Start the day clean.** The day board filters to today, so yesterday drops
+off by itself. To clear mid-day, delete the `board` blob.

@@ -6,21 +6,27 @@
    Netlify runs it via the build command in netlify.toml. Locally:
        node tools/build-config.js
    With no variables set it picks "netlify" on a Netlify build (the site's own
-   functions back the wall) and "local" anywhere else, so a fresh clone still
-   runs from a plain static server with nothing to configure.
+   function backs the booth) and "local" anywhere else, so a fresh clone runs
+   from a plain static server with nothing to configure — all three pages in
+   three tabs, talking over a BroadcastChannel.
 
-   Recognised variables (all optional):
-     SUPABASE_URL           https://xxxx.supabase.co   — setting this and the key
-     SUPABASE_ANON_KEY      the anon / publishable key   switches mode to supabase
-     BOOTH_MODE             local | netlify | supabase  — overrides that choice
-     BOOTH_PHONE_URL        only if the phone page is not on this same site
+   Recognised variables, all optional:
+     BOOTH_MODE             local | netlify
      BOOTH_EVENT_NAME       e.g. "MozFest 2026"
-     BOOTH_NAME             e.g. "Common Voice"
+     BOOTH_EVENT_SLUG       which bucket of scores this booth writes to
      BOOTH_RESET_DAILY      true | false
-     BOOTH_POLL_MS          how often the screen polls, default 3000
-     BOOTH_PROJECTION       globe | map
-     BOOTH_HIGHLIGHT_MS     how long one submission holds the screen
-     BOOTH_PIN_MAX          pins per country before it switches to intensity
+     BOOTH_QUESTIONS        questions per run, default 5
+     BOOTH_ANSWER_MS        seconds-worth of clock per question, in ms
+     BOOTH_REVEAL_MS        how long the answer holds the pad, in ms
+     BOOTH_CLIP_SECS        clip length, must match how the clips were cut
+     BOOTH_REPLAYS          replays allowed per clip
+     BOOTH_DUEL_WINDOW_MS   how long a pad waits for a challenger
+     BOOTH_DUEL_READY_MS    the shared countdown before question one
+     BOOTH_POLL_MS          screen poll while someone is playing
+     BOOTH_IDLE_POLL_MS     screen poll while nobody is
+     BOOTH_HOUR_TOP         rows on the hour board
+     BOOTH_DAY_TOP          rows on the day board
+     BOOTH_LANGUAGE_URL     where the QR beside a language points, with {locale}
 */
 const fs = require('fs');
 const path = require('path');
@@ -42,38 +48,34 @@ const drop = o => {
   return Object.keys(out).length ? out : undefined;
 };
 
-const hasSupabase = !!(env.SUPABASE_URL && env.SUPABASE_ANON_KEY);
 // NETLIFY=true is set during a Netlify build, and by `netlify dev` locally.
-const onNetlify = !!env.NETLIFY;
-const mode = env.BOOTH_MODE || (hasSupabase ? 'supabase' : onNetlify ? 'netlify' : 'local');
-
-if (env.SUPABASE_URL && !env.SUPABASE_ANON_KEY) {
-  console.warn('[build-config] SUPABASE_URL is set but SUPABASE_ANON_KEY is not — staying in ' + mode + ' mode');
-}
-if (mode === 'supabase' && !hasSupabase) {
-  console.warn('[build-config] BOOTH_MODE=supabase but the URL or key is missing — the pages will fall back to local storage');
-}
+const mode = env.BOOTH_MODE || (env.NETLIFY ? 'netlify' : 'local');
 
 const cfg = drop({
   mode,
-  supabase: drop({
-    url: env.SUPABASE_URL,
-    anonKey: env.SUPABASE_ANON_KEY,
-    table: env.SUPABASE_TABLE,
-    pollMs: num(env.BOOTH_POLL_MS, 'BOOTH_POLL_MS'),
-  }),
-  phoneUrl: env.BOOTH_PHONE_URL,
-  netlify: drop({ pollMs: num(env.BOOTH_POLL_MS, 'BOOTH_POLL_MS') }),
   event: drop({
     name: env.BOOTH_EVENT_NAME,
-    booth: env.BOOTH_NAME,
-    resetDaily: bool(env.BOOTH_RESET_DAILY),
+    slug: env.BOOTH_EVENT_SLUG,
+    resetDaily: bool(env.BOOTH_RESET_DAILY)
   }),
-  display: drop({
-    projection: env.BOOTH_PROJECTION,
-    highlightMs: num(env.BOOTH_HIGHLIGHT_MS, 'BOOTH_HIGHLIGHT_MS'),
-    pinMax: num(env.BOOTH_PIN_MAX, 'BOOTH_PIN_MAX'),
+  run: drop({
+    questions: num(env.BOOTH_QUESTIONS, 'BOOTH_QUESTIONS'),
+    answerMs: num(env.BOOTH_ANSWER_MS, 'BOOTH_ANSWER_MS'),
+    revealMs: num(env.BOOTH_REVEAL_MS, 'BOOTH_REVEAL_MS'),
+    clipSecs: num(env.BOOTH_CLIP_SECS, 'BOOTH_CLIP_SECS'),
+    replays: num(env.BOOTH_REPLAYS, 'BOOTH_REPLAYS')
   }),
+  duel: drop({
+    windowMs: num(env.BOOTH_DUEL_WINDOW_MS, 'BOOTH_DUEL_WINDOW_MS'),
+    readyMs: num(env.BOOTH_DUEL_READY_MS, 'BOOTH_DUEL_READY_MS')
+  }),
+  screen: drop({
+    pollMs: num(env.BOOTH_POLL_MS, 'BOOTH_POLL_MS'),
+    idlePollMs: num(env.BOOTH_IDLE_POLL_MS, 'BOOTH_IDLE_POLL_MS'),
+    hourTop: num(env.BOOTH_HOUR_TOP, 'BOOTH_HOUR_TOP'),
+    dayTop: num(env.BOOTH_DAY_TOP, 'BOOTH_DAY_TOP')
+  }),
+  languageUrl: env.BOOTH_LANGUAGE_URL
 }) || {};
 
 const out = path.join(__dirname, '..', 'config.js');
@@ -82,7 +84,4 @@ fs.writeFileSync(out,
   '   Do not edit — change the environment variables instead. */\n' +
   'window.BOOTH_CONFIGURE(' + JSON.stringify(cfg, null, 2) + ');\n');
 
-// Never print the key itself into a build log.
-const shown = JSON.parse(JSON.stringify(cfg));
-if (shown.supabase && shown.supabase.anonKey) shown.supabase.anonKey = '[set, ' + shown.supabase.anonKey.length + ' chars]';
-console.log('[build-config] mode=' + mode + ' ' + JSON.stringify(shown));
+console.log('[build-config] mode=' + mode + ' ' + JSON.stringify(cfg));

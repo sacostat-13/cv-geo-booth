@@ -4,3 +4,6 @@ config.js
 # Dependencies — Netlify installs these at build time.
 node_modules/
 .netlify/
+
+# The booth screenshots this session writes while testing.
+Claude outputs/
