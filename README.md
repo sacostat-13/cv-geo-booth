@@ -68,13 +68,13 @@ who took it — and the language just answered keeps the rest of the screen.
 Who won matters for ten seconds; what Setswana is matters after they have
 left. The band comes down twelve seconds after the result.
 
-**Noto, subset to the bank.** The booth asks people to read 114 languages in
-23 scripts. A system font stack has no Tifinagh, Thaana, Ethiopic or Odia on
+**Noto, subset to the bank.** The booth asks people to read and hear 247 languages in
+24 scripts. A system font stack has no Tifinagh, Thaana, Ethiopic or Odia on
 an iPad, and a missing script does not degrade — it renders as a row of
 boxes, which is not a hard question, it is a broken one. All of Noto is about
 40MB, most of it CJK; but the bank is fixed at build time, so
 `tools/build-fonts.mjs` cuts each family down to exactly the characters that
-build contains. The whole set, every script, is **705kB**. Shaping tables are
+build contains. The whole set, every script, is **816kB**. Shaping tables are
 kept, so Arabic joins and Devanagari reorders — a subset that drops those
 renders the right characters in the wrong shapes, which is worse than boxes
 because it looks fine to someone who cannot read it.
