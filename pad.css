@@ -335,3 +335,8 @@ body.flash-no #app { animation: flashNo .4s ease-out; }
 /* Shown only when a clip fails to load, which means a deploy is missing its
    audio. The run drops that question rather than holding a dead button. */
 .clipnote { margin: 0; font-size: clamp(15px, 1.8vw, 19px); color: var(--no); }
+
+/* The build stamp in the top bar. Deliberately quiet — it is for whoever is
+   running the booth, not for the person playing. */
+.build { color: var(--line); font-size: clamp(11px, 1.1vw, 13px); font-variant-numeric: tabular-nums; }
+.bar { gap: 10px; }

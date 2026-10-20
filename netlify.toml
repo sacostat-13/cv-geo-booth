@@ -52,17 +52,38 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
-# The bank and the figures are frozen snapshots, rebuilt only by a deploy.
-# Caching them hard is what lets an iPad that has been open all day stop
-# asking for them.
+# The bank, the figures and the font set change on a deploy and keep their
+# filenames, so they must be revalidated rather than cached by age.
+#
+# These were max-age=86400, on the theory that an iPad open all day should
+# stop asking for them. That was wrong in the way that matters: it also means
+# a deploy does not reach a pad that loaded the site earlier the same day. It
+# is how the first build with audio shipped and the pads went on showing
+# Listen as unavailable, because they were still holding yesterday's bank.js.
+#
+# no-cache does not mean "do not store" — it means "ask before using". The
+# answer is a 304 of a few hundred bytes, once per page load, which is a
+# price worth paying to never again debug a booth that is running last
+# week's questions.
 [[headers]]
   for = "/bank.js"
   [headers.values]
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "no-cache"
 [[headers]]
   for = "/quiz-data.js"
   [headers.values]
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "no-cache"
+[[headers]]
+  for = "/fonts.css"
+  [headers.values]
+    Cache-Control = "no-cache"
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+# The clips are the exception, and can be cached hard: every filename is
+# unique to its clip, so a changed set is a changed set of names.
 [[headers]]
   for = "/media/*"
   [headers.values]

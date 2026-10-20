@@ -13,7 +13,10 @@
   const $ = id => document.getElementById(id);
 
   $('eventName').textContent = CFG.event.name || '';
-  $('release').textContent = (Q.data.totals && Q.data.totals.release) ? Q.data.totals.release.replace('cv-corpus-', 'Common Voice ') : '';
+  $('release').textContent = [
+  (Q.data.totals && Q.data.totals.release) ? Q.data.totals.release.replace('cv-corpus-', 'Common Voice ') : '',
+  Q.bank.built ? 'build ' + Q.bank.built : ''
+].filter(Boolean).join('  ·  ');
 
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 

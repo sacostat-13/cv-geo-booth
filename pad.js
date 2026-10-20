@@ -56,6 +56,17 @@
     btn.addEventListener('click', () => begin(btn.dataset.mode));
   });
 
+  /* A line small enough to ignore and specific enough to settle an argument:
+     which build this pad is running, and how many clips that build has. When
+     a deploy does not seem to have landed, this is the first thing to read. */
+  (function stamp() {
+    const n = (Q.bank.listen || []).length;
+    const el = document.createElement('span');
+    el.className = 'build';
+    el.textContent = (Q.bank.built || 'build ?') + ' · ' + n + ' clips';
+    document.querySelector('.bar').appendChild(el);
+  })();
+
   const listenAvailable = () => Q.available('listen').length > 0;
   if (!listenAvailable()) {
     /* No clips baked in yet. Saying so plainly beats a Listen button that

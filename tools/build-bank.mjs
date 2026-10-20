@@ -431,10 +431,16 @@ fs.writeFileSync(
   'window.CV_DATA = ' + JSON.stringify({ totals, languages: LANGS }, null, 1) + ';\n'
 );
 
+/* The build stamp goes in the data, not just the header comment, so the pads
+   and the screen can show which build they are running. A booth that cannot
+   tell you that is a booth where "I pushed it but the iPad disagrees" takes
+   an afternoon to work out. */
+const built = new Date().toISOString().slice(0, 16).replace('T', ' ');
+
 fs.writeFileSync(
   path.join(ROOT, 'bank.js'),
   header('The booth question bank.') +
-  'window.CV_BANK = ' + JSON.stringify({ read, listen }, null, 0) + ';\n'
+  'window.CV_BANK = ' + JSON.stringify({ built, read, listen }, null, 0) + ';\n'
 );
 
 const serves = (read.length + listen.length);
