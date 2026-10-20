@@ -111,10 +111,25 @@
   const fmtInt = n => (n || 0).toLocaleString();
   const pct = v => Math.round(v * 100) + '%';
 
+  /* The release's own keys, exactly: 'non-binary' hyphenated, a bare
+     'transgender', and no trans male/female split. */
   const GENDER_LABEL = {
-    male_masculine: 'men', female_feminine: 'women', intersex: 'intersex contributors',
-    transgender_male: 'trans men', transgender_female: 'trans women',
-    non_binary: 'non-binary contributors', do_not_wish_to_say: 'contributors who preferred not to say'
+    male_masculine: 'men',
+    female_feminine: 'women',
+    transgender: 'transgender contributors',
+    'non-binary': 'non-binary contributors',
+    intersex: 'intersex contributors',
+    do_not_wish_to_say: 'contributors who preferred not to say'
+  };
+  // Short forms for the screen's bars, where the column is one third of a
+  // panel and "contributors who preferred not to say" does not fit.
+  const GENDER_SHORT = {
+    male_masculine: 'men',
+    female_feminine: 'women',
+    transgender: 'transgender',
+    'non-binary': 'non-binary',
+    intersex: 'intersex',
+    do_not_wish_to_say: 'preferred not to say'
   };
   const AGE_LABEL = {
     teens: 'teenagers', twenties: 'people in their twenties', thirties: 'people in their thirties',
@@ -124,7 +139,14 @@
   };
   const label = (map, k) => map[k] || (k ? k.replace(/_/g, ' ') : 'contributors who did not say');
 
-  const top = list => (list && list.length ? list.find(x => x.label) || list[0] : null);
+  // The largest named share. `top` cannot just take the first entry any more:
+  // the gender list is a fixed roster in a fixed order, not a ranking.
+  const top = list => {
+    if (!list || !list.length) return null;
+    const named = list.filter(x => x.label);
+    if (!named.length) return list[0];
+    return named.reduce((a, b) => (b.share > a.share ? b : a));
+  };
 
   /* One sentence, under about fifteen words, true, and about this language
      rather than about Common Voice in general. The ones that land are the
@@ -202,7 +224,7 @@
   window.Quiz = {
     buildRun, runFromIds, scoreAnswer, available,
     name, autonym, lang, factFor, correctionFor, totalsCards,
-    fmtHours, fmtInt, pct, label, GENDER_LABEL, AGE_LABEL,
+    fmtHours, fmtInt, pct, label, GENDER_LABEL, GENDER_SHORT, AGE_LABEL,
     shuffle, data: DATA, bank: BANK
   };
 })();

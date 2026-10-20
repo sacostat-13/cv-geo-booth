@@ -120,9 +120,50 @@ if (LIVE) console.log(`live      ${Object.keys(live).length} locales, fetched ${
    reveal panel draws them the same way. A blank label means the contributor
    did not say, which is itself worth showing — the gaps in the dataset are
    half of what the booth is about. */
-function shareList(obj, { asFraction, names }) {
-  if (!obj) return [];
-  const entries = Object.entries(obj).filter(([, v]) => v > 0);
+/* The gender categories Common Voice offers, in the order the screen shows
+   them — every one, for every language, whether or not anyone picked it.
+
+   This is the one split that is a roster rather than a distribution. The
+   others are "how is this spread" and a top-four answers that; gender is "who
+   did Common Voice reach", and for that an empty row is the finding. A
+   language whose non-binary row reads 0% is saying something true and worth
+   reading, and dropping it because the number is small would be the booth
+   quietly tidying away its own subject.
+
+   Fixed order, not sorted by size, so the rows sit in the same place for
+   every language — the screen changes language every twelve seconds, and a
+   row you can find by position is one you can compare across two of them.
+
+   The keys are the release's own spelling: 'non-binary' with a hyphen while
+   everything else uses underscores, and a bare 'transgender' rather than a
+   pair. Checked against all 295 locales in 27.0; getting one wrong means a
+   row that silently never matches. */
+const GENDER_ORDER = [
+  'male_masculine',
+  'female_feminine',
+  'transgender',
+  'non-binary',
+  'intersex',
+  'do_not_wish_to_say',
+  ''                      // no answer recorded at all, which is usually the largest
+];
+
+function shareList(obj, { asFraction, names, roster }) {
+  if (!obj && !roster) return [];
+  const src = obj || {};
+  // A roster keeps its zeros and its order; a distribution drops what nobody
+  // chose and sorts by size.
+  if (roster) {
+    const total = asFraction ? 1 : Object.values(src).reduce((s, v) => s + v, 0);
+    return roster.map(label => ({
+      label,
+      share: total ? +((src[label] || 0) / total).toFixed(4) : 0,
+      // Zero and "too small to round to a percent" are different facts, and
+      // on this split the difference is the whole point.
+      none: !src[label]
+    }));
+  }
+  const entries = Object.entries(src).filter(([, v]) => v > 0);
   const total = asFraction ? 1 : entries.reduce((s, [, v]) => s + v, 0);
   if (!total) return [];
   return entries
@@ -167,7 +208,7 @@ for (const L of TABLE) {
     speakers: live[L.locale] ? live[L.locale].speakers : null,
     sentences: live[L.locale] ? live[L.locale].sentences : null,
     liveValidHours: live[L.locale] ? live[L.locale].validatedHours : null,
-    gender: shareList(c.splits && c.splits.gender, { asFraction: true }),
+    gender: shareList(c.splits && c.splits.gender, { asFraction: true, roster: GENDER_ORDER }),
     age: shareList(c.splits && c.splits.age, { asFraction: true }),
     accents: shareList(c.splits && c.splits.accent, { asFraction: false, names: accentNames[L.locale] }),
     variants: shareList(c.splits && c.splits.variant, { asFraction: false, names: variantNames[L.locale] })

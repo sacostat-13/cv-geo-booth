@@ -84,12 +84,21 @@
 
   // ---- reveal --------------------------------------------------------------
 
+  /* Gender is drawn as a roster: every category Common Voice offers, in the
+     same order, for every language, including the ones nobody picked. The
+     other splits are distributions, where a top-four is the right summary and
+     a 0% row is four words of nothing.
+
+     The difference matters because the two answer different questions. Age
+     asks how a language's recordings are spread; gender asks who Common Voice
+     reached, and there an empty row is the finding rather than the absence of
+     one. A booth about under-representation that hides its smallest rows
+     because they are small is arguing against itself. */
   function bars(el, list, kind) {
+    const roster = kind === 'gender';
     if (!list || !list.length) { el.innerHTML = '<div class="bar"><span class="lbl">not recorded</span></div>'; return; }
-    const map = kind === 'gender' ? Q.GENDER_LABEL : kind === 'age' ? Q.AGE_LABEL : {};
-    // Anything that rounds to nought is a row saying "0%" next to an empty
-    // bar, which is four words of nothing on a two-metre screen.
-    const rows = list.filter(x => x.share >= 0.005).slice(0, 4);
+    const map = roster ? Q.GENDER_SHORT : kind === 'age' ? Q.AGE_LABEL : {};
+    const rows = roster ? list : list.filter(x => x.share >= 0.005).slice(0, 4);
     if (!rows.length) { el.innerHTML = '<div class="bar"><span class="lbl">not recorded</span></div>'; return; }
     el.innerHTML = rows.map(x => {
       const unsaid = !x.label;
@@ -103,9 +112,17 @@
       // underscores rather than going on the wall as database spelling.
       const label = unsaid ? 'did not say'
         : (x.name || map[x.label] || x.label.replace(/_/g, ' '));
-      return `<div class="bar${unsaid ? ' unsaid' : ''}">
-        <span class="lbl">${esc(label)}</span><span class="val">${Q.pct(x.share)}</span>
-        <span class="track"><i style="width:${Math.round(x.share * 100)}%"></i></span>
+      // None at all, versus some but under half a percent. "0%" on a row
+      // where somebody did contribute would be wrong, and "<1%" on a row
+      // where nobody did would be worse.
+      const none = x.none || x.share === 0;
+      const value = none ? 'none' : x.share < 0.005 ? '<1%' : Q.pct(x.share);
+      // A hairline for a share too small to see, so the row reads as present
+      // rather than as a rendering failure.
+      const width = none ? 0 : Math.max(0.8, x.share * 100);
+      return `<div class="bar${unsaid ? ' unsaid' : ''}${none ? ' none' : ''}">
+        <span class="lbl">${esc(label)}</span><span class="val">${value}</span>
+        <span class="track"><i style="width:${width}%"></i></span>
       </div>`;
     }).join('');
   }

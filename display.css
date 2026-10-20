@@ -170,17 +170,20 @@ body {
 
 .splits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2vmin; flex: 1 1 auto; min-height: 0; align-content: start; }
 .split h3 { margin: 0 0 .9vmin; font-size: 1.5vmin; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
-.bars { display: grid; gap: .7vmin; align-content: start; }
-.bar { display: grid; grid-template-columns: 1fr auto; gap: .8vmin; align-items: center; font-size: 1.7vmin; }
+/* Seven rows in the gender column against four in the others, so the spacing
+   is set by the longest list rather than the shortest. */
+.bars { display: grid; gap: .45vmin; align-content: start; }
+.bar { display: grid; grid-template-columns: 1fr auto; gap: .8vmin; align-items: center; font-size: 1.65vmin; line-height: 1.25; }
 .bar .lbl { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .bar .val { color: var(--muted); font-variant-numeric: tabular-nums; }
-.bar .track { grid-column: 1 / -1; height: .9vmin; border-radius: .5vmin; background: var(--line); overflow: hidden; }
+.bar .track { grid-column: 1 / -1; height: .7vmin; margin-bottom: .35vmin; border-radius: .5vmin; background: var(--line); overflow: hidden; }
 .bar .track i { display: block; height: 100%; border-radius: .5vmin; background: linear-gradient(90deg, var(--accent-2), var(--accent)); transform-origin: left; animation: grow .7s cubic-bezier(.2,.8,.25,1) both; }
 .bar.unsaid .track i { background: repeating-linear-gradient(45deg, var(--line) 0 .5vmin, transparent .5vmin 1vmin); }
 .bar.unsaid .lbl { color: var(--muted); font-style: italic; }
 @keyframes grow { from { transform: scaleX(0); } }
 
-.qrrow { display: grid; grid-template-columns: auto 1fr; gap: 2vmin; align-items: center; }
+/* Pinned to the foot of the panel, so a long split column cannot crowd it. */
+.qrrow { display: grid; grid-template-columns: auto 1fr; gap: 2vmin; align-items: center; margin-top: auto; padding-top: 1.6vmin; }
 /* The QR needs white quiet zone of its own even on a white panel, so it
    keeps the border that separates the two. */
 .qr { background: #fff; border: 1px solid var(--line); padding: 1.2vmin; border-radius: 1.4vmin; line-height: 0; }
@@ -262,3 +265,10 @@ body {
 /* With the varieties column hidden the other two take the width rather than
    leaving a gap where a fact would have been. */
 .splits:has(.split[hidden]) { grid-template-columns: repeat(2, 1fr); }
+
+/* A gender category nobody in this language has contributed to. The row
+   stays, legible but plainly empty — on this split the zero is the finding,
+   not a gap in the chart. */
+.bar.none .lbl { color: var(--muted); }
+.bar.none .val { font-style: italic; }
+.bar.none .track { background: none; border: 1px dashed var(--line); height: calc(.7vmin - 2px); }

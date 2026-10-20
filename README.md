@@ -79,6 +79,17 @@ kept, so Arabic joins and Devanagari reorders — a subset that drops those
 renders the right characters in the wrong shapes, which is worse than boxes
 because it looks fine to someone who cannot read it.
 
+**Gender is a roster, not a top four.** Every category Common Voice offers is
+shown for every language, in the same order, including the ones nobody
+picked: men, women, transgender, non-binary, intersex, preferred not to say,
+and no answer recorded. The other splits are distributions, where a top four
+is the right summary; gender asks *who Common Voice reached*, and there an
+empty row is the finding rather than the absence of one. A booth about
+under-representation that hides its smallest rows because they are small is
+arguing against itself. The rows keep a fixed position so two languages can
+be compared at a glance, and "none" is distinguished from "<1%" — nobody at
+all and almost nobody are different facts.
+
 **Light, not dark.** A hall is lit and the screen is large: dark panels at
 three metres read as switched off, and near-black text on paper beats pale
 text on black at that distance. The brand reds are darkened from `#FF4F5E`,
