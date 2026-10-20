@@ -56,8 +56,15 @@
       // to stay inside a free Netlify plan over a three-day festival.
       pollMs: 1000,
       idlePollMs: 3000,
-      // How long a revealed language holds the right-hand panel.
+      // How long a revealed language holds the right-hand panel when nobody
+      // is mid-run. While somebody is still playing it holds until their next
+      // answer replaces it, however long they take to think.
       revealMs: 12000,
+      // How long since a pad's last word before the screen stops counting it
+      // as live. It has to clear a whole question — 20s to answer, 3.5s of
+      // reveal — plus room for a slow player, or the screen drops someone who
+      // is only thinking.
+      padLiveMs: 40000,
       // With nothing happening the screen alternates: the board, then a fact
       // about Common Voice itself.
       idleCardMs: 9000,

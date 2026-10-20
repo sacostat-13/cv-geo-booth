@@ -97,6 +97,24 @@ which is about 3:1 on white and under the line for text. The pads match —
 one booth should not be black on the table and white on the wall, and at
 arm's length a near-black iPad is a mirror of the room.
 
+**The idle screen shows languages, not just numbers.** With nobody playing it
+alternates one figure about Common Voice as a whole with one language in
+full — the same panel a player gets when they answer, demographics and QR and
+all. A number nobody is standing in front of teaches nobody; a language does.
+Which language is weighted roughly three-to-one toward the under-recorded
+ones, because that is the booth's argument — but not exclusively, or the
+attract loop becomes a list of languages the passer-by has never heard of
+with nothing to anchor it.
+
+**Nothing drops the language while somebody is thinking.** Three guards,
+deliberately independent, because this failed once in testing and was hard to
+reproduce: the screen measures every age against the server's own clock
+rather than its own (three devices at a festival have three clocks, and a
+screen a minute fast declares every pad stale); a pad with an unanswered
+question on screen sends two keep-alives; and the reveal panel is sticky
+while anyone is mid-run, holding the language until their next answer
+replaces it however long they take.
+
 **No welcome splash.** A full-screen call to action is the worst-performing
 attract screen there is; people look at it and walk past. The screen stays
 live — reacting to whatever the pads are doing — and the instruction sits in

@@ -44,7 +44,9 @@
       answers: [],
       replaysLeft: CFG.run.replays,
       timer: null,
-      deadline: 0
+      deadline: 0,
+      beat1: null,
+      beat2: null
     };
   }
 
@@ -224,9 +226,30 @@
 
   const ARC = 119.4; // circumference of the r=19 circle in the markup
 
+  /* A question left unanswered is silence on the wire: the pad says nothing
+     between one answer and the next, and the backend eventually decides the
+     run is over. That is what took the language off the big screen while
+     somebody was still thinking about it. So a pad with a question on screen
+     checks in, twice, saying only "still here" — no answer, so the screen's
+     reveal panel is untouched.
+
+     Two calls per slow question, and only for slow ones: most are answered
+     inside ten seconds and never send any. */
+  function beat() {
+    if (!run || !run.runId) return;
+    S.round({
+      station, runId: run.runId,
+      score: run.score, answered: run.i
+      // deliberately no `answer`: this is a keep-alive, not a result
+    }).catch(() => {});
+  }
+
   function startClock() {
     const total = CFG.run.answerMs;
     run.deadline = Date.now() + total;
+    clearTimeout(run.beat1); clearTimeout(run.beat2);
+    run.beat1 = setTimeout(beat, 11000);
+    run.beat2 = setTimeout(beat, 22000);
     const arc = $('clockArc'), num = $('clockNum'), wrap = num.parentElement;
     clearInterval(run.timer);
     run.timer = setInterval(() => {
@@ -243,6 +266,7 @@
 
   function answer(chose, btn) {
     clearInterval(run.timer);
+    clearTimeout(run.beat1); clearTimeout(run.beat2);
     stopClip();
     const q = run.questions[run.i];
     const msLeft = Math.max(0, run.deadline - Date.now());
@@ -405,6 +429,7 @@
   function resetToStart() {
     clearTimeout(resetTimer);
     clearInterval(run && run.timer);
+    if (run) { clearTimeout(run.beat1); clearTimeout(run.beat2); }
     stopPairPoll();
     stopDuelWatch();
     run = null;

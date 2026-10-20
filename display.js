@@ -151,7 +151,12 @@
     const l = Q.lang(reveal.locale);
     if (!l) return;
 
-    $('revealKicker').textContent = reveal.correct ? 'Got it —' : 'The answer was';
+    // Three ways this panel gets shown, and it should say which: somebody got
+    // it, somebody missed it, or nobody is playing and this is the booth
+    // showing a language because it is worth showing.
+    $('revealKicker').textContent = reveal.idle ? 'A language in Common Voice'
+      : reveal.correct ? 'Got it —'
+        : 'The answer was';
     $('revealName').textContent = l.name;
     $('revealAutonym').textContent = l.autonym;
     $('qrLang').textContent = l.name;
@@ -235,15 +240,59 @@
     $('playingSub').textContent = `Station ${st} — question ${Math.min((p.answered || 0) + 1, CFG.run.questions)} of ${CFG.run.questions}`;
   }
 
+  /* With nobody playing the screen alternates between one figure about Common
+     Voice as a whole and one language in full — the same panel a player gets
+     when they answer, demographics and QR and all.
+
+     A number nobody is standing in front of teaches nobody. A language does:
+     somebody walking past learns that Common Voice has four hours of Tamazight
+     and who recorded them, without having touched a pad. It also means the
+     attract loop and the game show the same thing, so the screen is never
+     advertising an experience different from the one on offer.
+
+     Which language is weighted toward the ones with least recorded, because
+     that is the booth's whole argument — but not exclusively, or the idle
+     screen becomes a list of languages a visitor has never heard of with
+     nothing to anchor it. Roughly three under-recorded to one familiar. */
+  const idleQueue = (() => {
+    const all = Object.keys(Q.data.languages);
+    const hours = l => Q.lang(l).validHours || 0;
+    const needy = all.filter(l => hours(l) < 100);
+    const known = all.filter(l => hours(l) >= 100);
+    const out = [];
+    const a = Q.shuffle(needy), b = Q.shuffle(known);
+    while (a.length || b.length) {
+      for (let i = 0; i < 3 && a.length; i++) out.push(a.pop());
+      if (b.length) out.push(b.pop());
+    }
+    return out;
+  })();
+
   const cards = Q.totalsCards();
-  let cardAt = 0, cardSince = 0;
+  // Starts true so the first flip lands on the totals card: a screen that
+  // comes up on one big number reads as "this is working" faster than one that
+  // comes up mid-way through a language nobody has asked about yet.
+  let cardAt = 0, langAt = 0, cardSince = 0, idleShowsLang = true;
+
+  // Returns which card the idle rotation wants shown, and only changes its
+  // mind once a card has had its time. The loop does the showing.
   function paintIdle(now) {
-    if (now - cardSince < CFG.screen.idleCardMs) return;
-    cardSince = now;
-    const c = cards[cardAt % cards.length];
-    cardAt++;
-    $('idleBig').textContent = c.big;
-    $('idleSub').textContent = c.small;
+    if (now - cardSince >= CFG.screen.idleCardMs) {
+      cardSince = now;
+      idleShowsLang = !idleShowsLang;
+      if (idleShowsLang && idleQueue.length) {
+        const locale = idleQueue[langAt++ % idleQueue.length];
+        // Routed through the same painter as a real answer, with a flag so
+        // the kicker does not claim somebody just got it right.
+        paintReveal({ locale, idle: true, at: 'idle-' + locale + '-' + langAt });
+      } else {
+        idleShowsLang = false;
+        const c = cards[cardAt++ % cards.length];
+        $('idleBig').textContent = c.big;
+        $('idleSub').textContent = c.small;
+      }
+    }
+    return idleShowsLang ? 'reveal' : 'idle';
   }
 
   // ---- the joiner banner ---------------------------------------------------
@@ -285,26 +334,39 @@
     paintBoard(st);
     joiner(st);
 
-    const anyLive = Object.values(st.pads || {}).some(p => !p.finished && Date.now() - p.at < 20000);
+    /* Ages are measured against the server's own clock, which it sends as
+       `now`, and never against this screen's. Both ends of the subtraction
+       then come from the same machine. Comparing a server timestamp to
+       `Date.now()` here was a real bug: three devices at a festival have three
+       clocks, and a screen a minute fast declares every pad stale and drops
+       the language it should be holding. */
+    const age = ts => (ts ? Math.max(0, st.now - ts) : Infinity);
+
+    const anyLive = Object.values(st.pads || {}).some(p => !p.finished && age(p.at) < CFG.screen.padLiveMs);
 
     paintDuel(st.duel);
 
     /* A duel no longer takes the panel. It raises the band and leaves the
        precedence below it alone, so the screen goes on showing whichever
        language was last answered — which is the part a visitor takes away.
-       During a duel the reveal is also allowed to hold longer, because both
-       players are still answering and nothing else is competing for it. */
-    const revealHold = st.duel ? CFG.screen.revealMs * 1.6 : CFG.screen.revealMs;
 
-    if (st.reveal && Date.now() - st.reveal.at < revealHold) {
+       While somebody is still mid-run the reveal is sticky: it holds until
+       their next answer replaces it, however long they take. A player
+       thinking for twenty seconds should not cost the screen the language it
+       was explaining — the previous behaviour let the hold expire and fell
+       back to a waveform, which is how the big screen appeared to "lose" the
+       pad. During a duel the same applies, for both players at once. */
+    const revealFresh = st.reveal && (age(st.reveal.at) < CFG.screen.revealMs || anyLive || st.duel);
+
+    if (revealFresh) {
       paintReveal(st.reveal);
       show('reveal', 4000);
     } else if (anyLive) {
+      // Only before the first answer of a run — after that the reveal holds.
       paintPlaying(st.pads);
       show('playing', 2000);
     } else {
-      paintIdle(Date.now());
-      show('idle', 3000);
+      show(paintIdle(st.now), 3000);
     }
 
     schedule(anyLive || st.duel ? CFG.screen.pollMs : CFG.screen.idlePollMs);
@@ -324,7 +386,6 @@
   // rather than waiting out a timer that was throttled while hidden.
   document.addEventListener('visibilitychange', () => { if (!document.hidden) schedule(60); });
 
-  paintIdle(0);
-  show('idle', 0);
+  show(paintIdle(Date.now()), 0);
   tick();
 })();

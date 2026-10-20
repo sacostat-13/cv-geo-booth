@@ -21,7 +21,7 @@
 import { getStore } from '@netlify/blobs';
 
 const DUEL_WINDOW_MS = 3500;   // how long a pad waits to find a challenger
-const LIVE_STALE_MS = 25000;   // a run nobody finished stops being "live"
+const LIVE_STALE_MS = 45000;   // a run nobody finished stops being "live"
 // A settled duel comes down off the screen after this, so the band does not
 // sit over an idle booth announcing a result nobody is still standing for.
 const DUEL_SETTLE_MS = 12000;
@@ -76,7 +76,14 @@ const writeLive = (s, event, live) => {
 /* A pad that walked away mid-run must not hold the screen for the rest of the
    afternoon, and a duel whose other half never finished must not keep the
    next pair out of duel mode. Anything untouched for LIVE_STALE_MS is dropped
-   on the next read rather than cleaned up on a timer there is nowhere to run. */
+   on the next read rather than cleaned up on a timer there is nowhere to run.
+
+   The window has to clear a whole question — 20s on the clock plus 3.5s of
+   reveal — with room for someone who is simply thinking. At 25s it did not,
+   and a slow player's pad was pruned mid-run, which took the language off the
+   big screen while they were still looking at it. The pads also send a
+   keep-alive if a question stays unanswered, so the two guards are
+   independent: either one alone keeps a thinking player live. */
 function prune(live) {
   const now = Date.now();
   for (const [k, pad] of Object.entries(live.pads)) {

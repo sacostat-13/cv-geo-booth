@@ -87,6 +87,14 @@ and the pad tells the player so rather than pretending.
 **A pad is stuck mid-run.** It returns to the start screen by itself after 90
 seconds of no touches. Reloading is harmless; the station is remembered.
 
+**The big screen stopped showing the language mid-question.** It should not:
+the pad keeps the run alive with two keep-alives, the backend's stale window
+clears a whole question, and the reveal panel is sticky while anyone is
+playing. If it happens anyway, check the clocks — the screen measures ages
+against the server's `now`, so this should be immune, but a pad whose clock
+is badly wrong can still time its own question oddly. `BOOTH_POLL_MS` and
+`padLiveMs` in `defaults.js` are the knobs.
+
 **A duel will not start.** Both pads must choose the *same mode* within
 `BOOTH_DUEL_WINDOW_MS` of each other. Different modes, or four seconds apart,
 is two solo runs — which is the intended behaviour, not a fault.

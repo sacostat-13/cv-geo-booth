@@ -178,7 +178,11 @@ body {
 .bar .val { color: var(--muted); font-variant-numeric: tabular-nums; }
 .bar .track { grid-column: 1 / -1; height: .7vmin; margin-bottom: .35vmin; border-radius: .5vmin; background: var(--line); overflow: hidden; }
 .bar .track i { display: block; height: 100%; border-radius: .5vmin; background: linear-gradient(90deg, var(--accent-2), var(--accent)); transform-origin: left; animation: grow .7s cubic-bezier(.2,.8,.25,1) both; }
-.bar.unsaid .track i { background: repeating-linear-gradient(45deg, var(--line) 0 .5vmin, transparent .5vmin 1vmin); }
+/* "Did not say" is real data — those clips exist, the contributor just did
+   not attach an answer — so the bar is filled, in grey rather than in the
+   accent. It was hatched in var(--line) on a var(--line) track, which is to
+   say invisible: a row reading 43% with an empty bar beside it. */
+.bar.unsaid .track i { background: #A79C94; }
 .bar.unsaid .lbl { color: var(--muted); font-style: italic; }
 @keyframes grow { from { transform: scaleX(0); } }
 

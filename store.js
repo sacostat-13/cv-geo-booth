@@ -12,7 +12,7 @@
 (function () {
   const CFG = window.BOOTH;
   const DUEL_WINDOW_MS = 3500;
-  const LIVE_STALE_MS = 25000;
+  const LIVE_STALE_MS = 45000;
   const DUEL_SETTLE_MS = 12000;   // a settled duel comes down off the screen
   const HOUR_MS = 3600000;
   const KEY_LIVE = 'cvquiz.live.v1';
