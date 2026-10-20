@@ -25,8 +25,9 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 const dir = process.argv[2];
 const indexOnly = process.argv.includes('--index-only');
+const allDurations = process.argv.includes('--all-durations');
 if (!dir || dir.startsWith('--')) {
-  console.error('usage: node tools/check-clips.mjs <clips-dir> [--index-only]');
+  console.error('usage: node tools/check-clips.mjs <clips-dir> [--index-only] [--all-durations]');
   process.exit(2);
 }
 if (!fs.existsSync(dir)) {
@@ -41,6 +42,12 @@ const KNOWN = new Map(TABLE.map(l => [l.locale, l.name]));
 // Kept in step with defaults.js by hand; both are stated in the README.
 const CLIP_SECS = 6;
 const WANT_PER_LANG = 12;
+/* Durations are sampled, not exhaustive. ffprobe is a process per clip, and a
+   full download is ten thousand of them — minutes of spawning to re-learn
+   what the first few of each language already said, since they all came out
+   of the same prepare-clips run. --all-durations if you really want every
+   one. */
+const DURATION_SAMPLE = 3;
 const AUDIO = /\.(mp3|m4a|ogg|wav)$/i;
 // Fields that must never reach a published website.
 const FORBIDDEN = ['client_id', 'clientId', 'clientID', 'speaker_id', 'speakerId'];
@@ -61,12 +68,15 @@ const duration = f => {
 };
 
 const entries = fs.readdirSync(dir, { withFileTypes: true });
-const locales = entries.filter(e => e.isDirectory()).map(e => e.name);
+// Folders starting with _ or . are the operator's own — reports, scratch,
+// whatever — and are not claiming to be a locale.
+const locales = entries.filter(e => e.isDirectory() && !/^[_.]/.test(e.name)).map(e => e.name);
 const strays = entries.filter(e => e.isFile() && e.name !== 'README.md' && !e.name.startsWith('.'));
 
 console.log(`checking ${path.resolve(dir)}`);
 if (indexOnly) console.log('index-only: not looking for the audio itself');
 if (!indexOnly && !ffprobe) console.log('ffprobe not found: clip lengths NOT checked');
+else if (!indexOnly && !allDurations) console.log(`checking the length of the first ${DURATION_SAMPLE} clips per language (--all-durations for every one)`);
 console.log('');
 
 if (!locales.length) err(path.basename(dir), 'no locale folders in here at all');
@@ -108,7 +118,7 @@ for (const locale of locales.sort()) {
   if (!index.length) { err(where, 'index.json is empty'); continue; }
 
   const named = new Set();
-  let noSentence = 0;
+  let noSentence = 0, probed = 0;
 
   index.forEach((row, i) => {
     const at = `${where}[${i}]`;
@@ -134,7 +144,8 @@ for (const locale of locales.sort()) {
       const full = path.join(ldir, row.file);
       if (!fs.existsSync(full)) { err(at, `"${row.file}" is in the index but not in the folder`); return; }
       if (fs.statSync(full).size < 2048) { err(at, `"${row.file}" is ${fs.statSync(full).size} bytes — that is not a clip`); return; }
-      if (ffprobe) {
+      if (ffprobe && (allDurations || probed < DURATION_SAMPLE)) {
+        probed++;
         const d = duration(full);
         if (!isFinite(d)) warn(at, `"${row.file}" — ffprobe could not read it`);
         else if (d < CLIP_SECS - 0.75) err(at, `"${row.file}" is ${d.toFixed(1)}s, short of the ${CLIP_SECS}s the booth asks for`);

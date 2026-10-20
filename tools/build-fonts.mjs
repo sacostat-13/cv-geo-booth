@@ -47,6 +47,7 @@ const FAMILIES = {
   odia:       { family: 'Noto Sans Oriya',      pkg: 'noto-sans-oriya',      weights: [400] },
   tamil:      { family: 'Noto Sans Tamil',      pkg: 'noto-sans-tamil',      weights: [400] },
   malayalam:  { family: 'Noto Sans Malayalam',  pkg: 'noto-sans-malayalam',  weights: [400] },
+  telugu:     { family: 'Noto Sans Telugu',     pkg: 'noto-sans-telugu',     weights: [400] },
   thaana:     { family: 'Noto Sans Thaana',     pkg: 'noto-sans-thaana',     weights: [400] },
   ethiopic:   { family: 'Noto Sans Ethiopic',   pkg: 'noto-sans-ethiopic',   weights: [400] },
   tifinagh:   { family: 'Noto Sans Tifinagh',   pkg: 'noto-sans-tifinagh',   weights: [400] },

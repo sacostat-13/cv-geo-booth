@@ -7,3 +7,8 @@ node_modules/
 
 # The booth screenshots this session writes while testing.
 Claude outputs/
+
+# Downloaded Common Voice clips: 1.8GB of source audio. The build copies
+# only what it uses into media/clips/, and that is what ships.
+clips/
+clips-example.zip

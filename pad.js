@@ -198,16 +198,36 @@
 
   // ---- audio --------------------------------------------------------------
 
+  /* A clip that does not load leaves a play button that does nothing, which
+     looks like a broken pad rather than a missing file. It should not happen
+     — the audio ships with the site — but if it does, say so, and do not let
+     the clock punish someone for a question they were never given. */
+  function clipFailed() {
+    stopClip();
+    const note = $('clipNote');
+    note.hidden = false;
+    clearInterval(run.timer);
+    clearTimeout(run.beat1); clearTimeout(run.beat2);
+    setTimeout(() => {
+      note.hidden = true;
+      run.questions.splice(run.i, 1);
+      if (run.questions.length > run.i) ask();
+      else if (run.answers.length) end();
+      else resetToStart();
+    }, 1800);
+  }
+
   function playClip() {
     const a = $('audio'), q = run.questions[run.i];
     if (!q || q.mode !== 'listen') return;
+    a.onerror = clipFailed;
     $('playBtn').classList.add('playing');
     $('wave').classList.add('on');
     // Clips are cut at build time, but a long one must not be allowed to run
     // past the answer clock, so the page stops it as well.
     const stopAt = setTimeout(stopClip, CFG.run.clipSecs * 1000 + 400);
     a.onended = () => { clearTimeout(stopAt); stopClip(); };
-    a.play().catch(() => stopClip());
+    a.play().catch(() => stopClip());   // autoplay refusal: the button still works
   }
   function stopClip() {
     $('playBtn').classList.remove('playing');
@@ -308,7 +328,9 @@
     v.textContent = right ? 'Right' : chose ? 'Not that one' : 'Out of time';
     v.classList.toggle('ok', right);
     $('answerName').textContent = Q.name(q.answer);
-    $('answerAutonym').textContent = Q.autonym(q.answer);
+    const auto = Q.autonym(q.answer);
+    $('answerAutonym').textContent = auto;
+    $('answerAutonym').hidden = !auto;
     // Right answer gets a fact; wrong answer gets the reason it was a fair
     // mistake. Correcting the specific guess is what stops the wrong option
     // being what the person walks away remembering.

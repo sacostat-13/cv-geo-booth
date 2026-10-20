@@ -1,138 +1,2228 @@
 {
   "_comment": "Curated language table for the booth quiz. One entry per Common Voice locale we are willing to ask about. `family` drives the near-miss distractor (one option is always from the same family, so the confusion is a teachable one rather than noise). `region` drives the second distractor. `script` is used for read-mode rendering hints. `prominence` 1-3 is how widely known the language is to a general festival audience: 3 = most people have heard it spoken, 1 = most have not. Q1-Q2 of a run are drawn from prominence 3-2, Q3-Q5 lean to 1. Autonyms are written in the language's own script.",
   "languages": [
-    { "locale": "es",           "name": "Spanish",        "autonym": "español",        "family": "romance",     "region": "europe-west",   "script": "latin",     "prominence": 3 },
-    { "locale": "pt",           "name": "Portuguese",     "autonym": "português",      "family": "romance",     "region": "europe-west",   "script": "latin",     "prominence": 3 },
-    { "locale": "it",           "name": "Italian",        "autonym": "italiano",       "family": "romance",     "region": "europe-west",   "script": "latin",     "prominence": 3 },
-    { "locale": "fr",           "name": "French",         "autonym": "français",       "family": "romance",     "region": "europe-west",   "script": "latin",     "prominence": 3 },
-    { "locale": "ro",           "name": "Romanian",       "autonym": "română",         "family": "romance",     "region": "europe-east",   "script": "latin",     "prominence": 2 },
-    { "locale": "ca",           "name": "Catalan",        "autonym": "català",         "family": "romance",     "region": "europe-west",   "script": "latin",     "prominence": 2 },
-    { "locale": "gl",           "name": "Galician",       "autonym": "galego",         "family": "romance",     "region": "europe-west",   "script": "latin",     "prominence": 1 },
-    { "locale": "oc",           "name": "Occitan",        "autonym": "occitan",        "family": "romance",     "region": "europe-west",   "script": "latin",     "prominence": 1 },
-    { "locale": "sc",           "name": "Sardinian",      "autonym": "sardu",          "family": "romance",     "region": "europe-west",   "script": "latin",     "prominence": 1 },
-    { "locale": "ast",          "name": "Asturian",       "autonym": "asturianu",      "family": "romance",     "region": "europe-west",   "script": "latin",     "prominence": 1 },
-    { "locale": "rm-sursilv",   "name": "Romansh Sursilvan", "autonym": "rumantsch sursilvan", "family": "romance", "region": "europe-west", "script": "latin",  "prominence": 1 },
-
-    { "locale": "de",           "name": "German",         "autonym": "Deutsch",        "family": "germanic",    "region": "europe-west",   "script": "latin",     "prominence": 3 },
-    { "locale": "nl",           "name": "Dutch",          "autonym": "Nederlands",     "family": "germanic",    "region": "europe-west",   "script": "latin",     "prominence": 3 },
-    { "locale": "sv-SE",        "name": "Swedish",        "autonym": "svenska",        "family": "germanic",    "region": "europe-north",  "script": "latin",     "prominence": 2 },
-    { "locale": "da",           "name": "Danish",         "autonym": "dansk",          "family": "germanic",    "region": "europe-north",  "script": "latin",     "prominence": 2 },
-    { "locale": "nb-NO",        "name": "Norwegian Bokmål", "autonym": "norsk bokmål", "family": "germanic",    "region": "europe-north",  "script": "latin",     "prominence": 2 },
-    { "locale": "is",           "name": "Icelandic",      "autonym": "íslenska",       "family": "germanic",    "region": "europe-north",  "script": "latin",     "prominence": 2 },
-    { "locale": "af",           "name": "Afrikaans",      "autonym": "Afrikaans",      "family": "germanic",    "region": "africa-south",  "script": "latin",     "prominence": 2 },
-    { "locale": "fy-NL",        "name": "Frisian",        "autonym": "Frysk",          "family": "germanic",    "region": "europe-west",   "script": "latin",     "prominence": 1 },
-
-    { "locale": "ru",           "name": "Russian",        "autonym": "русский",        "family": "slavic",      "region": "europe-east",   "script": "cyrillic",  "prominence": 3 },
-    { "locale": "pl",           "name": "Polish",         "autonym": "polski",         "family": "slavic",      "region": "europe-east",   "script": "latin",     "prominence": 3 },
-    { "locale": "uk",           "name": "Ukrainian",      "autonym": "українська",     "family": "slavic",      "region": "europe-east",   "script": "cyrillic",  "prominence": 2 },
-    { "locale": "cs",           "name": "Czech",          "autonym": "čeština",        "family": "slavic",      "region": "europe-east",   "script": "latin",     "prominence": 2 },
-    { "locale": "sk",           "name": "Slovak",         "autonym": "slovenčina",     "family": "slavic",      "region": "europe-east",   "script": "latin",     "prominence": 1 },
-    { "locale": "bg",           "name": "Bulgarian",      "autonym": "български",      "family": "slavic",      "region": "europe-east",   "script": "cyrillic",  "prominence": 2 },
-    { "locale": "sr",           "name": "Serbian",        "autonym": "српски",         "family": "slavic",      "region": "europe-east",   "script": "cyrillic",  "prominence": 1 },
-    { "locale": "sl",           "name": "Slovenian",      "autonym": "slovenščina",    "family": "slavic",      "region": "europe-east",   "script": "latin",     "prominence": 1 },
-    { "locale": "be",           "name": "Belarusian",     "autonym": "беларуская",     "family": "slavic",      "region": "europe-east",   "script": "cyrillic",  "prominence": 1 },
-    { "locale": "mk",           "name": "Macedonian",     "autonym": "македонски",     "family": "slavic",      "region": "europe-east",   "script": "cyrillic",  "prominence": 1 },
-    { "locale": "hsb",          "name": "Upper Sorbian",  "autonym": "hornjoserbšćina","family": "slavic",      "region": "europe-east",   "script": "latin",     "prominence": 1 },
-
-    { "locale": "cy",           "name": "Welsh",          "autonym": "Cymraeg",        "family": "celtic",      "region": "europe-west",   "script": "latin",     "prominence": 2 },
-    { "locale": "br",           "name": "Breton",         "autonym": "brezhoneg",      "family": "celtic",      "region": "europe-west",   "script": "latin",     "prominence": 1 },
-    { "locale": "ga-IE",        "name": "Irish",          "autonym": "Gaeilge",        "family": "celtic",      "region": "europe-west",   "script": "latin",     "prominence": 2 },
-
-    { "locale": "fi",           "name": "Finnish",        "autonym": "suomi",          "family": "uralic",      "region": "europe-north",  "script": "latin",     "prominence": 2 },
-    { "locale": "et",           "name": "Estonian",       "autonym": "eesti",          "family": "uralic",      "region": "europe-north",  "script": "latin",     "prominence": 1 },
-    { "locale": "hu",           "name": "Hungarian",      "autonym": "magyar",         "family": "uralic",      "region": "europe-east",   "script": "latin",     "prominence": 2 },
-    { "locale": "mhr",          "name": "Meadow Mari",    "autonym": "олык марий",     "family": "uralic",      "region": "europe-east",   "script": "cyrillic",  "prominence": 1 },
-    { "locale": "myv",          "name": "Erzya",          "autonym": "эрзянь",         "family": "uralic",      "region": "europe-east",   "script": "cyrillic",  "prominence": 1 },
-
-    { "locale": "lt",           "name": "Lithuanian",     "autonym": "lietuvių",       "family": "baltic",      "region": "europe-north",  "script": "latin",     "prominence": 1 },
-    { "locale": "lv",           "name": "Latvian",        "autonym": "latviešu",       "family": "baltic",      "region": "europe-north",  "script": "latin",     "prominence": 1 },
-
-    { "locale": "tr",           "name": "Turkish",        "autonym": "Türkçe",         "family": "turkic",      "region": "asia-west",     "script": "latin",     "prominence": 3 },
-    { "locale": "az",           "name": "Azerbaijani",    "autonym": "azərbaycan dili","family": "turkic",      "region": "asia-west",     "script": "latin",     "prominence": 1 },
-    { "locale": "kk",           "name": "Kazakh",         "autonym": "қазақ тілі",     "family": "turkic",      "region": "asia-central",  "script": "cyrillic",  "prominence": 1 },
-    { "locale": "ky",           "name": "Kyrgyz",         "autonym": "кыргызча",       "family": "turkic",      "region": "asia-central",  "script": "cyrillic",  "prominence": 1 },
-    { "locale": "uz",           "name": "Uzbek",          "autonym": "oʻzbekcha",      "family": "turkic",      "region": "asia-central",  "script": "latin",     "prominence": 1 },
-    { "locale": "tt",           "name": "Tatar",          "autonym": "татарча",        "family": "turkic",      "region": "europe-east",   "script": "cyrillic",  "prominence": 1 },
-    { "locale": "ba",           "name": "Bashkir",        "autonym": "башҡортса",      "family": "turkic",      "region": "europe-east",   "script": "cyrillic",  "prominence": 1 },
-    { "locale": "ug",           "name": "Uyghur",         "autonym": "ئۇيغۇرچە",       "family": "turkic",      "region": "asia-central",  "script": "arabic",    "prominence": 1 },
-    { "locale": "sah",          "name": "Yakut",          "autonym": "саха тыла",      "family": "turkic",      "region": "asia-north",    "script": "cyrillic",  "prominence": 1 },
-    { "locale": "cv",           "name": "Chuvash",        "autonym": "чӑвашла",        "family": "turkic",      "region": "europe-east",   "script": "cyrillic",  "prominence": 1 },
-
-    { "locale": "hi",           "name": "Hindi",          "autonym": "हिन्दी",            "family": "indo-aryan",  "region": "asia-south",    "script": "devanagari","prominence": 3 },
-    { "locale": "bn",           "name": "Bengali",        "autonym": "বাংলা",            "family": "indo-aryan",  "region": "asia-south",    "script": "bengali",   "prominence": 2 },
-    { "locale": "ur",           "name": "Urdu",           "autonym": "اردو",            "family": "indo-aryan",  "region": "asia-south",    "script": "arabic",    "prominence": 2 },
-    { "locale": "pa-IN",        "name": "Punjabi",        "autonym": "ਪੰਜਾਬੀ",           "family": "indo-aryan",  "region": "asia-south",    "script": "gurmukhi",  "prominence": 2 },
-    { "locale": "mr",           "name": "Marathi",        "autonym": "मराठी",            "family": "indo-aryan",  "region": "asia-south",    "script": "devanagari","prominence": 1 },
-    { "locale": "ne-NP",        "name": "Nepali",         "autonym": "नेपाली",           "family": "indo-aryan",  "region": "asia-south",    "script": "devanagari","prominence": 1 },
-    { "locale": "as",           "name": "Assamese",       "autonym": "অসমীয়া",          "family": "indo-aryan",  "region": "asia-south",    "script": "bengali",   "prominence": 1 },
-    { "locale": "or",           "name": "Odia",           "autonym": "ଓଡ଼ିଆ",            "family": "indo-aryan",  "region": "asia-south",    "script": "odia",      "prominence": 1 },
-    { "locale": "dv",           "name": "Dhivehi",        "autonym": "ދިވެހި",           "family": "indo-aryan",  "region": "asia-south",    "script": "thaana",    "prominence": 1 },
-    { "locale": "skr",          "name": "Saraiki",        "autonym": "سرائیکی",         "family": "indo-aryan",  "region": "asia-south",    "script": "arabic",    "prominence": 1 },
-
-    { "locale": "ta",           "name": "Tamil",          "autonym": "தமிழ்",            "family": "dravidian",   "region": "asia-south",    "script": "tamil",     "prominence": 2 },
-    { "locale": "ml",           "name": "Malayalam",      "autonym": "മലയാളം",          "family": "dravidian",   "region": "asia-south",    "script": "malayalam", "prominence": 1 },
-
-    { "locale": "fa",           "name": "Persian",        "autonym": "فارسی",           "family": "iranian",     "region": "asia-west",     "script": "arabic",    "prominence": 2 },
-    { "locale": "ckb",          "name": "Central Kurdish","autonym": "کوردیی ناوەندی",  "family": "iranian",     "region": "asia-west",     "script": "arabic",    "prominence": 1 },
-    { "locale": "kmr",          "name": "Northern Kurdish","autonym": "kurmancî",       "family": "iranian",     "region": "asia-west",     "script": "latin",     "prominence": 1 },
-    { "locale": "ps",           "name": "Pashto",         "autonym": "پښتو",            "family": "iranian",     "region": "asia-central",  "script": "arabic",    "prominence": 1 },
-    { "locale": "zza",          "name": "Zazaki",         "autonym": "zazaki",         "family": "iranian",     "region": "asia-west",     "script": "latin",     "prominence": 1 },
-
-    { "locale": "ar",           "name": "Arabic",         "autonym": "العربية",          "family": "semitic",     "region": "asia-west",     "script": "arabic",    "prominence": 3 },
-    { "locale": "he",           "name": "Hebrew",         "autonym": "עברית",           "family": "semitic",     "region": "asia-west",     "script": "hebrew",    "prominence": 2 },
-    { "locale": "mt",           "name": "Maltese",        "autonym": "Malti",          "family": "semitic",     "region": "europe-west",   "script": "latin",     "prominence": 1 },
-    { "locale": "am",           "name": "Amharic",        "autonym": "አማርኛ",            "family": "semitic",     "region": "africa-east",   "script": "ethiopic",  "prominence": 1 },
-    { "locale": "ti",           "name": "Tigrinya",       "autonym": "ትግርኛ",            "family": "semitic",     "region": "africa-east",   "script": "ethiopic",  "prominence": 1 },
-
-    { "locale": "zh-CN",        "name": "Mandarin Chinese","autonym": "普通话",          "family": "sinitic",     "region": "asia-east",     "script": "han",       "prominence": 3 },
-    { "locale": "yue",          "name": "Cantonese",      "autonym": "粵語",            "family": "sinitic",     "region": "asia-east",     "script": "han",       "prominence": 2 },
-    { "locale": "nan-tw",       "name": "Taiwanese Hokkien","autonym": "臺灣話",         "family": "sinitic",     "region": "asia-east",     "script": "han",       "prominence": 1 },
-
-    { "locale": "ja",           "name": "Japanese",       "autonym": "日本語",          "family": "japonic",     "region": "asia-east",     "script": "japanese",  "prominence": 3 },
-    { "locale": "ko",           "name": "Korean",         "autonym": "한국어",          "family": "koreanic",    "region": "asia-east",     "script": "hangul",    "prominence": 3 },
-
-    { "locale": "th",           "name": "Thai",           "autonym": "ไทย",             "family": "tai-kadai",   "region": "asia-southeast","script": "thai",      "prominence": 2 },
-    { "locale": "lo",           "name": "Lao",            "autonym": "ລາວ",             "family": "tai-kadai",   "region": "asia-southeast","script": "lao",       "prominence": 1 },
-    { "locale": "vi",           "name": "Vietnamese",     "autonym": "Tiếng Việt",     "family": "austroasiatic","region": "asia-southeast","script": "latin",     "prominence": 2 },
-    { "locale": "km",           "name": "Khmer",          "autonym": "ភាសាខ្មែរ",         "family": "austroasiatic","region": "asia-southeast","script": "khmer",    "prominence": 1 },
-    { "locale": "cnh",          "name": "Hakha Chin",     "autonym": "Laiholh",        "family": "sino-tibetan","region": "asia-southeast","script": "latin",     "prominence": 1 },
-    { "locale": "id",           "name": "Indonesian",     "autonym": "bahasa Indonesia","family": "austronesian","region": "asia-southeast","script": "latin",     "prominence": 2 },
-
-    { "locale": "sw",           "name": "Swahili",        "autonym": "Kiswahili",      "family": "bantu",       "region": "africa-east",   "script": "latin",     "prominence": 2 },
-    { "locale": "rw",           "name": "Kinyarwanda",    "autonym": "Ikinyarwanda",   "family": "bantu",       "region": "africa-east",   "script": "latin",     "prominence": 1 },
-    { "locale": "lg",           "name": "Luganda",        "autonym": "Luganda",        "family": "bantu",       "region": "africa-east",   "script": "latin",     "prominence": 1 },
-    { "locale": "zu",           "name": "Zulu",           "autonym": "isiZulu",        "family": "bantu",       "region": "africa-south",  "script": "latin",     "prominence": 2 },
-    { "locale": "xh",           "name": "Xhosa",          "autonym": "isiXhosa",       "family": "bantu",       "region": "africa-south",  "script": "latin",     "prominence": 1 },
-    { "locale": "st",           "name": "Sesotho",        "autonym": "Sesotho",        "family": "bantu",       "region": "africa-south",  "script": "latin",     "prominence": 1 },
-    { "locale": "nso",          "name": "Sepedi",         "autonym": "Sepedi",         "family": "bantu",       "region": "africa-south",  "script": "latin",     "prominence": 1 },
-    { "locale": "tn",           "name": "Setswana",       "autonym": "Setswana",       "family": "bantu",       "region": "africa-south",  "script": "latin",     "prominence": 1 },
-    { "locale": "ve",           "name": "Tshivenda",      "autonym": "Tshivenḓa",      "family": "bantu",       "region": "africa-south",  "script": "latin",     "prominence": 1 },
-    { "locale": "ss",           "name": "Siswati",        "autonym": "siSwati",        "family": "bantu",       "region": "africa-south",  "script": "latin",     "prominence": 1 },
-    { "locale": "bas",          "name": "Basaa",          "autonym": "Ɓàsàa",          "family": "bantu",       "region": "africa-west",   "script": "latin",     "prominence": 1 },
-
-    { "locale": "yo",           "name": "Yoruba",         "autonym": "Yorùbá",         "family": "niger-congo", "region": "africa-west",   "script": "latin",     "prominence": 1 },
-    { "locale": "ig",           "name": "Igbo",           "autonym": "Asụsụ Igbo",     "family": "niger-congo", "region": "africa-west",   "script": "latin",     "prominence": 1 },
-    { "locale": "tw",           "name": "Twi",            "autonym": "Twi",            "family": "niger-congo", "region": "africa-west",   "script": "latin",     "prominence": 1 },
-    { "locale": "dyu",          "name": "Dyula",          "autonym": "Julakan",        "family": "niger-congo", "region": "africa-west",   "script": "latin",     "prominence": 1 },
-    { "locale": "ha",           "name": "Hausa",          "autonym": "Harshen Hausa",  "family": "afroasiatic", "region": "africa-west",   "script": "latin",     "prominence": 1 },
-
-    { "locale": "kab",          "name": "Kabyle",         "autonym": "Taqbaylit",      "family": "berber",      "region": "africa-north",  "script": "latin",     "prominence": 1 },
-    { "locale": "zgh",          "name": "Tamazight",      "autonym": "ⵜⴰⵎⴰⵣⵉⵖⵜ",        "family": "berber",      "region": "africa-north",  "script": "tifinagh",  "prominence": 1 },
-
-    { "locale": "ka",           "name": "Georgian",       "autonym": "ქართული",         "family": "kartvelian",  "region": "asia-west",     "script": "georgian",  "prominence": 1 },
-    { "locale": "hy-AM",        "name": "Armenian",       "autonym": "հայերեն",         "family": "armenian",    "region": "asia-west",     "script": "armenian",  "prominence": 1 },
-    { "locale": "ab",           "name": "Abkhaz",         "autonym": "аԥсуа бызшәа",   "family": "northwest-caucasian", "region": "asia-west", "script": "cyrillic", "prominence": 1 },
-
-    { "locale": "eu",           "name": "Basque",         "autonym": "euskara",        "family": "isolate",     "region": "europe-west",   "script": "latin",     "prominence": 2 },
-    { "locale": "el",           "name": "Greek",          "autonym": "ελληνικά",       "family": "hellenic",    "region": "europe-east",   "script": "greek",     "prominence": 3 },
-    { "locale": "sq",           "name": "Albanian",       "autonym": "shqip",          "family": "albanian",    "region": "europe-east",   "script": "latin",     "prominence": 1 },
-    { "locale": "mn",           "name": "Mongolian",      "autonym": "монгол хэл",     "family": "mongolic",    "region": "asia-north",    "script": "cyrillic",  "prominence": 1 },
-    { "locale": "gn",           "name": "Guarani",        "autonym": "avañe'ẽ",        "family": "tupian",      "region": "americas",      "script": "latin",     "prominence": 1 },
-    { "locale": "quy",          "name": "Quechua",        "autonym": "Runa Simi",      "family": "quechuan",    "region": "americas",      "script": "latin",     "prominence": 1 },
-    { "locale": "ht",           "name": "Haitian Creole", "autonym": "kreyòl ayisyen", "family": "creole",      "region": "americas",      "script": "latin",     "prominence": 1 },
-
-    { "locale": "eo",           "name": "Esperanto",      "autonym": "Esperanto",      "family": "constructed", "region": "constructed",   "script": "latin",     "prominence": 2 },
-    { "locale": "ia",           "name": "Interlingua",    "autonym": "interlingua",    "family": "constructed", "region": "constructed",   "script": "latin",     "prominence": 1 },
-    { "locale": "tok",          "name": "Toki Pona",      "autonym": "toki pona",      "family": "constructed", "region": "constructed",   "script": "latin",     "prominence": 1 }
+    {
+      "locale": "abq",
+      "name": "Abaza",
+      "autonym": "абаза бызшва",
+      "family": "northwest-caucasian",
+      "region": "asia-west",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "ab",
+      "name": "Abkhaz",
+      "autonym": "аԥсуа бызшәа",
+      "family": "northwest-caucasian",
+      "region": "asia-west",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "fub",
+      "name": "Adamawa Fulfulde",
+      "autonym": "Fulfulde",
+      "family": "niger-congo",
+      "region": "africa-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "ady",
+      "name": "Adyghe",
+      "autonym": "адыгабзэ",
+      "family": "northwest-caucasian",
+      "region": "asia-west",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "om",
+      "name": "Afaan Oromo",
+      "autonym": "Afaan Oromoo",
+      "family": "afroasiatic",
+      "region": "africa-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "af",
+      "name": "Afrikaans",
+      "autonym": "Afrikaans",
+      "family": "germanic",
+      "region": "africa-south",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "sq",
+      "name": "Albanian",
+      "autonym": "shqip",
+      "family": "albanian",
+      "region": "europe-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "gsw",
+      "name": "Alsatian",
+      "autonym": "Elsässisch",
+      "family": "germanic",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "am",
+      "name": "Amharic",
+      "autonym": "አማርኛ",
+      "family": "semitic",
+      "region": "africa-east",
+      "script": "ethiopic",
+      "prominence": 1
+    },
+    {
+      "locale": "ar",
+      "name": "Arabic",
+      "autonym": "العربية",
+      "family": "semitic",
+      "region": "asia-west",
+      "script": "arabic",
+      "prominence": 3
+    },
+    {
+      "locale": "an",
+      "name": "Aragonese",
+      "autonym": "aragonés",
+      "family": "romance",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "hy-AM",
+      "name": "Armenian",
+      "autonym": "հայերեն",
+      "family": "armenian",
+      "region": "asia-west",
+      "script": "armenian",
+      "prominence": 1
+    },
+    {
+      "locale": "prq",
+      "name": "Asheninka Perene",
+      "autonym": "",
+      "family": "arawakan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "cpy",
+      "name": "Asheninka South Ucayali",
+      "autonym": "",
+      "family": "arawakan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "as",
+      "name": "Assamese",
+      "autonym": "অসমীয়া",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "bengali",
+      "prominence": 1
+    },
+    {
+      "locale": "ast",
+      "name": "Asturian",
+      "autonym": "asturianu",
+      "family": "romance",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "tay",
+      "name": "Atayal",
+      "autonym": "",
+      "family": "austronesian",
+      "region": "asia-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "az",
+      "name": "Azerbaijani",
+      "autonym": "azərbaycan dili",
+      "family": "turkic",
+      "region": "asia-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "bba",
+      "name": "Baatonum",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "ksf",
+      "name": "Bafia",
+      "autonym": "",
+      "family": "bantu",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "bfd",
+      "name": "Bafut",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "bkh",
+      "name": "Bakoko",
+      "autonym": "",
+      "family": "bantu",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "bft",
+      "name": "Balti",
+      "autonym": "",
+      "family": "sino-tibetan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "bax",
+      "name": "Bamun",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "beb",
+      "name": "Bamvele",
+      "autonym": "",
+      "family": "bantu",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "abb",
+      "name": "Bankon",
+      "autonym": "",
+      "family": "bantu",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "bci",
+      "name": "Baoule",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "bas",
+      "name": "Basaa",
+      "autonym": "Ɓàsàa",
+      "family": "bantu",
+      "region": "africa-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "ba",
+      "name": "Bashkir",
+      "autonym": "башҡортса",
+      "family": "turkic",
+      "region": "europe-east",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "eu",
+      "name": "Basque",
+      "autonym": "euskara",
+      "family": "isolate",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "bnm",
+      "name": "Batanga",
+      "autonym": "",
+      "family": "bantu",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "btv",
+      "name": "Bateri",
+      "autonym": "",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "be",
+      "name": "Belarusian",
+      "autonym": "беларуская",
+      "family": "slavic",
+      "region": "europe-east",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "bn",
+      "name": "Bengali",
+      "autonym": "বাংলা",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "bengali",
+      "prominence": 2
+    },
+    {
+      "locale": "brh",
+      "name": "Brahui",
+      "autonym": "",
+      "family": "dravidian",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "br",
+      "name": "Breton",
+      "autonym": "brezhoneg",
+      "family": "celtic",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "bsk",
+      "name": "Brushaski",
+      "autonym": "",
+      "family": "isolate",
+      "region": "asia-south",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "bg",
+      "name": "Bulgarian",
+      "autonym": "български",
+      "family": "slavic",
+      "region": "europe-east",
+      "script": "cyrillic",
+      "prominence": 2
+    },
+    {
+      "locale": "bum",
+      "name": "Bulu",
+      "autonym": "",
+      "family": "bantu",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "bnn",
+      "name": "Bunun",
+      "autonym": "Bunun",
+      "family": "austronesian",
+      "region": "asia-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "wes",
+      "name": "Cameroon Pidgin",
+      "autonym": "Kamtok",
+      "family": "creole",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "yue",
+      "name": "Cantonese",
+      "autonym": "粵語",
+      "family": "sinitic",
+      "region": "asia-east",
+      "script": "han",
+      "prominence": 2
+    },
+    {
+      "locale": "ca",
+      "name": "Catalan",
+      "autonym": "català",
+      "family": "romance",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "ckb",
+      "name": "Central Kurdish",
+      "autonym": "کوردیی ناوەندی",
+      "family": "iranian",
+      "region": "asia-west",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "ncx",
+      "name": "Central Puebla Nahuatl",
+      "autonym": "",
+      "family": "uto-aztecan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "tar",
+      "name": "Central Tarahumara",
+      "autonym": "",
+      "family": "uto-aztecan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "zh-HK",
+      "name": "Chinese (Hong Kong)",
+      "autonym": "中文（香港）",
+      "family": "sinitic",
+      "region": "asia-east",
+      "script": "han",
+      "prominence": 2
+    },
+    {
+      "locale": "zh-TW",
+      "name": "Chinese (Taiwan)",
+      "autonym": "中文（台灣）",
+      "family": "sinitic",
+      "region": "asia-east",
+      "script": "han",
+      "prominence": 2
+    },
+    {
+      "locale": "cjk",
+      "name": "Chokwe",
+      "autonym": "Chokwe",
+      "family": "bantu",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "cv",
+      "name": "Chuvash",
+      "autonym": "чӑвашла",
+      "family": "turkic",
+      "region": "europe-east",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "zoc",
+      "name": "Copainalá Zoque",
+      "autonym": "",
+      "family": "mixe-zoque",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "kw",
+      "name": "Cornish",
+      "autonym": "Kernewek",
+      "family": "celtic",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "cs",
+      "name": "Czech",
+      "autonym": "čeština",
+      "family": "slavic",
+      "region": "europe-east",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "dag",
+      "name": "Dagbani",
+      "autonym": "Dagbanli",
+      "family": "niger-congo",
+      "region": "africa-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "da",
+      "name": "Danish",
+      "autonym": "dansk",
+      "family": "germanic",
+      "region": "europe-north",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "dar",
+      "name": "Dargwa",
+      "autonym": "дарган мез",
+      "family": "northeast-caucasian",
+      "region": "asia-west",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "dv",
+      "name": "Dhivehi",
+      "autonym": "ދިވެހި",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "thaana",
+      "prominence": 1
+    },
+    {
+      "locale": "luo",
+      "name": "Dholuo",
+      "autonym": "Dholuo",
+      "family": "nilotic",
+      "region": "africa-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "dua",
+      "name": "Duala",
+      "autonym": "Duálá",
+      "family": "bantu",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "nl",
+      "name": "Dutch",
+      "autonym": "Nederlands",
+      "family": "germanic",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 3
+    },
+    {
+      "locale": "dyu",
+      "name": "Dyula",
+      "autonym": "Julakan",
+      "family": "niger-congo",
+      "region": "africa-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "bgp",
+      "name": "Eastern Balochi",
+      "autonym": "",
+      "family": "iranian",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "en",
+      "name": "English",
+      "autonym": "English",
+      "family": "germanic",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 3
+    },
+    {
+      "locale": "myv",
+      "name": "Erzya",
+      "autonym": "эрзянь",
+      "family": "uralic",
+      "region": "europe-east",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "eo",
+      "name": "Esperanto",
+      "autonym": "Esperanto",
+      "family": "constructed",
+      "region": "constructed",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "et",
+      "name": "Estonian",
+      "autonym": "eesti",
+      "family": "uralic",
+      "region": "europe-north",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "eto",
+      "name": "Eton",
+      "autonym": "",
+      "family": "bantu",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "ewo",
+      "name": "Ewondo",
+      "autonym": "",
+      "family": "bantu",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "fan",
+      "name": "Fang",
+      "autonym": "",
+      "family": "bantu",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "fmp",
+      "name": "Fe'efe'e",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "fi",
+      "name": "Finnish",
+      "autonym": "suomi",
+      "family": "uralic",
+      "region": "europe-north",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "fr",
+      "name": "French",
+      "autonym": "français",
+      "family": "romance",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 3
+    },
+    {
+      "locale": "fy-NL",
+      "name": "Frisian",
+      "autonym": "Frysk",
+      "family": "germanic",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "gl",
+      "name": "Galician",
+      "autonym": "galego",
+      "family": "romance",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "gwc",
+      "name": "Gawri",
+      "autonym": "",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "ka",
+      "name": "Georgian",
+      "autonym": "ქართული",
+      "family": "kartvelian",
+      "region": "asia-west",
+      "script": "georgian",
+      "prominence": 1
+    },
+    {
+      "locale": "de",
+      "name": "German",
+      "autonym": "Deutsch",
+      "family": "germanic",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 3
+    },
+    {
+      "locale": "bbj",
+      "name": "Ghomala",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "el",
+      "name": "Greek",
+      "autonym": "ελληνικά",
+      "family": "hellenic",
+      "region": "europe-east",
+      "script": "greek",
+      "prominence": 3
+    },
+    {
+      "locale": "gn",
+      "name": "Guarani",
+      "autonym": "avañe'ẽ",
+      "family": "tupian",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "gid",
+      "name": "Guidar",
+      "autonym": "",
+      "family": "afroasiatic",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "giz",
+      "name": "Guiziga",
+      "autonym": "",
+      "family": "afroasiatic",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "ggg",
+      "name": "Gurgula",
+      "autonym": "",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "ht",
+      "name": "Haitian Creole",
+      "autonym": "kreyòl ayisyen",
+      "family": "creole",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "cnh",
+      "name": "Hakha Chin",
+      "autonym": "Laiholh",
+      "family": "sino-tibetan",
+      "region": "asia-southeast",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "ha",
+      "name": "Hausa",
+      "autonym": "Harshen Hausa",
+      "family": "afroasiatic",
+      "region": "africa-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "he",
+      "name": "Hebrew",
+      "autonym": "עברית",
+      "family": "semitic",
+      "region": "asia-west",
+      "script": "hebrew",
+      "prominence": 2
+    },
+    {
+      "locale": "mrj",
+      "name": "Hill Mari",
+      "autonym": "кырык мары",
+      "family": "uralic",
+      "region": "europe-east",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "hi",
+      "name": "Hindi",
+      "autonym": "हिन्दी",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "devanagari",
+      "prominence": 3
+    },
+    {
+      "locale": "var",
+      "name": "Huarijio",
+      "autonym": "",
+      "family": "uto-aztecan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "hu",
+      "name": "Hungarian",
+      "autonym": "magyar",
+      "family": "uralic",
+      "region": "europe-east",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "ibb",
+      "name": "Ibibio",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "is",
+      "name": "Icelandic",
+      "autonym": "íslenska",
+      "family": "germanic",
+      "region": "europe-north",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "ig",
+      "name": "Igbo",
+      "autonym": "Asụsụ Igbo",
+      "family": "niger-congo",
+      "region": "africa-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "id",
+      "name": "Indonesian",
+      "autonym": "bahasa Indonesia",
+      "family": "austronesian",
+      "region": "asia-southeast",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "mvy",
+      "name": "Indus Kohistani",
+      "autonym": "",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "ia",
+      "name": "Interlingua",
+      "autonym": "interlingua",
+      "family": "constructed",
+      "region": "constructed",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "ga-IE",
+      "name": "Irish",
+      "autonym": "Gaeilge",
+      "family": "celtic",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "it",
+      "name": "Italian",
+      "autonym": "italiano",
+      "family": "romance",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 3
+    },
+    {
+      "locale": "ja",
+      "name": "Japanese",
+      "autonym": "日本語",
+      "family": "japonic",
+      "region": "asia-east",
+      "script": "japanese",
+      "prominence": 3
+    },
+    {
+      "locale": "jqr",
+      "name": "Jaqaru",
+      "autonym": "",
+      "family": "aymaran",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "kbd",
+      "name": "Kabardian",
+      "autonym": "адыгэбзэ",
+      "family": "northwest-caucasian",
+      "region": "asia-west",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "kab",
+      "name": "Kabyle",
+      "autonym": "Taqbaylit",
+      "family": "berber",
+      "region": "africa-north",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "gjk",
+      "name": "Kachhi",
+      "autonym": "",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "kls",
+      "name": "Kalasha",
+      "autonym": "",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "kln",
+      "name": "Kalenjin",
+      "autonym": "",
+      "family": "nilotic",
+      "region": "africa-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "bsh",
+      "name": "Kateviri",
+      "autonym": "",
+      "family": "nuristani",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "kk",
+      "name": "Kazakh",
+      "autonym": "қазақ тілі",
+      "family": "turkic",
+      "region": "asia-central",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "kjh",
+      "name": "Khakas",
+      "autonym": "хакас тілі",
+      "family": "turkic",
+      "region": "asia-north",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "km",
+      "name": "Khmer",
+      "autonym": "ភាសាខ្មែរ",
+      "family": "austroasiatic",
+      "region": "asia-southeast",
+      "script": "khmer",
+      "prominence": 1
+    },
+    {
+      "locale": "khw",
+      "name": "Khowar",
+      "autonym": "",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "qvi",
+      "name": "Kichwa",
+      "autonym": "Kichwa",
+      "family": "quechuan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "dav",
+      "name": "Kidaw'ida",
+      "autonym": "",
+      "family": "bantu",
+      "region": "africa-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "hem",
+      "name": "Kihemba",
+      "autonym": "",
+      "family": "bantu",
+      "region": "africa-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "rw",
+      "name": "Kinyarwanda",
+      "autonym": "Ikinyarwanda",
+      "family": "bantu",
+      "region": "africa-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "rof",
+      "name": "Kirombo",
+      "autonym": "",
+      "family": "bantu",
+      "region": "africa-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "bkm",
+      "name": "Kom",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "ko",
+      "name": "Korean",
+      "autonym": "한국어",
+      "family": "koreanic",
+      "region": "asia-east",
+      "script": "hangul",
+      "prominence": 3
+    },
+    {
+      "locale": "kdh",
+      "name": "Kotokoli",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "nmg",
+      "name": "Kwasio",
+      "autonym": "",
+      "family": "bantu",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "ky",
+      "name": "Kyrgyz",
+      "autonym": "кыргызча",
+      "family": "turkic",
+      "region": "asia-central",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "lo",
+      "name": "Lao",
+      "autonym": "ລາວ",
+      "family": "tai-kadai",
+      "region": "asia-southeast",
+      "script": "lao",
+      "prominence": 1
+    },
+    {
+      "locale": "ltg",
+      "name": "Latgalian",
+      "autonym": "latgalīšu volūda",
+      "family": "baltic",
+      "region": "europe-north",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "lv",
+      "name": "Latvian",
+      "autonym": "latviešu",
+      "family": "baltic",
+      "region": "europe-north",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "lzz",
+      "name": "Laz",
+      "autonym": "Lazuri",
+      "family": "kartvelian",
+      "region": "asia-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "lij",
+      "name": "Ligurian",
+      "autonym": "ligure",
+      "family": "romance",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "lt",
+      "name": "Lithuanian",
+      "autonym": "lietuvių",
+      "family": "baltic",
+      "region": "europe-north",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "qvj",
+      "name": "Loja Highland Kichwa",
+      "autonym": "",
+      "family": "quechuan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "nmz",
+      "name": "Losso",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "lg",
+      "name": "Luganda",
+      "autonym": "Luganda",
+      "family": "bantu",
+      "region": "africa-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "mk",
+      "name": "Macedonian",
+      "autonym": "македонски",
+      "family": "slavic",
+      "region": "europe-east",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "mxu",
+      "name": "Mada",
+      "autonym": "",
+      "family": "afroasiatic",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "ms",
+      "name": "Malay",
+      "autonym": "Bahasa Melayu",
+      "family": "austronesian",
+      "region": "asia-southeast",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "ml",
+      "name": "Malayalam",
+      "autonym": "മലയാളം",
+      "family": "dravidian",
+      "region": "asia-south",
+      "script": "malayalam",
+      "prominence": 1
+    },
+    {
+      "locale": "mt",
+      "name": "Maltese",
+      "autonym": "Malti",
+      "family": "semitic",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "zh-CN",
+      "name": "Mandarin Chinese",
+      "autonym": "普通话",
+      "family": "sinitic",
+      "region": "asia-east",
+      "script": "han",
+      "prominence": 3
+    },
+    {
+      "locale": "mr",
+      "name": "Marathi",
+      "autonym": "मराठी",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "devanagari",
+      "prominence": 1
+    },
+    {
+      "locale": "mve",
+      "name": "Marwari",
+      "autonym": "",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "mcn",
+      "name": "Massa",
+      "autonym": "",
+      "family": "afroasiatic",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "mbo",
+      "name": "Mbo",
+      "autonym": "",
+      "family": "bantu",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "mhr",
+      "name": "Meadow Mari",
+      "autonym": "олык марий",
+      "family": "uralic",
+      "region": "europe-east",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "byv",
+      "name": "Medumba",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "bce",
+      "name": "Mengambo",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "gej",
+      "name": "Mina",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "xmf",
+      "name": "Mingrelian",
+      "autonym": "მარგალური",
+      "family": "kartvelian",
+      "region": "asia-west",
+      "script": "georgian",
+      "prominence": 1
+    },
+    {
+      "locale": "bri",
+      "name": "Mokpwe",
+      "autonym": "",
+      "family": "bantu",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "mdf",
+      "name": "Moksha",
+      "autonym": "мокшень кяль",
+      "family": "uralic",
+      "region": "europe-east",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "mn",
+      "name": "Mongolian",
+      "autonym": "монгол хэл",
+      "family": "mongolic",
+      "region": "asia-north",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "mse",
+      "name": "Moussey",
+      "autonym": "",
+      "family": "afroasiatic",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "mua",
+      "name": "Mundang",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "mug",
+      "name": "Musgum",
+      "autonym": "",
+      "family": "afroasiatic",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "ne-NP",
+      "name": "Nepali",
+      "autonym": "नेपाली",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "devanagari",
+      "prominence": 1
+    },
+    {
+      "locale": "nnh",
+      "name": "Ngiembon",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "jgo",
+      "name": "Ngomba",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "nla",
+      "name": "Ngombale",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "pcm",
+      "name": "Nigerian Pidgin English",
+      "autonym": "Naijá",
+      "family": "creole",
+      "region": "africa-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "hno",
+      "name": "Northern Hindko",
+      "autonym": "",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "kmr",
+      "name": "Northern Kurdish",
+      "autonym": "kurmancî",
+      "family": "iranian",
+      "region": "asia-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "gya",
+      "name": "Northwest Gbaya",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "nb-NO",
+      "name": "Norwegian Bokmål",
+      "autonym": "norsk bokmål",
+      "family": "germanic",
+      "region": "europe-north",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "nn-NO",
+      "name": "Norwegian Nynorsk",
+      "autonym": "nynorsk",
+      "family": "germanic",
+      "region": "europe-north",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "yav",
+      "name": "Nuasue",
+      "autonym": "",
+      "family": "bantu",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "hux",
+      "name": "Nüpode Huitoto",
+      "autonym": "",
+      "family": "witotoan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "odk",
+      "name": "Oadki",
+      "autonym": "",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "oc",
+      "name": "Occitan",
+      "autonym": "occitan",
+      "family": "romance",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "or",
+      "name": "Odia",
+      "autonym": "ଓଡ଼ିଆ",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "odia",
+      "prominence": 1
+    },
+    {
+      "locale": "nlv",
+      "name": "Orizaba Nahuatl",
+      "autonym": "",
+      "family": "uto-aztecan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "oru",
+      "name": "Ormuri",
+      "autonym": "",
+      "family": "iranian",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "os",
+      "name": "Ossetian",
+      "autonym": "ирон æвзаг",
+      "family": "iranian",
+      "region": "asia-west",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "udl",
+      "name": "Ouldémé",
+      "autonym": "",
+      "family": "afroasiatic",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "phr",
+      "name": "Pahari-Pothwari",
+      "autonym": "",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "pwn",
+      "name": "Paiwan",
+      "autonym": "",
+      "family": "austronesian",
+      "region": "asia-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "phl",
+      "name": "Palula",
+      "autonym": "",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "kvx",
+      "name": "Parkari Koli",
+      "autonym": "",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "ps",
+      "name": "Pashto",
+      "autonym": "پښتو",
+      "family": "iranian",
+      "region": "asia-central",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "fa",
+      "name": "Persian",
+      "autonym": "فارسی",
+      "family": "iranian",
+      "region": "asia-west",
+      "script": "arabic",
+      "prominence": 2
+    },
+    {
+      "locale": "pl",
+      "name": "Polish",
+      "autonym": "polski",
+      "family": "slavic",
+      "region": "europe-east",
+      "script": "latin",
+      "prominence": 3
+    },
+    {
+      "locale": "pt",
+      "name": "Portuguese",
+      "autonym": "português",
+      "family": "romance",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 3
+    },
+    {
+      "locale": "pa-IN",
+      "name": "Punjabi",
+      "autonym": "ਪੰਜਾਬੀ",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "gurmukhi",
+      "prominence": 2
+    },
+    {
+      "locale": "qxp",
+      "name": "Puno Quechua",
+      "autonym": "",
+      "family": "quechuan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "quy",
+      "name": "Quechua",
+      "autonym": "Runa Simi",
+      "family": "quechuan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "qva",
+      "name": "Quechua Ambo-Pasco",
+      "autonym": "",
+      "family": "quechuan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "qxu",
+      "name": "Quechua Arequipa-La Unión",
+      "autonym": "",
+      "family": "quechuan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "qvl",
+      "name": "Quechua Cajatambo",
+      "autonym": "",
+      "family": "quechuan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "qxa",
+      "name": "Quechua Chiquián",
+      "autonym": "",
+      "family": "quechuan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "qwa",
+      "name": "Quechua Corongo Ancash",
+      "autonym": "",
+      "family": "quechuan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "qxw",
+      "name": "Quechua Jauja Wanka",
+      "autonym": "",
+      "family": "quechuan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "qxt",
+      "name": "Quechua Pasco Santa Ana de Tusi",
+      "autonym": "",
+      "family": "quechuan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "qus",
+      "name": "Quechua Santiago del Estero",
+      "autonym": "",
+      "family": "quechuan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "qws",
+      "name": "Quechua Sihuas Ancash",
+      "autonym": "",
+      "family": "quechuan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "ro",
+      "name": "Romanian",
+      "autonym": "română",
+      "family": "romance",
+      "region": "europe-east",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "rm-sursilv",
+      "name": "Romansh Sursilvan",
+      "autonym": "rumantsch sursilvan",
+      "family": "romance",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "rm-vallader",
+      "name": "Romansh Vallader",
+      "autonym": "rumantsch vallader",
+      "family": "romance",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "dru",
+      "name": "Rukai",
+      "autonym": "",
+      "family": "austronesian",
+      "region": "asia-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "ru",
+      "name": "Russian",
+      "autonym": "русский",
+      "family": "slavic",
+      "region": "europe-east",
+      "script": "cyrillic",
+      "prominence": 3
+    },
+    {
+      "locale": "szy",
+      "name": "Sakizaya",
+      "autonym": "Sakizaya",
+      "family": "austronesian",
+      "region": "asia-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "skr",
+      "name": "Saraiki",
+      "autonym": "سرائیکی",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "sc",
+      "name": "Sardinian",
+      "autonym": "sardu",
+      "family": "romance",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "trv",
+      "name": "Seediq",
+      "autonym": "Seediq",
+      "family": "austronesian",
+      "region": "asia-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "nso",
+      "name": "Sepedi",
+      "autonym": "Sepedi",
+      "family": "bantu",
+      "region": "africa-south",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "sr",
+      "name": "Serbian",
+      "autonym": "српски",
+      "family": "slavic",
+      "region": "europe-east",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "sei",
+      "name": "Seri",
+      "autonym": "",
+      "family": "isolate",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "st",
+      "name": "Sesotho",
+      "autonym": "Sesotho",
+      "family": "bantu",
+      "region": "africa-south",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "tn",
+      "name": "Setswana",
+      "autonym": "Setswana",
+      "family": "bantu",
+      "region": "africa-south",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "scl",
+      "name": "Shina",
+      "autonym": "",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "sbn",
+      "name": "Sindhi Bhil",
+      "autonym": "",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "ss",
+      "name": "Siswati",
+      "autonym": "siSwati",
+      "family": "bantu",
+      "region": "africa-south",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "sk",
+      "name": "Slovak",
+      "autonym": "slovenčina",
+      "family": "slavic",
+      "region": "europe-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "sl",
+      "name": "Slovenian",
+      "autonym": "slovenščina",
+      "family": "slavic",
+      "region": "europe-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "qup",
+      "name": "Southern Pastaza Quechua",
+      "autonym": "",
+      "family": "quechuan",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "es",
+      "name": "Spanish",
+      "autonym": "español",
+      "family": "romance",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 3
+    },
+    {
+      "locale": "sva",
+      "name": "Svan",
+      "autonym": "",
+      "family": "kartvelian",
+      "region": "asia-west",
+      "script": "georgian",
+      "prominence": 1
+    },
+    {
+      "locale": "sw",
+      "name": "Swahili",
+      "autonym": "Kiswahili",
+      "family": "bantu",
+      "region": "africa-east",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "sv-SE",
+      "name": "Swedish",
+      "autonym": "svenska",
+      "family": "germanic",
+      "region": "europe-north",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "nan-tw",
+      "name": "Taiwanese Hokkien",
+      "autonym": "臺灣話",
+      "family": "sinitic",
+      "region": "asia-east",
+      "script": "han",
+      "prominence": 1
+    },
+    {
+      "locale": "zgh",
+      "name": "Tamazight",
+      "autonym": "ⵜⴰⵎⴰⵣⵉⵖⵜ",
+      "family": "berber",
+      "region": "africa-north",
+      "script": "tifinagh",
+      "prominence": 1
+    },
+    {
+      "locale": "ta",
+      "name": "Tamil",
+      "autonym": "தமிழ்",
+      "family": "dravidian",
+      "region": "asia-south",
+      "script": "tamil",
+      "prominence": 2
+    },
+    {
+      "locale": "tt",
+      "name": "Tatar",
+      "autonym": "татарча",
+      "family": "turkic",
+      "region": "europe-east",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "te",
+      "name": "Telugu",
+      "autonym": "తెలుగు",
+      "family": "dravidian",
+      "region": "asia-south",
+      "script": "telugu",
+      "prominence": 2
+    },
+    {
+      "locale": "cut",
+      "name": "Teutila Cuicatec",
+      "autonym": "",
+      "family": "oto-manguean",
+      "region": "americas",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "th",
+      "name": "Thai",
+      "autonym": "ไทย",
+      "family": "tai-kadai",
+      "region": "asia-southeast",
+      "script": "thai",
+      "prominence": 2
+    },
+    {
+      "locale": "tig",
+      "name": "Tigre",
+      "autonym": "ትግረ",
+      "family": "semitic",
+      "region": "africa-east",
+      "script": "ethiopic",
+      "prominence": 1
+    },
+    {
+      "locale": "ti",
+      "name": "Tigrinya",
+      "autonym": "ትግርኛ",
+      "family": "semitic",
+      "region": "africa-east",
+      "script": "ethiopic",
+      "prominence": 1
+    },
+    {
+      "locale": "tok",
+      "name": "Toki Pona",
+      "autonym": "toki pona",
+      "family": "constructed",
+      "region": "constructed",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "trw",
+      "name": "Torwali",
+      "autonym": "",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "lua",
+      "name": "Tshiluba",
+      "autonym": "Tshiluba",
+      "family": "bantu",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "ve",
+      "name": "Tshivenda",
+      "autonym": "Tshivenḓa",
+      "family": "bantu",
+      "region": "africa-south",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "bag",
+      "name": "Tuki",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "tui",
+      "name": "Tupuri",
+      "autonym": "",
+      "family": "niger-congo",
+      "region": "africa-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "tr",
+      "name": "Turkish",
+      "autonym": "Türkçe",
+      "family": "turkic",
+      "region": "asia-west",
+      "script": "latin",
+      "prominence": 3
+    },
+    {
+      "locale": "tk",
+      "name": "Turkmen",
+      "autonym": "Türkmençe",
+      "family": "turkic",
+      "region": "asia-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "bbl",
+      "name": "Tush",
+      "autonym": "",
+      "family": "northeast-caucasian",
+      "region": "asia-west",
+      "script": "georgian",
+      "prominence": 1
+    },
+    {
+      "locale": "tw",
+      "name": "Twi",
+      "autonym": "Twi",
+      "family": "niger-congo",
+      "region": "africa-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "uk",
+      "name": "Ukrainian",
+      "autonym": "українська",
+      "family": "slavic",
+      "region": "europe-east",
+      "script": "cyrillic",
+      "prominence": 2
+    },
+    {
+      "locale": "hsb",
+      "name": "Upper Sorbian",
+      "autonym": "hornjoserbšćina",
+      "family": "slavic",
+      "region": "europe-east",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "ur",
+      "name": "Urdu",
+      "autonym": "اردو",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 2
+    },
+    {
+      "locale": "ush",
+      "name": "Ushojo",
+      "autonym": "",
+      "family": "indo-aryan",
+      "region": "asia-south",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "ug",
+      "name": "Uyghur",
+      "autonym": "ئۇيغۇرچە",
+      "family": "turkic",
+      "region": "asia-central",
+      "script": "arabic",
+      "prominence": 1
+    },
+    {
+      "locale": "uz",
+      "name": "Uzbek",
+      "autonym": "oʻzbekcha",
+      "family": "turkic",
+      "region": "asia-central",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "vi",
+      "name": "Vietnamese",
+      "autonym": "Tiếng Việt",
+      "family": "austroasiatic",
+      "region": "asia-southeast",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "cy",
+      "name": "Welsh",
+      "autonym": "Cymraeg",
+      "family": "celtic",
+      "region": "europe-west",
+      "script": "latin",
+      "prominence": 2
+    },
+    {
+      "locale": "xh",
+      "name": "Xhosa",
+      "autonym": "isiXhosa",
+      "family": "bantu",
+      "region": "africa-south",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "sah",
+      "name": "Yakut",
+      "autonym": "саха тыла",
+      "family": "turkic",
+      "region": "asia-north",
+      "script": "cyrillic",
+      "prominence": 1
+    },
+    {
+      "locale": "yi",
+      "name": "Yiddish",
+      "autonym": "ייִדיש",
+      "family": "germanic",
+      "region": "europe-east",
+      "script": "hebrew",
+      "prominence": 1
+    },
+    {
+      "locale": "yo",
+      "name": "Yoruba",
+      "autonym": "Yorùbá",
+      "family": "niger-congo",
+      "region": "africa-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "zza",
+      "name": "Zazaki",
+      "autonym": "zazaki",
+      "family": "iranian",
+      "region": "asia-west",
+      "script": "latin",
+      "prominence": 1
+    },
+    {
+      "locale": "zu",
+      "name": "Zulu",
+      "autonym": "isiZulu",
+      "family": "bantu",
+      "region": "africa-south",
+      "script": "latin",
+      "prominence": 2
+    }
   ]
 }

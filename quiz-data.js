@@ -13,33 +13,33 @@ window.CV_DATA = {
   "clips": 32349999
  },
  "languages": {
-  "es": {
-   "name": "Spanish",
-   "autonym": "español",
-   "family": "romance",
-   "region": "europe-west",
-   "script": "latin",
-   "prominence": 3,
-   "hours": 2282.7,
-   "validHours": 597.6,
-   "clips": 1683737,
-   "validated": 440794,
-   "users": 26960,
-   "avgDurationSecs": 4.881,
-   "sps": true,
+  "abq": {
+   "name": "Abaza",
+   "autonym": "абаза бызшва",
+   "family": "northwest-caucasian",
+   "region": "asia-west",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 19.3,
+   "validHours": 6.1,
+   "clips": 9701,
+   "validated": 3076,
+   "users": 35,
+   "avgDurationSecs": 7.15,
+   "sps": false,
    "open": true,
-   "speakers": 27023,
-   "sentences": 1078677,
-   "liveValidHours": 457,
+   "speakers": 58,
+   "sentences": 19178,
+   "liveValidHours": 3.6,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.5554,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "female_feminine",
-     "share": 0.3121,
+     "share": 0.6693,
      "none": false
     },
     {
@@ -64,107 +64,183 @@ window.CV_DATA = {
     },
     {
      "label": "",
-     "share": 0.1325,
+     "share": 0.3307,
      "none": false
     }
    ],
    "age": [
     {
+     "label": "thirties",
+     "share": 0.4208
+    },
+    {
      "label": "twenties",
-     "share": 0.5247
+     "share": 0.3077
     },
     {
      "label": "",
-     "share": 0.1275
-    },
-    {
-     "label": "sixties",
-     "share": 0.1066
-    },
-    {
-     "label": "thirties",
-     "share": 0.0925
-    },
-    {
-     "label": "teens",
-     "share": 0.0783
-    },
-    {
-     "label": "fifties",
-     "share": 0.0421
+     "share": 0.1146
     },
     {
      "label": "fourties",
-     "share": 0.0277
+     "share": 0.1076
     },
     {
-     "label": "seventies",
-     "share": 0.0005
+     "label": "fifties",
+     "share": 0.0235
+    },
+    {
+     "label": "sixties",
+     "share": 0.0227
+    },
+    {
+     "label": "teens",
+     "share": 0.0031
     }
    ],
    "accents": [
     {
-     "label": "mexicano",
-     "share": 0.6805
-    },
-    {
-     "label": "surpeninsular",
-     "share": 0.14
-    },
-    {
-     "label": "nortepeninsular",
-     "share": 0.0516
-    },
-    {
-     "label": "andino",
-     "share": 0.0301
-    },
-    {
-     "label": "centrosurpeninsular",
-     "share": 0.0237
-    },
-    {
-     "label": "rioplatense",
-     "share": 0.0189
-    },
-    {
-     "label": "caribe",
-     "share": 0.0169
-    },
-    {
-     "label": "canario",
-     "share": 0.0125
+     "label": "",
+     "share": 1
     }
    ],
-   "variants": []
+   "variants": [
+    {
+     "label": "abq-tapanta",
+     "share": 0.9991,
+     "name": "Тlапlанта (ашвыуа)"
+    },
+    {
+     "label": "abq-ashkhara",
+     "share": 0.0009,
+     "name": "Ащхъарауа"
+    }
+   ]
   },
-  "pt": {
-   "name": "Portuguese",
-   "autonym": "português",
-   "family": "romance",
-   "region": "europe-west",
-   "script": "latin",
-   "prominence": 3,
-   "hours": 230.4,
-   "validHours": 188.8,
-   "clips": 198059,
-   "validated": 162350,
-   "users": 3860,
-   "avgDurationSecs": 4.187,
+  "ab": {
+   "name": "Abkhaz",
+   "autonym": "аԥсуа бызшәа",
+   "family": "northwest-caucasian",
+   "region": "asia-west",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 242.6,
+   "validHours": 207.8,
+   "clips": 158625,
+   "validated": 135878,
+   "users": 1303,
+   "avgDurationSecs": 5.507,
    "sps": false,
    "open": true,
-   "speakers": 3888,
-   "sentences": 43728,
-   "liveValidHours": 185,
+   "speakers": 1303,
+   "sentences": 1046830,
+   "liveValidHours": 217,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.6707,
+     "share": 0.0697,
      "none": false
     },
     {
      "label": "female_feminine",
-     "share": 0.058,
+     "share": 0.6799,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0.0001,
+     "none": false
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0066,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.2438,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "teens",
+     "share": 0.4836
+    },
+    {
+     "label": "",
+     "share": 0.1556
+    },
+    {
+     "label": "twenties",
+     "share": 0.1429
+    },
+    {
+     "label": "thirties",
+     "share": 0.105
+    },
+    {
+     "label": "fourties",
+     "share": 0.0514
+    },
+    {
+     "label": "fifties",
+     "share": 0.0355
+    },
+    {
+     "label": "sixties",
+     "share": 0.0198
+    },
+    {
+     "label": "seventies",
+     "share": 0.0036
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "fub": {
+   "name": "Adamawa Fulfulde",
+   "autonym": "Fulfulde",
+   "family": "niger-congo",
+   "region": "africa-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 13.4,
+   "validHours": 12.9,
+   "clips": 7934,
+   "validated": 7686,
+   "users": 21,
+   "avgDurationSecs": 6.069,
+   "sps": false,
+   "open": true,
+   "speakers": 21,
+   "sentences": 1067,
+   "liveValidHours": 14,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0097,
      "none": false
     },
     {
@@ -174,8 +250,8 @@ window.CV_DATA = {
     },
     {
      "label": "non-binary",
-     "share": 0.0001,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "intersex",
@@ -189,38 +265,2609 @@ window.CV_DATA = {
     },
     {
      "label": "",
-     "share": 0.2712,
+     "share": 0.9903,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.9739
+    },
+    {
+     "label": "twenties",
+     "share": 0.017
+    },
+    {
+     "label": "teens",
+     "share": 0.0091
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "ady": {
+   "name": "Adyghe",
+   "autonym": "адыгабзэ",
+   "family": "northwest-caucasian",
+   "region": "asia-west",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 95.7,
+   "validHours": 80.4,
+   "clips": 64088,
+   "validated": 53849,
+   "users": 171,
+   "avgDurationSecs": 5.374,
+   "sps": true,
+   "open": true,
+   "speakers": 175,
+   "sentences": 12602,
+   "liveValidHours": 80,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0169,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.7004,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0033,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.2794,
      "none": false
     }
    ],
    "age": [
     {
      "label": "twenties",
-     "share": 0.3591
-    },
-    {
-     "label": "",
-     "share": 0.2424
+     "share": 0.3181
     },
     {
      "label": "thirties",
-     "share": 0.175
-    },
-    {
-     "label": "fourties",
-     "share": 0.13
-    },
-    {
-     "label": "sixties",
-     "share": 0.0443
+     "share": 0.2757
     },
     {
      "label": "fifties",
-     "share": 0.0256
+     "share": 0.144
+    },
+    {
+     "label": "fourties",
+     "share": 0.094
     },
     {
      "label": "teens",
-     "share": 0.0234
+     "share": 0.0707
+    },
+    {
+     "label": "",
+     "share": 0.0645
+    },
+    {
+     "label": "sixties",
+     "share": 0.0319
+    },
+    {
+     "label": "seventies",
+     "share": 0.0012
+    }
+   ],
+   "accents": [
+    {
+     "label": "temirgoy",
+     "share": 0.3655,
+     "name": "Кıэмгуй (Çemguy)"
+    },
+    {
+     "label": "shapsug",
+     "share": 0.2602,
+     "name": "Шапсыгъ (Şapsığ)"
+    },
+    {
+     "label": "bzhedug",
+     "share": 0.2463,
+     "name": "Бжъэдыгъу (Bjeduğ)"
+    },
+    {
+     "label": "abzakh",
+     "share": 0.1014,
+     "name": "Абдзах (Abzah)"
+    },
+    {
+     "label": "",
+     "share": 0.0194
+    },
+    {
+     "label": "hatikuay",
+     "share": 0.0072,
+     "name": "Хьатыкъуай (Hatıkuay)"
+    }
+   ],
+   "variants": [
+    {
+     "label": "ady-Cyrl",
+     "share": 0.8083,
+     "name": "Адыгабзэ (Кирил, пстэумэ зэдыряе)"
+    },
+    {
+     "label": "ady-RU",
+     "share": 0.1072,
+     "name": "Адыгабзэ (Кирил, Урысый)"
+    },
+    {
+     "label": "ady-Cyrl-TR",
+     "share": 0.0707,
+     "name": "Адыгабзэ (Кирил, Тырку - Batı Çerkesçesi)"
+    },
+    {
+     "label": "ady-Latn-TR-t-ady-cyrl",
+     "share": 0.0129,
+     "name": "Adığabze (Latin, Turk, transliteratse - Batı Çerkesçesi)"
+    },
+    {
+     "label": "ady-Cyrl-JOR",
+     "share": 0.0009,
+     "name": "Адыгабзэ (Кирил, Иордание)"
+    }
+   ]
+  },
+  "om": {
+   "name": "Afaan Oromo",
+   "autonym": "Afaan Oromoo",
+   "family": "afroasiatic",
+   "region": "africa-east",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 26.2,
+   "validHours": 25.9,
+   "clips": 18635,
+   "validated": 18438,
+   "users": 40,
+   "avgDurationSecs": 5.055,
+   "sps": true,
+   "open": true,
+   "speakers": 40,
+   "sentences": 18521,
+   "liveValidHours": 26,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0084,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9916,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.9756
+    },
+    {
+     "label": "",
+     "share": 0.0113
+    },
+    {
+     "label": "twenties",
+     "share": 0.0112
+    },
+    {
+     "label": "teens",
+     "share": 0.0019
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "af": {
+   "name": "Afrikaans",
+   "autonym": "Afrikaans",
+   "family": "germanic",
+   "region": "africa-south",
+   "script": "latin",
+   "prominence": 2,
+   "hours": 1.7,
+   "validHours": 0.8,
+   "clips": 1011,
+   "validated": 480,
+   "users": 70,
+   "avgDurationSecs": 6.123,
+   "sps": false,
+   "open": true,
+   "speakers": 70,
+   "sentences": 4826,
+   "liveValidHours": 1,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.3086,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2156,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.4758,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.3215
+    },
+    {
+     "label": "twenties",
+     "share": 0.3017
+    },
+    {
+     "label": "fourties",
+     "share": 0.2235
+    },
+    {
+     "label": "fifties",
+     "share": 0.1405
+    },
+    {
+     "label": "teens",
+     "share": 0.0049
+    },
+    {
+     "label": "seventies",
+     "share": 0.0049
+    },
+    {
+     "label": "thirties",
+     "share": 0.003
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "sq": {
+   "name": "Albanian",
+   "autonym": "shqip",
+   "family": "albanian",
+   "region": "europe-east",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 9.3,
+   "validHours": 9,
+   "clips": 6553,
+   "validated": 6374,
+   "users": 155,
+   "avgDurationSecs": 5.089,
+   "sps": false,
+   "open": true,
+   "speakers": 155,
+   "sentences": 50009,
+   "liveValidHours": 9.1,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.4639,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1389,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3972,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fifties",
+     "share": 0.3427
+    },
+    {
+     "label": "",
+     "share": 0.2381
+    },
+    {
+     "label": "fourties",
+     "share": 0.1764
+    },
+    {
+     "label": "thirties",
+     "share": 0.1566
+    },
+    {
+     "label": "twenties",
+     "share": 0.0839
+    },
+    {
+     "label": "teens",
+     "share": 0.0023
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "gsw": {
+   "name": "Alsatian",
+   "autonym": "Elsässisch",
+   "family": "germanic",
+   "region": "europe-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 1.8,
+   "validHours": 0.8,
+   "clips": 1135,
+   "validated": 495,
+   "users": 46,
+   "avgDurationSecs": 5.758,
+   "sps": true,
+   "open": true,
+   "speakers": 46,
+   "sentences": 87,
+   "liveValidHours": 0.8,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.459,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.541,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "sixties",
+     "share": 0.4758
+    },
+    {
+     "label": "fifties",
+     "share": 0.2308
+    },
+    {
+     "label": "",
+     "share": 0.133
+    },
+    {
+     "label": "seventies",
+     "share": 0.0643
+    },
+    {
+     "label": "fourties",
+     "share": 0.0441
+    },
+    {
+     "label": "thirties",
+     "share": 0.0379
+    },
+    {
+     "label": "twenties",
+     "share": 0.0053
+    },
+    {
+     "label": "eighties",
+     "share": 0.0044
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": [
+    {
+     "label": "gsw-FR-nordalem",
+     "share": 0.8247,
+     "name": "Nordniederàlemmànisch (Rishoffe, Zàwere, Bùsswìller, Hawenau, Brüemt, Stroossbùri, Molse, Dàmbàch, Schlettstàtt, Pfàlzbùri usw.)"
+    },
+    {
+     "label": "gsw-FR-sudnalem",
+     "share": 0.1094,
+     "name": "Südniederàlemmànisch (Kolmer, Gawìller, Mìlhüüsa, Àltkìrich, usw.)"
+    },
+    {
+     "label": "gsw-FR-rhinfran",
+     "share": 0.066,
+     "name": "Rhinfränkisch (Bùckenùmm, Lìtzelstän, Bitsch, Saargemìnn usw.)"
+    }
+   ]
+  },
+  "am": {
+   "name": "Amharic",
+   "autonym": "አማርኛ",
+   "family": "semitic",
+   "region": "africa-east",
+   "script": "ethiopic",
+   "prominence": 1,
+   "hours": 3.1,
+   "validHours": 1.9,
+   "clips": 1728,
+   "validated": 1092,
+   "users": 56,
+   "avgDurationSecs": 6.411,
+   "sps": true,
+   "open": true,
+   "speakers": 59,
+   "sentences": 2210,
+   "liveValidHours": 2,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.7049,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2951,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.5868
+    },
+    {
+     "label": "",
+     "share": 0.2569
+    },
+    {
+     "label": "twenties",
+     "share": 0.1447
+    },
+    {
+     "label": "fourties",
+     "share": 0.0116
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "ar": {
+   "name": "Arabic",
+   "autonym": "العربية",
+   "family": "semitic",
+   "region": "asia-west",
+   "script": "arabic",
+   "prominence": 3,
+   "hours": 158.3,
+   "validHours": 93.3,
+   "clips": 136832,
+   "validated": 80696,
+   "users": 1679,
+   "avgDurationSecs": 4.164,
+   "sps": false,
+   "open": true,
+   "speakers": 1692,
+   "sentences": 59229,
+   "liveValidHours": 94,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.2809,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1714,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.5477,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.5448
+    },
+    {
+     "label": "twenties",
+     "share": 0.2939
+    },
+    {
+     "label": "thirties",
+     "share": 0.1088
+    },
+    {
+     "label": "teens",
+     "share": 0.038
+    },
+    {
+     "label": "fourties",
+     "share": 0.013
+    },
+    {
+     "label": "fifties",
+     "share": 0.0008
+    },
+    {
+     "label": "sixties",
+     "share": 0.0007
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "an": {
+   "name": "Aragonese",
+   "autonym": "aragonés",
+   "family": "romance",
+   "region": "europe-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 17.8,
+   "validHours": 16.9,
+   "clips": 14040,
+   "validated": 13277,
+   "users": 53,
+   "avgDurationSecs": 4.574,
+   "sps": true,
+   "open": true,
+   "speakers": 53,
+   "sentences": 10454,
+   "liveValidHours": 17,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.1453,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.145,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0004,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.7093,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.3167
+    },
+    {
+     "label": "thirties",
+     "share": 0.2033
+    },
+    {
+     "label": "",
+     "share": 0.1853
+    },
+    {
+     "label": "sixties",
+     "share": 0.1226
+    },
+    {
+     "label": "fifties",
+     "share": 0.1125
+    },
+    {
+     "label": "seventies",
+     "share": 0.0384
+    },
+    {
+     "label": "twenties",
+     "share": 0.0209
+    },
+    {
+     "label": "teens",
+     "share": 0.0004
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "hy-AM": {
+   "name": "Armenian",
+   "autonym": "հայերեն",
+   "family": "armenian",
+   "region": "asia-west",
+   "script": "armenian",
+   "prominence": 1,
+   "hours": 62.5,
+   "validHours": 39.5,
+   "clips": 41697,
+   "validated": 26369,
+   "users": 1084,
+   "avgDurationSecs": 5.4,
+   "sps": false,
+   "open": true,
+   "speakers": 1115,
+   "sentences": 237448,
+   "liveValidHours": 40,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.2216,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.5001,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2784,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.5673
+    },
+    {
+     "label": "",
+     "share": 0.2256
+    },
+    {
+     "label": "teens",
+     "share": 0.0982
+    },
+    {
+     "label": "thirties",
+     "share": 0.0684
+    },
+    {
+     "label": "fourties",
+     "share": 0.0343
+    },
+    {
+     "label": "fifties",
+     "share": 0.0064
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "prq": {
+   "name": "Asheninka Perene",
+   "autonym": "",
+   "family": "arawakan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.1,
+   "validHours": 9.7,
+   "clips": 7660,
+   "validated": 7422,
+   "users": 13,
+   "avgDurationSecs": 4.726,
+   "sps": false,
+   "open": true,
+   "speakers": 13,
+   "sentences": 986,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.8399,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.1601,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.5696
+    },
+    {
+     "label": "thirties",
+     "share": 0.2569
+    },
+    {
+     "label": "twenties",
+     "share": 0.1735
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "cpy": {
+   "name": "Asheninka South Ucayali",
+   "autonym": "",
+   "family": "arawakan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.2,
+   "validHours": 10,
+   "clips": 8272,
+   "validated": 8162,
+   "users": 15,
+   "avgDurationSecs": 4.421,
+   "sps": false,
+   "open": true,
+   "speakers": 15,
+   "sentences": 1000,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2332,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.7668,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.3855
+    },
+    {
+     "label": "teens",
+     "share": 0.2421
+    },
+    {
+     "label": "thirties",
+     "share": 0.1215
+    },
+    {
+     "label": "twenties",
+     "share": 0.1206
+    },
+    {
+     "label": "sixties",
+     "share": 0.1202
+    },
+    {
+     "label": "",
+     "share": 0.01
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "as": {
+   "name": "Assamese",
+   "autonym": "অসমীয়া",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "bengali",
+   "prominence": 1,
+   "hours": 7.7,
+   "validHours": 3,
+   "clips": 4739,
+   "validated": 1856,
+   "users": 53,
+   "avgDurationSecs": 5.846,
+   "sps": false,
+   "open": true,
+   "speakers": 57,
+   "sentences": 7171,
+   "liveValidHours": 2.9,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.1899,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0006,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.8095,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.5174
+    },
+    {
+     "label": "",
+     "share": 0.279
+    },
+    {
+     "label": "twenties",
+     "share": 0.1692
+    },
+    {
+     "label": "thirties",
+     "share": 0.0167
+    },
+    {
+     "label": "fifties",
+     "share": 0.0162
+    },
+    {
+     "label": "teens",
+     "share": 0.0015
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "ast": {
+   "name": "Asturian",
+   "autonym": "asturianu",
+   "family": "romance",
+   "region": "europe-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 2.1,
+   "validHours": 1.1,
+   "clips": 1720,
+   "validated": 866,
+   "users": 34,
+   "avgDurationSecs": 4.398,
+   "sps": false,
+   "open": true,
+   "speakers": 36,
+   "sentences": 1645,
+   "liveValidHours": 0.9,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5831,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1419,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0.0174,
+     "none": false
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2576,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.2721
+    },
+    {
+     "label": "",
+     "share": 0.2576
+    },
+    {
+     "label": "fifties",
+     "share": 0.2006
+    },
+    {
+     "label": "thirties",
+     "share": 0.1157
+    },
+    {
+     "label": "twenties",
+     "share": 0.0988
+    },
+    {
+     "label": "teens",
+     "share": 0.0552
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "tay": {
+   "name": "Atayal",
+   "autonym": "",
+   "family": "austronesian",
+   "region": "asia-east",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 12.4,
+   "validHours": 11.5,
+   "clips": 8039,
+   "validated": 7446,
+   "users": 19,
+   "avgDurationSecs": 5.546,
+   "sps": false,
+   "open": true,
+   "speakers": 19,
+   "sentences": 3790,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.4468,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.3172,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.236,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.3203
+    },
+    {
+     "label": "twenties",
+     "share": 0.211
+    },
+    {
+     "label": "fifties",
+     "share": 0.1737
+    },
+    {
+     "label": "sixties",
+     "share": 0.1463
+    },
+    {
+     "label": "fourties",
+     "share": 0.1244
+    },
+    {
+     "label": "thirties",
+     "share": 0.0244
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": [
+    {
+     "label": "tay-squliq",
+     "share": 0.7284,
+     "name": "keʼ na Squliq Tayal (賽考利克泰雅語)"
+    },
+    {
+     "label": "tay-ciuli",
+     "share": 0.1111,
+     "name": "kay na Sʼuli Tayan (澤敖利泰雅語)"
+    },
+    {
+     "label": "tay-klesan",
+     "share": 0.098,
+     "name": "keʼ na Cʼoli Klesan Tayal (宜蘭澤敖利泰雅語)"
+    },
+    {
+     "label": "tay-pingawan",
+     "share": 0.0625,
+     "name": "keʼ na Pingawan (萬大泰雅語)"
+    }
+   ]
+  },
+  "az": {
+   "name": "Azerbaijani",
+   "autonym": "azərbaycan dili",
+   "family": "turkic",
+   "region": "asia-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 1.6,
+   "validHours": 0.7,
+   "clips": 1036,
+   "validated": 439,
+   "users": 48,
+   "avgDurationSecs": 5.446,
+   "sps": false,
+   "open": true,
+   "speakers": 48,
+   "sentences": 93161,
+   "liveValidHours": 0.6,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.1622,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0097,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0.0193,
+     "none": false
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.8089,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.5917
+    },
+    {
+     "label": "",
+     "share": 0.1969
+    },
+    {
+     "label": "twenties",
+     "share": 0.1699
+    },
+    {
+     "label": "teens",
+     "share": 0.0338
+    },
+    {
+     "label": "fourties",
+     "share": 0.0077
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "bba": {
+   "name": "Baatonum",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 14.4,
+   "validHours": 10.6,
+   "clips": 8531,
+   "validated": 6273,
+   "users": 14,
+   "avgDurationSecs": 6.068,
+   "sps": false,
+   "open": true,
+   "speakers": 14,
+   "sentences": 971,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "ksf": {
+   "name": "Bafia",
+   "autonym": "",
+   "family": "bantu",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 18.3,
+   "validHours": 17.2,
+   "clips": 7868,
+   "validated": 7414,
+   "users": 24,
+   "avgDurationSecs": 8.354,
+   "sps": false,
+   "open": true,
+   "speakers": 25,
+   "sentences": 1004,
+   "liveValidHours": 20,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0494,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9506,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.8795
+    },
+    {
+     "label": "twenties",
+     "share": 0.071
+    },
+    {
+     "label": "thirties",
+     "share": 0.0494
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "bfd": {
+   "name": "Bafut",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.2,
+   "validHours": 10.1,
+   "clips": 7178,
+   "validated": 6454,
+   "users": 36,
+   "avgDurationSecs": 5.609,
+   "sps": false,
+   "open": true,
+   "speakers": 36,
+   "sentences": 766,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0128,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9872,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.987
+    },
+    {
+     "label": "thirties",
+     "share": 0.0121
+    },
+    {
+     "label": "teens",
+     "share": 0.0007
+    },
+    {
+     "label": "twenties",
+     "share": 0.0001
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "bkh": {
+   "name": "Bakoko",
+   "autonym": "",
+   "family": "bantu",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 13.3,
+   "validHours": 10,
+   "clips": 7480,
+   "validated": 5614,
+   "users": 13,
+   "avgDurationSecs": 6.4,
+   "sps": false,
+   "open": true,
+   "speakers": 13,
+   "sentences": 986,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "bft": {
+   "name": "Balti",
+   "autonym": "",
+   "family": "sino-tibetan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 17.4,
+   "validHours": 16.6,
+   "clips": 10547,
+   "validated": 10062,
+   "users": 155,
+   "avgDurationSecs": 5.928,
+   "sps": false,
+   "open": true,
+   "speakers": 157,
+   "sentences": 7968,
+   "liveValidHours": 18,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1258,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0978,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.7763,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.3663
+    },
+    {
+     "label": "thirties",
+     "share": 0.3511
+    },
+    {
+     "label": "",
+     "share": 0.273
+    },
+    {
+     "label": "teens",
+     "share": 0.0096
+    },
+    {
+     "label": "fourties",
+     "share": 0.0001
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "bax": {
+   "name": "Bamun",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.8,
+   "validHours": 10.6,
+   "clips": 8669,
+   "validated": 7780,
+   "users": 14,
+   "avgDurationSecs": 4.917,
+   "sps": false,
+   "open": true,
+   "speakers": 14,
+   "sentences": 1030,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "beb": {
+   "name": "Bamvele",
+   "autonym": "",
+   "family": "bantu",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.1,
+   "validHours": 10,
+   "clips": 7471,
+   "validated": 6742,
+   "users": 33,
+   "avgDurationSecs": 5.347,
+   "sps": false,
+   "open": true,
+   "speakers": 33,
+   "sentences": 1005,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "abb": {
+   "name": "Bankon",
+   "autonym": "",
+   "family": "bantu",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.2,
+   "validHours": 11.2,
+   "clips": 7922,
+   "validated": 7887,
+   "users": 22,
+   "avgDurationSecs": 5.109,
+   "sps": false,
+   "open": true,
+   "speakers": 22,
+   "sentences": 996,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.9975
+    },
+    {
+     "label": "fourties",
+     "share": 0.0025
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "bci": {
+   "name": "Baoule",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 14.3,
+   "validHours": 11.3,
+   "clips": 7167,
+   "validated": 5623,
+   "users": 18,
+   "avgDurationSecs": 7.21,
+   "sps": false,
+   "open": true,
+   "speakers": 18,
+   "sentences": 876,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0699,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9301,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.857
+    },
+    {
+     "label": "twenties",
+     "share": 0.1373
+    },
+    {
+     "label": "thirties",
+     "share": 0.0056
+    },
+    {
+     "label": "fourties",
+     "share": 0.0001
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "bas": {
+   "name": "Basaa",
+   "autonym": "Ɓàsàa",
+   "family": "bantu",
+   "region": "africa-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 13.6,
+   "validHours": 12.1,
+   "clips": 12496,
+   "validated": 11139,
+   "users": 57,
+   "avgDurationSecs": 3.909,
+   "sps": true,
+   "open": true,
+   "speakers": 57,
+   "sentences": 5226,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0012,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0044,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9944,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.6099
+    },
+    {
+     "label": "",
+     "share": 0.3861
+    },
+    {
+     "label": "twenties",
+     "share": 0.0016
+    },
+    {
+     "label": "teens",
+     "share": 0.0012
+    },
+    {
+     "label": "thirties",
+     "share": 0.0012
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "ba": {
+   "name": "Bashkir",
+   "autonym": "башҡортса",
+   "family": "turkic",
+   "region": "europe-east",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 268.7,
+   "validHours": 258.8,
+   "clips": 218518,
+   "validated": 210466,
+   "users": 930,
+   "avgDurationSecs": 4.427,
+   "sps": true,
+   "open": true,
+   "speakers": 942,
+   "sentences": 153968,
+   "liveValidHours": 259,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.3032,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.394,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3028,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.3029
+    },
+    {
+     "label": "sixties",
+     "share": 0.1939
+    },
+    {
+     "label": "twenties",
+     "share": 0.1743
+    },
+    {
+     "label": "thirties",
+     "share": 0.1734
+    },
+    {
+     "label": "fourties",
+     "share": 0.0597
+    },
+    {
+     "label": "fifties",
+     "share": 0.0531
+    },
+    {
+     "label": "teens",
+     "share": 0.0425
+    },
+    {
+     "label": "seventies",
+     "share": 0.0002
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "eu": {
+   "name": "Basque",
+   "autonym": "euskara",
+   "family": "isolate",
+   "region": "europe-west",
+   "script": "latin",
+   "prominence": 2,
+   "hours": 702.3,
+   "validHours": 472.8,
+   "clips": 464938,
+   "validated": 312998,
+   "users": 11056,
+   "avgDurationSecs": 5.438,
+   "sps": false,
+   "open": true,
+   "speakers": 11062,
+   "sentences": 1018163,
+   "liveValidHours": 456,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.2492,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2849,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0001,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.4658,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.4483
+    },
+    {
+     "label": "twenties",
+     "share": 0.1691
+    },
+    {
+     "label": "fourties",
+     "share": 0.1627
+    },
+    {
+     "label": "fifties",
+     "share": 0.1057
+    },
+    {
+     "label": "thirties",
+     "share": 0.055
+    },
+    {
+     "label": "sixties",
+     "share": 0.0392
+    },
+    {
+     "label": "teens",
+     "share": 0.016
+    },
+    {
+     "label": "seventies",
+     "share": 0.0036
+    }
+   ],
+   "accents": [
+    {
+     "label": "mendebalekoa",
+     "share": 0.5388
+    },
+    {
+     "label": "erdialdekoa_nafarra",
+     "share": 0.4199
+    },
+    {
+     "label": "",
+     "share": 0.038
+    },
+    {
+     "label": "nafarlapurtarra_zuberoatarra",
+     "share": 0.0034
+    }
+   ],
+   "variants": []
+  },
+  "bnm": {
+   "name": "Batanga",
+   "autonym": "",
+   "family": "bantu",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 15.8,
+   "validHours": 15.3,
+   "clips": 7943,
+   "validated": 7680,
+   "users": 21,
+   "avgDurationSecs": 7.173,
+   "sps": false,
+   "open": true,
+   "speakers": 21,
+   "sentences": 1025,
+   "liveValidHours": 17,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.6437
+    },
+    {
+     "label": "fifties",
+     "share": 0.1253
+    },
+    {
+     "label": "seventies",
+     "share": 0.1251
+    },
+    {
+     "label": "fourties",
+     "share": 0.0602
+    },
+    {
+     "label": "sixties",
+     "share": 0.0457
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "btv": {
+   "name": "Bateri",
+   "autonym": "",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 10.5,
+   "validHours": 10.3,
+   "clips": 9283,
+   "validated": 9113,
+   "users": 16,
+   "avgDurationSecs": 4.057,
+   "sps": false,
+   "open": true,
+   "speakers": 16,
+   "sentences": 1053,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.1066,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.8934,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.4733
+    },
+    {
+     "label": "twenties",
+     "share": 0.3164
+    },
+    {
+     "label": "fourties",
+     "share": 0.2103
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "be": {
+   "name": "Belarusian",
+   "autonym": "беларуская",
+   "family": "slavic",
+   "region": "europe-east",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 1894.9,
+   "validHours": 1818.9,
+   "clips": 1422808,
+   "validated": 1365759,
+   "users": 8624,
+   "avgDurationSecs": 4.795,
+   "sps": false,
+   "open": true,
+   "speakers": 8644,
+   "sentences": 379189,
+   "liveValidHours": 1823,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0573,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0717,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.871,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.8745
+    },
+    {
+     "label": "thirties",
+     "share": 0.0435
+    },
+    {
+     "label": "fourties",
+     "share": 0.0383
+    },
+    {
+     "label": "twenties",
+     "share": 0.0343
+    },
+    {
+     "label": "teens",
+     "share": 0.0075
+    },
+    {
+     "label": "fifties",
+     "share": 0.0009
+    },
+    {
+     "label": "sixties",
+     "share": 0.0009
     },
     {
      "label": "seventies",
@@ -233,46 +2880,35 @@ window.CV_DATA = {
      "share": 1
     }
    ],
-   "variants": [
-    {
-     "label": "pt-BR",
-     "share": 0.9618,
-     "name": "Portuguese (Brasil)"
-    },
-    {
-     "label": "pt-PT",
-     "share": 0.0382,
-     "name": "Portuguese (Portugal)"
-    }
-   ]
+   "variants": []
   },
-  "it": {
-   "name": "Italian",
-   "autonym": "italiano",
-   "family": "romance",
-   "region": "europe-west",
-   "script": "latin",
-   "prominence": 3,
-   "hours": 430.5,
-   "validHours": 363.9,
-   "clips": 284667,
-   "validated": 240628,
-   "users": 7350,
-   "avgDurationSecs": 5.444,
+  "bn": {
+   "name": "Bengali",
+   "autonym": "বাংলা",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "bengali",
+   "prominence": 2,
+   "hours": 1277.9,
+   "validHours": 54.4,
+   "clips": 1052384,
+   "validated": 44795,
+   "users": 23019,
+   "avgDurationSecs": 4.371,
    "sps": false,
    "open": true,
-   "speakers": 7383,
-   "sentences": 920325,
-   "liveValidHours": 366,
+   "speakers": 23027,
+   "sentences": 562832,
+   "liveValidHours": 49,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.6226,
+     "share": 0.5409,
      "none": false
     },
     {
      "label": "female_feminine",
-     "share": 0.1004,
+     "share": 0.2335,
      "none": false
     },
     {
@@ -292,47 +2928,39 @@ window.CV_DATA = {
     },
     {
      "label": "do_not_wish_to_say",
-     "share": 0.0003,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "",
-     "share": 0.2767,
+     "share": 0.2256,
      "none": false
     }
    ],
    "age": [
     {
-     "label": "",
-     "share": 0.2699
-    },
-    {
      "label": "twenties",
-     "share": 0.1962
+     "share": 0.6657
     },
     {
-     "label": "thirties",
-     "share": 0.1558
-    },
-    {
-     "label": "fifties",
-     "share": 0.1386
-    },
-    {
-     "label": "fourties",
-     "share": 0.1218
-    },
-    {
-     "label": "sixties",
-     "share": 0.1047
+     "label": "",
+     "share": 0.2242
     },
     {
      "label": "teens",
-     "share": 0.0093
+     "share": 0.0706
     },
     {
-     "label": "seventies",
-     "share": 0.0037
+     "label": "thirties",
+     "share": 0.0308
+    },
+    {
+     "label": "fourties",
+     "share": 0.0066
+    },
+    {
+     "label": "fifties",
+     "share": 0.0021
     }
    ],
    "accents": [
@@ -343,33 +2971,101 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "fr": {
-   "name": "French",
-   "autonym": "français",
-   "family": "romance",
-   "region": "europe-west",
-   "script": "latin",
-   "prominence": 3,
-   "hours": 1217.4,
-   "validHours": 1108.3,
-   "clips": 869961,
-   "validated": 792011,
-   "users": 21116,
-   "avgDurationSecs": 5.038,
-   "sps": true,
+  "brh": {
+   "name": "Brahui",
+   "autonym": "",
+   "family": "dravidian",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 9.9,
+   "validHours": 9.9,
+   "clips": 5095,
+   "validated": 5086,
+   "users": 18,
+   "avgDurationSecs": 7.019,
+   "sps": false,
    "open": true,
-   "speakers": 21196,
-   "sentences": 1618036,
-   "liveValidHours": 1112,
+   "speakers": 18,
+   "sentences": 3095,
+   "liveValidHours": 11,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.5686,
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.8057
+    },
+    {
+     "label": "thirties",
+     "share": 0.1943
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "br": {
+   "name": "Breton",
+   "autonym": "brezhoneg",
+   "family": "celtic",
+   "region": "europe-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 37.7,
+   "validHours": 35.4,
+   "clips": 41010,
+   "validated": 38541,
+   "users": 299,
+   "avgDurationSecs": 3.308,
+   "sps": true,
+   "open": true,
+   "speakers": 303,
+   "sentences": 46444,
+   "liveValidHours": 36,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5171,
      "none": false
     },
     {
      "label": "female_feminine",
-     "share": 0.1067,
+     "share": 0.0566,
      "none": false
     },
     {
@@ -379,8 +3075,8 @@ window.CV_DATA = {
     },
     {
      "label": "non-binary",
-     "share": 0.0003,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "intersex",
@@ -389,142 +3085,177 @@ window.CV_DATA = {
     },
     {
      "label": "do_not_wish_to_say",
-     "share": 0.0003,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "",
-     "share": 0.3241,
+     "share": 0.4263,
      "none": false
     }
    ],
    "age": [
     {
-     "label": "",
-     "share": 0.3739
+     "label": "twenties",
+     "share": 0.2529
     },
     {
-     "label": "twenties",
-     "share": 0.1701
+     "label": "",
+     "share": 0.2335
     },
     {
      "label": "thirties",
-     "share": 0.1442
-    },
-    {
-     "label": "fourties",
-     "share": 0.1425
-    },
-    {
-     "label": "fifties",
-     "share": 0.0965
+     "share": 0.2155
     },
     {
      "label": "sixties",
-     "share": 0.0335
+     "share": 0.1157
     },
     {
-     "label": "teens",
-     "share": 0.0283
+     "label": "fifties",
+     "share": 0.0696
     },
     {
      "label": "seventies",
-     "share": 0.0108
+     "share": 0.0533
+    },
+    {
+     "label": "fourties",
+     "share": 0.0527
+    },
+    {
+     "label": "teens",
+     "share": 0.0068
     }
    ],
    "accents": [
     {
-     "label": "canada",
-     "share": 0.2642
+     "label": "kerneveg",
+     "share": 0.4969
     },
     {
-     "label": "belgium",
-     "share": 0.2337
+     "label": "gwenedeg",
+     "share": 0.3454
+    },
+    {
+     "label": "leoneg",
+     "share": 0.1328
+    },
+    {
+     "label": "tregerieg",
+     "share": 0.0143
     },
     {
      "label": "",
-     "share": 0.1544
-    },
-    {
-     "label": "switzerland",
-     "share": 0.1267
-    },
-    {
-     "label": "united_states",
-     "share": 0.0331
-    },
-    {
-     "label": "reunion",
-     "share": 0.0268
-    },
-    {
-     "label": "algeria",
-     "share": 0.022
-    },
-    {
-     "label": "benin",
-     "share": 0.022
+     "share": 0.0106
     }
    ],
-   "variants": [
-    {
-     "label": "fr-metro",
-     "share": 0.9204,
-     "name": "Français de métropole"
-    },
-    {
-     "label": "fr-europe",
-     "share": 0.0459
-    },
-    {
-     "label": "fr-namerica",
-     "share": 0.0243
-    },
-    {
-     "label": "fr-safrica",
-     "share": 0.0035
-    },
-    {
-     "label": "fr-droum",
-     "share": 0.0033
-    },
-    {
-     "label": "fr-nafrica",
-     "share": 0.0024
-    },
-    {
-     "label": "fr-samerica",
-     "share": 0.0002
-    }
-   ]
+   "variants": []
   },
-  "ro": {
-   "name": "Romanian",
-   "autonym": "română",
-   "family": "romance",
-   "region": "europe-east",
+  "bsk": {
+   "name": "Brushaski",
+   "autonym": "",
+   "family": "isolate",
+   "region": "asia-south",
    "script": "latin",
-   "prominence": 2,
-   "hours": 51.9,
-   "validHours": 25.4,
-   "clips": 45884,
-   "validated": 22468,
-   "users": 464,
-   "avgDurationSecs": 4.073,
+   "prominence": 1,
+   "hours": 11,
+   "validHours": 10.2,
+   "clips": 9302,
+   "validated": 8615,
+   "users": 27,
+   "avgDurationSecs": 4.262,
    "sps": false,
    "open": true,
-   "speakers": 465,
-   "sentences": 13767,
-   "liveValidHours": 25,
+   "speakers": 27,
+   "sentences": 2447,
+   "liveValidHours": 11,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.6649,
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.4571
+    },
+    {
+     "label": "",
+     "share": 0.3028
+    },
+    {
+     "label": "fifties",
+     "share": 0.2401
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "bg": {
+   "name": "Bulgarian",
+   "autonym": "български",
+   "family": "slavic",
+   "region": "europe-east",
+   "script": "cyrillic",
+   "prominence": 2,
+   "hours": 21.7,
+   "validHours": 17.7,
+   "clips": 14306,
+   "validated": 11619,
+   "users": 155,
+   "avgDurationSecs": 5.472,
+   "sps": false,
+   "open": true,
+   "speakers": 155,
+   "sentences": 39572,
+   "liveValidHours": 17,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5645,
      "none": false
     },
     {
      "label": "female_feminine",
-     "share": 0.1321,
+     "share": 0.045,
      "none": false
     },
     {
@@ -549,87 +3280,387 @@ window.CV_DATA = {
     },
     {
      "label": "",
-     "share": 0.2031,
+     "share": 0.3905,
      "none": false
     }
    ],
    "age": [
     {
-     "label": "twenties",
-     "share": 0.5649
-    },
-    {
      "label": "",
-     "share": 0.1568
+     "share": 0.3712
     },
     {
      "label": "thirties",
-     "share": 0.1322
+     "share": 0.2712
     },
     {
      "label": "fourties",
-     "share": 0.1075
+     "share": 0.2244
     },
     {
-     "label": "fifties",
-     "share": 0.0203
-    },
-    {
-     "label": "teens",
-     "share": 0.0151
+     "label": "twenties",
+     "share": 0.107
     },
     {
      "label": "sixties",
-     "share": 0.0025
+     "share": 0.0164
     },
     {
-     "label": "eighties",
-     "share": 0.0007
+     "label": "fifties",
+     "share": 0.0052
+    },
+    {
+     "label": "teens",
+     "share": 0.0045
     }
    ],
    "accents": [
     {
-     "label": "ro-muntenia",
-     "share": 0.5814,
-     "name": "Muntenesc"
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "bum": {
+   "name": "Bulu",
+   "autonym": "",
+   "family": "bantu",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.3,
+   "validHours": 10.1,
+   "clips": 7957,
+   "validated": 7777,
+   "users": 22,
+   "avgDurationSecs": 4.657,
+   "sps": false,
+   "open": true,
+   "speakers": 22,
+   "sentences": 901,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
     },
     {
-     "label": "ro-transilv",
-     "share": 0.1895,
-     "name": "Transilvănean"
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
     },
     {
-     "label": "ro-crisana",
-     "share": 0.1157,
-     "name": "Crișean"
+     "label": "transgender",
+     "share": 0,
+     "none": true
     },
     {
-     "label": "ro-banat",
-     "share": 0.059,
-     "name": "Bănățean"
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
     },
     {
      "label": "",
-     "share": 0.0409
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "bnn": {
+   "name": "Bunun",
+   "autonym": "Bunun",
+   "family": "austronesian",
+   "region": "asia-east",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.6,
+   "validHours": 10.3,
+   "clips": 8235,
+   "validated": 7278,
+   "users": 20,
+   "avgDurationSecs": 5.09,
+   "sps": false,
+   "open": true,
+   "speakers": 20,
+   "sentences": 3167,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0584,
+     "none": false
     },
     {
-     "label": "ro-moldova",
-     "share": 0.0129,
-     "name": "Moldovenesc"
+     "label": "female_feminine",
+     "share": 0.4066,
+     "none": false
     },
     {
-     "label": "ro-oltenia",
-     "share": 0.0006,
-     "name": "Oltenesc"
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.3537,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.1813,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.6002
+    },
+    {
+     "label": "sixties",
+     "share": 0.3401
+    },
+    {
+     "label": "fifties",
+     "share": 0.0596
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
     }
    ],
    "variants": [
     {
-     "label": "ro-RO",
-     "share": 1,
-     "name": "Romanian-Romania"
+     "label": "bnn-bubukun",
+     "share": 0.3926,
+     "name": "MalasʼIsbubukun (郡群布農語)"
+    },
+    {
+     "label": "bnn-vatan",
+     "share": 0.2889,
+     "name": "MalasTakivatan (丹群布農語)"
+    },
+    {
+     "label": "bnn-bakha",
+     "share": 0.2442,
+     "name": "MalasTakibakha (卡群布農語)"
+    },
+    {
+     "label": "bnn-takitudu",
+     "share": 0.0736,
+     "name": "MalasTakitudu (卓群布農語)"
+    },
+    {
+     "label": "bnn-banuaz",
+     "share": 0.0006,
+     "name": "MalasTakbanuaz (巒群布農語)"
     }
    ]
+  },
+  "wes": {
+   "name": "Cameroon Pidgin",
+   "autonym": "Kamtok",
+   "family": "creole",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.8,
+   "validHours": 10.3,
+   "clips": 9417,
+   "validated": 9018,
+   "users": 18,
+   "avgDurationSecs": 4.118,
+   "sps": false,
+   "open": true,
+   "speakers": 18,
+   "sentences": 999,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0642,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9358,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.9356
+    },
+    {
+     "label": "fourties",
+     "share": 0.0589
+    },
+    {
+     "label": "twenties",
+     "share": 0.0053
+    },
+    {
+     "label": "thirties",
+     "share": 0.0001
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "yue": {
+   "name": "Cantonese",
+   "autonym": "粵語",
+   "family": "sinitic",
+   "region": "asia-east",
+   "script": "han",
+   "prominence": 2,
+   "hours": 307.4,
+   "validHours": 210.8,
+   "clips": 279396,
+   "validated": 191548,
+   "users": 1188,
+   "avgDurationSecs": 3.961,
+   "sps": false,
+   "open": true,
+   "speakers": 1196,
+   "sentences": 18548,
+   "liveValidHours": 204,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.1706,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.6244,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0.0036,
+     "none": false
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0002,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.2012,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.4698
+    },
+    {
+     "label": "twenties",
+     "share": 0.2923
+    },
+    {
+     "label": "",
+     "share": 0.1876
+    },
+    {
+     "label": "fourties",
+     "share": 0.0366
+    },
+    {
+     "label": "teens",
+     "share": 0.0072
+    },
+    {
+     "label": "nineties",
+     "share": 0.0036
+    },
+    {
+     "label": "sixties",
+     "share": 0.0021
+    },
+    {
+     "label": "fifties",
+     "share": 0.0008
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
   },
   "ca": {
    "name": "Catalan",
@@ -797,6 +3828,2803 @@ window.CV_DATA = {
     }
    ]
   },
+  "ckb": {
+   "name": "Central Kurdish",
+   "autonym": "کوردیی ناوەندی",
+   "family": "iranian",
+   "region": "asia-west",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 196.1,
+   "validHours": 139.1,
+   "clips": 172154,
+   "validated": 122120,
+   "users": 2069,
+   "avgDurationSecs": 4.101,
+   "sps": false,
+   "open": true,
+   "speakers": 2077,
+   "sentences": 18510,
+   "liveValidHours": 139,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.619,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0504,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0006,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.33,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.4235
+    },
+    {
+     "label": "",
+     "share": 0.3183
+    },
+    {
+     "label": "sixties",
+     "share": 0.1036
+    },
+    {
+     "label": "thirties",
+     "share": 0.1021
+    },
+    {
+     "label": "fourties",
+     "share": 0.0203
+    },
+    {
+     "label": "teens",
+     "share": 0.0196
+    },
+    {
+     "label": "fifties",
+     "share": 0.0112
+    },
+    {
+     "label": "seventies",
+     "share": 0.0014
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "ncx": {
+   "name": "Central Puebla Nahuatl",
+   "autonym": "",
+   "family": "uto-aztecan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.8,
+   "validHours": 10.7,
+   "clips": 9509,
+   "validated": 8644,
+   "users": 41,
+   "avgDurationSecs": 4.457,
+   "sps": false,
+   "open": true,
+   "speakers": 41,
+   "sentences": 1044,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0133,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3767,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.6101,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.6339
+    },
+    {
+     "label": "fourties",
+     "share": 0.1724
+    },
+    {
+     "label": "twenties",
+     "share": 0.1458
+    },
+    {
+     "label": "",
+     "share": 0.0432
+    },
+    {
+     "label": "teens",
+     "share": 0.0042
+    },
+    {
+     "label": "sixties",
+     "share": 0.0005
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "tar": {
+   "name": "Central Tarahumara",
+   "autonym": "",
+   "family": "uto-aztecan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10,
+   "validHours": 10,
+   "clips": 7922,
+   "validated": 7895,
+   "users": 17,
+   "avgDurationSecs": 4.549,
+   "sps": false,
+   "open": true,
+   "speakers": 17,
+   "sentences": 1258,
+   "liveValidHours": 10,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.6569,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3431,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.4683
+    },
+    {
+     "label": "fourties",
+     "share": 0.3812
+    },
+    {
+     "label": "twenties",
+     "share": 0.1094
+    },
+    {
+     "label": "fifties",
+     "share": 0.041
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "zh-HK": {
+   "name": "Chinese (Hong Kong)",
+   "autonym": "中文（香港）",
+   "family": "sinitic",
+   "region": "asia-east",
+   "script": "han",
+   "prominence": 2,
+   "hours": 143.4,
+   "validHours": 108.6,
+   "clips": 124379,
+   "validated": 94172,
+   "users": 3114,
+   "avgDurationSecs": 4.15,
+   "sps": false,
+   "open": true,
+   "speakers": 3118,
+   "sentences": 20185,
+   "liveValidHours": 109,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.4034,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2243,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0.0001,
+     "none": false
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0008,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.3714,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.3822
+    },
+    {
+     "label": "twenties",
+     "share": 0.3289
+    },
+    {
+     "label": "fourties",
+     "share": 0.1233
+    },
+    {
+     "label": "thirties",
+     "share": 0.1053
+    },
+    {
+     "label": "fifties",
+     "share": 0.0286
+    },
+    {
+     "label": "teens",
+     "share": 0.0233
+    },
+    {
+     "label": "sixties",
+     "share": 0.0065
+    },
+    {
+     "label": "seventies",
+     "share": 0.002
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "zh-TW": {
+   "name": "Chinese (Taiwan)",
+   "autonym": "中文（台灣）",
+   "family": "sinitic",
+   "region": "asia-east",
+   "script": "han",
+   "prominence": 2,
+   "hours": 131.7,
+   "validHours": 79.9,
+   "clips": 140996,
+   "validated": 85570,
+   "users": 2336,
+   "avgDurationSecs": 3.363,
+   "sps": false,
+   "open": true,
+   "speakers": 2338,
+   "sentences": 20869,
+   "liveValidHours": 78,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.4861,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2203,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0.0007,
+     "none": false
+    },
+    {
+     "label": "non-binary",
+     "share": 0.0006,
+     "none": false
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0002,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.2921,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.2965
+    },
+    {
+     "label": "",
+     "share": 0.2679
+    },
+    {
+     "label": "thirties",
+     "share": 0.1919
+    },
+    {
+     "label": "fourties",
+     "share": 0.0906
+    },
+    {
+     "label": "fifties",
+     "share": 0.0895
+    },
+    {
+     "label": "teens",
+     "share": 0.0604
+    },
+    {
+     "label": "sixties",
+     "share": 0.0031
+    },
+    {
+     "label": "seventies",
+     "share": 0.0002
+    }
+   ],
+   "accents": [
+    {
+     "label": "taipei_city",
+     "share": 0.3223
+    },
+    {
+     "label": "new_taipei_city",
+     "share": 0.145
+    },
+    {
+     "label": "",
+     "share": 0.0835
+    },
+    {
+     "label": "taichung_city",
+     "share": 0.0725
+    },
+    {
+     "label": "kaohsiung_city",
+     "share": 0.0545
+    },
+    {
+     "label": "taoyuan_city",
+     "share": 0.0495
+    },
+    {
+     "label": "hsinchu_city",
+     "share": 0.0469
+    },
+    {
+     "label": "yunlin_county",
+     "share": 0.0419
+    }
+   ],
+   "variants": []
+  },
+  "cjk": {
+   "name": "Chokwe",
+   "autonym": "Chokwe",
+   "family": "bantu",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 13.9,
+   "validHours": 12,
+   "clips": 8519,
+   "validated": 7333,
+   "users": 45,
+   "avgDurationSecs": 5.874,
+   "sps": false,
+   "open": true,
+   "speakers": 45,
+   "sentences": 1141,
+   "liveValidHours": 13,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.034,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3503,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.6157,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.486
+    },
+    {
+     "label": "thirties",
+     "share": 0.2652
+    },
+    {
+     "label": "twenties",
+     "share": 0.1225
+    },
+    {
+     "label": "",
+     "share": 0.1087
+    },
+    {
+     "label": "fifties",
+     "share": 0.0176
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "cv": {
+   "name": "Chuvash",
+   "autonym": "чӑвашла",
+   "family": "turkic",
+   "region": "europe-east",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 28.6,
+   "validHours": 24.5,
+   "clips": 20456,
+   "validated": 17510,
+   "users": 122,
+   "avgDurationSecs": 5.042,
+   "sps": false,
+   "open": true,
+   "speakers": 122,
+   "sentences": 4382,
+   "liveValidHours": 27,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5141,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2659,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2199,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.4997
+    },
+    {
+     "label": "",
+     "share": 0.238
+    },
+    {
+     "label": "teens",
+     "share": 0.1825
+    },
+    {
+     "label": "fourties",
+     "share": 0.0614
+    },
+    {
+     "label": "fifties",
+     "share": 0.0105
+    },
+    {
+     "label": "thirties",
+     "share": 0.0079
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "zoc": {
+   "name": "Copainalá Zoque",
+   "autonym": "",
+   "family": "mixe-zoque",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.1,
+   "validHours": 10.1,
+   "clips": 8948,
+   "validated": 8886,
+   "users": 12,
+   "avgDurationSecs": 4.083,
+   "sps": false,
+   "open": true,
+   "speakers": 12,
+   "sentences": 1481,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.4439,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.5561,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.3814
+    },
+    {
+     "label": "fourties",
+     "share": 0.3074
+    },
+    {
+     "label": "thirties",
+     "share": 0.2214
+    },
+    {
+     "label": "",
+     "share": 0.0897
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "kw": {
+   "name": "Cornish",
+   "autonym": "Kernewek",
+   "family": "celtic",
+   "region": "europe-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 12.9,
+   "validHours": 12.4,
+   "clips": 11269,
+   "validated": 10853,
+   "users": 11,
+   "avgDurationSecs": 4.121,
+   "sps": false,
+   "open": true,
+   "speakers": 11,
+   "sentences": 9609,
+   "liveValidHours": 13,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.344,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0.0004,
+     "none": false
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.6556,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fifties",
+     "share": 0.4704
+    },
+    {
+     "label": "fourties",
+     "share": 0.3431
+    },
+    {
+     "label": "",
+     "share": 0.1166
+    },
+    {
+     "label": "seventies",
+     "share": 0.0467
+    },
+    {
+     "label": "sixties",
+     "share": 0.0228
+    },
+    {
+     "label": "teens",
+     "share": 0.0004
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "cs": {
+   "name": "Czech",
+   "autonym": "čeština",
+   "family": "slavic",
+   "region": "europe-east",
+   "script": "latin",
+   "prominence": 2,
+   "hours": 269.2,
+   "validHours": 81.6,
+   "clips": 217230,
+   "validated": 65867,
+   "users": 1146,
+   "avgDurationSecs": 4.461,
+   "sps": false,
+   "open": true,
+   "speakers": 1152,
+   "sentences": 451348,
+   "liveValidHours": 76,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5335,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2185,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.248,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.4662
+    },
+    {
+     "label": "",
+     "share": 0.238
+    },
+    {
+     "label": "twenties",
+     "share": 0.1863
+    },
+    {
+     "label": "fourties",
+     "share": 0.0706
+    },
+    {
+     "label": "teens",
+     "share": 0.025
+    },
+    {
+     "label": "fifties",
+     "share": 0.0124
+    },
+    {
+     "label": "sixties",
+     "share": 0.0014
+    },
+    {
+     "label": "seventies",
+     "share": 0.0001
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "dag": {
+   "name": "Dagbani",
+   "autonym": "Dagbanli",
+   "family": "niger-congo",
+   "region": "africa-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 27.6,
+   "validHours": 16.4,
+   "clips": 23101,
+   "validated": 13749,
+   "users": 69,
+   "avgDurationSecs": 4.294,
+   "sps": false,
+   "open": true,
+   "speakers": 69,
+   "sentences": 5603,
+   "liveValidHours": 17,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0187,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1974,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.018,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.7659,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.4034
+    },
+    {
+     "label": "",
+     "share": 0.3331
+    },
+    {
+     "label": "thirties",
+     "share": 0.2531
+    },
+    {
+     "label": "fourties",
+     "share": 0.0104
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "da": {
+   "name": "Danish",
+   "autonym": "dansk",
+   "family": "germanic",
+   "region": "europe-north",
+   "script": "latin",
+   "prominence": 2,
+   "hours": 16.2,
+   "validHours": 13,
+   "clips": 14327,
+   "validated": 11502,
+   "users": 302,
+   "avgDurationSecs": 4.072,
+   "sps": true,
+   "open": true,
+   "speakers": 302,
+   "sentences": 19013,
+   "liveValidHours": 13,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.4696,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0589,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.4715,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.3918
+    },
+    {
+     "label": "thirties",
+     "share": 0.2236
+    },
+    {
+     "label": "fourties",
+     "share": 0.1722
+    },
+    {
+     "label": "twenties",
+     "share": 0.1551
+    },
+    {
+     "label": "fifties",
+     "share": 0.0425
+    },
+    {
+     "label": "sixties",
+     "share": 0.008
+    },
+    {
+     "label": "teens",
+     "share": 0.0068
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "dar": {
+   "name": "Dargwa",
+   "autonym": "дарган мез",
+   "family": "northeast-caucasian",
+   "region": "asia-west",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 20.7,
+   "validHours": 15.5,
+   "clips": 13068,
+   "validated": 9822,
+   "users": 49,
+   "avgDurationSecs": 5.694,
+   "sps": false,
+   "open": true,
+   "speakers": 50,
+   "sentences": 6625,
+   "liveValidHours": 16,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3861,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.6139,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fifties",
+     "share": 0.329
+    },
+    {
+     "label": "twenties",
+     "share": 0.2945
+    },
+    {
+     "label": "",
+     "share": 0.2029
+    },
+    {
+     "label": "fourties",
+     "share": 0.1562
+    },
+    {
+     "label": "teens",
+     "share": 0.0121
+    },
+    {
+     "label": "thirties",
+     "share": 0.0054
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "dv": {
+   "name": "Dhivehi",
+   "autonym": "ދިވެހި",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "thaana",
+   "prominence": 1,
+   "hours": 61.7,
+   "validHours": 37.9,
+   "clips": 43361,
+   "validated": 26642,
+   "users": 394,
+   "avgDurationSecs": 5.12,
+   "sps": false,
+   "open": true,
+   "speakers": 395,
+   "sentences": 7172,
+   "liveValidHours": 39,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.2351,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.5216,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0019,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.2414,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.3886
+    },
+    {
+     "label": "",
+     "share": 0.2381
+    },
+    {
+     "label": "fourties",
+     "share": 0.2265
+    },
+    {
+     "label": "twenties",
+     "share": 0.1134
+    },
+    {
+     "label": "fifties",
+     "share": 0.0253
+    },
+    {
+     "label": "teens",
+     "share": 0.0079
+    },
+    {
+     "label": "nineties",
+     "share": 0.0001
+    },
+    {
+     "label": "sixties",
+     "share": 0.0001
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "luo": {
+   "name": "Dholuo",
+   "autonym": "Dholuo",
+   "family": "nilotic",
+   "region": "africa-east",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 111.6,
+   "validHours": 27.5,
+   "clips": 82420,
+   "validated": 20343,
+   "users": 47,
+   "avgDurationSecs": 4.873,
+   "sps": false,
+   "open": true,
+   "speakers": 47,
+   "sentences": 24678,
+   "liveValidHours": 30,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3947,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.6053,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.3582
+    },
+    {
+     "label": "twenties",
+     "share": 0.3352
+    },
+    {
+     "label": "thirties",
+     "share": 0.2832
+    },
+    {
+     "label": "fifties",
+     "share": 0.0191
+    },
+    {
+     "label": "fourties",
+     "share": 0.0042
+    },
+    {
+     "label": "teens",
+     "share": 0.0001
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "dua": {
+   "name": "Duala",
+   "autonym": "Duálá",
+   "family": "bantu",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 14.4,
+   "validHours": 12.5,
+   "clips": 8095,
+   "validated": 7018,
+   "users": 13,
+   "avgDurationSecs": 6.424,
+   "sps": false,
+   "open": true,
+   "speakers": 13,
+   "sentences": 1003,
+   "liveValidHours": 14,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1134,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.8866,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.7746
+    },
+    {
+     "label": "twenties",
+     "share": 0.1134
+    },
+    {
+     "label": "thirties",
+     "share": 0.0967
+    },
+    {
+     "label": "fourties",
+     "share": 0.0153
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "nl": {
+   "name": "Dutch",
+   "autonym": "Nederlands",
+   "family": "germanic",
+   "region": "europe-west",
+   "script": "latin",
+   "prominence": 3,
+   "hours": 141.3,
+   "validHours": 126.5,
+   "clips": 116252,
+   "validated": 104120,
+   "users": 1892,
+   "avgDurationSecs": 4.374,
+   "sps": true,
+   "open": true,
+   "speakers": 1905,
+   "sentences": 261033,
+   "liveValidHours": 126,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5164,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1001,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3834,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.3626
+    },
+    {
+     "label": "fourties",
+     "share": 0.184
+    },
+    {
+     "label": "twenties",
+     "share": 0.182
+    },
+    {
+     "label": "thirties",
+     "share": 0.1191
+    },
+    {
+     "label": "fifties",
+     "share": 0.1146
+    },
+    {
+     "label": "teens",
+     "share": 0.0185
+    },
+    {
+     "label": "sixties",
+     "share": 0.0182
+    },
+    {
+     "label": "seventies",
+     "share": 0.0008
+    }
+   ],
+   "accents": [
+    {
+     "label": "netherlands",
+     "share": 0.8733
+    },
+    {
+     "label": "belgium",
+     "share": 0.0969
+    },
+    {
+     "label": "",
+     "share": 0.0172
+    },
+    {
+     "label": "suriname",
+     "share": 0.008
+    },
+    {
+     "label": "curacao",
+     "share": 0.0021
+    },
+    {
+     "label": "france",
+     "share": 0.0012
+    },
+    {
+     "label": "germany",
+     "share": 0.0006
+    },
+    {
+     "label": "aruba",
+     "share": 0.0006
+    }
+   ],
+   "variants": []
+  },
+  "dyu": {
+   "name": "Dyula",
+   "autonym": "Julakan",
+   "family": "niger-congo",
+   "region": "africa-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 0.5,
+   "validHours": 0.4,
+   "clips": 295,
+   "validated": 219,
+   "users": 35,
+   "avgDurationSecs": 6.309,
+   "sps": false,
+   "open": true,
+   "speakers": 35,
+   "sentences": 5028,
+   "liveValidHours": 0.4,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.3932,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3017,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3051,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.6576
+    },
+    {
+     "label": "",
+     "share": 0.3051
+    },
+    {
+     "label": "fourties",
+     "share": 0.0203
+    },
+    {
+     "label": "teens",
+     "share": 0.0169
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "bgp": {
+   "name": "Eastern Balochi",
+   "autonym": "",
+   "family": "iranian",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 12.8,
+   "validHours": 11.6,
+   "clips": 8536,
+   "validated": 7721,
+   "users": 30,
+   "avgDurationSecs": 5.418,
+   "sps": false,
+   "open": true,
+   "speakers": 30,
+   "sentences": 6997,
+   "liveValidHours": 14,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0064,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9936,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.8804
+    },
+    {
+     "label": "thirties",
+     "share": 0.0745
+    },
+    {
+     "label": "twenties",
+     "share": 0.0451
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "en": {
+   "name": "English",
+   "autonym": "English",
+   "family": "germanic",
+   "region": "europe-west",
+   "script": "latin",
+   "prominence": 3,
+   "hours": 3795.9,
+   "validHours": 2826.8,
+   "clips": 2591456,
+   "validated": 1929854,
+   "users": 100546,
+   "avgDurationSecs": 5.273,
+   "sps": true,
+   "open": true,
+   "speakers": 100946,
+   "sentences": 1606091,
+   "liveValidHours": 2799,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.4318,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1776,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0.0001,
+     "none": false
+    },
+    {
+     "label": "non-binary",
+     "share": 0.0003,
+     "none": false
+    },
+    {
+     "label": "intersex",
+     "share": 0.0001,
+     "none": false
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0008,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.3894,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.3558
+    },
+    {
+     "label": "twenties",
+     "share": 0.2481
+    },
+    {
+     "label": "thirties",
+     "share": 0.1382
+    },
+    {
+     "label": "fourties",
+     "share": 0.0934
+    },
+    {
+     "label": "teens",
+     "share": 0.0589
+    },
+    {
+     "label": "fifties",
+     "share": 0.0528
+    },
+    {
+     "label": "sixties",
+     "share": 0.045
+    },
+    {
+     "label": "seventies",
+     "share": 0.0068
+    }
+   ],
+   "accents": [
+    {
+     "label": "us",
+     "share": 0.3845
+    },
+    {
+     "label": "england",
+     "share": 0.1371
+    },
+    {
+     "label": "",
+     "share": 0.1345
+    },
+    {
+     "label": "indian",
+     "share": 0.1024
+    },
+    {
+     "label": "canada",
+     "share": 0.0681
+    },
+    {
+     "label": "australia",
+     "share": 0.0464
+    },
+    {
+     "label": "scotland",
+     "share": 0.0464
+    },
+    {
+     "label": "african",
+     "share": 0.0405
+    }
+   ],
+   "variants": []
+  },
+  "myv": {
+   "name": "Erzya",
+   "autonym": "эрзянь",
+   "family": "uralic",
+   "region": "europe-east",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 3.2,
+   "validHours": 3.2,
+   "clips": 2010,
+   "validated": 1972,
+   "users": 13,
+   "avgDurationSecs": 5.784,
+   "sps": false,
+   "open": true,
+   "speakers": 13,
+   "sentences": 5015,
+   "liveValidHours": 3.8,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5408,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0721,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3871,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.3871
+    },
+    {
+     "label": "sixties",
+     "share": 0.2582
+    },
+    {
+     "label": "thirties",
+     "share": 0.2403
+    },
+    {
+     "label": "twenties",
+     "share": 0.0871
+    },
+    {
+     "label": "fourties",
+     "share": 0.0174
+    },
+    {
+     "label": "teens",
+     "share": 0.01
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "eo": {
+   "name": "Esperanto",
+   "autonym": "Esperanto",
+   "family": "constructed",
+   "region": "constructed",
+   "script": "latin",
+   "prominence": 2,
+   "hours": 1956.6,
+   "validHours": 1445.8,
+   "clips": 1157835,
+   "validated": 855559,
+   "users": 1902,
+   "avgDurationSecs": 6.084,
+   "sps": true,
+   "open": true,
+   "speakers": 1925,
+   "sentences": 181305,
+   "liveValidHours": 1445,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.6881,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1124,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.1995,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.5505
+    },
+    {
+     "label": "",
+     "share": 0.1945
+    },
+    {
+     "label": "thirties",
+     "share": 0.1205
+    },
+    {
+     "label": "teens",
+     "share": 0.0455
+    },
+    {
+     "label": "fourties",
+     "share": 0.0444
+    },
+    {
+     "label": "fifties",
+     "share": 0.0229
+    },
+    {
+     "label": "eighties",
+     "share": 0.0178
+    },
+    {
+     "label": "seventies",
+     "share": 0.0021
+    }
+   ],
+   "accents": [
+    {
+     "label": "internacia",
+     "share": 0.963
+    },
+    {
+     "label": "",
+     "share": 0.037
+    }
+   ],
+   "variants": []
+  },
+  "et": {
+   "name": "Estonian",
+   "autonym": "eesti",
+   "family": "uralic",
+   "region": "europe-north",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 69.4,
+   "validHours": 53,
+   "clips": 37180,
+   "validated": 28375,
+   "users": 1127,
+   "avgDurationSecs": 6.72,
+   "sps": false,
+   "open": true,
+   "speakers": 1127,
+   "sentences": 10874,
+   "liveValidHours": 63,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.4782,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2606,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0019,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.2593,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.7063
+    },
+    {
+     "label": "",
+     "share": 0.1733
+    },
+    {
+     "label": "thirties",
+     "share": 0.0773
+    },
+    {
+     "label": "fourties",
+     "share": 0.0362
+    },
+    {
+     "label": "fifties",
+     "share": 0.0052
+    },
+    {
+     "label": "teens",
+     "share": 0.0011
+    },
+    {
+     "label": "seventies",
+     "share": 0.0006
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "eto": {
+   "name": "Eton",
+   "autonym": "",
+   "family": "bantu",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 9.9,
+   "validHours": 9.4,
+   "clips": 11063,
+   "validated": 10556,
+   "users": 26,
+   "avgDurationSecs": 3.225,
+   "sps": false,
+   "open": true,
+   "speakers": 26,
+   "sentences": 966,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.9882
+    },
+    {
+     "label": "thirties",
+     "share": 0.0118
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "ewo": {
+   "name": "Ewondo",
+   "autonym": "",
+   "family": "bantu",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 14.4,
+   "validHours": 13.6,
+   "clips": 7991,
+   "validated": 7571,
+   "users": 31,
+   "avgDurationSecs": 6.472,
+   "sps": false,
+   "open": true,
+   "speakers": 31,
+   "sentences": 883,
+   "liveValidHours": 19,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0091,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9909,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.9433
+    },
+    {
+     "label": "sixties",
+     "share": 0.0468
+    },
+    {
+     "label": "twenties",
+     "share": 0.0085
+    },
+    {
+     "label": "thirties",
+     "share": 0.0008
+    },
+    {
+     "label": "fourties",
+     "share": 0.0006
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "fan": {
+   "name": "Fang",
+   "autonym": "",
+   "family": "bantu",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 9.9,
+   "validHours": 9.4,
+   "clips": 8078,
+   "validated": 7709,
+   "users": 43,
+   "avgDurationSecs": 4.399,
+   "sps": false,
+   "open": true,
+   "speakers": 43,
+   "sentences": 1005,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.8892
+    },
+    {
+     "label": "fourties",
+     "share": 0.0972
+    },
+    {
+     "label": "teens",
+     "share": 0.0136
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "fmp": {
+   "name": "Fe'efe'e",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 12.2,
+   "validHours": 11.4,
+   "clips": 5599,
+   "validated": 5210,
+   "users": 32,
+   "avgDurationSecs": 7.865,
+   "sps": false,
+   "open": true,
+   "speakers": 32,
+   "sentences": 1004,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.7394
+    },
+    {
+     "label": "twenties",
+     "share": 0.1979
+    },
+    {
+     "label": "fifties",
+     "share": 0.0627
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "fi": {
+   "name": "Finnish",
+   "autonym": "suomi",
+   "family": "uralic",
+   "region": "europe-north",
+   "script": "latin",
+   "prominence": 2,
+   "hours": 23.2,
+   "validHours": 15.8,
+   "clips": 18019,
+   "validated": 12310,
+   "users": 253,
+   "avgDurationSecs": 4.635,
+   "sps": false,
+   "open": true,
+   "speakers": 254,
+   "sentences": 5865,
+   "liveValidHours": 15,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.355,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.298,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3471,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.325
+    },
+    {
+     "label": "fourties",
+     "share": 0.2979
+    },
+    {
+     "label": "thirties",
+     "share": 0.1707
+    },
+    {
+     "label": "twenties",
+     "share": 0.1644
+    },
+    {
+     "label": "fifties",
+     "share": 0.0307
+    },
+    {
+     "label": "sixties",
+     "share": 0.0055
+    },
+    {
+     "label": "teens",
+     "share": 0.0052
+    },
+    {
+     "label": "seventies",
+     "share": 0.0006
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "fr": {
+   "name": "French",
+   "autonym": "français",
+   "family": "romance",
+   "region": "europe-west",
+   "script": "latin",
+   "prominence": 3,
+   "hours": 1217.4,
+   "validHours": 1108.3,
+   "clips": 869961,
+   "validated": 792011,
+   "users": 21116,
+   "avgDurationSecs": 5.038,
+   "sps": true,
+   "open": true,
+   "speakers": 21196,
+   "sentences": 1618036,
+   "liveValidHours": 1112,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5686,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1067,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0.0003,
+     "none": false
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0003,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.3241,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.3739
+    },
+    {
+     "label": "twenties",
+     "share": 0.1701
+    },
+    {
+     "label": "thirties",
+     "share": 0.1442
+    },
+    {
+     "label": "fourties",
+     "share": 0.1425
+    },
+    {
+     "label": "fifties",
+     "share": 0.0965
+    },
+    {
+     "label": "sixties",
+     "share": 0.0335
+    },
+    {
+     "label": "teens",
+     "share": 0.0283
+    },
+    {
+     "label": "seventies",
+     "share": 0.0108
+    }
+   ],
+   "accents": [
+    {
+     "label": "canada",
+     "share": 0.2642
+    },
+    {
+     "label": "belgium",
+     "share": 0.2337
+    },
+    {
+     "label": "",
+     "share": 0.1544
+    },
+    {
+     "label": "switzerland",
+     "share": 0.1267
+    },
+    {
+     "label": "united_states",
+     "share": 0.0331
+    },
+    {
+     "label": "reunion",
+     "share": 0.0268
+    },
+    {
+     "label": "algeria",
+     "share": 0.022
+    },
+    {
+     "label": "benin",
+     "share": 0.022
+    }
+   ],
+   "variants": [
+    {
+     "label": "fr-metro",
+     "share": 0.9204,
+     "name": "Français de métropole"
+    },
+    {
+     "label": "fr-europe",
+     "share": 0.0459
+    },
+    {
+     "label": "fr-namerica",
+     "share": 0.0243
+    },
+    {
+     "label": "fr-safrica",
+     "share": 0.0035
+    },
+    {
+     "label": "fr-droum",
+     "share": 0.0033
+    },
+    {
+     "label": "fr-nafrica",
+     "share": 0.0024
+    },
+    {
+     "label": "fr-samerica",
+     "share": 0.0002
+    }
+   ]
+  },
+  "fy-NL": {
+   "name": "Frisian",
+   "autonym": "Frysk",
+   "family": "germanic",
+   "region": "europe-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 215.4,
+   "validHours": 71.7,
+   "clips": 159767,
+   "validated": 53214,
+   "users": 2106,
+   "avgDurationSecs": 4.853,
+   "sps": true,
+   "open": true,
+   "speakers": 2126,
+   "sentences": 10869,
+   "liveValidHours": 67,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.1289,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3036,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.5675,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.5612
+    },
+    {
+     "label": "sixties",
+     "share": 0.1229
+    },
+    {
+     "label": "fifties",
+     "share": 0.1022
+    },
+    {
+     "label": "thirties",
+     "share": 0.1022
+    },
+    {
+     "label": "fourties",
+     "share": 0.0668
+    },
+    {
+     "label": "twenties",
+     "share": 0.0361
+    },
+    {
+     "label": "seventies",
+     "share": 0.0041
+    },
+    {
+     "label": "teens",
+     "share": 0.0033
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 0.8079
+    },
+    {
+     "label": "fy-clayfr",
+     "share": 0.134,
+     "name": "Klaaifrysk"
+    },
+    {
+     "label": "fy-woodfr",
+     "share": 0.0438,
+     "name": "Wâldfrysk"
+    },
+    {
+     "label": "fy-north",
+     "share": 0.0115,
+     "name": "Noardhoeksk"
+    },
+    {
+     "label": "fy-south-southwest",
+     "share": 0.0028,
+     "name": "Súdwesthoeksk"
+    }
+   ],
+   "variants": []
+  },
   "gl": {
    "name": "Galician",
    "autonym": "galego",
@@ -914,34 +6742,34 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "oc": {
-   "name": "Occitan",
-   "autonym": "occitan",
-   "family": "romance",
-   "region": "europe-west",
-   "script": "latin",
+  "gwc": {
+   "name": "Gawri",
+   "autonym": "",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
    "prominence": 1,
-   "hours": 13.4,
-   "validHours": 2.7,
-   "clips": 9885,
-   "validated": 1986,
-   "users": 149,
-   "avgDurationSecs": 4.871,
+   "hours": 15.4,
+   "validHours": 11.6,
+   "clips": 9788,
+   "validated": 7421,
+   "users": 22,
+   "avgDurationSecs": 5.651,
    "sps": false,
    "open": true,
-   "speakers": 150,
-   "sentences": 4934,
-   "liveValidHours": 1.9,
+   "speakers": 22,
+   "sentences": 5574,
+   "liveValidHours": 12,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.084,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "female_feminine",
-     "share": 0.3989,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "transgender",
@@ -965,305 +6793,127 @@ window.CV_DATA = {
     },
     {
      "label": "",
-     "share": 0.5171,
+     "share": 1,
      "none": false
     }
    ],
    "age": [
     {
-     "label": "",
-     "share": 0.502
-    },
-    {
      "label": "fourties",
-     "share": 0.1702
-    },
-    {
-     "label": "fifties",
-     "share": 0.1555
-    },
-    {
-     "label": "sixties",
-     "share": 0.1135
-    },
-    {
-     "label": "thirties",
-     "share": 0.0361
+     "share": 0.4803
     },
     {
      "label": "twenties",
-     "share": 0.0157
+     "share": 0.3448
+    },
+    {
+     "label": "fifties",
+     "share": 0.1393
+    },
+    {
+     "label": "",
+     "share": 0.0309
     },
     {
      "label": "teens",
-     "share": 0.0051
+     "share": 0.0048
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "ka": {
+   "name": "Georgian",
+   "autonym": "ქართული",
+   "family": "kartvelian",
+   "region": "asia-west",
+   "script": "georgian",
+   "prominence": 1,
+   "hours": 494,
+   "validHours": 262.2,
+   "clips": 334213,
+   "validated": 177384,
+   "users": 3149,
+   "avgDurationSecs": 5.321,
+   "sps": true,
+   "open": true,
+   "speakers": 3171,
+   "sentences": 137656,
+   "liveValidHours": 266,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.1505,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.5527,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0.0001,
+     "none": false
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0018,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.2949,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "teens",
+     "share": 0.2469
+    },
+    {
+     "label": "thirties",
+     "share": 0.2382
+    },
+    {
+     "label": "",
+     "share": 0.2185
+    },
+    {
+     "label": "twenties",
+     "share": 0.1608
+    },
+    {
+     "label": "fourties",
+     "share": 0.063
+    },
+    {
+     "label": "fifties",
+     "share": 0.0415
+    },
+    {
+     "label": "sixties",
+     "share": 0.0184
     },
     {
      "label": "seventies",
-     "share": 0.002
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "sc": {
-   "name": "Sardinian",
-   "autonym": "sardu",
-   "family": "romance",
-   "region": "europe-west",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 3.7,
-   "validHours": 3,
-   "clips": 2854,
-   "validated": 2331,
-   "users": 50,
-   "avgDurationSecs": 4.723,
-   "sps": false,
-   "open": true,
-   "speakers": 50,
-   "sentences": 5489,
-   "liveValidHours": 3,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.1216,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.3269,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.5515,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.458
-    },
-    {
-     "label": "thirties",
-     "share": 0.28
-    },
-    {
-     "label": "fifties",
-     "share": 0.1451
-    },
-    {
-     "label": "twenties",
-     "share": 0.0893
-    },
-    {
-     "label": "sixties",
-     "share": 0.0165
-    },
-    {
-     "label": "fourties",
-     "share": 0.0112
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "ast": {
-   "name": "Asturian",
-   "autonym": "asturianu",
-   "family": "romance",
-   "region": "europe-west",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 2.1,
-   "validHours": 1.1,
-   "clips": 1720,
-   "validated": 866,
-   "users": 34,
-   "avgDurationSecs": 4.398,
-   "sps": false,
-   "open": true,
-   "speakers": 36,
-   "sentences": 1645,
-   "liveValidHours": 0.9,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.5831,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.1419,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0.0174,
-     "none": false
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.2576,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "fourties",
-     "share": 0.2721
-    },
-    {
-     "label": "",
-     "share": 0.2576
-    },
-    {
-     "label": "fifties",
-     "share": 0.2006
-    },
-    {
-     "label": "thirties",
-     "share": 0.1157
-    },
-    {
-     "label": "twenties",
-     "share": 0.0988
-    },
-    {
-     "label": "teens",
-     "share": 0.0552
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "rm-sursilv": {
-   "name": "Romansh Sursilvan",
-   "autonym": "rumantsch sursilvan",
-   "family": "romance",
-   "region": "europe-west",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 11.9,
-   "validHours": 7.9,
-   "clips": 7963,
-   "validated": 5306,
-   "users": 93,
-   "avgDurationSecs": 5.379,
-   "sps": false,
-   "open": true,
-   "speakers": 93,
-   "sentences": 9332,
-   "liveValidHours": 7.6,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.1604,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.1675,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.6721,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.5726
-    },
-    {
-     "label": "fourties",
-     "share": 0.167
-    },
-    {
-     "label": "twenties",
-     "share": 0.1449
-    },
-    {
-     "label": "thirties",
-     "share": 0.0664
-    },
-    {
-     "label": "teens",
-     "share": 0.049
+     "share": 0.01
     }
    ],
    "accents": [
@@ -1399,255 +7049,33 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "nl": {
-   "name": "Dutch",
-   "autonym": "Nederlands",
-   "family": "germanic",
-   "region": "europe-west",
+  "bbj": {
+   "name": "Ghomala",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-central",
    "script": "latin",
-   "prominence": 3,
-   "hours": 141.3,
-   "validHours": 126.5,
-   "clips": 116252,
-   "validated": 104120,
-   "users": 1892,
-   "avgDurationSecs": 4.374,
-   "sps": true,
-   "open": true,
-   "speakers": 1905,
-   "sentences": 261033,
-   "liveValidHours": 126,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.5164,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.1001,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.3834,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.3626
-    },
-    {
-     "label": "fourties",
-     "share": 0.184
-    },
-    {
-     "label": "twenties",
-     "share": 0.182
-    },
-    {
-     "label": "thirties",
-     "share": 0.1191
-    },
-    {
-     "label": "fifties",
-     "share": 0.1146
-    },
-    {
-     "label": "teens",
-     "share": 0.0185
-    },
-    {
-     "label": "sixties",
-     "share": 0.0182
-    },
-    {
-     "label": "seventies",
-     "share": 0.0008
-    }
-   ],
-   "accents": [
-    {
-     "label": "netherlands",
-     "share": 0.8733
-    },
-    {
-     "label": "belgium",
-     "share": 0.0969
-    },
-    {
-     "label": "",
-     "share": 0.0172
-    },
-    {
-     "label": "suriname",
-     "share": 0.008
-    },
-    {
-     "label": "curacao",
-     "share": 0.0021
-    },
-    {
-     "label": "france",
-     "share": 0.0012
-    },
-    {
-     "label": "germany",
-     "share": 0.0006
-    },
-    {
-     "label": "aruba",
-     "share": 0.0006
-    }
-   ],
-   "variants": []
-  },
-  "sv-SE": {
-   "name": "Swedish",
-   "autonym": "svenska",
-   "family": "germanic",
-   "region": "europe-north",
-   "script": "latin",
-   "prominence": 2,
-   "hours": 56.2,
-   "validHours": 47.8,
-   "clips": 50279,
-   "validated": 42785,
-   "users": 891,
-   "avgDurationSecs": 4.024,
+   "prominence": 1,
+   "hours": 12.8,
+   "validHours": 12.3,
+   "clips": 7514,
+   "validated": 7242,
+   "users": 31,
+   "avgDurationSecs": 6.11,
    "sps": false,
    "open": true,
-   "speakers": 900,
-   "sentences": 25060,
-   "liveValidHours": 48,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.4678,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.3191,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.2131,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "fourties",
-     "share": 0.372
-    },
-    {
-     "label": "thirties",
-     "share": 0.2535
-    },
-    {
-     "label": "",
-     "share": 0.1907
-    },
-    {
-     "label": "twenties",
-     "share": 0.1184
-    },
-    {
-     "label": "fifties",
-     "share": 0.0325
-    },
-    {
-     "label": "teens",
-     "share": 0.0308
-    },
-    {
-     "label": "sixties",
-     "share": 0.001
-    },
-    {
-     "label": "seventies",
-     "share": 0.0007
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "da": {
-   "name": "Danish",
-   "autonym": "dansk",
-   "family": "germanic",
-   "region": "europe-north",
-   "script": "latin",
-   "prominence": 2,
-   "hours": 16.2,
-   "validHours": 13,
-   "clips": 14327,
-   "validated": 11502,
-   "users": 302,
-   "avgDurationSecs": 4.072,
-   "sps": true,
-   "open": true,
-   "speakers": 302,
-   "sentences": 19013,
+   "speakers": 31,
+   "sentences": 996,
    "liveValidHours": 13,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.4696,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "female_feminine",
-     "share": 0.0589,
+     "share": 0.1429,
      "none": false
     },
     {
@@ -1672,38 +7100,110 @@ window.CV_DATA = {
     },
     {
      "label": "",
-     "share": 0.4715,
+     "share": 0.8571,
      "none": false
     }
    ],
    "age": [
     {
      "label": "",
-     "share": 0.3918
+     "share": 0.8462
     },
     {
      "label": "thirties",
-     "share": 0.2236
-    },
-    {
-     "label": "fourties",
-     "share": 0.1722
+     "share": 0.1316
     },
     {
      "label": "twenties",
-     "share": 0.1551
+     "share": 0.0222
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "el": {
+   "name": "Greek",
+   "autonym": "ελληνικά",
+   "family": "hellenic",
+   "region": "europe-east",
+   "script": "greek",
+   "prominence": 3,
+   "hours": 34,
+   "validHours": 20.3,
+   "clips": 29467,
+   "validated": 17653,
+   "users": 456,
+   "avgDurationSecs": 4.15,
+   "sps": false,
+   "open": true,
+   "speakers": 463,
+   "sentences": 8954,
+   "liveValidHours": 21,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.6394,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0321,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3286,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.3841
+    },
+    {
+     "label": "",
+     "share": 0.3016
+    },
+    {
+     "label": "fourties",
+     "share": 0.1638
+    },
+    {
+     "label": "twenties",
+     "share": 0.1125
     },
     {
      "label": "fifties",
-     "share": 0.0425
-    },
-    {
-     "label": "sixties",
-     "share": 0.008
+     "share": 0.0275
     },
     {
      "label": "teens",
-     "share": 0.0068
+     "share": 0.0092
+    },
+    {
+     "label": "sixties",
+     "share": 0.0014
     }
    ],
    "accents": [
@@ -1714,29 +7214,126 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "nb-NO": {
-   "name": "Norwegian Bokmål",
-   "autonym": "norsk bokmål",
-   "family": "germanic",
-   "region": "europe-north",
+  "gn": {
+   "name": "Guarani",
+   "autonym": "avañe'ẽ",
+   "family": "tupian",
+   "region": "americas",
    "script": "latin",
-   "prominence": 2,
-   "hours": 2.6,
-   "validHours": 2.4,
-   "clips": 2252,
-   "validated": 2021,
-   "users": 68,
-   "avgDurationSecs": 4.192,
+   "prominence": 1,
+   "hours": 33,
+   "validHours": 5.2,
+   "clips": 25864,
+   "validated": 4048,
+   "users": 314,
+   "avgDurationSecs": 4.597,
    "sps": false,
    "open": true,
-   "speakers": 68,
-   "sentences": 4419,
-   "liveValidHours": 2.3,
+   "speakers": 315,
+   "sentences": 5894,
+   "liveValidHours": 5.1,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.5955,
+     "share": 0.3316,
      "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.4645,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0.0006,
+     "none": false
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2034,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.5386
+    },
+    {
+     "label": "",
+     "share": 0.1862
+    },
+    {
+     "label": "thirties",
+     "share": 0.1677
+    },
+    {
+     "label": "fourties",
+     "share": 0.0779
+    },
+    {
+     "label": "teens",
+     "share": 0.0228
+    },
+    {
+     "label": "fifties",
+     "share": 0.0048
+    },
+    {
+     "label": "sixties",
+     "share": 0.0017
+    },
+    {
+     "label": "seventies",
+     "share": 0.0002
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "gid": {
+   "name": "Guidar",
+   "autonym": "",
+   "family": "afroasiatic",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.3,
+   "validHours": 9.9,
+   "clips": 5314,
+   "validated": 5111,
+   "users": 16,
+   "avgDurationSecs": 7,
+   "sps": false,
+   "open": true,
+   "speakers": 16,
+   "sentences": 917,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
     },
     {
      "label": "female_feminine",
@@ -1765,26 +7362,953 @@ window.CV_DATA = {
     },
     {
      "label": "",
-     "share": 0.4045,
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.9853
+    },
+    {
+     "label": "thirties",
+     "share": 0.0147
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "giz": {
+   "name": "Guiziga",
+   "autonym": "",
+   "family": "afroasiatic",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.3,
+   "validHours": 10.1,
+   "clips": 6648,
+   "validated": 6494,
+   "users": 32,
+   "avgDurationSecs": 5.572,
+   "sps": false,
+   "open": true,
+   "speakers": 32,
+   "sentences": 991,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.8908
+    },
+    {
+     "label": "thirties",
+     "share": 0.0734
+    },
+    {
+     "label": "twenties",
+     "share": 0.0343
+    },
+    {
+     "label": "fifties",
+     "share": 0.0015
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "ggg": {
+   "name": "Gurgula",
+   "autonym": "",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 12.3,
+   "validHours": 7.4,
+   "clips": 11080,
+   "validated": 6684,
+   "users": 24,
+   "avgDurationSecs": 3.988,
+   "sps": false,
+   "open": true,
+   "speakers": 24,
+   "sentences": 2005,
+   "liveValidHours": 13,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
      "none": false
     }
    ],
    "age": [
     {
      "label": "thirties",
-     "share": 0.6128
-    },
-    {
-     "label": "fourties",
-     "share": 0.1932
+     "share": 0.3263
     },
     {
      "label": "",
-     "share": 0.1781
+     "share": 0.304
+    },
+    {
+     "label": "twenties",
+     "share": 0.1871
+    },
+    {
+     "label": "fourties",
+     "share": 0.1818
+    },
+    {
+     "label": "teens",
+     "share": 0.0009
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "ht": {
+   "name": "Haitian Creole",
+   "autonym": "kreyòl ayisyen",
+   "family": "creole",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 0,
+   "validHours": 0,
+   "clips": 30,
+   "validated": 29,
+   "users": 3,
+   "avgDurationSecs": 5.566,
+   "sps": false,
+   "open": true,
+   "speakers": 3,
+   "sentences": 76,
+   "liveValidHours": 0,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.6667
+    },
+    {
+     "label": "thirties",
+     "share": 0.3333
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "cnh": {
+   "name": "Hakha Chin",
+   "autonym": "Laiholh",
+   "family": "sino-tibetan",
+   "region": "asia-southeast",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 6,
+   "validHours": 2.4,
+   "clips": 6188,
+   "validated": 2465,
+   "users": 301,
+   "avgDurationSecs": 3.517,
+   "sps": false,
+   "open": true,
+   "speakers": 301,
+   "sentences": 5190,
+   "liveValidHours": 1.9,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.3048,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2143,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.4809,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.4803
+    },
+    {
+     "label": "twenties",
+     "share": 0.3993
+    },
+    {
+     "label": "thirties",
+     "share": 0.075
     },
     {
      "label": "fifties",
-     "share": 0.016
+     "share": 0.0192
+    },
+    {
+     "label": "teens",
+     "share": 0.0149
+    },
+    {
+     "label": "fourties",
+     "share": 0.0113
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "ha": {
+   "name": "Hausa",
+   "autonym": "Harshen Hausa",
+   "family": "afroasiatic",
+   "region": "africa-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 13,
+   "validHours": 4.3,
+   "clips": 10663,
+   "validated": 3582,
+   "users": 64,
+   "avgDurationSecs": 4.38,
+   "sps": false,
+   "open": true,
+   "speakers": 74,
+   "sentences": 5505,
+   "liveValidHours": 4.4,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.561,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2347,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0001,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.2042,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.6406
+    },
+    {
+     "label": "",
+     "share": 0.1891
+    },
+    {
+     "label": "twenties",
+     "share": 0.1459
+    },
+    {
+     "label": "fifties",
+     "share": 0.0234
+    },
+    {
+     "label": "fourties",
+     "share": 0.001
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": [
+    {
+     "label": "ha-kanawa",
+     "share": 0.9537,
+     "name": "Hausar kanawa"
+    },
+    {
+     "label": "ha-bauchi",
+     "share": 0.0463,
+     "name": "Hausar Bauchi"
+    }
+   ]
+  },
+  "he": {
+   "name": "Hebrew",
+   "autonym": "עברית",
+   "family": "semitic",
+   "region": "asia-west",
+   "script": "hebrew",
+   "prominence": 2,
+   "hours": 7.2,
+   "validHours": 5.3,
+   "clips": 5654,
+   "validated": 4189,
+   "users": 60,
+   "avgDurationSecs": 4.596,
+   "sps": false,
+   "open": true,
+   "speakers": 60,
+   "sentences": 4256,
+   "liveValidHours": 3.6,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.8845,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0398,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.0757,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.6954
+    },
+    {
+     "label": "thirties",
+     "share": 0.1758
+    },
+    {
+     "label": "",
+     "share": 0.0686
+    },
+    {
+     "label": "eighties",
+     "share": 0.0345
+    },
+    {
+     "label": "fourties",
+     "share": 0.023
+    },
+    {
+     "label": "teens",
+     "share": 0.0027
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "mrj": {
+   "name": "Hill Mari",
+   "autonym": "кырык мары",
+   "family": "uralic",
+   "region": "europe-east",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 36.9,
+   "validHours": 33.7,
+   "clips": 31693,
+   "validated": 28973,
+   "users": 60,
+   "avgDurationSecs": 4.193,
+   "sps": false,
+   "open": true,
+   "speakers": 60,
+   "sentences": 54143,
+   "liveValidHours": 34,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.2516,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.6213,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.1271,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.3524
+    },
+    {
+     "label": "thirties",
+     "share": 0.2234
+    },
+    {
+     "label": "fourties",
+     "share": 0.1211
+    },
+    {
+     "label": "fifties",
+     "share": 0.1133
+    },
+    {
+     "label": "",
+     "share": 0.0955
+    },
+    {
+     "label": "teens",
+     "share": 0.059
+    },
+    {
+     "label": "sixties",
+     "share": 0.0353
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "hi": {
+   "name": "Hindi",
+   "autonym": "हिन्दी",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "devanagari",
+   "prominence": 3,
+   "hours": 26.7,
+   "validHours": 15.7,
+   "clips": 19061,
+   "validated": 11203,
+   "users": 485,
+   "avgDurationSecs": 5.051,
+   "sps": false,
+   "open": true,
+   "speakers": 487,
+   "sentences": 30247,
+   "liveValidHours": 16,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.4992,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.03,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.4709,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.319
+    },
+    {
+     "label": "",
+     "share": 0.288
+    },
+    {
+     "label": "twenties",
+     "share": 0.2744
+    },
+    {
+     "label": "fourties",
+     "share": 0.0904
+    },
+    {
+     "label": "fifties",
+     "share": 0.0134
+    },
+    {
+     "label": "teens",
+     "share": 0.0097
+    },
+    {
+     "label": "sixties",
+     "share": 0.0052
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "var": {
+   "name": "Huarijio",
+   "autonym": "",
+   "family": "uto-aztecan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.8,
+   "validHours": 10.1,
+   "clips": 8006,
+   "validated": 6851,
+   "users": 12,
+   "avgDurationSecs": 5.307,
+   "sps": false,
+   "open": true,
+   "speakers": 12,
+   "sentences": 1977,
+   "liveValidHours": 10,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.9445,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.0555,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.5741
+    },
+    {
+     "label": "twenties",
+     "share": 0.2889
+    },
+    {
+     "label": "teens",
+     "share": 0.136
+    },
+    {
+     "label": "",
+     "share": 0.0006
+    },
+    {
+     "label": "fourties",
+     "share": 0.0004
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": [
+    {
+     "label": "var-delrio",
+     "share": 0.9309,
+     "name": "Makurawe (Guarijío del río)"
+    },
+    {
+     "label": "var-sierra",
+     "share": 0.0691,
+     "name": "Warihío (Guarijío de la sierra)"
+    }
+   ]
+  },
+  "hu": {
+   "name": "Hungarian",
+   "autonym": "magyar",
+   "family": "uralic",
+   "region": "europe-east",
+   "script": "latin",
+   "prominence": 2,
+   "hours": 181,
+   "validHours": 139.1,
+   "clips": 117618,
+   "validated": 90347,
+   "users": 1683,
+   "avgDurationSecs": 5.541,
+   "sps": false,
+   "open": true,
+   "speakers": 1699,
+   "sentences": 326553,
+   "liveValidHours": 139,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.2343,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.4648,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.301,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fifties",
+     "share": 0.3226
+    },
+    {
+     "label": "",
+     "share": 0.2783
+    },
+    {
+     "label": "thirties",
+     "share": 0.1258
+    },
+    {
+     "label": "fourties",
+     "share": 0.1129
+    },
+    {
+     "label": "twenties",
+     "share": 0.1113
+    },
+    {
+     "label": "teens",
+     "share": 0.0203
+    },
+    {
+     "label": "sixties",
+     "share": 0.0144
+    },
+    {
+     "label": "seventies",
+     "share": 0.0139
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "ibb": {
+   "name": "Ibibio",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 18.2,
+   "validHours": 7.8,
+   "clips": 7274,
+   "validated": 3106,
+   "users": 19,
+   "avgDurationSecs": 9.002,
+   "sps": false,
+   "open": true,
+   "speakers": 19,
+   "sentences": 1031,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.028,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.972,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.9887
+    },
+    {
+     "label": "thirties",
+     "share": 0.0113
     }
    ],
    "accents": [
@@ -1872,126 +8396,33 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "af": {
-   "name": "Afrikaans",
-   "autonym": "Afrikaans",
-   "family": "germanic",
-   "region": "africa-south",
-   "script": "latin",
-   "prominence": 2,
-   "hours": 1.7,
-   "validHours": 0.8,
-   "clips": 1011,
-   "validated": 480,
-   "users": 70,
-   "avgDurationSecs": 6.123,
-   "sps": false,
-   "open": true,
-   "speakers": 70,
-   "sentences": 4826,
-   "liveValidHours": 1,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.3086,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.2156,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.4758,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.3215
-    },
-    {
-     "label": "twenties",
-     "share": 0.3017
-    },
-    {
-     "label": "fourties",
-     "share": 0.2235
-    },
-    {
-     "label": "fifties",
-     "share": 0.1405
-    },
-    {
-     "label": "teens",
-     "share": 0.0049
-    },
-    {
-     "label": "seventies",
-     "share": 0.0049
-    },
-    {
-     "label": "thirties",
-     "share": 0.003
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "fy-NL": {
-   "name": "Frisian",
-   "autonym": "Frysk",
-   "family": "germanic",
-   "region": "europe-west",
+  "ig": {
+   "name": "Igbo",
+   "autonym": "Asụsụ Igbo",
+   "family": "niger-congo",
+   "region": "africa-west",
    "script": "latin",
    "prominence": 1,
-   "hours": 215.4,
-   "validHours": 71.7,
-   "clips": 159767,
-   "validated": 53214,
-   "users": 2106,
-   "avgDurationSecs": 4.853,
-   "sps": true,
+   "hours": 19.1,
+   "validHours": 2.9,
+   "clips": 12633,
+   "validated": 1895,
+   "users": 188,
+   "avgDurationSecs": 5.43,
+   "sps": false,
    "open": true,
-   "speakers": 2126,
-   "sentences": 10869,
-   "liveValidHours": 67,
+   "speakers": 194,
+   "sentences": 15468,
+   "liveValidHours": 2.6,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.1289,
+     "share": 0.0634,
      "none": false
     },
     {
      "label": "female_feminine",
-     "share": 0.3036,
+     "share": 0.5575,
      "none": false
     },
     {
@@ -2016,155 +8447,42 @@ window.CV_DATA = {
     },
     {
      "label": "",
-     "share": 0.5675,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.5612
-    },
-    {
-     "label": "sixties",
-     "share": 0.1229
-    },
-    {
-     "label": "fifties",
-     "share": 0.1022
-    },
-    {
-     "label": "thirties",
-     "share": 0.1022
-    },
-    {
-     "label": "fourties",
-     "share": 0.0668
-    },
-    {
-     "label": "twenties",
-     "share": 0.0361
-    },
-    {
-     "label": "seventies",
-     "share": 0.0041
-    },
-    {
-     "label": "teens",
-     "share": 0.0033
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 0.8079
-    },
-    {
-     "label": "fy-clayfr",
-     "share": 0.134,
-     "name": "Klaaifrysk"
-    },
-    {
-     "label": "fy-woodfr",
-     "share": 0.0438,
-     "name": "Wâldfrysk"
-    },
-    {
-     "label": "fy-north",
-     "share": 0.0115,
-     "name": "Noardhoeksk"
-    },
-    {
-     "label": "fy-south-southwest",
-     "share": 0.0028,
-     "name": "Súdwesthoeksk"
-    }
-   ],
-   "variants": []
-  },
-  "ru": {
-   "name": "Russian",
-   "autonym": "русский",
-   "family": "slavic",
-   "region": "europe-east",
-   "script": "cyrillic",
-   "prominence": 3,
-   "hours": 293.1,
-   "validHours": 256.8,
-   "clips": 203534,
-   "validated": 178296,
-   "users": 3767,
-   "avgDurationSecs": 5.185,
-   "sps": true,
-   "open": true,
-   "speakers": 3786,
-   "sentences": 48007,
-   "liveValidHours": 258,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.5911,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.148,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0.0002,
-     "none": false
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0.0004,
-     "none": false
-    },
-    {
-     "label": "",
-     "share": 0.2603,
+     "share": 0.3791,
      "none": false
     }
    ],
    "age": [
     {
      "label": "twenties",
-     "share": 0.3245
+     "share": 0.3967
     },
     {
      "label": "",
-     "share": 0.2376
+     "share": 0.2745
     },
     {
      "label": "thirties",
-     "share": 0.1805
-    },
-    {
-     "label": "fourties",
-     "share": 0.1327
+     "share": 0.2038
     },
     {
      "label": "teens",
-     "share": 0.0933
-    },
-    {
-     "label": "fifties",
-     "share": 0.0293
+     "share": 0.1025
     },
     {
      "label": "sixties",
-     "share": 0.0021
+     "share": 0.0107
+    },
+    {
+     "label": "fourties",
+     "share": 0.0095
+    },
+    {
+     "label": "eighties",
+     "share": 0.002
+    },
+    {
+     "label": "fifties",
+     "share": 0.0004
     }
    ],
    "accents": [
@@ -2175,93 +8493,85 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "pl": {
-   "name": "Polish",
-   "autonym": "polski",
-   "family": "slavic",
-   "region": "europe-east",
+  "id": {
+   "name": "Indonesian",
+   "autonym": "bahasa Indonesia",
+   "family": "austronesian",
+   "region": "asia-southeast",
    "script": "latin",
-   "prominence": 3,
-   "hours": 189,
-   "validHours": 177,
-   "clips": 148796,
-   "validated": 139352,
-   "users": 3477,
-   "avgDurationSecs": 4.573,
+   "prominence": 2,
+   "hours": 67.5,
+   "validHours": 34.3,
+   "clips": 60923,
+   "validated": 30901,
+   "users": 678,
+   "avgDurationSecs": 3.991,
    "sps": false,
    "open": true,
-   "speakers": 3482,
-   "sentences": 229767,
-   "liveValidHours": 177,
+   "speakers": 683,
+   "sentences": 7021,
+   "liveValidHours": 34,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.5804,
+     "share": 0.4337,
      "none": false
     },
     {
      "label": "female_feminine",
-     "share": 0.1363,
+     "share": 0.2576,
      "none": false
     },
     {
      "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
      "share": 0.0001,
      "none": false
     },
     {
-     "label": "non-binary",
-     "share": 0.001,
+     "label": "do_not_wish_to_say",
+     "share": 0.0002,
      "none": false
     },
     {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
      "label": "",
-     "share": 0.2822,
+     "share": 0.3085,
      "none": false
     }
    ],
    "age": [
     {
-     "label": "thirties",
-     "share": 0.3437
-    },
-    {
      "label": "twenties",
-     "share": 0.2699
+     "share": 0.4154
     },
     {
      "label": "",
-     "share": 0.2428
-    },
-    {
-     "label": "fourties",
-     "share": 0.1111
+     "share": 0.252
     },
     {
      "label": "teens",
-     "share": 0.02
+     "share": 0.2102
+    },
+    {
+     "label": "thirties",
+     "share": 0.1014
+    },
+    {
+     "label": "fourties",
+     "share": 0.0172
     },
     {
      "label": "fifties",
-     "share": 0.0062
-    },
-    {
-     "label": "nineties",
-     "share": 0.0053
-    },
-    {
-     "label": "sixties",
-     "share": 0.001
+     "share": 0.0038
     }
    ],
    "accents": [
@@ -2272,33 +8582,33 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "uk": {
-   "name": "Ukrainian",
-   "autonym": "українська",
-   "family": "slavic",
-   "region": "europe-east",
-   "script": "cyrillic",
-   "prominence": 2,
-   "hours": 121.4,
-   "validHours": 108.8,
-   "clips": 94158,
-   "validated": 84371,
-   "users": 1181,
-   "avgDurationSecs": 4.641,
+  "mvy": {
+   "name": "Indus Kohistani",
+   "autonym": "",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 24.6,
+   "validHours": 22.1,
+   "clips": 18485,
+   "validated": 16612,
+   "users": 57,
+   "avgDurationSecs": 4.791,
    "sps": false,
    "open": true,
-   "speakers": 1185,
-   "sentences": 209229,
-   "liveValidHours": 110,
+   "speakers": 57,
+   "sentences": 6635,
+   "liveValidHours": 23,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.5598,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "female_feminine",
-     "share": 0.1692,
+     "share": 0.0011,
      "none": false
     },
     {
@@ -2323,38 +8633,34 @@ window.CV_DATA = {
     },
     {
      "label": "",
-     "share": 0.271,
+     "share": 0.9989,
      "none": false
     }
    ],
    "age": [
     {
-     "label": "twenties",
-     "share": 0.3199
-    },
-    {
      "label": "thirties",
-     "share": 0.2412
+     "share": 0.4715
     },
     {
-     "label": "",
-     "share": 0.2212
-    },
-    {
-     "label": "teens",
-     "share": 0.1234
+     "label": "twenties",
+     "share": 0.395
     },
     {
      "label": "fourties",
-     "share": 0.0896
+     "share": 0.059
+    },
+    {
+     "label": "",
+     "share": 0.0393
     },
     {
      "label": "fifties",
-     "share": 0.0044
+     "share": 0.0317
     },
     {
-     "label": "sixties",
-     "share": 0.0003
+     "label": "teens",
+     "share": 0.0035
     }
    ],
    "accents": [
@@ -2365,33 +8671,33 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "cs": {
-   "name": "Czech",
-   "autonym": "čeština",
-   "family": "slavic",
-   "region": "europe-east",
+  "ia": {
+   "name": "Interlingua",
+   "autonym": "interlingua",
+   "family": "constructed",
+   "region": "constructed",
    "script": "latin",
-   "prominence": 2,
-   "hours": 269.2,
-   "validHours": 81.6,
-   "clips": 217230,
-   "validated": 65867,
-   "users": 1146,
-   "avgDurationSecs": 4.461,
+   "prominence": 1,
+   "hours": 17.3,
+   "validHours": 14.3,
+   "clips": 14783,
+   "validated": 12234,
+   "users": 72,
+   "avgDurationSecs": 4.204,
    "sps": false,
    "open": true,
-   "speakers": 1152,
-   "sentences": 451348,
-   "liveValidHours": 76,
+   "speakers": 72,
+   "sentences": 9069,
+   "liveValidHours": 15,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.5335,
+     "share": 0.611,
      "none": false
     },
     {
      "label": "female_feminine",
-     "share": 0.2185,
+     "share": 0.005,
      "none": false
     },
     {
@@ -2411,952 +8717,53 @@ window.CV_DATA = {
     },
     {
      "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
+     "share": 0.0001,
+     "none": false
     },
     {
      "label": "",
-     "share": 0.248,
+     "share": 0.3839,
      "none": false
     }
    ],
    "age": [
     {
-     "label": "thirties",
-     "share": 0.4662
-    },
-    {
      "label": "",
-     "share": 0.238
-    },
-    {
-     "label": "twenties",
-     "share": 0.1863
+     "share": 0.3839
     },
     {
      "label": "fourties",
-     "share": 0.0706
+     "share": 0.2934
     },
     {
-     "label": "teens",
-     "share": 0.025
+     "label": "seventies",
+     "share": 0.2237
+    },
+    {
+     "label": "twenties",
+     "share": 0.0475
     },
     {
      "label": "fifties",
-     "share": 0.0124
+     "share": 0.0284
+    },
+    {
+     "label": "thirties",
+     "share": 0.0193
+    },
+    {
+     "label": "teens",
+     "share": 0.0024
     },
     {
      "label": "sixties",
      "share": 0.0014
-    },
-    {
-     "label": "seventies",
-     "share": 0.0001
     }
    ],
    "accents": [
     {
      "label": "",
      "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "sk": {
-   "name": "Slovak",
-   "autonym": "slovenčina",
-   "family": "slavic",
-   "region": "europe-east",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 58.4,
-   "validHours": 56.8,
-   "clips": 48883,
-   "validated": 47621,
-   "users": 274,
-   "avgDurationSecs": 4.297,
-   "sps": false,
-   "open": true,
-   "speakers": 274,
-   "sentences": 22255,
-   "liveValidHours": 57,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.3359,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.035,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.6291,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "fifties",
-     "share": 0.3831
-    },
-    {
-     "label": "",
-     "share": 0.217
-    },
-    {
-     "label": "thirties",
-     "share": 0.1701
-    },
-    {
-     "label": "fourties",
-     "share": 0.1216
-    },
-    {
-     "label": "twenties",
-     "share": 0.0625
-    },
-    {
-     "label": "teens",
-     "share": 0.0458
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "bg": {
-   "name": "Bulgarian",
-   "autonym": "български",
-   "family": "slavic",
-   "region": "europe-east",
-   "script": "cyrillic",
-   "prominence": 2,
-   "hours": 21.7,
-   "validHours": 17.7,
-   "clips": 14306,
-   "validated": 11619,
-   "users": 155,
-   "avgDurationSecs": 5.472,
-   "sps": false,
-   "open": true,
-   "speakers": 155,
-   "sentences": 39572,
-   "liveValidHours": 17,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.5645,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.045,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.3905,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.3712
-    },
-    {
-     "label": "thirties",
-     "share": 0.2712
-    },
-    {
-     "label": "fourties",
-     "share": 0.2244
-    },
-    {
-     "label": "twenties",
-     "share": 0.107
-    },
-    {
-     "label": "sixties",
-     "share": 0.0164
-    },
-    {
-     "label": "fifties",
-     "share": 0.0052
-    },
-    {
-     "label": "teens",
-     "share": 0.0045
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "sr": {
-   "name": "Serbian",
-   "autonym": "српски",
-   "family": "slavic",
-   "region": "europe-east",
-   "script": "cyrillic",
-   "prominence": 1,
-   "hours": 12.8,
-   "validHours": 7.6,
-   "clips": 14079,
-   "validated": 8425,
-   "users": 187,
-   "avgDurationSecs": 3.263,
-   "sps": false,
-   "open": true,
-   "speakers": 190,
-   "sentences": 8209,
-   "liveValidHours": 7.7,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.319,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.1467,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.5343,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.2617
-    },
-    {
-     "label": "sixties",
-     "share": 0.2507
-    },
-    {
-     "label": "",
-     "share": 0.1421
-    },
-    {
-     "label": "fifties",
-     "share": 0.1263
-    },
-    {
-     "label": "thirties",
-     "share": 0.1189
-    },
-    {
-     "label": "fourties",
-     "share": 0.0997
-    },
-    {
-     "label": "teens",
-     "share": 0.0007
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "sl": {
-   "name": "Slovenian",
-   "autonym": "slovenščina",
-   "family": "slavic",
-   "region": "europe-east",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 21.7,
-   "validHours": 17.4,
-   "clips": 19569,
-   "validated": 15679,
-   "users": 1006,
-   "avgDurationSecs": 3.986,
-   "sps": false,
-   "open": true,
-   "speakers": 1008,
-   "sentences": 4165,
-   "liveValidHours": 18,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.5179,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.0957,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.3864,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.3716
-    },
-    {
-     "label": "twenties",
-     "share": 0.3073
-    },
-    {
-     "label": "fourties",
-     "share": 0.1472
-    },
-    {
-     "label": "teens",
-     "share": 0.05
-    },
-    {
-     "label": "fifties",
-     "share": 0.0484
-    },
-    {
-     "label": "sixties",
-     "share": 0.0429
-    },
-    {
-     "label": "thirties",
-     "share": 0.0318
-    },
-    {
-     "label": "seventies",
-     "share": 0.0008
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "be": {
-   "name": "Belarusian",
-   "autonym": "беларуская",
-   "family": "slavic",
-   "region": "europe-east",
-   "script": "cyrillic",
-   "prominence": 1,
-   "hours": 1894.9,
-   "validHours": 1818.9,
-   "clips": 1422808,
-   "validated": 1365759,
-   "users": 8624,
-   "avgDurationSecs": 4.795,
-   "sps": false,
-   "open": true,
-   "speakers": 8644,
-   "sentences": 379189,
-   "liveValidHours": 1823,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.0573,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.0717,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.871,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.8745
-    },
-    {
-     "label": "thirties",
-     "share": 0.0435
-    },
-    {
-     "label": "fourties",
-     "share": 0.0383
-    },
-    {
-     "label": "twenties",
-     "share": 0.0343
-    },
-    {
-     "label": "teens",
-     "share": 0.0075
-    },
-    {
-     "label": "fifties",
-     "share": 0.0009
-    },
-    {
-     "label": "sixties",
-     "share": 0.0009
-    },
-    {
-     "label": "seventies",
-     "share": 0.0001
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "mk": {
-   "name": "Macedonian",
-   "autonym": "македонски",
-   "family": "slavic",
-   "region": "europe-east",
-   "script": "cyrillic",
-   "prominence": 1,
-   "hours": 55,
-   "validHours": 26.2,
-   "clips": 41232,
-   "validated": 19645,
-   "users": 469,
-   "avgDurationSecs": 4.807,
-   "sps": false,
-   "open": true,
-   "speakers": 473,
-   "sentences": 6123,
-   "liveValidHours": 25,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.2746,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.3871,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0.0008,
-     "none": false
-    },
-    {
-     "label": "",
-     "share": 0.3375,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.3577
-    },
-    {
-     "label": "thirties",
-     "share": 0.265
-    },
-    {
-     "label": "fourties",
-     "share": 0.1968
-    },
-    {
-     "label": "",
-     "share": 0.1051
-    },
-    {
-     "label": "sixties",
-     "share": 0.0303
-    },
-    {
-     "label": "teens",
-     "share": 0.0255
-    },
-    {
-     "label": "fifties",
-     "share": 0.0196
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "hsb": {
-   "name": "Upper Sorbian",
-   "autonym": "hornjoserbšćina",
-   "family": "slavic",
-   "region": "europe-east",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 15.1,
-   "validHours": 4.5,
-   "clips": 6994,
-   "validated": 2066,
-   "users": 41,
-   "avgDurationSecs": 7.769,
-   "sps": false,
-   "open": true,
-   "speakers": 41,
-   "sentences": 7281,
-   "liveValidHours": 4.8,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.2138,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.2066,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.5796,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.5209
-    },
-    {
-     "label": "teens",
-     "share": 0.2348
-    },
-    {
-     "label": "fourties",
-     "share": 0.1573
-    },
-    {
-     "label": "twenties",
-     "share": 0.0287
-    },
-    {
-     "label": "thirties",
-     "share": 0.025
-    },
-    {
-     "label": "fifties",
-     "share": 0.0197
-    },
-    {
-     "label": "seventies",
-     "share": 0.0079
-    },
-    {
-     "label": "sixties",
-     "share": 0.0057
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "cy": {
-   "name": "Welsh",
-   "autonym": "Cymraeg",
-   "family": "celtic",
-   "region": "europe-west",
-   "script": "latin",
-   "prominence": 2,
-   "hours": 158.7,
-   "validHours": 124.2,
-   "clips": 116163,
-   "validated": 90894,
-   "users": 1938,
-   "avgDurationSecs": 4.918,
-   "sps": true,
-   "open": true,
-   "speakers": 1943,
-   "sentences": 117973,
-   "liveValidHours": 124,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.3259,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.2452,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0.0009,
-     "none": false
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.428,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.4252
-    },
-    {
-     "label": "fourties",
-     "share": 0.1569
-    },
-    {
-     "label": "twenties",
-     "share": 0.1304
-    },
-    {
-     "label": "thirties",
-     "share": 0.0932
-    },
-    {
-     "label": "fifties",
-     "share": 0.0908
-    },
-    {
-     "label": "sixties",
-     "share": 0.0683
-    },
-    {
-     "label": "teens",
-     "share": 0.0236
-    },
-    {
-     "label": "seventies",
-     "share": 0.0087
-    }
-   ],
-   "accents": [
-    {
-     "label": "united_kingdom",
-     "share": 0.9424
-    },
-    {
-     "label": "",
-     "share": 0.0576
-    }
-   ],
-   "variants": [
-    {
-     "label": "cy-northeas",
-     "share": 0.4271,
-     "name": "North-Eastern Welsh"
-    },
-    {
-     "label": "cy-southeas",
-     "share": 0.1888,
-     "name": "South-Eastern Welsh"
-    },
-    {
-     "label": "cy-midwales",
-     "share": 0.1588,
-     "name": "Mid Wales"
-    },
-    {
-     "label": "cy-northwes",
-     "share": 0.1358,
-     "name": "North-Western Welsh"
-    },
-    {
-     "label": "cy-southwes",
-     "share": 0.0895,
-     "name": "South-Western Welsh"
-    }
-   ]
-  },
-  "br": {
-   "name": "Breton",
-   "autonym": "brezhoneg",
-   "family": "celtic",
-   "region": "europe-west",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 37.7,
-   "validHours": 35.4,
-   "clips": 41010,
-   "validated": 38541,
-   "users": 299,
-   "avgDurationSecs": 3.308,
-   "sps": true,
-   "open": true,
-   "speakers": 303,
-   "sentences": 46444,
-   "liveValidHours": 36,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.5171,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.0566,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.4263,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.2529
-    },
-    {
-     "label": "",
-     "share": 0.2335
-    },
-    {
-     "label": "thirties",
-     "share": 0.2155
-    },
-    {
-     "label": "sixties",
-     "share": 0.1157
-    },
-    {
-     "label": "fifties",
-     "share": 0.0696
-    },
-    {
-     "label": "seventies",
-     "share": 0.0533
-    },
-    {
-     "label": "fourties",
-     "share": 0.0527
-    },
-    {
-     "label": "teens",
-     "share": 0.0068
-    }
-   ],
-   "accents": [
-    {
-     "label": "kerneveg",
-     "share": 0.4969
-    },
-    {
-     "label": "gwenedeg",
-     "share": 0.3454
-    },
-    {
-     "label": "leoneg",
-     "share": 0.1328
-    },
-    {
-     "label": "tregerieg",
-     "share": 0.0143
-    },
-    {
-     "label": "",
-     "share": 0.0106
     }
    ],
    "variants": []
@@ -3500,33 +8907,33 @@ window.CV_DATA = {
     }
    ]
   },
-  "fi": {
-   "name": "Finnish",
-   "autonym": "suomi",
-   "family": "uralic",
-   "region": "europe-north",
+  "it": {
+   "name": "Italian",
+   "autonym": "italiano",
+   "family": "romance",
+   "region": "europe-west",
    "script": "latin",
-   "prominence": 2,
-   "hours": 23.2,
-   "validHours": 15.8,
-   "clips": 18019,
-   "validated": 12310,
-   "users": 253,
-   "avgDurationSecs": 4.635,
+   "prominence": 3,
+   "hours": 430.5,
+   "validHours": 363.9,
+   "clips": 284667,
+   "validated": 240628,
+   "users": 7350,
+   "avgDurationSecs": 5.444,
    "sps": false,
    "open": true,
-   "speakers": 254,
-   "sentences": 5865,
-   "liveValidHours": 15,
+   "speakers": 7383,
+   "sentences": 920325,
+   "liveValidHours": 366,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.355,
+     "share": 0.6226,
      "none": false
     },
     {
      "label": "female_feminine",
-     "share": 0.298,
+     "share": 0.1004,
      "none": false
     },
     {
@@ -3546,47 +8953,47 @@ window.CV_DATA = {
     },
     {
      "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
+     "share": 0.0003,
+     "none": false
     },
     {
      "label": "",
-     "share": 0.3471,
+     "share": 0.2767,
      "none": false
     }
    ],
    "age": [
     {
      "label": "",
-     "share": 0.325
-    },
-    {
-     "label": "fourties",
-     "share": 0.2979
-    },
-    {
-     "label": "thirties",
-     "share": 0.1707
+     "share": 0.2699
     },
     {
      "label": "twenties",
-     "share": 0.1644
+     "share": 0.1962
+    },
+    {
+     "label": "thirties",
+     "share": 0.1558
     },
     {
      "label": "fifties",
-     "share": 0.0307
+     "share": 0.1386
+    },
+    {
+     "label": "fourties",
+     "share": 0.1218
     },
     {
      "label": "sixties",
-     "share": 0.0055
+     "share": 0.1047
     },
     {
      "label": "teens",
-     "share": 0.0052
+     "share": 0.0093
     },
     {
      "label": "seventies",
-     "share": 0.0006
+     "share": 0.0037
     }
    ],
    "accents": [
@@ -3597,33 +9004,130 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "et": {
-   "name": "Estonian",
-   "autonym": "eesti",
-   "family": "uralic",
-   "region": "europe-north",
+  "ja": {
+   "name": "Japanese",
+   "autonym": "日本語",
+   "family": "japonic",
+   "region": "asia-east",
+   "script": "japanese",
+   "prominence": 3,
+   "hours": 726.2,
+   "validHours": 372.6,
+   "clips": 585330,
+   "validated": 300315,
+   "users": 7852,
+   "avgDurationSecs": 4.467,
+   "sps": false,
+   "open": true,
+   "speakers": 7894,
+   "sentences": 36630,
+   "liveValidHours": 382,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.2683,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3901,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0.0003,
+     "none": false
+    },
+    {
+     "label": "non-binary",
+     "share": 0.0002,
+     "none": false
+    },
+    {
+     "label": "intersex",
+     "share": 0.0002,
+     "none": false
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0088,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.3321,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.5451
+    },
+    {
+     "label": "",
+     "share": 0.1674
+    },
+    {
+     "label": "fourties",
+     "share": 0.0831
+    },
+    {
+     "label": "teens",
+     "share": 0.0816
+    },
+    {
+     "label": "thirties",
+     "share": 0.0692
+    },
+    {
+     "label": "fifties",
+     "share": 0.0431
+    },
+    {
+     "label": "sixties",
+     "share": 0.0093
+    },
+    {
+     "label": "seventies",
+     "share": 0.001
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "jqr": {
+   "name": "Jaqaru",
+   "autonym": "",
+   "family": "aymaran",
+   "region": "americas",
    "script": "latin",
    "prominence": 1,
-   "hours": 69.4,
-   "validHours": 53,
-   "clips": 37180,
-   "validated": 28375,
-   "users": 1127,
-   "avgDurationSecs": 6.72,
+   "hours": 10.2,
+   "validHours": 9.9,
+   "clips": 6254,
+   "validated": 6060,
+   "users": 12,
+   "avgDurationSecs": 5.898,
    "sps": false,
    "open": true,
-   "speakers": 1127,
-   "sentences": 10874,
-   "liveValidHours": 63,
+   "speakers": 12,
+   "sentences": 999,
+   "liveValidHours": 10,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.4782,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "female_feminine",
-     "share": 0.2606,
+     "share": 0.5154,
      "none": false
     },
     {
@@ -3643,43 +9147,439 @@ window.CV_DATA = {
     },
     {
      "label": "do_not_wish_to_say",
-     "share": 0.0019,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "",
-     "share": 0.2593,
+     "share": 0.4846,
      "none": false
     }
    ],
    "age": [
     {
-     "label": "twenties",
-     "share": 0.7063
+     "label": "fourties",
+     "share": 0.6015
     },
     {
      "label": "",
-     "share": 0.1733
-    },
-    {
-     "label": "thirties",
-     "share": 0.0773
-    },
-    {
-     "label": "fourties",
-     "share": 0.0362
+     "share": 0.2283
     },
     {
      "label": "fifties",
-     "share": 0.0052
+     "share": 0.1581
+    },
+    {
+     "label": "sixties",
+     "share": 0.012
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "kbd": {
+   "name": "Kabardian",
+   "autonym": "адыгэбзэ",
+   "family": "northwest-caucasian",
+   "region": "asia-west",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 305.1,
+   "validHours": 276.4,
+   "clips": 175830,
+   "validated": 159285,
+   "users": 385,
+   "avgDurationSecs": 6.247,
+   "sps": true,
+   "open": true,
+   "speakers": 394,
+   "sentences": 31824,
+   "liveValidHours": 277,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0031,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.4298,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0002,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.5669,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.2545
+    },
+    {
+     "label": "fifties",
+     "share": 0.2367
+    },
+    {
+     "label": "twenties",
+     "share": 0.2363
+    },
+    {
+     "label": "",
+     "share": 0.1347
+    },
+    {
+     "label": "fourties",
+     "share": 0.0918
     },
     {
      "label": "teens",
-     "share": 0.0011
+     "share": 0.0306
     },
     {
-     "label": "seventies",
-     "share": 0.0006
+     "label": "sixties",
+     "share": 0.0154
+    },
+    {
+     "label": "nineties",
+     "share": 0.0001
+    }
+   ],
+   "accents": [
+    {
+     "label": "bakhsan",
+     "share": 0.4278,
+     "name": "Бахъсэн (Baksan)"
+    },
+    {
+     "label": "terek",
+     "share": 0.3717,
+     "name": "Джылэхъстэней (Gilahsteney)"
+    },
+    {
+     "label": "kuban_zelenchuk",
+     "share": 0.0629,
+     "name": "Псыжь-инжыдж (Karaçay-Çerkes)"
+    },
+    {
+     "label": "besleney",
+     "share": 0.0457,
+     "name": "Беслъэней (Besleney)"
+    },
+    {
+     "label": "",
+     "share": 0.0324
+    },
+    {
+     "label": "malka",
+     "share": 0.0273,
+     "name": "Малкэ (Malka)"
+    },
+    {
+     "label": "kuban",
+     "share": 0.0221,
+     "name": "Псыжь (Adıgey)"
+    },
+    {
+     "label": "mozdok",
+     "share": 0.01,
+     "name": "Мэздэгу (Mozdok)"
+    }
+   ],
+   "variants": [
+    {
+     "label": "kbd-Cyrl",
+     "share": 0.8654,
+     "name": "Адыгэбзэ (Къэбэрдей, Кирил, псоми зэдай)"
+    },
+    {
+     "label": "kbd-RU",
+     "share": 0.1179,
+     "name": "Адыгэбзэ (Къэбэрдей, Кирил, Урысей)"
+    },
+    {
+     "label": "kbd-Cyrl-TR",
+     "share": 0.015,
+     "name": "Адыгэбзэ (Къэбэрдей, Кирил, Тырку - Doğu Çerkesçesi)"
+    },
+    {
+     "label": "kbd-Cyrl-JOR",
+     "share": 0.0018,
+     "name": "Адыгэбзэ (Къэбэрдей, Кирил, Иордание)"
+    }
+   ]
+  },
+  "kab": {
+   "name": "Kabyle",
+   "autonym": "Taqbaylit",
+   "family": "berber",
+   "region": "africa-north",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 694.6,
+   "validHours": 571.7,
+   "clips": 747922,
+   "validated": 615587,
+   "users": 1608,
+   "avgDurationSecs": 3.344,
+   "sps": false,
+   "open": true,
+   "speakers": 1618,
+   "sentences": 181352,
+   "liveValidHours": 572,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.532,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2031,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2649,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.2909
+    },
+    {
+     "label": "",
+     "share": 0.2774
+    },
+    {
+     "label": "fifties",
+     "share": 0.1846
+    },
+    {
+     "label": "twenties",
+     "share": 0.1243
+    },
+    {
+     "label": "fourties",
+     "share": 0.0921
+    },
+    {
+     "label": "sixties",
+     "share": 0.0255
+    },
+    {
+     "label": "teens",
+     "share": 0.0021
+    },
+    {
+     "label": "eighties",
+     "share": 0.0019
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": [
+    {
+     "label": "kab-east",
+     "share": 1,
+     "name": "Taqbaylit n Usammar"
+    }
+   ]
+  },
+  "gjk": {
+   "name": "Kachhi",
+   "autonym": "",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 11,
+   "validHours": 10.8,
+   "clips": 8724,
+   "validated": 8548,
+   "users": 23,
+   "avgDurationSecs": 4.528,
+   "sps": false,
+   "open": true,
+   "speakers": 23,
+   "sentences": 2004,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2647,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.7353,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.5888
+    },
+    {
+     "label": "fourties",
+     "share": 0.2309
+    },
+    {
+     "label": "twenties",
+     "share": 0.1206
+    },
+    {
+     "label": "teens",
+     "share": 0.035
+    },
+    {
+     "label": "",
+     "share": 0.0248
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "kls": {
+   "name": "Kalasha",
+   "autonym": "",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.2,
+   "validHours": 10.1,
+   "clips": 9927,
+   "validated": 9783,
+   "users": 23,
+   "avgDurationSecs": 3.699,
+   "sps": false,
+   "open": true,
+   "speakers": 23,
+   "sentences": 3912,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.6404
+    },
+    {
+     "label": "fourties",
+     "share": 0.2982
+    },
+    {
+     "label": "twenties",
+     "share": 0.0614
     }
    ],
    "accents": [
@@ -3690,33 +9590,33 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "hu": {
-   "name": "Hungarian",
-   "autonym": "magyar",
-   "family": "uralic",
-   "region": "europe-east",
+  "kln": {
+   "name": "Kalenjin",
+   "autonym": "",
+   "family": "nilotic",
+   "region": "africa-east",
    "script": "latin",
-   "prominence": 2,
-   "hours": 181,
-   "validHours": 139.1,
-   "clips": 117618,
-   "validated": 90347,
-   "users": 1683,
-   "avgDurationSecs": 5.541,
+   "prominence": 1,
+   "hours": 88.1,
+   "validHours": 40.6,
+   "clips": 70042,
+   "validated": 32315,
+   "users": 41,
+   "avgDurationSecs": 4.53,
    "sps": false,
    "open": true,
-   "speakers": 1699,
-   "sentences": 326553,
-   "liveValidHours": 139,
+   "speakers": 41,
+   "sentences": 29900,
+   "liveValidHours": 43,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.2343,
+     "share": 0.0276,
      "none": false
     },
     {
      "label": "female_feminine",
-     "share": 0.4648,
+     "share": 0.7024,
      "none": false
     },
     {
@@ -3741,139 +9641,1220 @@ window.CV_DATA = {
     },
     {
      "label": "",
-     "share": 0.301,
+     "share": 0.27,
      "none": false
     }
    ],
    "age": [
     {
-     "label": "fifties",
-     "share": 0.3226
-    },
-    {
-     "label": "",
-     "share": 0.2783
-    },
-    {
-     "label": "thirties",
-     "share": 0.1258
+     "label": "twenties",
+     "share": 0.5924
     },
     {
      "label": "fourties",
-     "share": 0.1129
+     "share": 0.2913
     },
     {
-     "label": "twenties",
-     "share": 0.1113
+     "label": "thirties",
+     "share": 0.0477
     },
     {
      "label": "teens",
+     "share": 0.0457
+    },
+    {
+     "label": "",
+     "share": 0.0229
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "bsh": {
+   "name": "Kateviri",
+   "autonym": "",
+   "family": "nuristani",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 10,
+   "validHours": 9.9,
+   "clips": 6844,
+   "validated": 6765,
+   "users": 14,
+   "avgDurationSecs": 5.264,
+   "sps": false,
+   "open": true,
+   "speakers": 14,
+   "sentences": 2646,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.5685
+    },
+    {
+     "label": "fifties",
+     "share": 0.2764
+    },
+    {
+     "label": "",
+     "share": 0.155
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "kk": {
+   "name": "Kazakh",
+   "autonym": "қазақ тілі",
+   "family": "turkic",
+   "region": "asia-central",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 4,
+   "validHours": 2.5,
+   "clips": 2908,
+   "validated": 1831,
+   "users": 206,
+   "avgDurationSecs": 4.968,
+   "sps": false,
+   "open": true,
+   "speakers": 207,
+   "sentences": 6234,
+   "liveValidHours": 2.5,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.2947,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1145,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.5908,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.564
+    },
+    {
+     "label": "twenties",
+     "share": 0.2146
+    },
+    {
+     "label": "fourties",
+     "share": 0.0767
+    },
+    {
+     "label": "teens",
+     "share": 0.0557
+    },
+    {
+     "label": "fifties",
+     "share": 0.0461
+    },
+    {
+     "label": "thirties",
+     "share": 0.043
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "kjh": {
+   "name": "Khakas",
+   "autonym": "хакас тілі",
+   "family": "turkic",
+   "region": "asia-north",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 1.2,
+   "validHours": 1.1,
+   "clips": 810,
+   "validated": 751,
+   "users": 33,
+   "avgDurationSecs": 5.441,
+   "sps": false,
+   "open": true,
+   "speakers": 69,
+   "sentences": 3572,
+   "liveValidHours": 3.6,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2827,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.7173,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.5111
+    },
+    {
+     "label": "",
+     "share": 0.2062
+    },
+    {
+     "label": "fifties",
+     "share": 0.1037
+    },
+    {
+     "label": "fourties",
+     "share": 0.0926
+    },
+    {
+     "label": "thirties",
+     "share": 0.0864
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "km": {
+   "name": "Khmer",
+   "autonym": "ភាសាខ្មែរ",
+   "family": "austroasiatic",
+   "region": "asia-southeast",
+   "script": "khmer",
+   "prominence": 1,
+   "hours": 1,
+   "validHours": 0.3,
+   "clips": 739,
+   "validated": 213,
+   "users": 15,
+   "avgDurationSecs": 4.814,
+   "sps": false,
+   "open": true,
+   "speakers": 16,
+   "sentences": 364,
+   "liveValidHours": 0.3,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.4344
+    },
+    {
+     "label": "",
+     "share": 0.4046
+    },
+    {
+     "label": "fourties",
+     "share": 0.1407
+    },
+    {
+     "label": "twenties",
+     "share": 0.0203
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "khw": {
+   "name": "Khowar",
+   "autonym": "",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 18.6,
+   "validHours": 16,
+   "clips": 9867,
+   "validated": 8505,
+   "users": 51,
+   "avgDurationSecs": 6.779,
+   "sps": false,
+   "open": true,
+   "speakers": 51,
+   "sentences": 7059,
+   "liveValidHours": 18,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.001,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.999,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.5497
+    },
+    {
+     "label": "thirties",
+     "share": 0.2641
+    },
+    {
+     "label": "twenties",
+     "share": 0.1156
+    },
+    {
+     "label": "",
+     "share": 0.07
+    },
+    {
+     "label": "fifties",
+     "share": 0.0005
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "qvi": {
+   "name": "Kichwa",
+   "autonym": "Kichwa",
+   "family": "quechuan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 12.5,
+   "validHours": 11.4,
+   "clips": 10196,
+   "validated": 9268,
+   "users": 15,
+   "avgDurationSecs": 4.427,
+   "sps": false,
+   "open": true,
+   "speakers": 15,
+   "sentences": 1149,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.7154,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2846,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.6372
+    },
+    {
+     "label": "twenties",
+     "share": 0.2577
+    },
+    {
+     "label": "teens",
+     "share": 0.1041
+    },
+    {
+     "label": "",
+     "share": 0.001
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "dav": {
+   "name": "Kidaw'ida",
+   "autonym": "",
+   "family": "bantu",
+   "region": "africa-east",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 56,
+   "validHours": 9.3,
+   "clips": 49630,
+   "validated": 8264,
+   "users": 24,
+   "avgDurationSecs": 4.059,
+   "sps": false,
+   "open": true,
+   "speakers": 24,
+   "sentences": 11773,
+   "liveValidHours": 9.3,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2675,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.7325,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.6127
+    },
+    {
+     "label": "sixties",
+     "share": 0.2319
+    },
+    {
+     "label": "thirties",
+     "share": 0.0994
+    },
+    {
+     "label": "",
+     "share": 0.0402
+    },
+    {
+     "label": "fifties",
+     "share": 0.0102
+    },
+    {
+     "label": "fourties",
+     "share": 0.0056
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "hem": {
+   "name": "Kihemba",
+   "autonym": "",
+   "family": "bantu",
+   "region": "africa-east",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.7,
+   "validHours": 9.9,
+   "clips": 6441,
+   "validated": 5974,
+   "users": 41,
+   "avgDurationSecs": 5.999,
+   "sps": false,
+   "open": true,
+   "speakers": 41,
+   "sentences": 1020,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.032,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1981,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.7699,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.4741
+    },
+    {
+     "label": "thirties",
+     "share": 0.272
+    },
+    {
+     "label": "fourties",
+     "share": 0.1293
+    },
+    {
+     "label": "",
+     "share": 0.1245
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "rw": {
+   "name": "Kinyarwanda",
+   "autonym": "Ikinyarwanda",
+   "family": "bantu",
+   "region": "africa-east",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 2384.2,
+   "validHours": 2001.7,
+   "clips": 1714255,
+   "validated": 1439221,
+   "users": 1187,
+   "avgDurationSecs": 5.007,
+   "sps": false,
+   "open": true,
+   "speakers": 1189,
+   "sentences": 1404868,
+   "liveValidHours": 2003,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5699,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3276,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.1025,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.6083
+    },
+    {
+     "label": "teens",
+     "share": 0.2027
+    },
+    {
+     "label": "thirties",
+     "share": 0.1155
+    },
+    {
+     "label": "",
+     "share": 0.0539
+    },
+    {
+     "label": "fourties",
+     "share": 0.0159
+    },
+    {
+     "label": "fifties",
+     "share": 0.0037
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "rof": {
+   "name": "Kirombo",
+   "autonym": "",
+   "family": "bantu",
+   "region": "africa-east",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.2,
+   "validHours": 10.4,
+   "clips": 10365,
+   "validated": 9557,
+   "users": 24,
+   "avgDurationSecs": 3.905,
+   "sps": false,
+   "open": true,
+   "speakers": 24,
+   "sentences": 1399,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.6312,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3688,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.4079
+    },
+    {
+     "label": "twenties",
+     "share": 0.3524
+    },
+    {
+     "label": "fourties",
+     "share": 0.2243
+    },
+    {
+     "label": "fifties",
+     "share": 0.0153
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "bkm": {
+   "name": "Kom",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.7,
+   "validHours": 11.4,
+   "clips": 7796,
+   "validated": 7573,
+   "users": 27,
+   "avgDurationSecs": 5.425,
+   "sps": false,
+   "open": true,
+   "speakers": 27,
+   "sentences": 940,
+   "liveValidHours": 13,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "ko": {
+   "name": "Korean",
+   "autonym": "한국어",
+   "family": "koreanic",
+   "region": "asia-east",
+   "script": "hangul",
+   "prominence": 3,
+   "hours": 10.4,
+   "validHours": 2.6,
+   "clips": 7185,
+   "validated": 1773,
+   "users": 213,
+   "avgDurationSecs": 5.209,
+   "sps": false,
+   "open": true,
+   "speakers": 215,
+   "sentences": 7465,
+   "liveValidHours": 2.2,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.3098,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2745,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0.0042,
+     "none": false
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0046,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.407,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.5272
+    },
+    {
+     "label": "thirties",
+     "share": 0.1922
+    },
+    {
+     "label": "",
+     "share": 0.1884
+    },
+    {
+     "label": "fourties",
+     "share": 0.0379
+    },
+    {
+     "label": "teens",
+     "share": 0.028
+    },
+    {
+     "label": "fifties",
+     "share": 0.0262
+    },
+    {
+     "label": "sixties",
+     "share": 0.0001
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "kdh": {
+   "name": "Kotokoli",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 9.7,
+   "validHours": 9.2,
+   "clips": 14207,
+   "validated": 13513,
+   "users": 20,
+   "avgDurationSecs": 2.448,
+   "sps": false,
+   "open": true,
+   "speakers": 20,
+   "sentences": 1219,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.9768
+    },
+    {
+     "label": "thirties",
+     "share": 0.0232
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "nmg": {
+   "name": "Kwasio",
+   "autonym": "",
+   "family": "bantu",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.6,
+   "validHours": 10.4,
+   "clips": 5959,
+   "validated": 5865,
+   "users": 11,
+   "avgDurationSecs": 6.401,
+   "sps": false,
+   "open": true,
+   "speakers": 11,
+   "sentences": 1025,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.8605
+    },
+    {
+     "label": "fifties",
+     "share": 0.1395
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "ky": {
+   "name": "Kyrgyz",
+   "autonym": "кыргызча",
+   "family": "turkic",
+   "region": "asia-central",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 48.3,
+   "validHours": 39,
+   "clips": 38177,
+   "validated": 30842,
+   "users": 301,
+   "avgDurationSecs": 4.559,
+   "sps": false,
+   "open": true,
+   "speakers": 303,
+   "sentences": 5050,
+   "liveValidHours": 40,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5318,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3403,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.1279,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.6439
+    },
+    {
+     "label": "teens",
+     "share": 0.1718
+    },
+    {
+     "label": "thirties",
+     "share": 0.0935
+    },
+    {
+     "label": "",
+     "share": 0.0704
+    },
+    {
+     "label": "fourties",
      "share": 0.0203
     },
     {
-     "label": "sixties",
-     "share": 0.0144
-    },
-    {
-     "label": "seventies",
-     "share": 0.0139
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "mhr": {
-   "name": "Meadow Mari",
-   "autonym": "олык марий",
-   "family": "uralic",
-   "region": "europe-east",
-   "script": "cyrillic",
-   "prominence": 1,
-   "hours": 301.4,
-   "validHours": 280.9,
-   "clips": 234770,
-   "validated": 218744,
-   "users": 500,
-   "avgDurationSecs": 4.622,
-   "sps": false,
-   "open": true,
-   "speakers": 500,
-   "sentences": 328269,
-   "liveValidHours": 282,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.1944,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.6886,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.117,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.3334
-    },
-    {
-     "label": "thirties",
-     "share": 0.2094
-    },
-    {
-     "label": "teens",
-     "share": 0.1446
-    },
-    {
-     "label": "fourties",
-     "share": 0.1199
-    },
-    {
-     "label": "",
-     "share": 0.1173
-    },
-    {
      "label": "fifties",
-     "share": 0.0385
-    },
-    {
-     "label": "sixties",
-     "share": 0.0322
-    },
-    {
-     "label": "seventies",
-     "share": 0.0047
+     "share": 0.0001
     }
    ],
    "accents": [
@@ -3884,34 +10865,34 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "myv": {
-   "name": "Erzya",
-   "autonym": "эрзянь",
-   "family": "uralic",
-   "region": "europe-east",
-   "script": "cyrillic",
+  "lo": {
+   "name": "Lao",
+   "autonym": "ລາວ",
+   "family": "tai-kadai",
+   "region": "asia-southeast",
+   "script": "lao",
    "prominence": 1,
-   "hours": 3.2,
-   "validHours": 3.2,
-   "clips": 2010,
-   "validated": 1972,
-   "users": 13,
-   "avgDurationSecs": 5.784,
+   "hours": 0.4,
+   "validHours": 0.3,
+   "clips": 223,
+   "validated": 193,
+   "users": 16,
+   "avgDurationSecs": 6.532,
    "sps": false,
    "open": true,
-   "speakers": 13,
-   "sentences": 5015,
-   "liveValidHours": 3.8,
+   "speakers": 16,
+   "sentences": 5145,
+   "liveValidHours": 0.3,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.5408,
+     "share": 0.8879,
      "none": false
     },
     {
      "label": "female_feminine",
-     "share": 0.0721,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "transgender",
@@ -3935,34 +10916,26 @@ window.CV_DATA = {
     },
     {
      "label": "",
-     "share": 0.3871,
+     "share": 0.1121,
      "none": false
     }
    ],
    "age": [
     {
-     "label": "",
-     "share": 0.3871
-    },
-    {
-     "label": "sixties",
-     "share": 0.2582
-    },
-    {
      "label": "thirties",
-     "share": 0.2403
+     "share": 0.5561
     },
     {
      "label": "twenties",
-     "share": 0.0871
+     "share": 0.3274
+    },
+    {
+     "label": "",
+     "share": 0.1121
     },
     {
      "label": "fourties",
-     "share": 0.0174
-    },
-    {
-     "label": "teens",
-     "share": 0.01
+     "share": 0.0045
     }
    ],
    "accents": [
@@ -3973,33 +10946,33 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "lt": {
-   "name": "Lithuanian",
-   "autonym": "lietuvių",
+  "ltg": {
+   "name": "Latgalian",
+   "autonym": "latgalīšu volūda",
    "family": "baltic",
    "region": "europe-north",
    "script": "latin",
    "prominence": 1,
-   "hours": 37.4,
-   "validHours": 34.4,
-   "clips": 26434,
-   "validated": 24277,
-   "users": 335,
-   "avgDurationSecs": 5.098,
+   "hours": 33.8,
+   "validHours": 30.5,
+   "clips": 25408,
+   "validated": 22909,
+   "users": 394,
+   "avgDurationSecs": 4.793,
    "sps": false,
    "open": true,
-   "speakers": 339,
-   "sentences": 129359,
-   "liveValidHours": 29,
+   "speakers": 395,
+   "sentences": 15115,
+   "liveValidHours": 31,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.3897,
+     "share": 0.0504,
      "none": false
     },
     {
      "label": "female_feminine",
-     "share": 0.1507,
+     "share": 0.6053,
      "none": false
     },
     {
@@ -4019,43 +10992,39 @@ window.CV_DATA = {
     },
     {
      "label": "do_not_wish_to_say",
-     "share": 0.0014,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "",
-     "share": 0.4582,
+     "share": 0.3443,
      "none": false
     }
    ],
    "age": [
     {
-     "label": "fourties",
-     "share": 0.2976
+     "label": "",
+     "share": 0.343
     },
     {
-     "label": "twenties",
-     "share": 0.2796
+     "label": "fourties",
+     "share": 0.3216
     },
     {
      "label": "thirties",
-     "share": 0.2137
+     "share": 0.238
     },
     {
-     "label": "",
-     "share": 0.1489
+     "label": "twenties",
+     "share": 0.0876
     },
     {
      "label": "fifties",
-     "share": 0.0319
-    },
-    {
-     "label": "teens",
-     "share": 0.0239
+     "share": 0.0087
     },
     {
      "label": "sixties",
-     "share": 0.0044
+     "share": 0.0012
     }
    ],
    "accents": [
@@ -4163,215 +11132,33 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "tr": {
-   "name": "Turkish",
-   "autonym": "Türkçe",
-   "family": "turkic",
-   "region": "asia-west",
-   "script": "latin",
-   "prominence": 3,
-   "hours": 135.8,
-   "validHours": 130.2,
-   "clips": 126794,
-   "validated": 121612,
-   "users": 1840,
-   "avgDurationSecs": 3.855,
-   "sps": true,
-   "open": true,
-   "speakers": 1858,
-   "sentences": 409463,
-   "liveValidHours": 131,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.4213,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.3201,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.2585,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.2468
-    },
-    {
-     "label": "twenties",
-     "share": 0.2264
-    },
-    {
-     "label": "sixties",
-     "share": 0.1998
-    },
-    {
-     "label": "eighties",
-     "share": 0.097
-    },
-    {
-     "label": "thirties",
-     "share": 0.0855
-    },
-    {
-     "label": "fifties",
-     "share": 0.0705
-    },
-    {
-     "label": "seventies",
-     "share": 0.033
-    },
-    {
-     "label": "fourties",
-     "share": 0.0255
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "az": {
-   "name": "Azerbaijani",
-   "autonym": "azərbaycan dili",
-   "family": "turkic",
+  "lzz": {
+   "name": "Laz",
+   "autonym": "Lazuri",
+   "family": "kartvelian",
    "region": "asia-west",
    "script": "latin",
    "prominence": 1,
-   "hours": 1.6,
-   "validHours": 0.7,
-   "clips": 1036,
-   "validated": 439,
-   "users": 48,
-   "avgDurationSecs": 5.446,
+   "hours": 85.1,
+   "validHours": 69.9,
+   "clips": 62209,
+   "validated": 51054,
+   "users": 169,
+   "avgDurationSecs": 4.927,
    "sps": false,
    "open": true,
-   "speakers": 48,
-   "sentences": 93161,
-   "liveValidHours": 0.6,
+   "speakers": 173,
+   "sentences": 100498,
+   "liveValidHours": 71,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.1622,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "female_feminine",
-     "share": 0.0097,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0.0193,
-     "none": false
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.8089,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "thirties",
-     "share": 0.5917
-    },
-    {
-     "label": "",
-     "share": 0.1969
-    },
-    {
-     "label": "twenties",
-     "share": 0.1699
-    },
-    {
-     "label": "teens",
-     "share": 0.0338
-    },
-    {
-     "label": "fourties",
-     "share": 0.0077
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "kk": {
-   "name": "Kazakh",
-   "autonym": "қазақ тілі",
-   "family": "turkic",
-   "region": "asia-central",
-   "script": "cyrillic",
-   "prominence": 1,
-   "hours": 4,
-   "validHours": 2.5,
-   "clips": 2908,
-   "validated": 1831,
-   "users": 206,
-   "avgDurationSecs": 4.968,
-   "sps": false,
-   "open": true,
-   "speakers": 207,
-   "sentences": 6234,
-   "liveValidHours": 2.5,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.2947,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.1145,
+     "share": 0.4993,
      "none": false
     },
     {
@@ -4396,499 +11183,753 @@ window.CV_DATA = {
     },
     {
      "label": "",
-     "share": 0.5908,
+     "share": 0.5007,
      "none": false
     }
    ],
    "age": [
-    {
-     "label": "",
-     "share": 0.564
-    },
-    {
-     "label": "twenties",
-     "share": 0.2146
-    },
-    {
-     "label": "fourties",
-     "share": 0.0767
-    },
-    {
-     "label": "teens",
-     "share": 0.0557
-    },
     {
      "label": "fifties",
-     "share": 0.0461
-    },
-    {
-     "label": "thirties",
-     "share": 0.043
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "ky": {
-   "name": "Kyrgyz",
-   "autonym": "кыргызча",
-   "family": "turkic",
-   "region": "asia-central",
-   "script": "cyrillic",
-   "prominence": 1,
-   "hours": 48.3,
-   "validHours": 39,
-   "clips": 38177,
-   "validated": 30842,
-   "users": 301,
-   "avgDurationSecs": 4.559,
-   "sps": false,
-   "open": true,
-   "speakers": 303,
-   "sentences": 5050,
-   "liveValidHours": 40,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.5318,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.3403,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
+     "share": 0.4307
     },
     {
      "label": "",
-     "share": 0.1279,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.6439
-    },
-    {
-     "label": "teens",
-     "share": 0.1718
-    },
-    {
-     "label": "thirties",
-     "share": 0.0935
-    },
-    {
-     "label": "",
-     "share": 0.0704
-    },
-    {
-     "label": "fourties",
-     "share": 0.0203
-    },
-    {
-     "label": "fifties",
-     "share": 0.0001
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "uz": {
-   "name": "Uzbek",
-   "autonym": "oʻzbekcha",
-   "family": "turkic",
-   "region": "asia-central",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 266.5,
-   "validHours": 101.6,
-   "clips": 230509,
-   "validated": 87849,
-   "users": 2318,
-   "avgDurationSecs": 4.163,
-   "sps": false,
-   "open": true,
-   "speakers": 2358,
-   "sentences": 149584,
-   "liveValidHours": 128,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.4415,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.149,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.4094,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.4106
-    },
-    {
-     "label": "twenties",
-     "share": 0.3974
-    },
-    {
-     "label": "teens",
-     "share": 0.1772
-    },
-    {
-     "label": "thirties",
-     "share": 0.0079
-    },
-    {
-     "label": "fourties",
-     "share": 0.0064
-    },
-    {
-     "label": "fifties",
-     "share": 0.0003
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "tt": {
-   "name": "Tatar",
-   "autonym": "татарча",
-   "family": "turkic",
-   "region": "europe-east",
-   "script": "cyrillic",
-   "prominence": 1,
-   "hours": 33.5,
-   "validHours": 32.6,
-   "clips": 31399,
-   "validated": 30555,
-   "users": 299,
-   "avgDurationSecs": 3.84,
-   "sps": true,
-   "open": true,
-   "speakers": 306,
-   "sentences": 21487,
-   "liveValidHours": 37,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.7502,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.0302,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.2196,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "thirties",
-     "share": 0.7001
-    },
-    {
-     "label": "",
-     "share": 0.2153
-    },
-    {
-     "label": "twenties",
-     "share": 0.0542
+     "share": 0.1779
     },
     {
      "label": "sixties",
-     "share": 0.0101
-    },
-    {
-     "label": "seventies",
-     "share": 0.0074
-    },
-    {
-     "label": "fifties",
-     "share": 0.0065
-    },
-    {
-     "label": "teens",
-     "share": 0.0059
+     "share": 0.1428
     },
     {
      "label": "fourties",
-     "share": 0.0005
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "ba": {
-   "name": "Bashkir",
-   "autonym": "башҡортса",
-   "family": "turkic",
-   "region": "europe-east",
-   "script": "cyrillic",
-   "prominence": 1,
-   "hours": 268.7,
-   "validHours": 258.8,
-   "clips": 218518,
-   "validated": 210466,
-   "users": 930,
-   "avgDurationSecs": 4.427,
-   "sps": true,
-   "open": true,
-   "speakers": 942,
-   "sentences": 153968,
-   "liveValidHours": 259,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.3032,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.394,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.3028,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.3029
-    },
-    {
-     "label": "sixties",
-     "share": 0.1939
-    },
-    {
-     "label": "twenties",
-     "share": 0.1743
+     "share": 0.1093
     },
     {
      "label": "thirties",
-     "share": 0.1734
+     "share": 0.099
     },
     {
-     "label": "fourties",
-     "share": 0.0597
-    },
-    {
-     "label": "fifties",
-     "share": 0.0531
-    },
-    {
-     "label": "teens",
-     "share": 0.0425
+     "label": "twenties",
+     "share": 0.0333
     },
     {
      "label": "seventies",
-     "share": 0.0002
+     "share": 0.0042
+    },
+    {
+     "label": "teens",
+     "share": 0.0028
     }
    ],
    "accents": [
     {
+     "label": "arkaburi",
+     "share": 0.2458,
+     "name": "Arkabi (Arhavi)"
+    },
+    {
+     "label": "vitzuri",
+     "share": 0.2214,
+     "name": "Vitzi (Fındıklı)"
+    },
+    {
+     "label": "xopuri",
+     "share": 0.1807,
+     "name": "Xope (Hopa)"
+    },
+    {
      "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "ug": {
-   "name": "Uyghur",
-   "autonym": "ئۇيغۇرچە",
-   "family": "turkic",
-   "region": "asia-central",
-   "script": "arabic",
-   "prominence": 1,
-   "hours": 505.6,
-   "validHours": 462.5,
-   "clips": 307321,
-   "validated": 281142,
-   "users": 1862,
-   "avgDurationSecs": 5.922,
-   "sps": false,
-   "open": true,
-   "speakers": 1875,
-   "sentences": 231307,
-   "liveValidHours": 470,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.2601,
-     "none": false
+     "share": 0.1564
     },
     {
-     "label": "female_feminine",
-     "share": 0.2018,
-     "none": false
+     "label": "artaşenuri",
+     "share": 0.1518,
+     "name": "Artaşeni (Ardeşen)"
     },
     {
-     "label": "transgender",
-     "share": 0,
-     "none": true
+     "label": "atinuri",
+     "share": 0.0437,
+     "name": "Atina (Pazar)"
     },
     {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
+     "label": "çxaluri",
      "share": 0.0001,
+     "name": "Çxala (İçkale/Borçka)"
+    }
+   ],
+   "variants": [
+    {
+     "label": "lzz-arkaburi",
+     "share": 0.5938,
+     "name": "Vitzuri, Arkaburi"
+    },
+    {
+     "label": "lzz-xopuri",
+     "share": 0.2141,
+     "name": "Xopuri"
+    },
+    {
+     "label": "lzz-atinuri",
+     "share": 0.1921,
+     "name": "Atinuri, Artaşenuri"
+    }
+   ]
+  },
+  "lij": {
+   "name": "Ligurian",
+   "autonym": "ligure",
+   "family": "romance",
+   "region": "europe-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 5.7,
+   "validHours": 5,
+   "clips": 5276,
+   "validated": 4696,
+   "users": 40,
+   "avgDurationSecs": 3.871,
+   "sps": true,
+   "open": true,
+   "speakers": 40,
+   "sentences": 6009,
+   "liveValidHours": 5.1,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.4469,
      "none": false
     },
     {
+     "label": "female_feminine",
+     "share": 0.2824,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
      "label": "do_not_wish_to_say",
-     "share": 0.0059,
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2707,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.4488
+    },
+    {
+     "label": "",
+     "share": 0.1956
+    },
+    {
+     "label": "sixties",
+     "share": 0.1715
+    },
+    {
+     "label": "seventies",
+     "share": 0.1145
+    },
+    {
+     "label": "twenties",
+     "share": 0.0696
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "lt": {
+   "name": "Lithuanian",
+   "autonym": "lietuvių",
+   "family": "baltic",
+   "region": "europe-north",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 37.4,
+   "validHours": 34.4,
+   "clips": 26434,
+   "validated": 24277,
+   "users": 335,
+   "avgDurationSecs": 5.098,
+   "sps": false,
+   "open": true,
+   "speakers": 339,
+   "sentences": 129359,
+   "liveValidHours": 29,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.3897,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1507,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0014,
      "none": false
     },
     {
      "label": "",
-     "share": 0.5322,
+     "share": 0.4582,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.2976
+    },
+    {
+     "label": "twenties",
+     "share": 0.2796
+    },
+    {
+     "label": "thirties",
+     "share": 0.2137
+    },
+    {
+     "label": "",
+     "share": 0.1489
+    },
+    {
+     "label": "fifties",
+     "share": 0.0319
+    },
+    {
+     "label": "teens",
+     "share": 0.0239
+    },
+    {
+     "label": "sixties",
+     "share": 0.0044
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "qvj": {
+   "name": "Loja Highland Kichwa",
+   "autonym": "",
+   "family": "quechuan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.2,
+   "validHours": 10.8,
+   "clips": 6746,
+   "validated": 6552,
+   "users": 16,
+   "avgDurationSecs": 5.961,
+   "sps": false,
+   "open": true,
+   "speakers": 16,
+   "sentences": 1059,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.7971,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2029,
      "none": false
     }
    ],
    "age": [
     {
      "label": "twenties",
-     "share": 0.3482
-    },
-    {
-     "label": "thirties",
-     "share": 0.2692
-    },
-    {
-     "label": "",
-     "share": 0.2107
+     "share": 0.5836
     },
     {
      "label": "fourties",
-     "share": 0.1006
+     "share": 0.3931
     },
     {
-     "label": "teens",
-     "share": 0.0617
+     "label": "thirties",
+     "share": 0.0225
+    },
+    {
+     "label": "",
+     "share": 0.0007
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "nmz": {
+   "name": "Losso",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.6,
+   "validHours": 11.2,
+   "clips": 14117,
+   "validated": 13698,
+   "users": 35,
+   "avgDurationSecs": 2.947,
+   "sps": false,
+   "open": true,
+   "speakers": 35,
+   "sentences": 2446,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0055,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9945,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.918
+    },
+    {
+     "label": "thirties",
+     "share": 0.082
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "lg": {
+   "name": "Luganda",
+   "autonym": "Luganda",
+   "family": "bantu",
+   "region": "africa-east",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 560.5,
+   "validHours": 437,
+   "clips": 348837,
+   "validated": 271951,
+   "users": 672,
+   "avgDurationSecs": 5.784,
+   "sps": false,
+   "open": true,
+   "speakers": 676,
+   "sentences": 191365,
+   "liveValidHours": 438,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.3569,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3866,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2565,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.378
+    },
+    {
+     "label": "",
+     "share": 0.256
+    },
+    {
+     "label": "thirties",
+     "share": 0.2192
+    },
+    {
+     "label": "fourties",
+     "share": 0.0722
     },
     {
      "label": "fifties",
-     "share": 0.0082
+     "share": 0.0453
     },
     {
-     "label": "eighties",
-     "share": 0.0014
+     "label": "sixties",
+     "share": 0.0172
+    },
+    {
+     "label": "teens",
+     "share": 0.0067
+    },
+    {
+     "label": "nineties",
+     "share": 0.0032
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "mk": {
+   "name": "Macedonian",
+   "autonym": "македонски",
+   "family": "slavic",
+   "region": "europe-east",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 55,
+   "validHours": 26.2,
+   "clips": 41232,
+   "validated": 19645,
+   "users": 469,
+   "avgDurationSecs": 4.807,
+   "sps": false,
+   "open": true,
+   "speakers": 473,
+   "sentences": 6123,
+   "liveValidHours": 25,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.2746,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3871,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0008,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.3375,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.3577
+    },
+    {
+     "label": "thirties",
+     "share": 0.265
+    },
+    {
+     "label": "fourties",
+     "share": 0.1968
+    },
+    {
+     "label": "",
+     "share": 0.1051
+    },
+    {
+     "label": "sixties",
+     "share": 0.0303
+    },
+    {
+     "label": "teens",
+     "share": 0.0255
+    },
+    {
+     "label": "fifties",
+     "share": 0.0196
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "mxu": {
+   "name": "Mada",
+   "autonym": "",
+   "family": "afroasiatic",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 12.3,
+   "validHours": 12.3,
+   "clips": 7758,
+   "validated": 7749,
+   "users": 22,
+   "avgDurationSecs": 5.733,
+   "sps": false,
+   "open": true,
+   "speakers": 22,
+   "sentences": 959,
+   "liveValidHours": 14,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.559
+    },
+    {
+     "label": "twenties",
+     "share": 0.3229
+    },
+    {
+     "label": "thirties",
+     "share": 0.1181
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "ms": {
+   "name": "Malay",
+   "autonym": "Bahasa Melayu",
+   "family": "austronesian",
+   "region": "asia-southeast",
+   "script": "latin",
+   "prominence": 2,
+   "hours": 4,
+   "validHours": 0.2,
+   "clips": 2362,
+   "validated": 129,
+   "users": 57,
+   "avgDurationSecs": 6.184,
+   "sps": false,
+   "open": true,
+   "speakers": 65,
+   "sentences": 308,
+   "liveValidHours": 0.4,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.9831
+    },
+    {
+     "label": "fifties",
+     "share": 0.0127
+    },
+    {
+     "label": "twenties",
+     "share": 0.0021
+    },
+    {
+     "label": "thirties",
+     "share": 0.0021
     }
    ],
    "accents": [
@@ -4899,1189 +11940,11 @@ window.CV_DATA = {
    ],
    "variants": [
     {
-     "label": "ug-Arab",
-     "share": 0.9926,
-     "name": "ئۇيغۇر تىلى"
-    },
-    {
-     "label": "ug-Cyrl",
-     "share": 0.0074,
-     "name": "Уйғур тили"
+     "label": "ms-standard",
+     "share": 1,
+     "name": "Dialek Standard"
     }
    ]
-  },
-  "sah": {
-   "name": "Yakut",
-   "autonym": "саха тыла",
-   "family": "turkic",
-   "region": "asia-north",
-   "script": "cyrillic",
-   "prominence": 1,
-   "hours": 23.6,
-   "validHours": 16.3,
-   "clips": 13411,
-   "validated": 9296,
-   "users": 256,
-   "avgDurationSecs": 6.33,
-   "sps": false,
-   "open": true,
-   "speakers": 256,
-   "sentences": 6083,
-   "liveValidHours": 16,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.2328,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.434,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.3332,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.3075
-    },
-    {
-     "label": "twenties",
-     "share": 0.2332
-    },
-    {
-     "label": "fifties",
-     "share": 0.1825
-    },
-    {
-     "label": "thirties",
-     "share": 0.1432
-    },
-    {
-     "label": "fourties",
-     "share": 0.1019
-    },
-    {
-     "label": "teens",
-     "share": 0.0318
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "cv": {
-   "name": "Chuvash",
-   "autonym": "чӑвашла",
-   "family": "turkic",
-   "region": "europe-east",
-   "script": "cyrillic",
-   "prominence": 1,
-   "hours": 28.6,
-   "validHours": 24.5,
-   "clips": 20456,
-   "validated": 17510,
-   "users": 122,
-   "avgDurationSecs": 5.042,
-   "sps": false,
-   "open": true,
-   "speakers": 122,
-   "sentences": 4382,
-   "liveValidHours": 27,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.5141,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.2659,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.2199,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.4997
-    },
-    {
-     "label": "",
-     "share": 0.238
-    },
-    {
-     "label": "teens",
-     "share": 0.1825
-    },
-    {
-     "label": "fourties",
-     "share": 0.0614
-    },
-    {
-     "label": "fifties",
-     "share": 0.0105
-    },
-    {
-     "label": "thirties",
-     "share": 0.0079
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "hi": {
-   "name": "Hindi",
-   "autonym": "हिन्दी",
-   "family": "indo-aryan",
-   "region": "asia-south",
-   "script": "devanagari",
-   "prominence": 3,
-   "hours": 26.7,
-   "validHours": 15.7,
-   "clips": 19061,
-   "validated": 11203,
-   "users": 485,
-   "avgDurationSecs": 5.051,
-   "sps": false,
-   "open": true,
-   "speakers": 487,
-   "sentences": 30247,
-   "liveValidHours": 16,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.4992,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.03,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.4709,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "thirties",
-     "share": 0.319
-    },
-    {
-     "label": "",
-     "share": 0.288
-    },
-    {
-     "label": "twenties",
-     "share": 0.2744
-    },
-    {
-     "label": "fourties",
-     "share": 0.0904
-    },
-    {
-     "label": "fifties",
-     "share": 0.0134
-    },
-    {
-     "label": "teens",
-     "share": 0.0097
-    },
-    {
-     "label": "sixties",
-     "share": 0.0052
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "bn": {
-   "name": "Bengali",
-   "autonym": "বাংলা",
-   "family": "indo-aryan",
-   "region": "asia-south",
-   "script": "bengali",
-   "prominence": 2,
-   "hours": 1277.9,
-   "validHours": 54.4,
-   "clips": 1052384,
-   "validated": 44795,
-   "users": 23019,
-   "avgDurationSecs": 4.371,
-   "sps": false,
-   "open": true,
-   "speakers": 23027,
-   "sentences": 562832,
-   "liveValidHours": 49,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.5409,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.2335,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.2256,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.6657
-    },
-    {
-     "label": "",
-     "share": 0.2242
-    },
-    {
-     "label": "teens",
-     "share": 0.0706
-    },
-    {
-     "label": "thirties",
-     "share": 0.0308
-    },
-    {
-     "label": "fourties",
-     "share": 0.0066
-    },
-    {
-     "label": "fifties",
-     "share": 0.0021
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "ur": {
-   "name": "Urdu",
-   "autonym": "اردو",
-   "family": "indo-aryan",
-   "region": "asia-south",
-   "script": "arabic",
-   "prominence": 2,
-   "hours": 295,
-   "validHours": 79.8,
-   "clips": 250981,
-   "validated": 67940,
-   "users": 506,
-   "avgDurationSecs": 4.231,
-   "sps": false,
-   "open": true,
-   "speakers": 508,
-   "sentences": 21892,
-   "liveValidHours": 77,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.5274,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.2509,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.2217,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.9173
-    },
-    {
-     "label": "",
-     "share": 0.0646
-    },
-    {
-     "label": "fourties",
-     "share": 0.0105
-    },
-    {
-     "label": "thirties",
-     "share": 0.0043
-    },
-    {
-     "label": "teens",
-     "share": 0.003
-    },
-    {
-     "label": "fifties",
-     "share": 0.0003
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "pa-IN": {
-   "name": "Punjabi",
-   "autonym": "ਪੰਜਾਬੀ",
-   "family": "indo-aryan",
-   "region": "asia-south",
-   "script": "gurmukhi",
-   "prominence": 2,
-   "hours": 4.4,
-   "validHours": 2.4,
-   "clips": 3268,
-   "validated": 1828,
-   "users": 75,
-   "avgDurationSecs": 4.806,
-   "sps": false,
-   "open": true,
-   "speakers": 76,
-   "sentences": 14825,
-   "liveValidHours": 2.5,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.6288,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.0104,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.3608,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "thirties",
-     "share": 0.3898
-    },
-    {
-     "label": "",
-     "share": 0.2855
-    },
-    {
-     "label": "twenties",
-     "share": 0.213
-    },
-    {
-     "label": "fourties",
-     "share": 0.0627
-    },
-    {
-     "label": "fifties",
-     "share": 0.0431
-    },
-    {
-     "label": "sixties",
-     "share": 0.0031
-    },
-    {
-     "label": "teens",
-     "share": 0.0028
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "mr": {
-   "name": "Marathi",
-   "autonym": "मराठी",
-   "family": "indo-aryan",
-   "region": "asia-south",
-   "script": "devanagari",
-   "prominence": 1,
-   "hours": 27.7,
-   "validHours": 18.9,
-   "clips": 16099,
-   "validated": 11000,
-   "users": 107,
-   "avgDurationSecs": 6.201,
-   "sps": false,
-   "open": true,
-   "speakers": 110,
-   "sentences": 6136,
-   "liveValidHours": 20,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.1911,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.752,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.0568,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "teens",
-     "share": 0.5261
-    },
-    {
-     "label": "twenties",
-     "share": 0.2844
-    },
-    {
-     "label": "thirties",
-     "share": 0.1286
-    },
-    {
-     "label": "",
-     "share": 0.0558
-    },
-    {
-     "label": "sixties",
-     "share": 0.004
-    },
-    {
-     "label": "fourties",
-     "share": 0.0009
-    },
-    {
-     "label": "fifties",
-     "share": 0.0003
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "ne-NP": {
-   "name": "Nepali",
-   "autonym": "नेपाली",
-   "family": "indo-aryan",
-   "region": "asia-south",
-   "script": "devanagari",
-   "prominence": 1,
-   "hours": 2,
-   "validHours": 1.4,
-   "clips": 1744,
-   "validated": 1213,
-   "users": 64,
-   "avgDurationSecs": 4.153,
-   "sps": false,
-   "open": true,
-   "speakers": 64,
-   "sentences": 1321,
-   "liveValidHours": 1.4,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.5883,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.0092,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.4025,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.5516
-    },
-    {
-     "label": "",
-     "share": 0.3286
-    },
-    {
-     "label": "thirties",
-     "share": 0.1198
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "as": {
-   "name": "Assamese",
-   "autonym": "অসমীয়া",
-   "family": "indo-aryan",
-   "region": "asia-south",
-   "script": "bengali",
-   "prominence": 1,
-   "hours": 7.7,
-   "validHours": 3,
-   "clips": 4739,
-   "validated": 1856,
-   "users": 53,
-   "avgDurationSecs": 5.846,
-   "sps": false,
-   "open": true,
-   "speakers": 57,
-   "sentences": 7171,
-   "liveValidHours": 2.9,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.1899,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.0006,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.8095,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "fourties",
-     "share": 0.5174
-    },
-    {
-     "label": "",
-     "share": 0.279
-    },
-    {
-     "label": "twenties",
-     "share": 0.1692
-    },
-    {
-     "label": "thirties",
-     "share": 0.0167
-    },
-    {
-     "label": "fifties",
-     "share": 0.0162
-    },
-    {
-     "label": "teens",
-     "share": 0.0015
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "or": {
-   "name": "Odia",
-   "autonym": "ଓଡ଼ିଆ",
-   "family": "indo-aryan",
-   "region": "asia-south",
-   "script": "odia",
-   "prominence": 1,
-   "hours": 37.3,
-   "validHours": 6.3,
-   "clips": 24248,
-   "validated": 4093,
-   "users": 166,
-   "avgDurationSecs": 5.54,
-   "sps": false,
-   "open": true,
-   "speakers": 167,
-   "sentences": 6191,
-   "liveValidHours": 2.9,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.3413,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.0308,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0.2064,
-     "none": false
-    },
-    {
-     "label": "",
-     "share": 0.4216,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.6547
-    },
-    {
-     "label": "thirties",
-     "share": 0.2711
-    },
-    {
-     "label": "",
-     "share": 0.0573
-    },
-    {
-     "label": "fourties",
-     "share": 0.0117
-    },
-    {
-     "label": "fifties",
-     "share": 0.0047
-    },
-    {
-     "label": "teens",
-     "share": 0.0006
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "dv": {
-   "name": "Dhivehi",
-   "autonym": "ދިވެހި",
-   "family": "indo-aryan",
-   "region": "asia-south",
-   "script": "thaana",
-   "prominence": 1,
-   "hours": 61.7,
-   "validHours": 37.9,
-   "clips": 43361,
-   "validated": 26642,
-   "users": 394,
-   "avgDurationSecs": 5.12,
-   "sps": false,
-   "open": true,
-   "speakers": 395,
-   "sentences": 7172,
-   "liveValidHours": 39,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.2351,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.5216,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0.0019,
-     "none": false
-    },
-    {
-     "label": "",
-     "share": 0.2414,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "thirties",
-     "share": 0.3886
-    },
-    {
-     "label": "",
-     "share": 0.2381
-    },
-    {
-     "label": "fourties",
-     "share": 0.2265
-    },
-    {
-     "label": "twenties",
-     "share": 0.1134
-    },
-    {
-     "label": "fifties",
-     "share": 0.0253
-    },
-    {
-     "label": "teens",
-     "share": 0.0079
-    },
-    {
-     "label": "nineties",
-     "share": 0.0001
-    },
-    {
-     "label": "sixties",
-     "share": 0.0001
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "skr": {
-   "name": "Saraiki",
-   "autonym": "سرائیکی",
-   "family": "indo-aryan",
-   "region": "asia-south",
-   "script": "arabic",
-   "prominence": 1,
-   "hours": 6.8,
-   "validHours": 4.3,
-   "clips": 5837,
-   "validated": 3752,
-   "users": 60,
-   "avgDurationSecs": 4.164,
-   "sps": false,
-   "open": true,
-   "speakers": 60,
-   "sentences": 6010,
-   "liveValidHours": 4.3,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.6296,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.3704,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "fifties",
-     "share": 0.3728
-    },
-    {
-     "label": "",
-     "share": 0.3533
-    },
-    {
-     "label": "twenties",
-     "share": 0.241
-    },
-    {
-     "label": "teens",
-     "share": 0.0207
-    },
-    {
-     "label": "thirties",
-     "share": 0.012
-    },
-    {
-     "label": "fourties",
-     "share": 0.0002
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "ta": {
-   "name": "Tamil",
-   "autonym": "தமிழ்",
-   "family": "dravidian",
-   "region": "asia-south",
-   "script": "tamil",
-   "prominence": 2,
-   "hours": 425.4,
-   "validHours": 234.8,
-   "clips": 247718,
-   "validated": 136732,
-   "users": 984,
-   "avgDurationSecs": 6.183,
-   "sps": false,
-   "open": true,
-   "speakers": 997,
-   "sentences": 106113,
-   "liveValidHours": 235,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.1894,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.1542,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.6564,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.6603
-    },
-    {
-     "label": "thirties",
-     "share": 0.1189
-    },
-    {
-     "label": "twenties",
-     "share": 0.1083
-    },
-    {
-     "label": "teens",
-     "share": 0.0381
-    },
-    {
-     "label": "fourties",
-     "share": 0.027
-    },
-    {
-     "label": "fifties",
-     "share": 0.0246
-    },
-    {
-     "label": "seventies",
-     "share": 0.0194
-    },
-    {
-     "label": "sixties",
-     "share": 0.003
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
   },
   "ml": {
    "name": "Malayalam",
@@ -6162,653 +12025,6 @@ window.CV_DATA = {
     {
      "label": "teens",
      "share": 0.0006
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "fa": {
-   "name": "Persian",
-   "autonym": "فارسی",
-   "family": "iranian",
-   "region": "asia-west",
-   "script": "arabic",
-   "prominence": 2,
-   "hours": 431.4,
-   "validHours": 373.1,
-   "clips": 395173,
-   "validated": 341785,
-   "users": 4668,
-   "avgDurationSecs": 3.93,
-   "sps": false,
-   "open": true,
-   "speakers": 4670,
-   "sentences": 54775,
-   "liveValidHours": 373,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.6994,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.064,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.2366,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "thirties",
-     "share": 0.3545
-    },
-    {
-     "label": "twenties",
-     "share": 0.3304
-    },
-    {
-     "label": "",
-     "share": 0.2457
-    },
-    {
-     "label": "teens",
-     "share": 0.0294
-    },
-    {
-     "label": "fourties",
-     "share": 0.0249
-    },
-    {
-     "label": "fifties",
-     "share": 0.0145
-    },
-    {
-     "label": "sixties",
-     "share": 0.0005
-    },
-    {
-     "label": "seventies",
-     "share": 0.0001
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "ckb": {
-   "name": "Central Kurdish",
-   "autonym": "کوردیی ناوەندی",
-   "family": "iranian",
-   "region": "asia-west",
-   "script": "arabic",
-   "prominence": 1,
-   "hours": 196.1,
-   "validHours": 139.1,
-   "clips": 172154,
-   "validated": 122120,
-   "users": 2069,
-   "avgDurationSecs": 4.101,
-   "sps": false,
-   "open": true,
-   "speakers": 2077,
-   "sentences": 18510,
-   "liveValidHours": 139,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.619,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.0504,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0.0006,
-     "none": false
-    },
-    {
-     "label": "",
-     "share": 0.33,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.4235
-    },
-    {
-     "label": "",
-     "share": 0.3183
-    },
-    {
-     "label": "sixties",
-     "share": 0.1036
-    },
-    {
-     "label": "thirties",
-     "share": 0.1021
-    },
-    {
-     "label": "fourties",
-     "share": 0.0203
-    },
-    {
-     "label": "teens",
-     "share": 0.0196
-    },
-    {
-     "label": "fifties",
-     "share": 0.0112
-    },
-    {
-     "label": "seventies",
-     "share": 0.0014
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "kmr": {
-   "name": "Northern Kurdish",
-   "autonym": "kurmancî",
-   "family": "iranian",
-   "region": "asia-west",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 111.3,
-   "validHours": 79.4,
-   "clips": 95350,
-   "validated": 68035,
-   "users": 709,
-   "avgDurationSecs": 4.201,
-   "sps": false,
-   "open": true,
-   "speakers": 712,
-   "sentences": 17034,
-   "liveValidHours": 80,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.3978,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.0885,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.5136,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.4574
-    },
-    {
-     "label": "twenties",
-     "share": 0.3413
-    },
-    {
-     "label": "thirties",
-     "share": 0.09
-    },
-    {
-     "label": "fourties",
-     "share": 0.0566
-    },
-    {
-     "label": "fifties",
-     "share": 0.0428
-    },
-    {
-     "label": "teens",
-     "share": 0.0112
-    },
-    {
-     "label": "sixties",
-     "share": 0.0006
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "ps": {
-   "name": "Pashto",
-   "autonym": "پښتو",
-   "family": "iranian",
-   "region": "asia-central",
-   "script": "arabic",
-   "prominence": 1,
-   "hours": 5580.9,
-   "validHours": 3530.2,
-   "clips": 5296373,
-   "validated": 3350172,
-   "users": 8429,
-   "avgDurationSecs": 3.793,
-   "sps": true,
-   "open": true,
-   "speakers": 8495,
-   "sentences": 1225990,
-   "liveValidHours": 3757,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.0047,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.5889,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0.0005,
-     "none": false
-    },
-    {
-     "label": "",
-     "share": 0.4059,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.5635
-    },
-    {
-     "label": "thirties",
-     "share": 0.2457
-    },
-    {
-     "label": "teens",
-     "share": 0.1044
-    },
-    {
-     "label": "",
-     "share": 0.0362
-    },
-    {
-     "label": "fourties",
-     "share": 0.0273
-    },
-    {
-     "label": "fifties",
-     "share": 0.0223
-    },
-    {
-     "label": "sixties",
-     "share": 0.0005
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "zza": {
-   "name": "Zazaki",
-   "autonym": "zazaki",
-   "family": "iranian",
-   "region": "asia-west",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 2.7,
-   "validHours": 2,
-   "clips": 2434,
-   "validated": 1767,
-   "users": 25,
-   "avgDurationSecs": 4.035,
-   "sps": false,
-   "open": true,
-   "speakers": 25,
-   "sentences": 5682,
-   "liveValidHours": 2,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.2539,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.0173,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0.0678,
-     "none": false
-    },
-    {
-     "label": "",
-     "share": 0.6611,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "thirties",
-     "share": 0.5961
-    },
-    {
-     "label": "",
-     "share": 0.2153
-    },
-    {
-     "label": "sixties",
-     "share": 0.1085
-    },
-    {
-     "label": "twenties",
-     "share": 0.0698
-    },
-    {
-     "label": "fifties",
-     "share": 0.0103
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "ar": {
-   "name": "Arabic",
-   "autonym": "العربية",
-   "family": "semitic",
-   "region": "asia-west",
-   "script": "arabic",
-   "prominence": 3,
-   "hours": 158.3,
-   "validHours": 93.3,
-   "clips": 136832,
-   "validated": 80696,
-   "users": 1679,
-   "avgDurationSecs": 4.164,
-   "sps": false,
-   "open": true,
-   "speakers": 1692,
-   "sentences": 59229,
-   "liveValidHours": 94,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.2809,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.1714,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.5477,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.5448
-    },
-    {
-     "label": "twenties",
-     "share": 0.2939
-    },
-    {
-     "label": "thirties",
-     "share": 0.1088
-    },
-    {
-     "label": "teens",
-     "share": 0.038
-    },
-    {
-     "label": "fourties",
-     "share": 0.013
-    },
-    {
-     "label": "fifties",
-     "share": 0.0008
-    },
-    {
-     "label": "sixties",
-     "share": 0.0007
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "he": {
-   "name": "Hebrew",
-   "autonym": "עברית",
-   "family": "semitic",
-   "region": "asia-west",
-   "script": "hebrew",
-   "prominence": 2,
-   "hours": 7.2,
-   "validHours": 5.3,
-   "clips": 5654,
-   "validated": 4189,
-   "users": 60,
-   "avgDurationSecs": 4.596,
-   "sps": false,
-   "open": true,
-   "speakers": 60,
-   "sentences": 4256,
-   "liveValidHours": 3.6,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.8845,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.0398,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.0757,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.6954
-    },
-    {
-     "label": "thirties",
-     "share": 0.1758
-    },
-    {
-     "label": "",
-     "share": 0.0686
-    },
-    {
-     "label": "eighties",
-     "share": 0.0345
-    },
-    {
-     "label": "fourties",
-     "share": 0.023
-    },
-    {
-     "label": "teens",
-     "share": 0.0027
     }
    ],
    "accents": [
@@ -6902,168 +12118,6 @@ window.CV_DATA = {
     {
      "label": "sixties",
      "share": 0.0109
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "am": {
-   "name": "Amharic",
-   "autonym": "አማርኛ",
-   "family": "semitic",
-   "region": "africa-east",
-   "script": "ethiopic",
-   "prominence": 1,
-   "hours": 3.1,
-   "validHours": 1.9,
-   "clips": 1728,
-   "validated": 1092,
-   "users": 56,
-   "avgDurationSecs": 6.411,
-   "sps": true,
-   "open": true,
-   "speakers": 59,
-   "sentences": 2210,
-   "liveValidHours": 2,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.7049,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.2951,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "thirties",
-     "share": 0.5868
-    },
-    {
-     "label": "",
-     "share": 0.2569
-    },
-    {
-     "label": "twenties",
-     "share": 0.1447
-    },
-    {
-     "label": "fourties",
-     "share": 0.0116
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "ti": {
-   "name": "Tigrinya",
-   "autonym": "ትግርኛ",
-   "family": "semitic",
-   "region": "africa-east",
-   "script": "ethiopic",
-   "prominence": 1,
-   "hours": 0.7,
-   "validHours": 0.1,
-   "clips": 453,
-   "validated": 75,
-   "users": 17,
-   "avgDurationSecs": 5.199,
-   "sps": false,
-   "open": true,
-   "speakers": 17,
-   "sentences": 4571,
-   "liveValidHours": 0.1,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.0375,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.9625,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "fourties",
-     "share": 0.4834
-    },
-    {
-     "label": "twenties",
-     "share": 0.3046
-    },
-    {
-     "label": "",
-     "share": 0.1854
-    },
-    {
-     "label": "thirties",
-     "share": 0.0265
     }
    ],
    "accents": [
@@ -7191,33 +12245,33 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "yue": {
-   "name": "Cantonese",
-   "autonym": "粵語",
-   "family": "sinitic",
-   "region": "asia-east",
-   "script": "han",
-   "prominence": 2,
-   "hours": 307.4,
-   "validHours": 210.8,
-   "clips": 279396,
-   "validated": 191548,
-   "users": 1188,
-   "avgDurationSecs": 3.961,
+  "mr": {
+   "name": "Marathi",
+   "autonym": "मराठी",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "devanagari",
+   "prominence": 1,
+   "hours": 27.7,
+   "validHours": 18.9,
+   "clips": 16099,
+   "validated": 11000,
+   "users": 107,
+   "avgDurationSecs": 6.201,
    "sps": false,
    "open": true,
-   "speakers": 1196,
-   "sentences": 18548,
-   "liveValidHours": 204,
+   "speakers": 110,
+   "sentences": 6136,
+   "liveValidHours": 20,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.1706,
+     "share": 0.1911,
      "none": false
     },
     {
      "label": "female_feminine",
-     "share": 0.6244,
+     "share": 0.752,
      "none": false
     },
     {
@@ -7227,7 +12281,3225 @@ window.CV_DATA = {
     },
     {
      "label": "non-binary",
-     "share": 0.0036,
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.0568,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "teens",
+     "share": 0.5261
+    },
+    {
+     "label": "twenties",
+     "share": 0.2844
+    },
+    {
+     "label": "thirties",
+     "share": 0.1286
+    },
+    {
+     "label": "",
+     "share": 0.0558
+    },
+    {
+     "label": "sixties",
+     "share": 0.004
+    },
+    {
+     "label": "fourties",
+     "share": 0.0009
+    },
+    {
+     "label": "fifties",
+     "share": 0.0003
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "mve": {
+   "name": "Marwari",
+   "autonym": "",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 10.1,
+   "validHours": 10.1,
+   "clips": 7690,
+   "validated": 7648,
+   "users": 20,
+   "avgDurationSecs": 4.739,
+   "sps": false,
+   "open": true,
+   "speakers": 20,
+   "sentences": 2003,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0013,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9987,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.3908
+    },
+    {
+     "label": "thirties",
+     "share": 0.335
+    },
+    {
+     "label": "twenties",
+     "share": 0.2649
+    },
+    {
+     "label": "teens",
+     "share": 0.0039
+    },
+    {
+     "label": "fifties",
+     "share": 0.0039
+    },
+    {
+     "label": "",
+     "share": 0.0016
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "mcn": {
+   "name": "Massa",
+   "autonym": "",
+   "family": "afroasiatic",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.8,
+   "validHours": 10.1,
+   "clips": 9260,
+   "validated": 8621,
+   "users": 35,
+   "avgDurationSecs": 4.214,
+   "sps": false,
+   "open": true,
+   "speakers": 35,
+   "sentences": 959,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "mbo": {
+   "name": "Mbo",
+   "autonym": "",
+   "family": "bantu",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 12.1,
+   "validHours": 10.9,
+   "clips": 7882,
+   "validated": 7106,
+   "users": 13,
+   "avgDurationSecs": 5.513,
+   "sps": false,
+   "open": true,
+   "speakers": 13,
+   "sentences": 998,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "mhr": {
+   "name": "Meadow Mari",
+   "autonym": "олык марий",
+   "family": "uralic",
+   "region": "europe-east",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 301.4,
+   "validHours": 280.9,
+   "clips": 234770,
+   "validated": 218744,
+   "users": 500,
+   "avgDurationSecs": 4.622,
+   "sps": false,
+   "open": true,
+   "speakers": 500,
+   "sentences": 328269,
+   "liveValidHours": 282,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.1944,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.6886,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.117,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.3334
+    },
+    {
+     "label": "thirties",
+     "share": 0.2094
+    },
+    {
+     "label": "teens",
+     "share": 0.1446
+    },
+    {
+     "label": "fourties",
+     "share": 0.1199
+    },
+    {
+     "label": "",
+     "share": 0.1173
+    },
+    {
+     "label": "fifties",
+     "share": 0.0385
+    },
+    {
+     "label": "sixties",
+     "share": 0.0322
+    },
+    {
+     "label": "seventies",
+     "share": 0.0047
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "byv": {
+   "name": "Medumba",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 13.2,
+   "validHours": 13.2,
+   "clips": 7719,
+   "validated": 7719,
+   "users": 96,
+   "avgDurationSecs": 6.178,
+   "sps": false,
+   "open": true,
+   "speakers": 96,
+   "sentences": 990,
+   "liveValidHours": 14,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0644,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9356,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.8128
+    },
+    {
+     "label": "thirties",
+     "share": 0.1228
+    },
+    {
+     "label": "twenties",
+     "share": 0.0644
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "bce": {
+   "name": "Mengambo",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.1,
+   "validHours": 10,
+   "clips": 6141,
+   "validated": 6117,
+   "users": 14,
+   "avgDurationSecs": 5.892,
+   "sps": false,
+   "open": true,
+   "speakers": 14,
+   "sentences": 986,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "gej": {
+   "name": "Mina",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.4,
+   "validHours": 11.1,
+   "clips": 16773,
+   "validated": 16426,
+   "users": 20,
+   "avgDurationSecs": 2.444,
+   "sps": false,
+   "open": true,
+   "speakers": 20,
+   "sentences": 3188,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "xmf": {
+   "name": "Mingrelian",
+   "autonym": "მარგალური",
+   "family": "kartvelian",
+   "region": "asia-west",
+   "script": "georgian",
+   "prominence": 1,
+   "hours": 12.7,
+   "validHours": 11.6,
+   "clips": 7419,
+   "validated": 6775,
+   "users": 92,
+   "avgDurationSecs": 6.159,
+   "sps": false,
+   "open": true,
+   "speakers": 92,
+   "sentences": 1004,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0561,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.4879,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.456,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.313
+    },
+    {
+     "label": "thirties",
+     "share": 0.3013
+    },
+    {
+     "label": "",
+     "share": 0.2305
+    },
+    {
+     "label": "fourties",
+     "share": 0.1325
+    },
+    {
+     "label": "teens",
+     "share": 0.0221
+    },
+    {
+     "label": "fifties",
+     "share": 0.0007
+    }
+   ],
+   "accents": [
+    {
+     "label": "zugid",
+     "share": 0.6819,
+     "name": "ზუგიდური, ზუგიდური"
+    },
+    {
+     "label": "chkhor",
+     "share": 0.2618,
+     "name": "სენაკურ-მარტვილური, ჩხოროწყული"
+    },
+    {
+     "label": "bandza",
+     "share": 0.0387,
+     "name": "სენაკურ-მარტვილური, ბანძა-მარტვილური"
+    },
+    {
+     "label": "senak",
+     "share": 0.0106,
+     "name": "სენაკურ-მარტვილური, სენაკური"
+    },
+    {
+     "label": "jvar",
+     "share": 0.0035,
+     "name": "ზუგიდური, ჯვარული"
+    },
+    {
+     "label": "",
+     "share": 0.0035
+    }
+   ],
+   "variants": [
+    {
+     "label": "xmf-senmar",
+     "share": 0.3815,
+     "name": " სენაკურ-მარტვილური"
+    },
+    {
+     "label": "xmf-zugdid",
+     "share": 0.3415,
+     "name": "ზუგიდური"
+    },
+    {
+     "label": "xmf-samurz",
+     "share": 0.277,
+     "name": "სამურზაყანოული"
+    }
+   ]
+  },
+  "bri": {
+   "name": "Mokpwe",
+   "autonym": "",
+   "family": "bantu",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.8,
+   "validHours": 10.4,
+   "clips": 9175,
+   "validated": 8838,
+   "users": 15,
+   "avgDurationSecs": 4.241,
+   "sps": false,
+   "open": true,
+   "speakers": 15,
+   "sentences": 1200,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.128,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.872,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.8646
+    },
+    {
+     "label": "thirties",
+     "share": 0.128
+    },
+    {
+     "label": "twenties",
+     "share": 0.0074
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "mdf": {
+   "name": "Moksha",
+   "autonym": "мокшень кяль",
+   "family": "uralic",
+   "region": "europe-east",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 0.5,
+   "validHours": 0.5,
+   "clips": 346,
+   "validated": 336,
+   "users": 12,
+   "avgDurationSecs": 5.271,
+   "sps": false,
+   "open": true,
+   "speakers": 12,
+   "sentences": 6033,
+   "liveValidHours": 0.5,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0751,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.341,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.5838,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.5809
+    },
+    {
+     "label": "fourties",
+     "share": 0.341
+    },
+    {
+     "label": "sixties",
+     "share": 0.0578
+    },
+    {
+     "label": "twenties",
+     "share": 0.0173
+    },
+    {
+     "label": "teens",
+     "share": 0.0029
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "mn": {
+   "name": "Mongolian",
+   "autonym": "монгол хэл",
+   "family": "mongolic",
+   "region": "asia-north",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 130.4,
+   "validHours": 45.9,
+   "clips": 95940,
+   "validated": 33761,
+   "users": 616,
+   "avgDurationSecs": 4.893,
+   "sps": false,
+   "open": true,
+   "speakers": 622,
+   "sentences": 6040,
+   "liveValidHours": 47,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.1437,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3979,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0042,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.4542,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.9144
+    },
+    {
+     "label": "",
+     "share": 0.0404
+    },
+    {
+     "label": "thirties",
+     "share": 0.0329
+    },
+    {
+     "label": "nineties",
+     "share": 0.0075
+    },
+    {
+     "label": "teens",
+     "share": 0.0026
+    },
+    {
+     "label": "fourties",
+     "share": 0.0014
+    },
+    {
+     "label": "eighties",
+     "share": 0.0008
+    },
+    {
+     "label": "fifties",
+     "share": 0.0001
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "mse": {
+   "name": "Moussey",
+   "autonym": "",
+   "family": "afroasiatic",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 8.2,
+   "validHours": 7.7,
+   "clips": 4577,
+   "validated": 4338,
+   "users": 18,
+   "avgDurationSecs": 6.411,
+   "sps": false,
+   "open": true,
+   "speakers": 18,
+   "sentences": 1002,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.7916
+    },
+    {
+     "label": "twenties",
+     "share": 0.2084
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "mua": {
+   "name": "Mundang",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 9.7,
+   "validHours": 9.7,
+   "clips": 8694,
+   "validated": 8672,
+   "users": 17,
+   "avgDurationSecs": 4.006,
+   "sps": false,
+   "open": true,
+   "speakers": 17,
+   "sentences": 995,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "mug": {
+   "name": "Musgum",
+   "autonym": "",
+   "family": "afroasiatic",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 5.6,
+   "validHours": 5.4,
+   "clips": 2764,
+   "validated": 2687,
+   "users": 18,
+   "avgDurationSecs": 7.27,
+   "sps": false,
+   "open": true,
+   "speakers": 18,
+   "sentences": 1002,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.9946
+    },
+    {
+     "label": "thirties",
+     "share": 0.0054
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "ne-NP": {
+   "name": "Nepali",
+   "autonym": "नेपाली",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "devanagari",
+   "prominence": 1,
+   "hours": 2,
+   "validHours": 1.4,
+   "clips": 1744,
+   "validated": 1213,
+   "users": 64,
+   "avgDurationSecs": 4.153,
+   "sps": false,
+   "open": true,
+   "speakers": 64,
+   "sentences": 1321,
+   "liveValidHours": 1.4,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5883,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0092,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.4025,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.5516
+    },
+    {
+     "label": "",
+     "share": 0.3286
+    },
+    {
+     "label": "thirties",
+     "share": 0.1198
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "nnh": {
+   "name": "Ngiembon",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 18.9,
+   "validHours": 18.9,
+   "clips": 7643,
+   "validated": 7629,
+   "users": 17,
+   "avgDurationSecs": 8.916,
+   "sps": false,
+   "open": true,
+   "speakers": 17,
+   "sentences": 886,
+   "liveValidHours": 23,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1095,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.8905,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.8905
+    },
+    {
+     "label": "thirties",
+     "share": 0.1095
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "jgo": {
+   "name": "Ngomba",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.5,
+   "validHours": 11.3,
+   "clips": 6189,
+   "validated": 6080,
+   "users": 16,
+   "avgDurationSecs": 6.695,
+   "sps": false,
+   "open": true,
+   "speakers": 16,
+   "sentences": 1035,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3317,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.6683,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.4392
+    },
+    {
+     "label": "fourties",
+     "share": 0.3013
+    },
+    {
+     "label": "thirties",
+     "share": 0.149
+    },
+    {
+     "label": "twenties",
+     "share": 0.1105
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "nla": {
+   "name": "Ngombale",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 9.2,
+   "validHours": 8.9,
+   "clips": 4775,
+   "validated": 4635,
+   "users": 15,
+   "avgDurationSecs": 6.93,
+   "sps": false,
+   "open": true,
+   "speakers": 15,
+   "sentences": 984,
+   "liveValidHours": 10,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "pcm": {
+   "name": "Nigerian Pidgin English",
+   "autonym": "Naijá",
+   "family": "creole",
+   "region": "africa-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 14.4,
+   "validHours": 12.5,
+   "clips": 8964,
+   "validated": 7755,
+   "users": 60,
+   "avgDurationSecs": 5.807,
+   "sps": false,
+   "open": true,
+   "speakers": 60,
+   "sentences": 987,
+   "liveValidHours": 13,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1478,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.8522,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.7245
+    },
+    {
+     "label": "fourties",
+     "share": 0.1622
+    },
+    {
+     "label": "thirties",
+     "share": 0.1111
+    },
+    {
+     "label": "twenties",
+     "share": 0.0022
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "hno": {
+   "name": "Northern Hindko",
+   "autonym": "",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 10.5,
+   "validHours": 10.2,
+   "clips": 9407,
+   "validated": 9120,
+   "users": 36,
+   "avgDurationSecs": 4.009,
+   "sps": false,
+   "open": true,
+   "speakers": 36,
+   "sentences": 2349,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.484,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.516,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.6638
+    },
+    {
+     "label": "thirties",
+     "share": 0.2279
+    },
+    {
+     "label": "",
+     "share": 0.0927
+    },
+    {
+     "label": "teens",
+     "share": 0.0156
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "kmr": {
+   "name": "Northern Kurdish",
+   "autonym": "kurmancî",
+   "family": "iranian",
+   "region": "asia-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 111.3,
+   "validHours": 79.4,
+   "clips": 95350,
+   "validated": 68035,
+   "users": 709,
+   "avgDurationSecs": 4.201,
+   "sps": false,
+   "open": true,
+   "speakers": 712,
+   "sentences": 17034,
+   "liveValidHours": 80,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.3978,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0885,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.5136,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.4574
+    },
+    {
+     "label": "twenties",
+     "share": 0.3413
+    },
+    {
+     "label": "thirties",
+     "share": 0.09
+    },
+    {
+     "label": "fourties",
+     "share": 0.0566
+    },
+    {
+     "label": "fifties",
+     "share": 0.0428
+    },
+    {
+     "label": "teens",
+     "share": 0.0112
+    },
+    {
+     "label": "sixties",
+     "share": 0.0006
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "gya": {
+   "name": "Northwest Gbaya",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.4,
+   "validHours": 9.8,
+   "clips": 7400,
+   "validated": 6914,
+   "users": 33,
+   "avgDurationSecs": 5.081,
+   "sps": false,
+   "open": true,
+   "speakers": 35,
+   "sentences": 1054,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0001,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9999,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.8619
+    },
+    {
+     "label": "thirties",
+     "share": 0.138
+    },
+    {
+     "label": "fourties",
+     "share": 0.0001
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "nb-NO": {
+   "name": "Norwegian Bokmål",
+   "autonym": "norsk bokmål",
+   "family": "germanic",
+   "region": "europe-north",
+   "script": "latin",
+   "prominence": 2,
+   "hours": 2.6,
+   "validHours": 2.4,
+   "clips": 2252,
+   "validated": 2021,
+   "users": 68,
+   "avgDurationSecs": 4.192,
+   "sps": false,
+   "open": true,
+   "speakers": 68,
+   "sentences": 4419,
+   "liveValidHours": 2.3,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5955,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.4045,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.6128
+    },
+    {
+     "label": "fourties",
+     "share": 0.1932
+    },
+    {
+     "label": "",
+     "share": 0.1781
+    },
+    {
+     "label": "fifties",
+     "share": 0.016
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "nn-NO": {
+   "name": "Norwegian Nynorsk",
+   "autonym": "nynorsk",
+   "family": "germanic",
+   "region": "europe-north",
+   "script": "latin",
+   "prominence": 2,
+   "hours": 1.9,
+   "validHours": 1.6,
+   "clips": 1578,
+   "validated": 1308,
+   "users": 42,
+   "avgDurationSecs": 4.444,
+   "sps": false,
+   "open": true,
+   "speakers": 42,
+   "sentences": 5317,
+   "liveValidHours": 1.7,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5076,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.116,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3764,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.3536
+    },
+    {
+     "label": "",
+     "share": 0.3416
+    },
+    {
+     "label": "twenties",
+     "share": 0.2421
+    },
+    {
+     "label": "fourties",
+     "share": 0.0412
+    },
+    {
+     "label": "teens",
+     "share": 0.0152
+    },
+    {
+     "label": "fifties",
+     "share": 0.0063
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "yav": {
+   "name": "Nuasue",
+   "autonym": "",
+   "family": "bantu",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.2,
+   "validHours": 8.6,
+   "clips": 5499,
+   "validated": 4679,
+   "users": 10,
+   "avgDurationSecs": 6.655,
+   "sps": false,
+   "open": true,
+   "speakers": 10,
+   "sentences": 1013,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1106,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.8894,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.8894
+    },
+    {
+     "label": "fourties",
+     "share": 0.1106
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "hux": {
+   "name": "Nüpode Huitoto",
+   "autonym": "",
+   "family": "witotoan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.4,
+   "validHours": 10,
+   "clips": 10608,
+   "validated": 9285,
+   "users": 13,
+   "avgDurationSecs": 3.876,
+   "sps": false,
+   "open": true,
+   "speakers": 13,
+   "sentences": 995,
+   "liveValidHours": 10,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.6265,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3735,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fifties",
+     "share": 0.3714
+    },
+    {
+     "label": "fourties",
+     "share": 0.2557
+    },
+    {
+     "label": "twenties",
+     "share": 0.1862
+    },
+    {
+     "label": "thirties",
+     "share": 0.0934
+    },
+    {
+     "label": "sixties",
+     "share": 0.0924
+    },
+    {
+     "label": "",
+     "share": 0.0009
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "odk": {
+   "name": "Oadki",
+   "autonym": "",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 11.3,
+   "validHours": 11.2,
+   "clips": 6387,
+   "validated": 6341,
+   "users": 20,
+   "avgDurationSecs": 6.369,
+   "sps": false,
+   "open": true,
+   "speakers": 20,
+   "sentences": 2047,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.1447,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1578,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.6975,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.3138
+    },
+    {
+     "label": "twenties",
+     "share": 0.1956
+    },
+    {
+     "label": "thirties",
+     "share": 0.1843
+    },
+    {
+     "label": "teens",
+     "share": 0.15
+    },
+    {
+     "label": "fourties",
+     "share": 0.0786
+    },
+    {
+     "label": "fifties",
+     "share": 0.0778
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "oc": {
+   "name": "Occitan",
+   "autonym": "occitan",
+   "family": "romance",
+   "region": "europe-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 13.4,
+   "validHours": 2.7,
+   "clips": 9885,
+   "validated": 1986,
+   "users": 149,
+   "avgDurationSecs": 4.871,
+   "sps": false,
+   "open": true,
+   "speakers": 150,
+   "sentences": 4934,
+   "liveValidHours": 1.9,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.084,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3989,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.5171,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.502
+    },
+    {
+     "label": "fourties",
+     "share": 0.1702
+    },
+    {
+     "label": "fifties",
+     "share": 0.1555
+    },
+    {
+     "label": "sixties",
+     "share": 0.1135
+    },
+    {
+     "label": "thirties",
+     "share": 0.0361
+    },
+    {
+     "label": "twenties",
+     "share": 0.0157
+    },
+    {
+     "label": "teens",
+     "share": 0.0051
+    },
+    {
+     "label": "seventies",
+     "share": 0.002
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "or": {
+   "name": "Odia",
+   "autonym": "ଓଡ଼ିଆ",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "odia",
+   "prominence": 1,
+   "hours": 37.3,
+   "validHours": 6.3,
+   "clips": 24248,
+   "validated": 4093,
+   "users": 166,
+   "avgDurationSecs": 5.54,
+   "sps": false,
+   "open": true,
+   "speakers": 167,
+   "sentences": 6191,
+   "liveValidHours": 2.9,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.3413,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0308,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.2064,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.4216,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.6547
+    },
+    {
+     "label": "thirties",
+     "share": 0.2711
+    },
+    {
+     "label": "",
+     "share": 0.0573
+    },
+    {
+     "label": "fourties",
+     "share": 0.0117
+    },
+    {
+     "label": "fifties",
+     "share": 0.0047
+    },
+    {
+     "label": "teens",
+     "share": 0.0006
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "nlv": {
+   "name": "Orizaba Nahuatl",
+   "autonym": "",
+   "family": "uto-aztecan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.9,
+   "validHours": 11.6,
+   "clips": 6844,
+   "validated": 6667,
+   "users": 16,
+   "avgDurationSecs": 6.272,
+   "sps": false,
+   "open": true,
+   "speakers": 16,
+   "sentences": 1006,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0037,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0884,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9079,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.8549
+    },
+    {
+     "label": "twenties",
+     "share": 0.1349
+    },
+    {
+     "label": "",
+     "share": 0.0102
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "oru": {
+   "name": "Ormuri",
+   "autonym": "",
+   "family": "iranian",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 34.9,
+   "validHours": 21.3,
+   "clips": 18306,
+   "validated": 11166,
+   "users": 17,
+   "avgDurationSecs": 6.863,
+   "sps": false,
+   "open": true,
+   "speakers": 17,
+   "sentences": 7355,
+   "liveValidHours": 22,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.1916,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.1772,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.6312,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.6312
+    },
+    {
+     "label": "sixties",
+     "share": 0.3688
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "os": {
+   "name": "Ossetian",
+   "autonym": "ирон æвзаг",
+   "family": "iranian",
+   "region": "asia-west",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 1.5,
+   "validHours": 1.4,
+   "clips": 966,
+   "validated": 916,
+   "users": 39,
+   "avgDurationSecs": 5.55,
+   "sps": false,
+   "open": true,
+   "speakers": 39,
+   "sentences": 1889,
+   "liveValidHours": 1.4,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.2184,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.7816,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.4576
+    },
+    {
+     "label": "",
+     "share": 0.2371
+    },
+    {
+     "label": "fourties",
+     "share": 0.1977
+    },
+    {
+     "label": "twenties",
+     "share": 0.087
+    },
+    {
+     "label": "teens",
+     "share": 0.0207
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "udl": {
+   "name": "Ouldémé",
+   "autonym": "",
+   "family": "afroasiatic",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 9.7,
+   "validHours": 9.5,
+   "clips": 6504,
+   "validated": 6398,
+   "users": 20,
+   "avgDurationSecs": 5.352,
+   "sps": false,
+   "open": true,
+   "speakers": 20,
+   "sentences": 1011,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.8539
+    },
+    {
+     "label": "twenties",
+     "share": 0.1461
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "phr": {
+   "name": "Pahari-Pothwari",
+   "autonym": "",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 14.1,
+   "validHours": 14,
+   "clips": 12825,
+   "validated": 12695,
+   "users": 63,
+   "avgDurationSecs": 3.963,
+   "sps": false,
+   "open": true,
+   "speakers": 63,
+   "sentences": 2077,
+   "liveValidHours": 15,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2991,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.7009,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.5188
+    },
+    {
+     "label": "",
+     "share": 0.2916
+    },
+    {
+     "label": "thirties",
+     "share": 0.1744
+    },
+    {
+     "label": "fourties",
+     "share": 0.0152
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "pwn": {
+   "name": "Paiwan",
+   "autonym": "",
+   "family": "austronesian",
+   "region": "asia-east",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 14.8,
+   "validHours": 14.6,
+   "clips": 10938,
+   "validated": 10800,
+   "users": 27,
+   "avgDurationSecs": 4.873,
+   "sps": false,
+   "open": true,
+   "speakers": 27,
+   "sentences": 2207,
+   "liveValidHours": 15,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0404,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2349,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.238,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.4867,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.4344
+    },
+    {
+     "label": "",
+     "share": 0.2885
+    },
+    {
+     "label": "fifties",
+     "share": 0.2248
+    },
+    {
+     "label": "twenties",
+     "share": 0.0523
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": [
+    {
+     "label": "pwn-eastern",
+     "share": 0.8088,
+     "name": "pinayuanan a kinaikacedasan (東排灣語)"
+    },
+    {
+     "label": "pwn-southern",
+     "share": 0.1433,
+     "name": "pinayuanan a tjinainavaljan (南排灣語)"
+    },
+    {
+     "label": "pwn-northern",
+     "share": 0.048,
+     "name": "pinayuanan a tjinuvirian (北排灣語)"
+    }
+   ]
+  },
+  "phl": {
+   "name": "Palula",
+   "autonym": "",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 28.9,
+   "validHours": 21.3,
+   "clips": 21142,
+   "validated": 15563,
+   "users": 20,
+   "avgDurationSecs": 4.921,
+   "sps": false,
+   "open": true,
+   "speakers": 20,
+   "sentences": 4745,
+   "liveValidHours": 22,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0009,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9991,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.4756
+    },
+    {
+     "label": "thirties",
+     "share": 0.2267
+    },
+    {
+     "label": "fourties",
+     "share": 0.1787
+    },
+    {
+     "label": "teens",
+     "share": 0.0639
+    },
+    {
+     "label": "",
+     "share": 0.0552
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "kvx": {
+   "name": "Parkari Koli",
+   "autonym": "",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 11.2,
+   "validHours": 11,
+   "clips": 7557,
+   "validated": 7464,
+   "users": 22,
+   "avgDurationSecs": 5.322,
+   "sps": false,
+   "open": true,
+   "speakers": 22,
+   "sentences": 2025,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2051,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.7949,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "teens",
+     "share": 0.2764
+    },
+    {
+     "label": "thirties",
+     "share": 0.2713
+    },
+    {
+     "label": "fourties",
+     "share": 0.2051
+    },
+    {
+     "label": "twenties",
+     "share": 0.2027
+    },
+    {
+     "label": "",
+     "share": 0.0385
+    },
+    {
+     "label": "seventies",
+     "share": 0.0026
+    },
+    {
+     "label": "sixties",
+     "share": 0.002
+    },
+    {
+     "label": "fifties",
+     "share": 0.0013
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "ps": {
+   "name": "Pashto",
+   "autonym": "پښتو",
+   "family": "iranian",
+   "region": "asia-central",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 5580.9,
+   "validHours": 3530.2,
+   "clips": 5296373,
+   "validated": 3350172,
+   "users": 8429,
+   "avgDurationSecs": 3.793,
+   "sps": true,
+   "open": true,
+   "speakers": 8495,
+   "sentences": 1225990,
+   "liveValidHours": 3757,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0047,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.5889,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0005,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.4059,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.5635
+    },
+    {
+     "label": "thirties",
+     "share": 0.2457
+    },
+    {
+     "label": "teens",
+     "share": 0.1044
+    },
+    {
+     "label": "",
+     "share": 0.0362
+    },
+    {
+     "label": "fourties",
+     "share": 0.0273
+    },
+    {
+     "label": "fifties",
+     "share": 0.0223
+    },
+    {
+     "label": "sixties",
+     "share": 0.0005
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "fa": {
+   "name": "Persian",
+   "autonym": "فارسی",
+   "family": "iranian",
+   "region": "asia-west",
+   "script": "arabic",
+   "prominence": 2,
+   "hours": 431.4,
+   "validHours": 373.1,
+   "clips": 395173,
+   "validated": 341785,
+   "users": 4668,
+   "avgDurationSecs": 3.93,
+   "sps": false,
+   "open": true,
+   "speakers": 4670,
+   "sentences": 54775,
+   "liveValidHours": 373,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.6994,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.064,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2366,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.3545
+    },
+    {
+     "label": "twenties",
+     "share": 0.3304
+    },
+    {
+     "label": "",
+     "share": 0.2457
+    },
+    {
+     "label": "teens",
+     "share": 0.0294
+    },
+    {
+     "label": "fourties",
+     "share": 0.0249
+    },
+    {
+     "label": "fifties",
+     "share": 0.0145
+    },
+    {
+     "label": "sixties",
+     "share": 0.0005
+    },
+    {
+     "label": "seventies",
+     "share": 0.0001
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "pl": {
+   "name": "Polish",
+   "autonym": "polski",
+   "family": "slavic",
+   "region": "europe-east",
+   "script": "latin",
+   "prominence": 3,
+   "hours": 189,
+   "validHours": 177,
+   "clips": 148796,
+   "validated": 139352,
+   "users": 3477,
+   "avgDurationSecs": 4.573,
+   "sps": false,
+   "open": true,
+   "speakers": 3482,
+   "sentences": 229767,
+   "liveValidHours": 177,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5804,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1363,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0.0001,
+     "none": false
+    },
+    {
+     "label": "non-binary",
+     "share": 0.001,
      "none": false
     },
     {
@@ -7237,47 +15509,3421 @@ window.CV_DATA = {
     },
     {
      "label": "do_not_wish_to_say",
-     "share": 0.0002,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "",
-     "share": 0.2012,
+     "share": 0.2822,
      "none": false
     }
    ],
    "age": [
     {
      "label": "thirties",
-     "share": 0.4698
+     "share": 0.3437
     },
     {
      "label": "twenties",
-     "share": 0.2923
+     "share": 0.2699
     },
     {
      "label": "",
-     "share": 0.1876
+     "share": 0.2428
     },
     {
      "label": "fourties",
-     "share": 0.0366
+     "share": 0.1111
     },
     {
      "label": "teens",
-     "share": 0.0072
+     "share": 0.02
+    },
+    {
+     "label": "fifties",
+     "share": 0.0062
     },
     {
      "label": "nineties",
+     "share": 0.0053
+    },
+    {
+     "label": "sixties",
+     "share": 0.001
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "pt": {
+   "name": "Portuguese",
+   "autonym": "português",
+   "family": "romance",
+   "region": "europe-west",
+   "script": "latin",
+   "prominence": 3,
+   "hours": 230.4,
+   "validHours": 188.8,
+   "clips": 198059,
+   "validated": 162350,
+   "users": 3860,
+   "avgDurationSecs": 4.187,
+   "sps": false,
+   "open": true,
+   "speakers": 3888,
+   "sentences": 43728,
+   "liveValidHours": 185,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.6707,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.058,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0.0001,
+     "none": false
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2712,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.3591
+    },
+    {
+     "label": "",
+     "share": 0.2424
+    },
+    {
+     "label": "thirties",
+     "share": 0.175
+    },
+    {
+     "label": "fourties",
+     "share": 0.13
+    },
+    {
+     "label": "sixties",
+     "share": 0.0443
+    },
+    {
+     "label": "fifties",
+     "share": 0.0256
+    },
+    {
+     "label": "teens",
+     "share": 0.0234
+    },
+    {
+     "label": "seventies",
+     "share": 0.0001
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": [
+    {
+     "label": "pt-BR",
+     "share": 0.9618,
+     "name": "Portuguese (Brasil)"
+    },
+    {
+     "label": "pt-PT",
+     "share": 0.0382,
+     "name": "Portuguese (Portugal)"
+    }
+   ]
+  },
+  "pa-IN": {
+   "name": "Punjabi",
+   "autonym": "ਪੰਜਾਬੀ",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "gurmukhi",
+   "prominence": 2,
+   "hours": 4.4,
+   "validHours": 2.4,
+   "clips": 3268,
+   "validated": 1828,
+   "users": 75,
+   "avgDurationSecs": 4.806,
+   "sps": false,
+   "open": true,
+   "speakers": 76,
+   "sentences": 14825,
+   "liveValidHours": 2.5,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.6288,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0104,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3608,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.3898
+    },
+    {
+     "label": "",
+     "share": 0.2855
+    },
+    {
+     "label": "twenties",
+     "share": 0.213
+    },
+    {
+     "label": "fourties",
+     "share": 0.0627
+    },
+    {
+     "label": "fifties",
+     "share": 0.0431
+    },
+    {
+     "label": "sixties",
+     "share": 0.0031
+    },
+    {
+     "label": "teens",
+     "share": 0.0028
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "qxp": {
+   "name": "Puno Quechua",
+   "autonym": "",
+   "family": "quechuan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 34.9,
+   "validHours": 31.2,
+   "clips": 25423,
+   "validated": 22727,
+   "users": 81,
+   "avgDurationSecs": 4.939,
+   "sps": true,
+   "open": true,
+   "speakers": 81,
+   "sentences": 2067,
+   "liveValidHours": 32,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0151,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.7029,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2819,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.5346
+    },
+    {
+     "label": "thirties",
+     "share": 0.2674
+    },
+    {
+     "label": "fourties",
+     "share": 0.0931
+    },
+    {
+     "label": "fifties",
+     "share": 0.0764
+    },
+    {
+     "label": "",
+     "share": 0.0115
+    },
+    {
+     "label": "teens",
+     "share": 0.0099
+    },
+    {
+     "label": "sixties",
+     "share": 0.0071
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "quy": {
+   "name": "Quechua",
+   "autonym": "Runa Simi",
+   "family": "quechuan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 1.7,
+   "validHours": 0.1,
+   "clips": 1229,
+   "validated": 38,
+   "users": 8,
+   "avgDurationSecs": 4.994,
+   "sps": false,
+   "open": true,
+   "speakers": 8,
+   "sentences": 759,
+   "liveValidHours": 0,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1863,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.8137,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.6981
+    },
+    {
+     "label": "sixties",
+     "share": 0.2644
+    },
+    {
+     "label": "fourties",
+     "share": 0.0203
+    },
+    {
+     "label": "",
+     "share": 0.0171
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "qva": {
+   "name": "Quechua Ambo-Pasco",
+   "autonym": "",
+   "family": "quechuan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 9.8,
+   "validHours": 9.8,
+   "clips": 8254,
+   "validated": 8222,
+   "users": 13,
+   "avgDurationSecs": 4.287,
+   "sps": false,
+   "open": true,
+   "speakers": 13,
+   "sentences": 1000,
+   "liveValidHours": 10,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.8839,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.1161,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.5454
+    },
+    {
+     "label": "fifties",
+     "share": 0.1235
+    },
+    {
+     "label": "sixties",
+     "share": 0.1212
+    },
+    {
+     "label": "",
+     "share": 0.1089
+    },
+    {
+     "label": "twenties",
+     "share": 0.0974
+    },
+    {
+     "label": "fourties",
      "share": 0.0036
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "qxu": {
+   "name": "Quechua Arequipa-La Unión",
+   "autonym": "",
+   "family": "quechuan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 12.7,
+   "validHours": 10.1,
+   "clips": 10882,
+   "validated": 8726,
+   "users": 16,
+   "avgDurationSecs": 4.186,
+   "sps": false,
+   "open": true,
+   "speakers": 16,
+   "sentences": 998,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.5346,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.4654,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.4683
+    },
+    {
+     "label": "thirties",
+     "share": 0.3456
+    },
+    {
+     "label": "fourties",
+     "share": 0.0917
+    },
+    {
+     "label": "teens",
+     "share": 0.0893
+    },
+    {
+     "label": "",
+     "share": 0.0032
+    },
+    {
+     "label": "fifties",
+     "share": 0.0018
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "qvl": {
+   "name": "Quechua Cajatambo",
+   "autonym": "",
+   "family": "quechuan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10,
+   "validHours": 10,
+   "clips": 9097,
+   "validated": 9082,
+   "users": 19,
+   "avgDurationSecs": 3.96,
+   "sps": false,
+   "open": true,
+   "speakers": 19,
+   "sentences": 1000,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.6102,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3898,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.8264
+    },
+    {
+     "label": "thirties",
+     "share": 0.1099
+    },
+    {
+     "label": "teens",
+     "share": 0.0619
+    },
+    {
+     "label": "",
+     "share": 0.0018
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "qxa": {
+   "name": "Quechua Chiquián",
+   "autonym": "",
+   "family": "quechuan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.5,
+   "validHours": 10.1,
+   "clips": 8719,
+   "validated": 8356,
+   "users": 18,
+   "avgDurationSecs": 4.343,
+   "sps": false,
+   "open": true,
+   "speakers": 18,
+   "sentences": 999,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.552,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.448,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.6696
+    },
+    {
+     "label": "thirties",
+     "share": 0.2023
+    },
+    {
+     "label": "fourties",
+     "share": 0.1091
+    },
+    {
+     "label": "",
+     "share": 0.019
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "qwa": {
+   "name": "Quechua Corongo Ancash",
+   "autonym": "",
+   "family": "quechuan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.5,
+   "validHours": 9.9,
+   "clips": 8363,
+   "validated": 7217,
+   "users": 13,
+   "avgDurationSecs": 4.951,
+   "sps": false,
+   "open": true,
+   "speakers": 13,
+   "sentences": 1000,
+   "liveValidHours": 10,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3995,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.6005,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fifties",
+     "share": 0.3591
+    },
+    {
+     "label": "thirties",
+     "share": 0.3165
+    },
+    {
+     "label": "fourties",
+     "share": 0.2012
+    },
+    {
+     "label": "twenties",
+     "share": 0.1196
+    },
+    {
+     "label": "",
+     "share": 0.0036
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "qxw": {
+   "name": "Quechua Jauja Wanka",
+   "autonym": "",
+   "family": "quechuan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 13.5,
+   "validHours": 11.7,
+   "clips": 9252,
+   "validated": 8021,
+   "users": 14,
+   "avgDurationSecs": 5.25,
+   "sps": false,
+   "open": true,
+   "speakers": 14,
+   "sentences": 1002,
+   "liveValidHours": 10,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.541,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.459,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.5445
+    },
+    {
+     "label": "fourties",
+     "share": 0.2161
+    },
+    {
+     "label": "thirties",
+     "share": 0.1125
+    },
+    {
+     "label": "seventies",
+     "share": 0.1082
+    },
+    {
+     "label": "",
+     "share": 0.0182
+    },
+    {
+     "label": "fifties",
+     "share": 0.0005
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "qxt": {
+   "name": "Quechua Pasco Santa Ana de Tusi",
+   "autonym": "",
+   "family": "quechuan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 13.3,
+   "validHours": 10.3,
+   "clips": 11128,
+   "validated": 8647,
+   "users": 16,
+   "avgDurationSecs": 4.29,
+   "sps": false,
+   "open": true,
+   "speakers": 16,
+   "sentences": 998,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.7265,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2735,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.5366
+    },
+    {
+     "label": "twenties",
+     "share": 0.19
+    },
+    {
+     "label": "thirties",
+     "share": 0.1794
+    },
+    {
+     "label": "fifties",
+     "share": 0.0897
+    },
+    {
+     "label": "",
+     "share": 0.0044
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "qus": {
+   "name": "Quechua Santiago del Estero",
+   "autonym": "",
+   "family": "quechuan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.3,
+   "validHours": 10.8,
+   "clips": 10832,
+   "validated": 10323,
+   "users": 24,
+   "avgDurationSecs": 3.749,
+   "sps": false,
+   "open": true,
+   "speakers": 24,
+   "sentences": 998,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.4569,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.5431,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.3589
+    },
+    {
+     "label": "thirties",
+     "share": 0.3226
+    },
+    {
+     "label": "",
+     "share": 0.2008
+    },
+    {
+     "label": "fifties",
+     "share": 0.0921
+    },
+    {
+     "label": "fourties",
+     "share": 0.0256
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "qws": {
+   "name": "Quechua Sihuas Ancash",
+   "autonym": "",
+   "family": "quechuan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.4,
+   "validHours": 10.3,
+   "clips": 8977,
+   "validated": 8879,
+   "users": 12,
+   "avgDurationSecs": 4.164,
+   "sps": false,
+   "open": true,
+   "speakers": 12,
+   "sentences": 998,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.5552,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.4448,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.5541
+    },
+    {
+     "label": "",
+     "share": 0.2239
+    },
+    {
+     "label": "thirties",
+     "share": 0.1112
+    },
+    {
+     "label": "fourties",
+     "share": 0.1108
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "ro": {
+   "name": "Romanian",
+   "autonym": "română",
+   "family": "romance",
+   "region": "europe-east",
+   "script": "latin",
+   "prominence": 2,
+   "hours": 51.9,
+   "validHours": 25.4,
+   "clips": 45884,
+   "validated": 22468,
+   "users": 464,
+   "avgDurationSecs": 4.073,
+   "sps": false,
+   "open": true,
+   "speakers": 465,
+   "sentences": 13767,
+   "liveValidHours": 25,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.6649,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1321,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2031,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.5649
+    },
+    {
+     "label": "",
+     "share": 0.1568
+    },
+    {
+     "label": "thirties",
+     "share": 0.1322
+    },
+    {
+     "label": "fourties",
+     "share": 0.1075
+    },
+    {
+     "label": "fifties",
+     "share": 0.0203
+    },
+    {
+     "label": "teens",
+     "share": 0.0151
+    },
+    {
+     "label": "sixties",
+     "share": 0.0025
+    },
+    {
+     "label": "eighties",
+     "share": 0.0007
+    }
+   ],
+   "accents": [
+    {
+     "label": "ro-muntenia",
+     "share": 0.5814,
+     "name": "Muntenesc"
+    },
+    {
+     "label": "ro-transilv",
+     "share": 0.1895,
+     "name": "Transilvănean"
+    },
+    {
+     "label": "ro-crisana",
+     "share": 0.1157,
+     "name": "Crișean"
+    },
+    {
+     "label": "ro-banat",
+     "share": 0.059,
+     "name": "Bănățean"
+    },
+    {
+     "label": "",
+     "share": 0.0409
+    },
+    {
+     "label": "ro-moldova",
+     "share": 0.0129,
+     "name": "Moldovenesc"
+    },
+    {
+     "label": "ro-oltenia",
+     "share": 0.0006,
+     "name": "Oltenesc"
+    }
+   ],
+   "variants": [
+    {
+     "label": "ro-RO",
+     "share": 1,
+     "name": "Romanian-Romania"
+    }
+   ]
+  },
+  "rm-sursilv": {
+   "name": "Romansh Sursilvan",
+   "autonym": "rumantsch sursilvan",
+   "family": "romance",
+   "region": "europe-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.9,
+   "validHours": 7.9,
+   "clips": 7963,
+   "validated": 5306,
+   "users": 93,
+   "avgDurationSecs": 5.379,
+   "sps": false,
+   "open": true,
+   "speakers": 93,
+   "sentences": 9332,
+   "liveValidHours": 7.6,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.1604,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1675,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.6721,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.5726
+    },
+    {
+     "label": "fourties",
+     "share": 0.167
+    },
+    {
+     "label": "twenties",
+     "share": 0.1449
+    },
+    {
+     "label": "thirties",
+     "share": 0.0664
+    },
+    {
+     "label": "teens",
+     "share": 0.049
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "rm-vallader": {
+   "name": "Romansh Vallader",
+   "autonym": "rumantsch vallader",
+   "family": "romance",
+   "region": "europe-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 4.3,
+   "validHours": 2.5,
+   "clips": 2676,
+   "validated": 1532,
+   "users": 55,
+   "avgDurationSecs": 5.836,
+   "sps": false,
+   "open": true,
+   "speakers": 55,
+   "sentences": 5913,
+   "liveValidHours": 2.8,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.4339,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1947,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3714,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.4092
+    },
+    {
+     "label": "",
+     "share": 0.3658
+    },
+    {
+     "label": "twenties",
+     "share": 0.1371
+    },
+    {
+     "label": "thirties",
+     "share": 0.0561
+    },
+    {
+     "label": "sixties",
+     "share": 0.028
+    },
+    {
+     "label": "fifties",
+     "share": 0.0037
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "dru": {
+   "name": "Rukai",
+   "autonym": "",
+   "family": "austronesian",
+   "region": "asia-east",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.6,
+   "validHours": 10.4,
+   "clips": 6693,
+   "validated": 6576,
+   "users": 20,
+   "avgDurationSecs": 5.676,
+   "sps": false,
+   "open": true,
+   "speakers": 20,
+   "sentences": 3867,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.123,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.8746,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.0024,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.877
+    },
+    {
+     "label": "fourties",
+     "share": 0.123
+    }
+   ],
+   "accents": [],
+   "variants": [
+    {
+     "label": "dru-veday",
+     "share": 0.315,
+     "name": "Ngudradreadrekadhane ka Veday (霧臺魯凱語)"
+    },
+    {
+     "label": "dru-oponoho",
+     "share": 0.3132,
+     "name": "ʼakoʼoponohae (萬山語)"
+    },
+    {
+     "label": "dru-taromak",
+     "share": 0.2632,
+     "name": "Ngodradrekai ka so Taromak (東魯凱語)"
+    },
+    {
+     "label": "dru-labuane",
+     "share": 0.0704,
+     "name": "Ngudradreadrekadha ka Tailailabuwana (大武魯凱語)"
+    },
+    {
+     "label": "dru-teldreka",
+     "share": 0.0383,
+     "name": "teldredrekane (茂林語)"
+    }
+   ]
+  },
+  "ru": {
+   "name": "Russian",
+   "autonym": "русский",
+   "family": "slavic",
+   "region": "europe-east",
+   "script": "cyrillic",
+   "prominence": 3,
+   "hours": 293.1,
+   "validHours": 256.8,
+   "clips": 203534,
+   "validated": 178296,
+   "users": 3767,
+   "avgDurationSecs": 5.185,
+   "sps": true,
+   "open": true,
+   "speakers": 3786,
+   "sentences": 48007,
+   "liveValidHours": 258,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5911,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.148,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0.0002,
+     "none": false
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0004,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.2603,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.3245
+    },
+    {
+     "label": "",
+     "share": 0.2376
+    },
+    {
+     "label": "thirties",
+     "share": 0.1805
+    },
+    {
+     "label": "fourties",
+     "share": 0.1327
+    },
+    {
+     "label": "teens",
+     "share": 0.0933
+    },
+    {
+     "label": "fifties",
+     "share": 0.0293
     },
     {
      "label": "sixties",
      "share": 0.0021
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "szy": {
+   "name": "Sakizaya",
+   "autonym": "Sakizaya",
+   "family": "austronesian",
+   "region": "asia-east",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 14.4,
+   "validHours": 13.7,
+   "clips": 9643,
+   "validated": 9158,
+   "users": 26,
+   "avgDurationSecs": 5.397,
+   "sps": false,
+   "open": true,
+   "speakers": 26,
+   "sentences": 801,
+   "liveValidHours": 14,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3545,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.3871,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.2584,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.4855
+    },
+    {
+     "label": "twenties",
+     "share": 0.13
     },
     {
      "label": "fifties",
+     "share": 0.1145
+    },
+    {
+     "label": "sixties",
+     "share": 0.1039
+    },
+    {
+     "label": "thirties",
+     "share": 0.0831
+    },
+    {
+     "label": "seventies",
+     "share": 0.083
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "skr": {
+   "name": "Saraiki",
+   "autonym": "سرائیکی",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 6.8,
+   "validHours": 4.3,
+   "clips": 5837,
+   "validated": 3752,
+   "users": 60,
+   "avgDurationSecs": 4.164,
+   "sps": false,
+   "open": true,
+   "speakers": 60,
+   "sentences": 6010,
+   "liveValidHours": 4.3,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.6296,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3704,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fifties",
+     "share": 0.3728
+    },
+    {
+     "label": "",
+     "share": 0.3533
+    },
+    {
+     "label": "twenties",
+     "share": 0.241
+    },
+    {
+     "label": "teens",
+     "share": 0.0207
+    },
+    {
+     "label": "thirties",
+     "share": 0.012
+    },
+    {
+     "label": "fourties",
+     "share": 0.0002
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "sc": {
+   "name": "Sardinian",
+   "autonym": "sardu",
+   "family": "romance",
+   "region": "europe-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 3.7,
+   "validHours": 3,
+   "clips": 2854,
+   "validated": 2331,
+   "users": 50,
+   "avgDurationSecs": 4.723,
+   "sps": false,
+   "open": true,
+   "speakers": 50,
+   "sentences": 5489,
+   "liveValidHours": 3,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.1216,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3269,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.5515,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.458
+    },
+    {
+     "label": "thirties",
+     "share": 0.28
+    },
+    {
+     "label": "fifties",
+     "share": 0.1451
+    },
+    {
+     "label": "twenties",
+     "share": 0.0893
+    },
+    {
+     "label": "sixties",
+     "share": 0.0165
+    },
+    {
+     "label": "fourties",
+     "share": 0.0112
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "trv": {
+   "name": "Seediq",
+   "autonym": "Seediq",
+   "family": "austronesian",
+   "region": "asia-east",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.1,
+   "validHours": 9.9,
+   "clips": 6490,
+   "validated": 6386,
+   "users": 10,
+   "avgDurationSecs": 5.611,
+   "sps": false,
+   "open": true,
+   "speakers": 10,
+   "sentences": 1974,
+   "liveValidHours": 10,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0686,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1307,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.1205,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.6803,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.9314
+    },
+    {
+     "label": "twenties",
+     "share": 0.0686
+    }
+   ],
+   "accents": [],
+   "variants": [
+    {
+     "label": "trv-tgdaya",
+     "share": 0.5455,
+     "name": "Kari Seediq Tgdaya (德固達雅賽德克語)"
+    },
+    {
+     "label": "trv-truku",
+     "share": 0.2772,
+     "name": "Kari Seejiq Truku (德鹿谷賽德克語)"
+    },
+    {
+     "label": "trv-teuda",
+     "share": 0.1773,
+     "name": "Kari Sediq Toda (都達賽德克語)"
+    }
+   ]
+  },
+  "nso": {
+   "name": "Sepedi",
+   "autonym": "Sepedi",
+   "family": "bantu",
+   "region": "africa-south",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 0.2,
+   "validHours": 0,
+   "clips": 124,
+   "validated": 16,
+   "users": 2,
+   "avgDurationSecs": 5.754,
+   "sps": false,
+   "open": true,
+   "speakers": 2,
+   "sentences": 2254,
+   "liveValidHours": 0,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.7581
+    },
+    {
+     "label": "",
+     "share": 0.2419
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "sr": {
+   "name": "Serbian",
+   "autonym": "српски",
+   "family": "slavic",
+   "region": "europe-east",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 12.8,
+   "validHours": 7.6,
+   "clips": 14079,
+   "validated": 8425,
+   "users": 187,
+   "avgDurationSecs": 3.263,
+   "sps": false,
+   "open": true,
+   "speakers": 190,
+   "sentences": 8209,
+   "liveValidHours": 7.7,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.319,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1467,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.5343,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.2617
+    },
+    {
+     "label": "sixties",
+     "share": 0.2507
+    },
+    {
+     "label": "",
+     "share": 0.1421
+    },
+    {
+     "label": "fifties",
+     "share": 0.1263
+    },
+    {
+     "label": "thirties",
+     "share": 0.1189
+    },
+    {
+     "label": "fourties",
+     "share": 0.0997
+    },
+    {
+     "label": "teens",
+     "share": 0.0007
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "sei": {
+   "name": "Seri",
+   "autonym": "",
+   "family": "isolate",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.5,
+   "validHours": 10.1,
+   "clips": 8310,
+   "validated": 8006,
+   "users": 17,
+   "avgDurationSecs": 4.535,
+   "sps": false,
+   "open": true,
+   "speakers": 17,
+   "sentences": 1615,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.8057,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0124,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.1819,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.4848
+    },
+    {
+     "label": "thirties",
+     "share": 0.268
+    },
+    {
+     "label": "twenties",
+     "share": 0.2348
+    },
+    {
+     "label": "",
+     "share": 0.0124
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "st": {
+   "name": "Sesotho",
+   "autonym": "Sesotho",
+   "family": "bantu",
+   "region": "africa-south",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 0.2,
+   "validHours": 0,
+   "clips": 209,
+   "validated": 14,
+   "users": 2,
+   "avgDurationSecs": 3.223,
+   "sps": false,
+   "open": true,
+   "speakers": 2,
+   "sentences": 2339,
+   "liveValidHours": 0,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.7129,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2871,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.7129
+    },
+    {
+     "label": "twenties",
+     "share": 0.2871
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "tn": {
+   "name": "Setswana",
+   "autonym": "Setswana",
+   "family": "bantu",
+   "region": "africa-south",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 4.9,
+   "validHours": 4.3,
+   "clips": 4059,
+   "validated": 3507,
+   "users": 18,
+   "avgDurationSecs": 4.377,
+   "sps": false,
+   "open": true,
+   "speakers": 19,
+   "sentences": 1767,
+   "liveValidHours": 4.3,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.476,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0382,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.4858,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.5092
+    },
+    {
+     "label": "fifties",
+     "share": 0.4336
+    },
+    {
+     "label": "",
+     "share": 0.0335
+    },
+    {
+     "label": "twenties",
+     "share": 0.0237
+    }
+   ],
+   "accents": [],
+   "variants": [
+    {
+     "label": "tn-central",
+     "share": 0.8333,
+     "name": "Central Setswana (Sehurutshe, Sengwaketse, Serolong)"
+    },
+    {
+     "label": "tn-northern",
+     "share": 0.1667,
+     "name": "Northern Setswana (Sengwato, Setawana, Sekwena, Selete)"
+    }
+   ]
+  },
+  "scl": {
+   "name": "Shina",
+   "autonym": "",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 10.2,
+   "validHours": 10,
+   "clips": 9022,
+   "validated": 8877,
+   "users": 40,
+   "avgDurationSecs": 4.072,
+   "sps": false,
+   "open": true,
+   "speakers": 40,
+   "sentences": 3300,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0166,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9834,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.8159
+    },
+    {
+     "label": "",
+     "share": 0.1624
+    },
+    {
+     "label": "twenties",
+     "share": 0.0212
+    },
+    {
+     "label": "fourties",
+     "share": 0.0006
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "sbn": {
+   "name": "Sindhi Bhil",
+   "autonym": "",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 10.8,
+   "validHours": 10.7,
+   "clips": 10986,
+   "validated": 10957,
+   "users": 21,
+   "avgDurationSecs": 3.524,
+   "sps": false,
+   "open": true,
+   "speakers": 21,
+   "sentences": 2001,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.5527
+    },
+    {
+     "label": "fourties",
+     "share": 0.2588
+    },
+    {
+     "label": "teens",
+     "share": 0.1881
+    },
+    {
+     "label": "thirties",
+     "share": 0.0005
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "ss": {
+   "name": "Siswati",
+   "autonym": "siSwati",
+   "family": "bantu",
+   "region": "africa-south",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 0.3,
+   "validHours": 0,
+   "clips": 131,
+   "validated": 0,
+   "users": 3,
+   "avgDurationSecs": 7.652,
+   "sps": false,
+   "open": true,
+   "speakers": 3,
+   "sentences": 1614,
+   "liveValidHours": 0,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.4656
+    },
+    {
+     "label": "",
+     "share": 0.3817
+    },
+    {
+     "label": "fifties",
+     "share": 0.1527
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "sk": {
+   "name": "Slovak",
+   "autonym": "slovenčina",
+   "family": "slavic",
+   "region": "europe-east",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 58.4,
+   "validHours": 56.8,
+   "clips": 48883,
+   "validated": 47621,
+   "users": 274,
+   "avgDurationSecs": 4.297,
+   "sps": false,
+   "open": true,
+   "speakers": 274,
+   "sentences": 22255,
+   "liveValidHours": 57,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.3359,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.035,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.6291,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fifties",
+     "share": 0.3831
+    },
+    {
+     "label": "",
+     "share": 0.217
+    },
+    {
+     "label": "thirties",
+     "share": 0.1701
+    },
+    {
+     "label": "fourties",
+     "share": 0.1216
+    },
+    {
+     "label": "twenties",
+     "share": 0.0625
+    },
+    {
+     "label": "teens",
+     "share": 0.0458
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "sl": {
+   "name": "Slovenian",
+   "autonym": "slovenščina",
+   "family": "slavic",
+   "region": "europe-east",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 21.7,
+   "validHours": 17.4,
+   "clips": 19569,
+   "validated": 15679,
+   "users": 1006,
+   "avgDurationSecs": 3.986,
+   "sps": false,
+   "open": true,
+   "speakers": 1008,
+   "sentences": 4165,
+   "liveValidHours": 18,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5179,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0957,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3864,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.3716
+    },
+    {
+     "label": "twenties",
+     "share": 0.3073
+    },
+    {
+     "label": "fourties",
+     "share": 0.1472
+    },
+    {
+     "label": "teens",
+     "share": 0.05
+    },
+    {
+     "label": "fifties",
+     "share": 0.0484
+    },
+    {
+     "label": "sixties",
+     "share": 0.0429
+    },
+    {
+     "label": "thirties",
+     "share": 0.0318
+    },
+    {
+     "label": "seventies",
      "share": 0.0008
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "qup": {
+   "name": "Southern Pastaza Quechua",
+   "autonym": "",
+   "family": "quechuan",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 15.9,
+   "validHours": 11.9,
+   "clips": 9668,
+   "validated": 7202,
+   "users": 15,
+   "avgDurationSecs": 5.932,
+   "sps": false,
+   "open": true,
+   "speakers": 15,
+   "sentences": 991,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.208,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.792,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.7163
+    },
+    {
+     "label": "twenties",
+     "share": 0.1056
+    },
+    {
+     "label": "fifties",
+     "share": 0.1024
+    },
+    {
+     "label": "",
+     "share": 0.0757
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "es": {
+   "name": "Spanish",
+   "autonym": "español",
+   "family": "romance",
+   "region": "europe-west",
+   "script": "latin",
+   "prominence": 3,
+   "hours": 2282.7,
+   "validHours": 597.6,
+   "clips": 1683737,
+   "validated": 440794,
+   "users": 26960,
+   "avgDurationSecs": 4.881,
+   "sps": true,
+   "open": true,
+   "speakers": 27023,
+   "sentences": 1078677,
+   "liveValidHours": 457,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5554,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3121,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.1325,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.5247
+    },
+    {
+     "label": "",
+     "share": 0.1275
+    },
+    {
+     "label": "sixties",
+     "share": 0.1066
+    },
+    {
+     "label": "thirties",
+     "share": 0.0925
+    },
+    {
+     "label": "teens",
+     "share": 0.0783
+    },
+    {
+     "label": "fifties",
+     "share": 0.0421
+    },
+    {
+     "label": "fourties",
+     "share": 0.0277
+    },
+    {
+     "label": "seventies",
+     "share": 0.0005
+    }
+   ],
+   "accents": [
+    {
+     "label": "mexicano",
+     "share": 0.6805
+    },
+    {
+     "label": "surpeninsular",
+     "share": 0.14
+    },
+    {
+     "label": "nortepeninsular",
+     "share": 0.0516
+    },
+    {
+     "label": "andino",
+     "share": 0.0301
+    },
+    {
+     "label": "centrosurpeninsular",
+     "share": 0.0237
+    },
+    {
+     "label": "rioplatense",
+     "share": 0.0189
+    },
+    {
+     "label": "caribe",
+     "share": 0.0169
+    },
+    {
+     "label": "canario",
+     "share": 0.0125
+    }
+   ],
+   "variants": []
+  },
+  "sva": {
+   "name": "Svan",
+   "autonym": "",
+   "family": "kartvelian",
+   "region": "asia-west",
+   "script": "georgian",
+   "prominence": 1,
+   "hours": 18,
+   "validHours": 15.7,
+   "clips": 10970,
+   "validated": 9570,
+   "users": 57,
+   "avgDurationSecs": 5.921,
+   "sps": false,
+   "open": true,
+   "speakers": 57,
+   "sentences": 1538,
+   "liveValidHours": 16,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0005,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.7977,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2017,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.2383
+    },
+    {
+     "label": "fifties",
+     "share": 0.2111
+    },
+    {
+     "label": "thirties",
+     "share": 0.2042
+    },
+    {
+     "label": "sixties",
+     "share": 0.1296
+    },
+    {
+     "label": "twenties",
+     "share": 0.105
+    },
+    {
+     "label": "",
+     "share": 0.0701
+    },
+    {
+     "label": "seventies",
+     "share": 0.0417
+    }
+   ],
+   "accents": [
+    {
+     "label": "lenjeri",
+     "share": 0.2395,
+     "name": "ლჷჟა̄ბუ, ლენჯა̄̈რ"
+    },
+    {
+     "label": "kala",
+     "share": 0.16,
+     "name": "ლჷჟა̄ბუ, კა̄ლ"
+    },
+    {
+     "label": "ushgul",
+     "share": 0.1517,
+     "name": "ლჷჟა̄ბუ, უშგულ"
+    },
+    {
+     "label": "mestia",
+     "share": 0.0967,
+     "name": "ლჷჟა̄ბუ, მესტია"
+    },
+    {
+     "label": "ipari",
+     "share": 0.0964,
+     "name": "ლჷჟა̄ბუ, იფა̄̈რ"
+    },
+    {
+     "label": "upperbaldali",
+     "share": 0.0964,
+     "name": "ლჷჟა̄ბუ, და̈ლ"
+    },
+    {
+     "label": "latali",
+     "share": 0.0964,
+     "name": "ლჷჟა̄ბუ, ლატლი"
+    },
+    {
+     "label": "kheledi",
+     "share": 0.0226,
+     "name": "ლჷლტეხუ, ჴელედ"
+    }
+   ],
+   "variants": [
+    {
+     "label": "sva-upperbal",
+     "share": 0.9428,
+     "name": "ლჷჟა̄ბუ"
+    },
+    {
+     "label": "sva-lentekh",
+     "share": 0.0556,
+     "name": "ლჷლტეხუ"
+    },
+    {
+     "label": "sva-lowerbal",
+     "share": 0.0016,
+     "name": "ლუჩვაბურუ"
+    }
+   ]
+  },
+  "sw": {
+   "name": "Swahili",
+   "autonym": "Kiswahili",
+   "family": "bantu",
+   "region": "africa-east",
+   "script": "latin",
+   "prominence": 2,
+   "hours": 1064.9,
+   "validHours": 392.2,
+   "clips": 730758,
+   "validated": 269140,
+   "users": 1525,
+   "avgDurationSecs": 5.246,
+   "sps": true,
+   "open": true,
+   "speakers": 1538,
+   "sentences": 134729,
+   "liveValidHours": 417,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.341,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.367,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.292,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.4987
+    },
+    {
+     "label": "",
+     "share": 0.3048
+    },
+    {
+     "label": "thirties",
+     "share": 0.1092
+    },
+    {
+     "label": "fifties",
+     "share": 0.0413
+    },
+    {
+     "label": "fourties",
+     "share": 0.0346
+    },
+    {
+     "label": "sixties",
+     "share": 0.0061
+    },
+    {
+     "label": "teens",
+     "share": 0.0053
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": [
+    {
+     "label": "sw-baratz",
+     "share": 0.4299,
+     "name": "Kiswahili cha Bara ya Tanzania"
+    },
+    {
+     "label": "sw-sanifu",
+     "share": 0.4136,
+     "name": "Kiswahili Sanifu (EA)"
+    },
+    {
+     "label": "sw-barake",
+     "share": 0.1228,
+     "name": "Kiswahili cha Bara ya Kenya"
+    },
+    {
+     "label": "sw-kingwana",
+     "share": 0.0332,
+     "name": "Kingwana (DRC)"
+    },
+    {
+     "label": "sw-kimvita",
+     "share": 0.0003,
+     "name": "Kimvita (KE) - Central dialect"
+    },
+    {
+     "label": "sw-katanga",
+     "share": 0.0001,
+     "name": "Katanga (DRC)"
+    },
+    {
+     "label": "sw-kimrima",
+     "share": 0.0001,
+     "name": "Kimrima (TZ) - Northern dialect"
+    }
+   ]
+  },
+  "sv-SE": {
+   "name": "Swedish",
+   "autonym": "svenska",
+   "family": "germanic",
+   "region": "europe-north",
+   "script": "latin",
+   "prominence": 2,
+   "hours": 56.2,
+   "validHours": 47.8,
+   "clips": 50279,
+   "validated": 42785,
+   "users": 891,
+   "avgDurationSecs": 4.024,
+   "sps": false,
+   "open": true,
+   "speakers": 900,
+   "sentences": 25060,
+   "liveValidHours": 48,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.4678,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3191,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2131,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.372
+    },
+    {
+     "label": "thirties",
+     "share": 0.2535
+    },
+    {
+     "label": "",
+     "share": 0.1907
+    },
+    {
+     "label": "twenties",
+     "share": 0.1184
+    },
+    {
+     "label": "fifties",
+     "share": 0.0325
+    },
+    {
+     "label": "teens",
+     "share": 0.0308
+    },
+    {
+     "label": "sixties",
+     "share": 0.001
+    },
+    {
+     "label": "seventies",
+     "share": 0.0007
     }
    ],
    "accents": [
@@ -7427,93 +19073,176 @@ window.CV_DATA = {
     }
    ]
   },
-  "ja": {
-   "name": "Japanese",
-   "autonym": "日本語",
-   "family": "japonic",
-   "region": "asia-east",
-   "script": "japanese",
-   "prominence": 3,
-   "hours": 726.2,
-   "validHours": 372.6,
-   "clips": 585330,
-   "validated": 300315,
-   "users": 7852,
-   "avgDurationSecs": 4.467,
+  "zgh": {
+   "name": "Tamazight",
+   "autonym": "ⵜⴰⵎⴰⵣⵉⵖⵜ",
+   "family": "berber",
+   "region": "africa-north",
+   "script": "tifinagh",
+   "prominence": 1,
+   "hours": 2.2,
+   "validHours": 1.5,
+   "clips": 2229,
+   "validated": 1474,
+   "users": 51,
+   "avgDurationSecs": 3.588,
    "sps": false,
    "open": true,
-   "speakers": 7894,
-   "sentences": 36630,
-   "liveValidHours": 382,
+   "speakers": 51,
+   "sentences": 2740,
+   "liveValidHours": 1.5,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.2683,
+     "share": 0.8008,
      "none": false
     },
     {
      "label": "female_feminine",
-     "share": 0.3901,
+     "share": 0.026,
      "none": false
     },
     {
      "label": "transgender",
-     "share": 0.0003,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "non-binary",
-     "share": 0.0002,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "intersex",
-     "share": 0.0002,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "do_not_wish_to_say",
-     "share": 0.0088,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "",
-     "share": 0.3321,
+     "share": 0.1732,
      "none": false
     }
    ],
    "age": [
     {
+     "label": "thirties",
+     "share": 0.5061
+    },
+    {
      "label": "twenties",
-     "share": 0.5451
+     "share": 0.3679
     },
     {
      "label": "",
-     "share": 0.1674
+     "share": 0.1261
+    }
+   ],
+   "accents": [],
+   "variants": [
+    {
+     "label": "zgh-shi",
+     "share": 0.8814,
+     "name": "ⵜⴰⵛⵍⵃⵉⵜ (Tachelhit)"
     },
     {
-     "label": "fourties",
-     "share": 0.0831
+     "label": "zgh-tzm",
+     "share": 0.1186,
+     "name": "ⵜⴰⵎⴰⵣⵉⵖⵜ ⵏ ⵡⴰⵟⵍⴰⵚ ⴰⵏⴰⵎⵎⴰⵙ (Central Atlas Tamazight)"
+    }
+   ]
+  },
+  "ta": {
+   "name": "Tamil",
+   "autonym": "தமிழ்",
+   "family": "dravidian",
+   "region": "asia-south",
+   "script": "tamil",
+   "prominence": 2,
+   "hours": 425.4,
+   "validHours": 234.8,
+   "clips": 247718,
+   "validated": 136732,
+   "users": 984,
+   "avgDurationSecs": 6.183,
+   "sps": false,
+   "open": true,
+   "speakers": 997,
+   "sentences": 106113,
+   "liveValidHours": 235,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.1894,
+     "none": false
     },
     {
-     "label": "teens",
-     "share": 0.0816
+     "label": "female_feminine",
+     "share": 0.1542,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.6564,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.6603
     },
     {
      "label": "thirties",
-     "share": 0.0692
+     "share": 0.1189
+    },
+    {
+     "label": "twenties",
+     "share": 0.1083
+    },
+    {
+     "label": "teens",
+     "share": 0.0381
+    },
+    {
+     "label": "fourties",
+     "share": 0.027
     },
     {
      "label": "fifties",
-     "share": 0.0431
-    },
-    {
-     "label": "sixties",
-     "share": 0.0093
+     "share": 0.0246
     },
     {
      "label": "seventies",
-     "share": 0.001
+     "share": 0.0194
+    },
+    {
+     "label": "sixties",
+     "share": 0.003
     }
    ],
    "accents": [
@@ -7524,33 +19253,33 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "ko": {
-   "name": "Korean",
-   "autonym": "한국어",
-   "family": "koreanic",
-   "region": "asia-east",
-   "script": "hangul",
-   "prominence": 3,
-   "hours": 10.4,
-   "validHours": 2.6,
-   "clips": 7185,
-   "validated": 1773,
-   "users": 213,
-   "avgDurationSecs": 5.209,
-   "sps": false,
+  "tt": {
+   "name": "Tatar",
+   "autonym": "татарча",
+   "family": "turkic",
+   "region": "europe-east",
+   "script": "cyrillic",
+   "prominence": 1,
+   "hours": 33.5,
+   "validHours": 32.6,
+   "clips": 31399,
+   "validated": 30555,
+   "users": 299,
+   "avgDurationSecs": 3.84,
+   "sps": true,
    "open": true,
-   "speakers": 215,
-   "sentences": 7465,
-   "liveValidHours": 2.2,
+   "speakers": 306,
+   "sentences": 21487,
+   "liveValidHours": 37,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.3098,
+     "share": 0.7502,
      "none": false
     },
     {
      "label": "female_feminine",
-     "share": 0.2745,
+     "share": 0.0302,
      "none": false
     },
     {
@@ -7560,8 +19289,8 @@ window.CV_DATA = {
     },
     {
      "label": "non-binary",
-     "share": 0.0042,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "intersex",
@@ -7570,43 +19299,47 @@ window.CV_DATA = {
     },
     {
      "label": "do_not_wish_to_say",
-     "share": 0.0046,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "",
-     "share": 0.407,
+     "share": 0.2196,
      "none": false
     }
    ],
    "age": [
     {
-     "label": "twenties",
-     "share": 0.5272
-    },
-    {
      "label": "thirties",
-     "share": 0.1922
+     "share": 0.7001
     },
     {
      "label": "",
-     "share": 0.1884
+     "share": 0.2153
     },
     {
-     "label": "fourties",
-     "share": 0.0379
-    },
-    {
-     "label": "teens",
-     "share": 0.028
-    },
-    {
-     "label": "fifties",
-     "share": 0.0262
+     "label": "twenties",
+     "share": 0.0542
     },
     {
      "label": "sixties",
-     "share": 0.0001
+     "share": 0.0101
+    },
+    {
+     "label": "seventies",
+     "share": 0.0074
+    },
+    {
+     "label": "fifties",
+     "share": 0.0065
+    },
+    {
+     "label": "teens",
+     "share": 0.0059
+    },
+    {
+     "label": "fourties",
+     "share": 0.0005
     }
    ],
    "accents": [
@@ -7615,6 +19348,179 @@ window.CV_DATA = {
      "share": 1
     }
    ],
+   "variants": []
+  },
+  "te": {
+   "name": "Telugu",
+   "autonym": "తెలుగు",
+   "family": "dravidian",
+   "region": "asia-south",
+   "script": "telugu",
+   "prominence": 2,
+   "hours": 3.2,
+   "validHours": 0.9,
+   "clips": 2682,
+   "validated": 793,
+   "users": 75,
+   "avgDurationSecs": 4.296,
+   "sps": false,
+   "open": true,
+   "speakers": 78,
+   "sentences": 372,
+   "liveValidHours": 0.8,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.6074,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1741,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2185,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.6544
+    },
+    {
+     "label": "",
+     "share": 0.138
+    },
+    {
+     "label": "teens",
+     "share": 0.0742
+    },
+    {
+     "label": "sixties",
+     "share": 0.0675
+    },
+    {
+     "label": "thirties",
+     "share": 0.041
+    },
+    {
+     "label": "fifties",
+     "share": 0.0138
+    },
+    {
+     "label": "fourties",
+     "share": 0.0112
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "cut": {
+   "name": "Teutila Cuicatec",
+   "autonym": "",
+   "family": "oto-manguean",
+   "region": "americas",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.3,
+   "validHours": 10.1,
+   "clips": 5616,
+   "validated": 5481,
+   "users": 15,
+   "avgDurationSecs": 6.631,
+   "sps": false,
+   "open": true,
+   "speakers": 15,
+   "sentences": 994,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.6782,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3218,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "thirties",
+     "share": 0.4183
+    },
+    {
+     "label": "",
+     "share": 0.2507
+    },
+    {
+     "label": "fourties",
+     "share": 0.1708
+    },
+    {
+     "label": "fifties",
+     "share": 0.1599
+    },
+    {
+     "label": "twenties",
+     "share": 0.0004
+    }
+   ],
+   "accents": [],
    "variants": []
   },
   "th": {
@@ -7714,28 +19620,109 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "lo": {
-   "name": "Lao",
-   "autonym": "ລາວ",
-   "family": "tai-kadai",
-   "region": "asia-southeast",
-   "script": "lao",
+  "tig": {
+   "name": "Tigre",
+   "autonym": "ትግረ",
+   "family": "semitic",
+   "region": "africa-east",
+   "script": "ethiopic",
    "prominence": 1,
-   "hours": 0.4,
-   "validHours": 0.3,
-   "clips": 223,
-   "validated": 193,
-   "users": 16,
-   "avgDurationSecs": 6.532,
+   "hours": 11.9,
+   "validHours": 10.7,
+   "clips": 7249,
+   "validated": 6479,
+   "users": 153,
+   "avgDurationSecs": 5.939,
    "sps": false,
    "open": true,
-   "speakers": 16,
-   "sentences": 5145,
-   "liveValidHours": 0.3,
+   "speakers": 155,
+   "sentences": 5422,
+   "liveValidHours": 12,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.8879,
+     "share": 0.0055,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0007,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9938,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.6521
+    },
+    {
+     "label": "twenties",
+     "share": 0.1893
+    },
+    {
+     "label": "thirties",
+     "share": 0.158
+    },
+    {
+     "label": "teens",
+     "share": 0.0007
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "ti": {
+   "name": "Tigrinya",
+   "autonym": "ትግርኛ",
+   "family": "semitic",
+   "region": "africa-east",
+   "script": "ethiopic",
+   "prominence": 1,
+   "hours": 0.7,
+   "validHours": 0.1,
+   "clips": 453,
+   "validated": 75,
+   "users": 17,
+   "avgDurationSecs": 5.199,
+   "sps": false,
+   "open": true,
+   "speakers": 17,
+   "sentences": 4571,
+   "liveValidHours": 0.1,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0375,
      "none": false
     },
     {
@@ -7765,26 +19752,1421 @@ window.CV_DATA = {
     },
     {
      "label": "",
-     "share": 0.1121,
+     "share": 0.9625,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.4834
+    },
+    {
+     "label": "twenties",
+     "share": 0.3046
+    },
+    {
+     "label": "",
+     "share": 0.1854
+    },
+    {
+     "label": "thirties",
+     "share": 0.0265
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "tok": {
+   "name": "Toki Pona",
+   "autonym": "toki pona",
+   "family": "constructed",
+   "region": "constructed",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 23.4,
+   "validHours": 15.7,
+   "clips": 19552,
+   "validated": 13125,
+   "users": 177,
+   "avgDurationSecs": 4.309,
+   "sps": false,
+   "open": true,
+   "speakers": 177,
+   "sentences": 7519,
+   "liveValidHours": 16,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.518,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0479,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0.0001,
+     "none": false
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0246,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.4095,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.304
+    },
+    {
+     "label": "eighties",
+     "share": 0.2276
+    },
+    {
+     "label": "teens",
+     "share": 0.2208
+    },
+    {
+     "label": "twenties",
+     "share": 0.188
+    },
+    {
+     "label": "thirties",
+     "share": 0.059
+    },
+    {
+     "label": "fourties",
+     "share": 0.0005
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "trw": {
+   "name": "Torwali",
+   "autonym": "",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 18.6,
+   "validHours": 16.5,
+   "clips": 12431,
+   "validated": 11054,
+   "users": 27,
+   "avgDurationSecs": 5.373,
+   "sps": false,
+   "open": true,
+   "speakers": 27,
+   "sentences": 7770,
+   "liveValidHours": 19,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.3614
+    },
+    {
+     "label": "twenties",
+     "share": 0.3406
+    },
+    {
+     "label": "thirties",
+     "share": 0.1099
+    },
+    {
+     "label": "fifties",
+     "share": 0.0949
+    },
+    {
+     "label": "",
+     "share": 0.054
+    },
+    {
+     "label": "teens",
+     "share": 0.0393
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "lua": {
+   "name": "Tshiluba",
+   "autonym": "Tshiluba",
+   "family": "bantu",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 10.4,
+   "validHours": 8.9,
+   "clips": 5622,
+   "validated": 4801,
+   "users": 46,
+   "avgDurationSecs": 6.664,
+   "sps": false,
+   "open": true,
+   "speakers": 46,
+   "sentences": 880,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3196,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.6804,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.6711
+    },
+    {
+     "label": "thirties",
+     "share": 0.1882
+    },
+    {
+     "label": "",
+     "share": 0.1256
+    },
+    {
+     "label": "fourties",
+     "share": 0.0151
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "ve": {
+   "name": "Tshivenda",
+   "autonym": "Tshivenḓa",
+   "family": "bantu",
+   "region": "africa-south",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 0,
+   "validHours": 0,
+   "clips": 25,
+   "validated": 2,
+   "users": 3,
+   "avgDurationSecs": 5.733,
+   "sps": false,
+   "open": true,
+   "speakers": 3,
+   "sentences": 1735,
+   "liveValidHours": 0,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.6,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.4,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.6
+    },
+    {
+     "label": "",
+     "share": 0.4
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "bag": {
+   "name": "Tuki",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11.1,
+   "validHours": 11,
+   "clips": 7106,
+   "validated": 7028,
+   "users": 14,
+   "avgDurationSecs": 5.636,
+   "sps": false,
+   "open": true,
+   "speakers": 14,
+   "sentences": 1006,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0211,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.1416,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.8373,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.8373
+    },
+    {
+     "label": "fourties",
+     "share": 0.1416
+    },
+    {
+     "label": "thirties",
+     "share": 0.0211
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "tui": {
+   "name": "Tupuri",
+   "autonym": "",
+   "family": "niger-congo",
+   "region": "africa-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 11,
+   "validHours": 9.8,
+   "clips": 8576,
+   "validated": 7575,
+   "users": 51,
+   "avgDurationSecs": 4.634,
+   "sps": false,
+   "open": true,
+   "speakers": 51,
+   "sentences": 1971,
+   "liveValidHours": 11,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0054,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.0616,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9331,
      "none": false
     }
    ],
    "age": [
     {
      "label": "thirties",
-     "share": 0.5561
-    },
-    {
-     "label": "twenties",
-     "share": 0.3274
+     "share": 0.5129
     },
     {
      "label": "",
-     "share": 0.1121
+     "share": 0.2264
+    },
+    {
+     "label": "twenties",
+     "share": 0.215
     },
     {
      "label": "fourties",
-     "share": 0.0045
+     "share": 0.043
+    },
+    {
+     "label": "seventies",
+     "share": 0.0026
+    }
+   ],
+   "accents": [],
+   "variants": [
+    {
+     "label": "tui-bangwere",
+     "share": 0.8871,
+     "name": "Ɓaŋwere (Tupuri Bangwere)"
+    },
+    {
+     "label": "tui-banggo",
+     "share": 0.1129,
+     "name": "Ɓaŋgɔ̀ (Tupuri Banggo)"
+    }
+   ]
+  },
+  "tr": {
+   "name": "Turkish",
+   "autonym": "Türkçe",
+   "family": "turkic",
+   "region": "asia-west",
+   "script": "latin",
+   "prominence": 3,
+   "hours": 135.8,
+   "validHours": 130.2,
+   "clips": 126794,
+   "validated": 121612,
+   "users": 1840,
+   "avgDurationSecs": 3.855,
+   "sps": true,
+   "open": true,
+   "speakers": 1858,
+   "sentences": 409463,
+   "liveValidHours": 131,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.4213,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.3201,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2585,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.2468
+    },
+    {
+     "label": "twenties",
+     "share": 0.2264
+    },
+    {
+     "label": "sixties",
+     "share": 0.1998
+    },
+    {
+     "label": "eighties",
+     "share": 0.097
+    },
+    {
+     "label": "thirties",
+     "share": 0.0855
+    },
+    {
+     "label": "fifties",
+     "share": 0.0705
+    },
+    {
+     "label": "seventies",
+     "share": 0.033
+    },
+    {
+     "label": "fourties",
+     "share": 0.0255
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "tk": {
+   "name": "Turkmen",
+   "autonym": "Türkmençe",
+   "family": "turkic",
+   "region": "asia-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 7.8,
+   "validHours": 3.1,
+   "clips": 5092,
+   "validated": 2026,
+   "users": 151,
+   "avgDurationSecs": 5.51,
+   "sps": false,
+   "open": true,
+   "speakers": 153,
+   "sentences": 2496,
+   "liveValidHours": 2.9,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.401,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1638,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.4352,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.5338
+    },
+    {
+     "label": "",
+     "share": 0.3639
+    },
+    {
+     "label": "thirties",
+     "share": 0.0774
+    },
+    {
+     "label": "fourties",
+     "share": 0.023
+    },
+    {
+     "label": "teens",
+     "share": 0.002
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "bbl": {
+   "name": "Tush",
+   "autonym": "",
+   "family": "northeast-caucasian",
+   "region": "asia-west",
+   "script": "georgian",
+   "prominence": 1,
+   "hours": 12.2,
+   "validHours": 11.2,
+   "clips": 4982,
+   "validated": 4580,
+   "users": 23,
+   "avgDurationSecs": 8.787,
+   "sps": false,
+   "open": true,
+   "speakers": 23,
+   "sentences": 1661,
+   "liveValidHours": 12,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.6509,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.3491,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "sixties",
+     "share": 0.5333
+    },
+    {
+     "label": "seventies",
+     "share": 0.231
+    },
+    {
+     "label": "thirties",
+     "share": 0.1415
+    },
+    {
+     "label": "",
+     "share": 0.0554
+    },
+    {
+     "label": "fifties",
+     "share": 0.0387
+    }
+   ],
+   "accents": [],
+   "variants": []
+  },
+  "tw": {
+   "name": "Twi",
+   "autonym": "Twi",
+   "family": "niger-congo",
+   "region": "africa-west",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 1.4,
+   "validHours": 0.4,
+   "clips": 996,
+   "validated": 260,
+   "users": 22,
+   "avgDurationSecs": 5.066,
+   "sps": false,
+   "open": true,
+   "speakers": 22,
+   "sentences": 49180,
+   "liveValidHours": 0.3,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.2219,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.01,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.7681,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "sixties",
+     "share": 0.6426
+    },
+    {
+     "label": "thirties",
+     "share": 0.2209
+    },
+    {
+     "label": "",
+     "share": 0.0964
+    },
+    {
+     "label": "twenties",
+     "share": 0.0402
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "uk": {
+   "name": "Ukrainian",
+   "autonym": "українська",
+   "family": "slavic",
+   "region": "europe-east",
+   "script": "cyrillic",
+   "prominence": 2,
+   "hours": 121.4,
+   "validHours": 108.8,
+   "clips": 94158,
+   "validated": 84371,
+   "users": 1181,
+   "avgDurationSecs": 4.641,
+   "sps": false,
+   "open": true,
+   "speakers": 1185,
+   "sentences": 209229,
+   "liveValidHours": 110,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5598,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.1692,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.271,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.3199
+    },
+    {
+     "label": "thirties",
+     "share": 0.2412
+    },
+    {
+     "label": "",
+     "share": 0.2212
+    },
+    {
+     "label": "teens",
+     "share": 0.1234
+    },
+    {
+     "label": "fourties",
+     "share": 0.0896
+    },
+    {
+     "label": "fifties",
+     "share": 0.0044
+    },
+    {
+     "label": "sixties",
+     "share": 0.0003
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "hsb": {
+   "name": "Upper Sorbian",
+   "autonym": "hornjoserbšćina",
+   "family": "slavic",
+   "region": "europe-east",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 15.1,
+   "validHours": 4.5,
+   "clips": 6994,
+   "validated": 2066,
+   "users": 41,
+   "avgDurationSecs": 7.769,
+   "sps": false,
+   "open": true,
+   "speakers": 41,
+   "sentences": 7281,
+   "liveValidHours": 4.8,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.2138,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2066,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.5796,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.5209
+    },
+    {
+     "label": "teens",
+     "share": 0.2348
+    },
+    {
+     "label": "fourties",
+     "share": 0.1573
+    },
+    {
+     "label": "twenties",
+     "share": 0.0287
+    },
+    {
+     "label": "thirties",
+     "share": 0.025
+    },
+    {
+     "label": "fifties",
+     "share": 0.0197
+    },
+    {
+     "label": "seventies",
+     "share": 0.0079
+    },
+    {
+     "label": "sixties",
+     "share": 0.0057
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "ur": {
+   "name": "Urdu",
+   "autonym": "اردو",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 2,
+   "hours": 295,
+   "validHours": 79.8,
+   "clips": 250981,
+   "validated": 67940,
+   "users": 506,
+   "avgDurationSecs": 4.231,
+   "sps": false,
+   "open": true,
+   "speakers": 508,
+   "sentences": 21892,
+   "liveValidHours": 77,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.5274,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2509,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.2217,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.9173
+    },
+    {
+     "label": "",
+     "share": 0.0646
+    },
+    {
+     "label": "fourties",
+     "share": 0.0105
+    },
+    {
+     "label": "thirties",
+     "share": 0.0043
+    },
+    {
+     "label": "teens",
+     "share": 0.003
+    },
+    {
+     "label": "fifties",
+     "share": 0.0003
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "ush": {
+   "name": "Ushojo",
+   "autonym": "",
+   "family": "indo-aryan",
+   "region": "asia-south",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 6.8,
+   "validHours": 6.6,
+   "clips": 3961,
+   "validated": 3861,
+   "users": 23,
+   "avgDurationSecs": 6.148,
+   "sps": true,
+   "open": true,
+   "speakers": 23,
+   "sentences": 1170,
+   "liveValidHours": 6.7,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 1,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "fourties",
+     "share": 0.5951
+    },
+    {
+     "label": "twenties",
+     "share": 0.23
+    },
+    {
+     "label": "",
+     "share": 0.1452
+    },
+    {
+     "label": "teens",
+     "share": 0.0172
+    },
+    {
+     "label": "thirties",
+     "share": 0.0126
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "ug": {
+   "name": "Uyghur",
+   "autonym": "ئۇيغۇرچە",
+   "family": "turkic",
+   "region": "asia-central",
+   "script": "arabic",
+   "prominence": 1,
+   "hours": 505.6,
+   "validHours": 462.5,
+   "clips": 307321,
+   "validated": 281142,
+   "users": 1862,
+   "avgDurationSecs": 5.922,
+   "sps": false,
+   "open": true,
+   "speakers": 1875,
+   "sentences": 231307,
+   "liveValidHours": 470,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.2601,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.2018,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0.0001,
+     "none": false
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0.0059,
+     "none": false
+    },
+    {
+     "label": "",
+     "share": 0.5322,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "twenties",
+     "share": 0.3482
+    },
+    {
+     "label": "thirties",
+     "share": 0.2692
+    },
+    {
+     "label": "",
+     "share": 0.2107
+    },
+    {
+     "label": "fourties",
+     "share": 0.1006
+    },
+    {
+     "label": "teens",
+     "share": 0.0617
+    },
+    {
+     "label": "fifties",
+     "share": 0.0082
+    },
+    {
+     "label": "eighties",
+     "share": 0.0014
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": [
+    {
+     "label": "ug-Arab",
+     "share": 0.9926,
+     "name": "ئۇيغۇر تىلى"
+    },
+    {
+     "label": "ug-Cyrl",
+     "share": 0.0074,
+     "name": "Уйғур тили"
+    }
+   ]
+  },
+  "uz": {
+   "name": "Uzbek",
+   "autonym": "oʻzbekcha",
+   "family": "turkic",
+   "region": "asia-central",
+   "script": "latin",
+   "prominence": 1,
+   "hours": 266.5,
+   "validHours": 101.6,
+   "clips": 230509,
+   "validated": 87849,
+   "users": 2318,
+   "avgDurationSecs": 4.163,
+   "sps": false,
+   "open": true,
+   "speakers": 2358,
+   "sentences": 149584,
+   "liveValidHours": 128,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.4415,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0.149,
+     "none": false
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.4094,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.4106
+    },
+    {
+     "label": "twenties",
+     "share": 0.3974
+    },
+    {
+     "label": "teens",
+     "share": 0.1772
+    },
+    {
+     "label": "thirties",
+     "share": 0.0079
+    },
+    {
+     "label": "fourties",
+     "share": 0.0064
+    },
+    {
+     "label": "fifties",
+     "share": 0.0003
     }
    ],
    "accents": [
@@ -7908,287 +21290,33 @@ window.CV_DATA = {
     }
    ]
   },
-  "km": {
-   "name": "Khmer",
-   "autonym": "ភាសាខ្មែរ",
-   "family": "austroasiatic",
-   "region": "asia-southeast",
-   "script": "khmer",
-   "prominence": 1,
-   "hours": 1,
-   "validHours": 0.3,
-   "clips": 739,
-   "validated": 213,
-   "users": 15,
-   "avgDurationSecs": 4.814,
-   "sps": false,
-   "open": true,
-   "speakers": 16,
-   "sentences": 364,
-   "liveValidHours": 0.3,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "female_feminine",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 1,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "thirties",
-     "share": 0.4344
-    },
-    {
-     "label": "",
-     "share": 0.4046
-    },
-    {
-     "label": "fourties",
-     "share": 0.1407
-    },
-    {
-     "label": "twenties",
-     "share": 0.0203
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "cnh": {
-   "name": "Hakha Chin",
-   "autonym": "Laiholh",
-   "family": "sino-tibetan",
-   "region": "asia-southeast",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 6,
-   "validHours": 2.4,
-   "clips": 6188,
-   "validated": 2465,
-   "users": 301,
-   "avgDurationSecs": 3.517,
-   "sps": false,
-   "open": true,
-   "speakers": 301,
-   "sentences": 5190,
-   "liveValidHours": 1.9,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.3048,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.2143,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.4809,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.4803
-    },
-    {
-     "label": "twenties",
-     "share": 0.3993
-    },
-    {
-     "label": "thirties",
-     "share": 0.075
-    },
-    {
-     "label": "fifties",
-     "share": 0.0192
-    },
-    {
-     "label": "teens",
-     "share": 0.0149
-    },
-    {
-     "label": "fourties",
-     "share": 0.0113
-    }
-   ],
-   "accents": [],
-   "variants": []
-  },
-  "id": {
-   "name": "Indonesian",
-   "autonym": "bahasa Indonesia",
-   "family": "austronesian",
-   "region": "asia-southeast",
+  "cy": {
+   "name": "Welsh",
+   "autonym": "Cymraeg",
+   "family": "celtic",
+   "region": "europe-west",
    "script": "latin",
    "prominence": 2,
-   "hours": 67.5,
-   "validHours": 34.3,
-   "clips": 60923,
-   "validated": 30901,
-   "users": 678,
-   "avgDurationSecs": 3.991,
-   "sps": false,
-   "open": true,
-   "speakers": 683,
-   "sentences": 7021,
-   "liveValidHours": 34,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.4337,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.2576,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0.0001,
-     "none": false
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0.0002,
-     "none": false
-    },
-    {
-     "label": "",
-     "share": 0.3085,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.4154
-    },
-    {
-     "label": "",
-     "share": 0.252
-    },
-    {
-     "label": "teens",
-     "share": 0.2102
-    },
-    {
-     "label": "thirties",
-     "share": 0.1014
-    },
-    {
-     "label": "fourties",
-     "share": 0.0172
-    },
-    {
-     "label": "fifties",
-     "share": 0.0038
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "sw": {
-   "name": "Swahili",
-   "autonym": "Kiswahili",
-   "family": "bantu",
-   "region": "africa-east",
-   "script": "latin",
-   "prominence": 2,
-   "hours": 1064.9,
-   "validHours": 392.2,
-   "clips": 730758,
-   "validated": 269140,
-   "users": 1525,
-   "avgDurationSecs": 5.246,
+   "hours": 158.7,
+   "validHours": 124.2,
+   "clips": 116163,
+   "validated": 90894,
+   "users": 1938,
+   "avgDurationSecs": 4.918,
    "sps": true,
    "open": true,
-   "speakers": 1538,
-   "sentences": 134729,
-   "liveValidHours": 417,
+   "speakers": 1943,
+   "sentences": 117973,
+   "liveValidHours": 124,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.341,
+     "share": 0.3259,
      "none": false
     },
     {
      "label": "female_feminine",
-     "share": 0.367,
+     "share": 0.2452,
      "none": false
     },
     {
@@ -8198,8 +21326,8 @@ window.CV_DATA = {
     },
     {
      "label": "non-binary",
-     "share": 0,
-     "none": true
+     "share": 0.0009,
+     "none": false
     },
     {
      "label": "intersex",
@@ -8213,346 +21341,81 @@ window.CV_DATA = {
     },
     {
      "label": "",
-     "share": 0.292,
+     "share": 0.428,
      "none": false
     }
    ],
    "age": [
     {
-     "label": "twenties",
-     "share": 0.4987
-    },
-    {
      "label": "",
-     "share": 0.3048
-    },
-    {
-     "label": "thirties",
-     "share": 0.1092
-    },
-    {
-     "label": "fifties",
-     "share": 0.0413
+     "share": 0.4252
     },
     {
      "label": "fourties",
-     "share": 0.0346
+     "share": 0.1569
+    },
+    {
+     "label": "twenties",
+     "share": 0.1304
+    },
+    {
+     "label": "thirties",
+     "share": 0.0932
+    },
+    {
+     "label": "fifties",
+     "share": 0.0908
     },
     {
      "label": "sixties",
-     "share": 0.0061
+     "share": 0.0683
     },
     {
      "label": "teens",
-     "share": 0.0053
+     "share": 0.0236
+    },
+    {
+     "label": "seventies",
+     "share": 0.0087
     }
    ],
    "accents": [
     {
+     "label": "united_kingdom",
+     "share": 0.9424
+    },
+    {
      "label": "",
-     "share": 1
+     "share": 0.0576
     }
    ],
    "variants": [
     {
-     "label": "sw-baratz",
-     "share": 0.4299,
-     "name": "Kiswahili cha Bara ya Tanzania"
+     "label": "cy-northeas",
+     "share": 0.4271,
+     "name": "North-Eastern Welsh"
     },
     {
-     "label": "sw-sanifu",
-     "share": 0.4136,
-     "name": "Kiswahili Sanifu (EA)"
+     "label": "cy-southeas",
+     "share": 0.1888,
+     "name": "South-Eastern Welsh"
     },
     {
-     "label": "sw-barake",
-     "share": 0.1228,
-     "name": "Kiswahili cha Bara ya Kenya"
+     "label": "cy-midwales",
+     "share": 0.1588,
+     "name": "Mid Wales"
     },
     {
-     "label": "sw-kingwana",
-     "share": 0.0332,
-     "name": "Kingwana (DRC)"
+     "label": "cy-northwes",
+     "share": 0.1358,
+     "name": "North-Western Welsh"
     },
     {
-     "label": "sw-kimvita",
-     "share": 0.0003,
-     "name": "Kimvita (KE) - Central dialect"
-    },
-    {
-     "label": "sw-katanga",
-     "share": 0.0001,
-     "name": "Katanga (DRC)"
-    },
-    {
-     "label": "sw-kimrima",
-     "share": 0.0001,
-     "name": "Kimrima (TZ) - Northern dialect"
+     "label": "cy-southwes",
+     "share": 0.0895,
+     "name": "South-Western Welsh"
     }
    ]
-  },
-  "rw": {
-   "name": "Kinyarwanda",
-   "autonym": "Ikinyarwanda",
-   "family": "bantu",
-   "region": "africa-east",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 2384.2,
-   "validHours": 2001.7,
-   "clips": 1714255,
-   "validated": 1439221,
-   "users": 1187,
-   "avgDurationSecs": 5.007,
-   "sps": false,
-   "open": true,
-   "speakers": 1189,
-   "sentences": 1404868,
-   "liveValidHours": 2003,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.5699,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.3276,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.1025,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.6083
-    },
-    {
-     "label": "teens",
-     "share": 0.2027
-    },
-    {
-     "label": "thirties",
-     "share": 0.1155
-    },
-    {
-     "label": "",
-     "share": 0.0539
-    },
-    {
-     "label": "fourties",
-     "share": 0.0159
-    },
-    {
-     "label": "fifties",
-     "share": 0.0037
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "lg": {
-   "name": "Luganda",
-   "autonym": "Luganda",
-   "family": "bantu",
-   "region": "africa-east",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 560.5,
-   "validHours": 437,
-   "clips": 348837,
-   "validated": 271951,
-   "users": 672,
-   "avgDurationSecs": 5.784,
-   "sps": false,
-   "open": true,
-   "speakers": 676,
-   "sentences": 191365,
-   "liveValidHours": 438,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.3569,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.3866,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.2565,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.378
-    },
-    {
-     "label": "",
-     "share": 0.256
-    },
-    {
-     "label": "thirties",
-     "share": 0.2192
-    },
-    {
-     "label": "fourties",
-     "share": 0.0722
-    },
-    {
-     "label": "fifties",
-     "share": 0.0453
-    },
-    {
-     "label": "sixties",
-     "share": 0.0172
-    },
-    {
-     "label": "teens",
-     "share": 0.0067
-    },
-    {
-     "label": "nineties",
-     "share": 0.0032
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "zu": {
-   "name": "Zulu",
-   "autonym": "isiZulu",
-   "family": "bantu",
-   "region": "africa-south",
-   "script": "latin",
-   "prominence": 2,
-   "hours": 0.3,
-   "validHours": 0,
-   "clips": 223,
-   "validated": 29,
-   "users": 9,
-   "avgDurationSecs": 5.552,
-   "sps": false,
-   "open": true,
-   "speakers": 14,
-   "sentences": 1321,
-   "liveValidHours": 0,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.2466,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0.3094,
-     "none": false
-    },
-    {
-     "label": "",
-     "share": 0.4439,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.4664
-    },
-    {
-     "label": "",
-     "share": 0.4439
-    },
-    {
-     "label": "thirties",
-     "share": 0.0897
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
   },
   "xh": {
    "name": "Xhosa",
@@ -8618,34 +21481,34 @@ window.CV_DATA = {
    "accents": [],
    "variants": []
   },
-  "st": {
-   "name": "Sesotho",
-   "autonym": "Sesotho",
-   "family": "bantu",
-   "region": "africa-south",
-   "script": "latin",
+  "sah": {
+   "name": "Yakut",
+   "autonym": "саха тыла",
+   "family": "turkic",
+   "region": "asia-north",
+   "script": "cyrillic",
    "prominence": 1,
-   "hours": 0.2,
-   "validHours": 0,
-   "clips": 209,
-   "validated": 14,
-   "users": 2,
-   "avgDurationSecs": 3.223,
+   "hours": 23.6,
+   "validHours": 16.3,
+   "clips": 13411,
+   "validated": 9296,
+   "users": 256,
+   "avgDurationSecs": 6.33,
    "sps": false,
    "open": true,
-   "speakers": 2,
-   "sentences": 2339,
-   "liveValidHours": 0,
+   "speakers": 256,
+   "sentences": 6083,
+   "liveValidHours": 16,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.7129,
+     "share": 0.2328,
      "none": false
     },
     {
      "label": "female_feminine",
-     "share": 0,
-     "none": true
+     "share": 0.434,
+     "none": false
     },
     {
      "label": "transgender",
@@ -8669,413 +21532,115 @@ window.CV_DATA = {
     },
     {
      "label": "",
-     "share": 0.2871,
+     "share": 0.3332,
      "none": false
     }
    ],
    "age": [
     {
-     "label": "thirties",
-     "share": 0.7129
+     "label": "",
+     "share": 0.3075
     },
     {
      "label": "twenties",
-     "share": 0.2871
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "nso": {
-   "name": "Sepedi",
-   "autonym": "Sepedi",
-   "family": "bantu",
-   "region": "africa-south",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 0.2,
-   "validHours": 0,
-   "clips": 124,
-   "validated": 16,
-   "users": 2,
-   "avgDurationSecs": 5.754,
-   "sps": false,
-   "open": true,
-   "speakers": 2,
-   "sentences": 2254,
-   "liveValidHours": 0,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "female_feminine",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 1,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "fourties",
-     "share": 0.7581
-    },
-    {
-     "label": "",
-     "share": 0.2419
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "tn": {
-   "name": "Setswana",
-   "autonym": "Setswana",
-   "family": "bantu",
-   "region": "africa-south",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 4.9,
-   "validHours": 4.3,
-   "clips": 4059,
-   "validated": 3507,
-   "users": 18,
-   "avgDurationSecs": 4.377,
-   "sps": false,
-   "open": true,
-   "speakers": 19,
-   "sentences": 1767,
-   "liveValidHours": 4.3,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.476,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0.0382,
-     "none": false
-    },
-    {
-     "label": "",
-     "share": 0.4858,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "thirties",
-     "share": 0.5092
+     "share": 0.2332
     },
     {
      "label": "fifties",
-     "share": 0.4336
+     "share": 0.1825
     },
     {
-     "label": "",
-     "share": 0.0335
+     "label": "thirties",
+     "share": 0.1432
     },
-    {
-     "label": "twenties",
-     "share": 0.0237
-    }
-   ],
-   "accents": [],
-   "variants": [
-    {
-     "label": "tn-central",
-     "share": 0.8333,
-     "name": "Central Setswana (Sehurutshe, Sengwaketse, Serolong)"
-    },
-    {
-     "label": "tn-northern",
-     "share": 0.1667,
-     "name": "Northern Setswana (Sengwato, Setawana, Sekwena, Selete)"
-    }
-   ]
-  },
-  "ve": {
-   "name": "Tshivenda",
-   "autonym": "Tshivenḓa",
-   "family": "bantu",
-   "region": "africa-south",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 0,
-   "validHours": 0,
-   "clips": 25,
-   "validated": 2,
-   "users": 3,
-   "avgDurationSecs": 5.733,
-   "sps": false,
-   "open": true,
-   "speakers": 3,
-   "sentences": 1735,
-   "liveValidHours": 0,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.6,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.4,
-     "none": false
-    }
-   ],
-   "age": [
     {
      "label": "fourties",
-     "share": 0.6
-    },
-    {
-     "label": "",
-     "share": 0.4
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "ss": {
-   "name": "Siswati",
-   "autonym": "siSwati",
-   "family": "bantu",
-   "region": "africa-south",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 0.3,
-   "validHours": 0,
-   "clips": 131,
-   "validated": 0,
-   "users": 3,
-   "avgDurationSecs": 7.652,
-   "sps": false,
-   "open": true,
-   "speakers": 3,
-   "sentences": 1614,
-   "liveValidHours": 0,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "female_feminine",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 1,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.4656
-    },
-    {
-     "label": "",
-     "share": 0.3817
-    },
-    {
-     "label": "fifties",
-     "share": 0.1527
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "bas": {
-   "name": "Basaa",
-   "autonym": "Ɓàsàa",
-   "family": "bantu",
-   "region": "africa-west",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 13.6,
-   "validHours": 12.1,
-   "clips": 12496,
-   "validated": 11139,
-   "users": 57,
-   "avgDurationSecs": 3.909,
-   "sps": true,
-   "open": true,
-   "speakers": 57,
-   "sentences": 5226,
-   "liveValidHours": 12,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.0012,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.0044,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.9944,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "fourties",
-     "share": 0.6099
-    },
-    {
-     "label": "",
-     "share": 0.3861
-    },
-    {
-     "label": "twenties",
-     "share": 0.0016
+     "share": 0.1019
     },
     {
      "label": "teens",
-     "share": 0.0012
+     "share": 0.0318
+    }
+   ],
+   "accents": [
+    {
+     "label": "",
+     "share": 1
+    }
+   ],
+   "variants": []
+  },
+  "yi": {
+   "name": "Yiddish",
+   "autonym": "ייִדיש",
+   "family": "germanic",
+   "region": "europe-east",
+   "script": "hebrew",
+   "prominence": 1,
+   "hours": 2.2,
+   "validHours": 2.1,
+   "clips": 2024,
+   "validated": 1932,
+   "users": 128,
+   "avgDurationSecs": 3.981,
+   "sps": false,
+   "open": true,
+   "speakers": 129,
+   "sentences": 1550,
+   "liveValidHours": 2.1,
+   "gender": [
+    {
+     "label": "male_masculine",
+     "share": 0.0025,
+     "none": false
+    },
+    {
+     "label": "female_feminine",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "transgender",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "non-binary",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "intersex",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "do_not_wish_to_say",
+     "share": 0,
+     "none": true
+    },
+    {
+     "label": "",
+     "share": 0.9975,
+     "none": false
+    }
+   ],
+   "age": [
+    {
+     "label": "",
+     "share": 0.7688
+    },
+    {
+     "label": "teens",
+     "share": 0.1072
     },
     {
      "label": "thirties",
-     "share": 0.0012
+     "share": 0.0632
+    },
+    {
+     "label": "twenties",
+     "share": 0.0608
     }
    ],
    "accents": [
@@ -9179,575 +21744,39 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "ig": {
-   "name": "Igbo",
-   "autonym": "Asụsụ Igbo",
-   "family": "niger-congo",
-   "region": "africa-west",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 19.1,
-   "validHours": 2.9,
-   "clips": 12633,
-   "validated": 1895,
-   "users": 188,
-   "avgDurationSecs": 5.43,
-   "sps": false,
-   "open": true,
-   "speakers": 194,
-   "sentences": 15468,
-   "liveValidHours": 2.6,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.0634,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.5575,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.3791,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.3967
-    },
-    {
-     "label": "",
-     "share": 0.2745
-    },
-    {
-     "label": "thirties",
-     "share": 0.2038
-    },
-    {
-     "label": "teens",
-     "share": 0.1025
-    },
-    {
-     "label": "sixties",
-     "share": 0.0107
-    },
-    {
-     "label": "fourties",
-     "share": 0.0095
-    },
-    {
-     "label": "eighties",
-     "share": 0.002
-    },
-    {
-     "label": "fifties",
-     "share": 0.0004
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "tw": {
-   "name": "Twi",
-   "autonym": "Twi",
-   "family": "niger-congo",
-   "region": "africa-west",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 1.4,
-   "validHours": 0.4,
-   "clips": 996,
-   "validated": 260,
-   "users": 22,
-   "avgDurationSecs": 5.066,
-   "sps": false,
-   "open": true,
-   "speakers": 22,
-   "sentences": 49180,
-   "liveValidHours": 0.3,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.2219,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.01,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.7681,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "sixties",
-     "share": 0.6426
-    },
-    {
-     "label": "thirties",
-     "share": 0.2209
-    },
-    {
-     "label": "",
-     "share": 0.0964
-    },
-    {
-     "label": "twenties",
-     "share": 0.0402
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "dyu": {
-   "name": "Dyula",
-   "autonym": "Julakan",
-   "family": "niger-congo",
-   "region": "africa-west",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 0.5,
-   "validHours": 0.4,
-   "clips": 295,
-   "validated": 219,
-   "users": 35,
-   "avgDurationSecs": 6.309,
-   "sps": false,
-   "open": true,
-   "speakers": 35,
-   "sentences": 5028,
-   "liveValidHours": 0.4,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.3932,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.3017,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.3051,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.6576
-    },
-    {
-     "label": "",
-     "share": 0.3051
-    },
-    {
-     "label": "fourties",
-     "share": 0.0203
-    },
-    {
-     "label": "teens",
-     "share": 0.0169
-    }
-   ],
-   "accents": [],
-   "variants": []
-  },
-  "ha": {
-   "name": "Hausa",
-   "autonym": "Harshen Hausa",
-   "family": "afroasiatic",
-   "region": "africa-west",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 13,
-   "validHours": 4.3,
-   "clips": 10663,
-   "validated": 3582,
-   "users": 64,
-   "avgDurationSecs": 4.38,
-   "sps": false,
-   "open": true,
-   "speakers": 74,
-   "sentences": 5505,
-   "liveValidHours": 4.4,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.561,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.2347,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0.0001,
-     "none": false
-    },
-    {
-     "label": "",
-     "share": 0.2042,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "thirties",
-     "share": 0.6406
-    },
-    {
-     "label": "",
-     "share": 0.1891
-    },
-    {
-     "label": "twenties",
-     "share": 0.1459
-    },
-    {
-     "label": "fifties",
-     "share": 0.0234
-    },
-    {
-     "label": "fourties",
-     "share": 0.001
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": [
-    {
-     "label": "ha-kanawa",
-     "share": 0.9537,
-     "name": "Hausar kanawa"
-    },
-    {
-     "label": "ha-bauchi",
-     "share": 0.0463,
-     "name": "Hausar Bauchi"
-    }
-   ]
-  },
-  "kab": {
-   "name": "Kabyle",
-   "autonym": "Taqbaylit",
-   "family": "berber",
-   "region": "africa-north",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 694.6,
-   "validHours": 571.7,
-   "clips": 747922,
-   "validated": 615587,
-   "users": 1608,
-   "avgDurationSecs": 3.344,
-   "sps": false,
-   "open": true,
-   "speakers": 1618,
-   "sentences": 181352,
-   "liveValidHours": 572,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.532,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.2031,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.2649,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "thirties",
-     "share": 0.2909
-    },
-    {
-     "label": "",
-     "share": 0.2774
-    },
-    {
-     "label": "fifties",
-     "share": 0.1846
-    },
-    {
-     "label": "twenties",
-     "share": 0.1243
-    },
-    {
-     "label": "fourties",
-     "share": 0.0921
-    },
-    {
-     "label": "sixties",
-     "share": 0.0255
-    },
-    {
-     "label": "teens",
-     "share": 0.0021
-    },
-    {
-     "label": "eighties",
-     "share": 0.0019
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": [
-    {
-     "label": "kab-east",
-     "share": 1,
-     "name": "Taqbaylit n Usammar"
-    }
-   ]
-  },
-  "zgh": {
-   "name": "Tamazight",
-   "autonym": "ⵜⴰⵎⴰⵣⵉⵖⵜ",
-   "family": "berber",
-   "region": "africa-north",
-   "script": "tifinagh",
-   "prominence": 1,
-   "hours": 2.2,
-   "validHours": 1.5,
-   "clips": 2229,
-   "validated": 1474,
-   "users": 51,
-   "avgDurationSecs": 3.588,
-   "sps": false,
-   "open": true,
-   "speakers": 51,
-   "sentences": 2740,
-   "liveValidHours": 1.5,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.8008,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.026,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.1732,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "thirties",
-     "share": 0.5061
-    },
-    {
-     "label": "twenties",
-     "share": 0.3679
-    },
-    {
-     "label": "",
-     "share": 0.1261
-    }
-   ],
-   "accents": [],
-   "variants": [
-    {
-     "label": "zgh-shi",
-     "share": 0.8814,
-     "name": "ⵜⴰⵛⵍⵃⵉⵜ (Tachelhit)"
-    },
-    {
-     "label": "zgh-tzm",
-     "share": 0.1186,
-     "name": "ⵜⴰⵎⴰⵣⵉⵖⵜ ⵏ ⵡⴰⵟⵍⴰⵚ ⴰⵏⴰⵎⵎⴰⵙ (Central Atlas Tamazight)"
-    }
-   ]
-  },
-  "ka": {
-   "name": "Georgian",
-   "autonym": "ქართული",
-   "family": "kartvelian",
+  "zza": {
+   "name": "Zazaki",
+   "autonym": "zazaki",
+   "family": "iranian",
    "region": "asia-west",
-   "script": "georgian",
+   "script": "latin",
    "prominence": 1,
-   "hours": 494,
-   "validHours": 262.2,
-   "clips": 334213,
-   "validated": 177384,
-   "users": 3149,
-   "avgDurationSecs": 5.321,
-   "sps": true,
+   "hours": 2.7,
+   "validHours": 2,
+   "clips": 2434,
+   "validated": 1767,
+   "users": 25,
+   "avgDurationSecs": 4.035,
+   "sps": false,
    "open": true,
-   "speakers": 3171,
-   "sentences": 137656,
-   "liveValidHours": 266,
+   "speakers": 25,
+   "sentences": 5682,
+   "liveValidHours": 2,
    "gender": [
     {
      "label": "male_masculine",
-     "share": 0.1505,
+     "share": 0.2539,
      "none": false
     },
     {
      "label": "female_feminine",
-     "share": 0.5527,
+     "share": 0.0173,
      "none": false
     },
     {
      "label": "transgender",
-     "share": 0.0001,
-     "none": false
+     "share": 0,
+     "none": true
     },
     {
      "label": "non-binary",
@@ -9761,233 +21790,35 @@ window.CV_DATA = {
     },
     {
      "label": "do_not_wish_to_say",
-     "share": 0.0018,
+     "share": 0.0678,
      "none": false
     },
     {
      "label": "",
-     "share": 0.2949,
+     "share": 0.6611,
      "none": false
     }
    ],
    "age": [
     {
-     "label": "teens",
-     "share": 0.2469
-    },
-    {
      "label": "thirties",
-     "share": 0.2382
+     "share": 0.5961
     },
     {
      "label": "",
-     "share": 0.2185
-    },
-    {
-     "label": "twenties",
-     "share": 0.1608
-    },
-    {
-     "label": "fourties",
-     "share": 0.063
-    },
-    {
-     "label": "fifties",
-     "share": 0.0415
+     "share": 0.2153
     },
     {
      "label": "sixties",
-     "share": 0.0184
-    },
-    {
-     "label": "seventies",
-     "share": 0.01
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "hy-AM": {
-   "name": "Armenian",
-   "autonym": "հայերեն",
-   "family": "armenian",
-   "region": "asia-west",
-   "script": "armenian",
-   "prominence": 1,
-   "hours": 62.5,
-   "validHours": 39.5,
-   "clips": 41697,
-   "validated": 26369,
-   "users": 1084,
-   "avgDurationSecs": 5.4,
-   "sps": false,
-   "open": true,
-   "speakers": 1115,
-   "sentences": 237448,
-   "liveValidHours": 40,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.2216,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.5001,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.2784,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.5673
-    },
-    {
-     "label": "",
-     "share": 0.2256
-    },
-    {
-     "label": "teens",
-     "share": 0.0982
-    },
-    {
-     "label": "thirties",
-     "share": 0.0684
-    },
-    {
-     "label": "fourties",
-     "share": 0.0343
-    },
-    {
-     "label": "fifties",
-     "share": 0.0064
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "ab": {
-   "name": "Abkhaz",
-   "autonym": "аԥсуа бызшәа",
-   "family": "northwest-caucasian",
-   "region": "asia-west",
-   "script": "cyrillic",
-   "prominence": 1,
-   "hours": 242.6,
-   "validHours": 207.8,
-   "clips": 158625,
-   "validated": 135878,
-   "users": 1303,
-   "avgDurationSecs": 5.507,
-   "sps": false,
-   "open": true,
-   "speakers": 1303,
-   "sentences": 1046830,
-   "liveValidHours": 217,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.0697,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.6799,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0.0001,
-     "none": false
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0.0066,
-     "none": false
-    },
-    {
-     "label": "",
-     "share": 0.2438,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "teens",
-     "share": 0.4836
-    },
-    {
-     "label": "",
-     "share": 0.1556
+     "share": 0.1085
     },
     {
      "label": "twenties",
-     "share": 0.1429
-    },
-    {
-     "label": "thirties",
-     "share": 0.105
-    },
-    {
-     "label": "fourties",
-     "share": 0.0514
+     "share": 0.0698
     },
     {
      "label": "fifties",
-     "share": 0.0355
-    },
-    {
-     "label": "sixties",
-     "share": 0.0198
-    },
-    {
-     "label": "seventies",
-     "share": 0.0036
+     "share": 0.0103
     }
    ],
    "accents": [
@@ -9998,589 +21829,23 @@ window.CV_DATA = {
    ],
    "variants": []
   },
-  "eu": {
-   "name": "Basque",
-   "autonym": "euskara",
-   "family": "isolate",
-   "region": "europe-west",
+  "zu": {
+   "name": "Zulu",
+   "autonym": "isiZulu",
+   "family": "bantu",
+   "region": "africa-south",
    "script": "latin",
    "prominence": 2,
-   "hours": 702.3,
-   "validHours": 472.8,
-   "clips": 464938,
-   "validated": 312998,
-   "users": 11056,
-   "avgDurationSecs": 5.438,
-   "sps": false,
-   "open": true,
-   "speakers": 11062,
-   "sentences": 1018163,
-   "liveValidHours": 456,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.2492,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.2849,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0.0001,
-     "none": false
-    },
-    {
-     "label": "",
-     "share": 0.4658,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.4483
-    },
-    {
-     "label": "twenties",
-     "share": 0.1691
-    },
-    {
-     "label": "fourties",
-     "share": 0.1627
-    },
-    {
-     "label": "fifties",
-     "share": 0.1057
-    },
-    {
-     "label": "thirties",
-     "share": 0.055
-    },
-    {
-     "label": "sixties",
-     "share": 0.0392
-    },
-    {
-     "label": "teens",
-     "share": 0.016
-    },
-    {
-     "label": "seventies",
-     "share": 0.0036
-    }
-   ],
-   "accents": [
-    {
-     "label": "mendebalekoa",
-     "share": 0.5388
-    },
-    {
-     "label": "erdialdekoa_nafarra",
-     "share": 0.4199
-    },
-    {
-     "label": "",
-     "share": 0.038
-    },
-    {
-     "label": "nafarlapurtarra_zuberoatarra",
-     "share": 0.0034
-    }
-   ],
-   "variants": []
-  },
-  "el": {
-   "name": "Greek",
-   "autonym": "ελληνικά",
-   "family": "hellenic",
-   "region": "europe-east",
-   "script": "greek",
-   "prominence": 3,
-   "hours": 34,
-   "validHours": 20.3,
-   "clips": 29467,
-   "validated": 17653,
-   "users": 456,
-   "avgDurationSecs": 4.15,
-   "sps": false,
-   "open": true,
-   "speakers": 463,
-   "sentences": 8954,
-   "liveValidHours": 21,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.6394,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.0321,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.3286,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "thirties",
-     "share": 0.3841
-    },
-    {
-     "label": "",
-     "share": 0.3016
-    },
-    {
-     "label": "fourties",
-     "share": 0.1638
-    },
-    {
-     "label": "twenties",
-     "share": 0.1125
-    },
-    {
-     "label": "fifties",
-     "share": 0.0275
-    },
-    {
-     "label": "teens",
-     "share": 0.0092
-    },
-    {
-     "label": "sixties",
-     "share": 0.0014
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "sq": {
-   "name": "Albanian",
-   "autonym": "shqip",
-   "family": "albanian",
-   "region": "europe-east",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 9.3,
-   "validHours": 9,
-   "clips": 6553,
-   "validated": 6374,
-   "users": 155,
-   "avgDurationSecs": 5.089,
-   "sps": false,
-   "open": true,
-   "speakers": 155,
-   "sentences": 50009,
-   "liveValidHours": 9.1,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.4639,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.1389,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.3972,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "fifties",
-     "share": 0.3427
-    },
-    {
-     "label": "",
-     "share": 0.2381
-    },
-    {
-     "label": "fourties",
-     "share": 0.1764
-    },
-    {
-     "label": "thirties",
-     "share": 0.1566
-    },
-    {
-     "label": "twenties",
-     "share": 0.0839
-    },
-    {
-     "label": "teens",
-     "share": 0.0023
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "mn": {
-   "name": "Mongolian",
-   "autonym": "монгол хэл",
-   "family": "mongolic",
-   "region": "asia-north",
-   "script": "cyrillic",
-   "prominence": 1,
-   "hours": 130.4,
-   "validHours": 45.9,
-   "clips": 95940,
-   "validated": 33761,
-   "users": 616,
-   "avgDurationSecs": 4.893,
-   "sps": false,
-   "open": true,
-   "speakers": 622,
-   "sentences": 6040,
-   "liveValidHours": 47,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.1437,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.3979,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0.0042,
-     "none": false
-    },
-    {
-     "label": "",
-     "share": 0.4542,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.9144
-    },
-    {
-     "label": "",
-     "share": 0.0404
-    },
-    {
-     "label": "thirties",
-     "share": 0.0329
-    },
-    {
-     "label": "nineties",
-     "share": 0.0075
-    },
-    {
-     "label": "teens",
-     "share": 0.0026
-    },
-    {
-     "label": "fourties",
-     "share": 0.0014
-    },
-    {
-     "label": "eighties",
-     "share": 0.0008
-    },
-    {
-     "label": "fifties",
-     "share": 0.0001
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "gn": {
-   "name": "Guarani",
-   "autonym": "avañe'ẽ",
-   "family": "tupian",
-   "region": "americas",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 33,
-   "validHours": 5.2,
-   "clips": 25864,
-   "validated": 4048,
-   "users": 314,
-   "avgDurationSecs": 4.597,
-   "sps": false,
-   "open": true,
-   "speakers": 315,
-   "sentences": 5894,
-   "liveValidHours": 5.1,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.3316,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.4645,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0.0006,
-     "none": false
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.2034,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.5386
-    },
-    {
-     "label": "",
-     "share": 0.1862
-    },
-    {
-     "label": "thirties",
-     "share": 0.1677
-    },
-    {
-     "label": "fourties",
-     "share": 0.0779
-    },
-    {
-     "label": "teens",
-     "share": 0.0228
-    },
-    {
-     "label": "fifties",
-     "share": 0.0048
-    },
-    {
-     "label": "sixties",
-     "share": 0.0017
-    },
-    {
-     "label": "seventies",
-     "share": 0.0002
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "quy": {
-   "name": "Quechua",
-   "autonym": "Runa Simi",
-   "family": "quechuan",
-   "region": "americas",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 1.7,
-   "validHours": 0.1,
-   "clips": 1229,
-   "validated": 38,
-   "users": 8,
-   "avgDurationSecs": 4.994,
-   "sps": false,
-   "open": true,
-   "speakers": 8,
-   "sentences": 759,
-   "liveValidHours": 0,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.1863,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 0.8137,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "twenties",
-     "share": 0.6981
-    },
-    {
-     "label": "sixties",
-     "share": 0.2644
-    },
-    {
-     "label": "fourties",
-     "share": 0.0203
-    },
-    {
-     "label": "",
-     "share": 0.0171
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "ht": {
-   "name": "Haitian Creole",
-   "autonym": "kreyòl ayisyen",
-   "family": "creole",
-   "region": "americas",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 0,
+   "hours": 0.3,
    "validHours": 0,
-   "clips": 30,
+   "clips": 223,
    "validated": 29,
-   "users": 3,
-   "avgDurationSecs": 5.566,
+   "users": 9,
+   "avgDurationSecs": 5.552,
    "sps": false,
    "open": true,
-   "speakers": 3,
-   "sentences": 76,
+   "speakers": 14,
+   "sentences": 1321,
    "liveValidHours": 0,
    "gender": [
     {
@@ -10590,75 +21855,7 @@ window.CV_DATA = {
     },
     {
      "label": "female_feminine",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "",
-     "share": 1,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.6667
-    },
-    {
-     "label": "thirties",
-     "share": 0.3333
-    }
-   ],
-   "accents": [],
-   "variants": []
-  },
-  "eo": {
-   "name": "Esperanto",
-   "autonym": "Esperanto",
-   "family": "constructed",
-   "region": "constructed",
-   "script": "latin",
-   "prominence": 2,
-   "hours": 1956.6,
-   "validHours": 1445.8,
-   "clips": 1157835,
-   "validated": 855559,
-   "users": 1902,
-   "avgDurationSecs": 6.084,
-   "sps": true,
-   "open": true,
-   "speakers": 1925,
-   "sentences": 181305,
-   "liveValidHours": 1445,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.6881,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.1124,
+     "share": 0.2466,
      "none": false
     },
     {
@@ -10678,237 +21875,27 @@ window.CV_DATA = {
     },
     {
      "label": "do_not_wish_to_say",
-     "share": 0,
-     "none": true
+     "share": 0.3094,
+     "none": false
     },
     {
      "label": "",
-     "share": 0.1995,
+     "share": 0.4439,
      "none": false
     }
    ],
    "age": [
     {
      "label": "twenties",
-     "share": 0.5505
+     "share": 0.4664
     },
     {
      "label": "",
-     "share": 0.1945
+     "share": 0.4439
     },
     {
      "label": "thirties",
-     "share": 0.1205
-    },
-    {
-     "label": "teens",
-     "share": 0.0455
-    },
-    {
-     "label": "fourties",
-     "share": 0.0444
-    },
-    {
-     "label": "fifties",
-     "share": 0.0229
-    },
-    {
-     "label": "eighties",
-     "share": 0.0178
-    },
-    {
-     "label": "seventies",
-     "share": 0.0021
-    }
-   ],
-   "accents": [
-    {
-     "label": "internacia",
-     "share": 0.963
-    },
-    {
-     "label": "",
-     "share": 0.037
-    }
-   ],
-   "variants": []
-  },
-  "ia": {
-   "name": "Interlingua",
-   "autonym": "interlingua",
-   "family": "constructed",
-   "region": "constructed",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 17.3,
-   "validHours": 14.3,
-   "clips": 14783,
-   "validated": 12234,
-   "users": 72,
-   "avgDurationSecs": 4.204,
-   "sps": false,
-   "open": true,
-   "speakers": 72,
-   "sentences": 9069,
-   "liveValidHours": 15,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.611,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.005,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0.0001,
-     "none": false
-    },
-    {
-     "label": "",
-     "share": 0.3839,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.3839
-    },
-    {
-     "label": "fourties",
-     "share": 0.2934
-    },
-    {
-     "label": "seventies",
-     "share": 0.2237
-    },
-    {
-     "label": "twenties",
-     "share": 0.0475
-    },
-    {
-     "label": "fifties",
-     "share": 0.0284
-    },
-    {
-     "label": "thirties",
-     "share": 0.0193
-    },
-    {
-     "label": "teens",
-     "share": 0.0024
-    },
-    {
-     "label": "sixties",
-     "share": 0.0014
-    }
-   ],
-   "accents": [
-    {
-     "label": "",
-     "share": 1
-    }
-   ],
-   "variants": []
-  },
-  "tok": {
-   "name": "Toki Pona",
-   "autonym": "toki pona",
-   "family": "constructed",
-   "region": "constructed",
-   "script": "latin",
-   "prominence": 1,
-   "hours": 23.4,
-   "validHours": 15.7,
-   "clips": 19552,
-   "validated": 13125,
-   "users": 177,
-   "avgDurationSecs": 4.309,
-   "sps": false,
-   "open": true,
-   "speakers": 177,
-   "sentences": 7519,
-   "liveValidHours": 16,
-   "gender": [
-    {
-     "label": "male_masculine",
-     "share": 0.518,
-     "none": false
-    },
-    {
-     "label": "female_feminine",
-     "share": 0.0479,
-     "none": false
-    },
-    {
-     "label": "transgender",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "non-binary",
-     "share": 0.0001,
-     "none": false
-    },
-    {
-     "label": "intersex",
-     "share": 0,
-     "none": true
-    },
-    {
-     "label": "do_not_wish_to_say",
-     "share": 0.0246,
-     "none": false
-    },
-    {
-     "label": "",
-     "share": 0.4095,
-     "none": false
-    }
-   ],
-   "age": [
-    {
-     "label": "",
-     "share": 0.304
-    },
-    {
-     "label": "eighties",
-     "share": 0.2276
-    },
-    {
-     "label": "teens",
-     "share": 0.2208
-    },
-    {
-     "label": "twenties",
-     "share": 0.188
-    },
-    {
-     "label": "thirties",
-     "share": 0.059
-    },
-    {
-     "label": "fourties",
-     "share": 0.0005
+     "share": 0.0897
     }
    ],
    "accents": [

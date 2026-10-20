@@ -317,6 +317,21 @@ function readSentences(locale, lang) {
   return shuffle(out);
 }
 
+/* A rebuild for clips alone must not quietly delete read mode. Running
+   `--clips ./clips` without `--sentences` would otherwise write a bank.js
+   with an empty read section and no complaint, and the pads would come up
+   listen-only with nothing to say why. --keep-read carries the existing
+   read questions over; without it, a build that would empty a section that
+   currently has one stops and says so. */
+const KEEP_READ = process.argv.includes('--keep-read');
+let existingRead = [];
+try {
+  const prev = fs.readFileSync(path.join(ROOT, 'bank.js'), 'utf8');
+  const w = {};
+  new Function('window', prev)(w);
+  existingRead = (w.CV_BANK && w.CV_BANK.read) || [];
+} catch { /* no bank yet, or an unreadable one */ }
+
 const read = [];
 const readCounts = {};
 if (SENTENCE_DIR) {
@@ -339,6 +354,13 @@ if (SENTENCE_DIR) {
   }
   const thin = Object.entries(readCounts).filter(([, n]) => n < PER_LANG_READ).map(([l, n]) => `${l}:${n}`);
   if (thin.length) console.warn(`fewer read questions than asked for: ${thin.join(' ')}`);
+} else if (KEEP_READ && existingRead.length) {
+  read.push(...existingRead);
+  console.log(`read      ${read.length} kept from the existing bank (--keep-read)`);
+} else if (existingRead.length) {
+  console.error(`\nThe bank has ${existingRead.length} read questions and this build would leave none.`);
+  console.error('Pass --sentences <server/data> to rebuild them, or --keep-read to carry them over.');
+  process.exit(1);
 } else {
   console.warn('no --sentences given: read questions not built');
 }

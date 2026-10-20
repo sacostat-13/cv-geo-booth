@@ -158,7 +158,10 @@
       : reveal.correct ? 'Got it —'
         : 'The answer was';
     $('revealName').textContent = l.name;
-    $('revealAutonym').textContent = l.autonym;
+    // 95 of the 247 languages have no autonym sourced yet. An empty line is
+    // better than a guess, but it should take no space either.
+    $('revealAutonym').textContent = l.autonym || '';
+    $('revealAutonym').hidden = !l.autonym;
     $('qrLang').textContent = l.name;
 
     const stats = [
