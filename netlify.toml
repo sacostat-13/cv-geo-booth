@@ -25,6 +25,10 @@
   from = "/data/*"
   to = "/index.html"
   status = 404
+[[redirects]]
+  from = "/clips-example/*"
+  to = "/index.html"
+  status = 404
 
 # Tidy URLs for the three things that get opened on hardware.
 [[redirects]]

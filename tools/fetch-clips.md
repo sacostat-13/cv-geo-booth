@@ -9,6 +9,10 @@ folder of clips rather than a download URL.
 Until that folder exists the booth runs in read mode only. That is a working
 booth: the Listen button says so plainly and nothing else changes.
 
+**Start here:** `clips-example/` is the folder shape, with real index.json
+files you can copy. Send that to whoever is cutting clips, and have them run
+`node tools/check-clips.mjs ./clips` before sending anything back.
+
 ## What build-bank.mjs wants
 
 ```
@@ -51,14 +55,27 @@ part of the teaching moment. Include it.
    bash tools/prepare-clips.sh ~/Downloads/cv-corpus-27.0-2026-09-11/ca ./clips/ca 12
    ```
 
-4. Repeat for each language you want in Listen mode, then rebuild:
+4. Check it:
+
+   ```
+   node tools/check-clips.mjs ./clips
+   ```
+
+   Locale codes, index shape, missing or duplicated files, contributor ids,
+   clip lengths. It writes nothing and exits non-zero on errors, so it can
+   gate the build. Before the audio exists, `--index-only` checks just the
+   index files.
+
+5. Repeat for each language you want in Listen mode, then rebuild:
 
    ```
    node tools/build-bank.mjs --sentences ../common-voice/server/data --clips ./clips
    ```
 
    The clips are copied into `media/clips/` and committed with the site, so
-   the pads never fetch audio over the venue's wifi.
+   the pads never fetch audio over the venue's wifi. Run
+   `node tools/build-fonts.mjs` straight after: the fonts are cut to the
+   characters in the bank, and new transcripts mean new characters.
 
 ## How many languages
 

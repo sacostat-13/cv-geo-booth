@@ -6,6 +6,7 @@
     "build": "node tools/build-config.js",
     "bank": "node tools/build-bank.mjs",
     "fonts": "node tools/build-fonts.mjs",
+    "check-clips": "node tools/check-clips.mjs",
     "dev": "node tools/build-config.js && python3 -m http.server 8080"
   },
   "dependencies": {
