@@ -10,5 +10,10 @@ Claude outputs/
 
 # Downloaded Common Voice clips: 1.8GB of source audio. The build copies
 # only what it uses into media/clips/, and that is what ships.
-clips/
-clips-example.zip
+#
+# The leading slash matters. Without it this pattern also matched
+# media/clips/, so the audio the booth actually serves was being quietly left
+# out of every commit — a deploy with a dead Listen button and nothing in the
+# log to say why.
+/clips/
+/clips-example.zip
