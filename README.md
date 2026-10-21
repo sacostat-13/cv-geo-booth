@@ -1,4 +1,4 @@
-# Common Voice booth — guess the language
+# Common Voice booth — guess the language game
 
 Two iPads and a 42" screen. A visitor listens to a six-second recording, or
 reads a sentence, and picks which of four languages it is. The screen tells
