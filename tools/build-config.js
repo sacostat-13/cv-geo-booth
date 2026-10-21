@@ -20,6 +20,10 @@
      BOOTH_REVEAL_MS        how long the answer holds the pad, in ms
      BOOTH_CLIP_SECS        clip length, must match how the clips were cut
      BOOTH_REPLAYS          replays allowed per clip
+     BOOTH_LEVEL            easy | normal | hard — where the pads sit between visitors
+     BOOTH_MULT_NORMAL      what one right answer on Normal is worth, in Easy answers
+     BOOTH_MULT_HARD        the same for Hard
+     BOOTH_PERFECT_BONUS    the perfect-run bonus, in right answers at that level
      BOOTH_DUEL_WINDOW_MS   how long a pad waits for a challenger
      BOOTH_DUEL_READY_MS    the shared countdown before question one
      BOOTH_POLL_MS          screen poll while someone is playing
@@ -42,6 +46,26 @@ const num = (v, name) => {
   return n;
 };
 const bool = v => (v === undefined || v === '' ? undefined : /^(1|true|yes|on)$/i.test(v));
+/* The level multipliers are a judgement made before anyone played the thing:
+   five-to-one for Hard, two-to-one for Normal. If the day board turns out to
+   be nothing but Hard runs, this is the dial, and it should be turnable
+   between two days of a festival without a code change. */
+const level = v => {
+  if (v === undefined || v === '') return undefined;
+  const k = String(v).toLowerCase();
+  if (['easy', 'normal', 'hard'].includes(k)) return k;
+  console.warn('[build-config] BOOTH_LEVEL="' + v + '" is not easy, normal or hard — ignoring it');
+  return undefined;
+};
+const mult = (v, name) => {
+  const n = num(v, name);
+  if (n === undefined) return undefined;
+  if (!(n >= 1 && n <= 50)) {
+    console.warn('[build-config] ' + name + '=' + n + ' is outside 1–50 — ignoring it');
+    return undefined;
+  }
+  return n;
+};
 const drop = o => {
   const out = {};
   for (const k in o) if (o[k] !== undefined) out[k] = o[k];
@@ -63,7 +87,15 @@ const cfg = drop({
     answerMs: num(env.BOOTH_ANSWER_MS, 'BOOTH_ANSWER_MS'),
     revealMs: num(env.BOOTH_REVEAL_MS, 'BOOTH_REVEAL_MS'),
     clipSecs: num(env.BOOTH_CLIP_SECS, 'BOOTH_CLIP_SECS'),
-    replays: num(env.BOOTH_REPLAYS, 'BOOTH_REPLAYS')
+    replays: num(env.BOOTH_REPLAYS, 'BOOTH_REPLAYS'),
+    level: level(env.BOOTH_LEVEL),
+    perfectBonus: mult(env.BOOTH_PERFECT_BONUS, 'BOOTH_PERFECT_BONUS'),
+    // defaults.js merges objects key by key, so naming one multiplier here
+    // leaves the rest of that level's wording and rules alone.
+    levels: drop({
+      normal: drop({ multiplier: mult(env.BOOTH_MULT_NORMAL, 'BOOTH_MULT_NORMAL') }),
+      hard: drop({ multiplier: mult(env.BOOTH_MULT_HARD, 'BOOTH_MULT_HARD') })
+    })
   }),
   duel: drop({
     windowMs: num(env.BOOTH_DUEL_WINDOW_MS, 'BOOTH_DUEL_WINDOW_MS'),

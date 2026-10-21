@@ -22,6 +22,139 @@
     return out;
   }
 
+  /* ---- levels -------------------------------------------------------------
+
+     A level is not a different bank. It is a different set of wrong answers.
+
+     Easy puts the right answer among three languages from three other
+     families; Normal slips one relative in; Hard makes all three relatives,
+     so neither the alphabet nor the part of the world gives anything away
+     and only the language itself does.
+
+     The options are therefore worked out here rather than baked into the
+     bank at build time, as they used to be: three option sets per question
+     would be three times the bank for something a dozen lines can derive,
+     and it would mean a rebuild — 1.8GB of clips and the whole sentence
+     corpus — to change a level.
+
+     They do have to be identical on both pads, though. A duel hands the
+     second pad nothing but five question ids and expects it to rebuild the
+     same five questions, so nothing below may use Math.random: every draw
+     comes from a generator seeded with the question id and the level, which
+     gives the same four options in the same order on every device for as
+     long as the language table does not change. */
+
+  const LEVEL_KEYS = ['easy', 'normal', 'hard'];
+  const levelCfg = key => {
+    const all = (window.BOOTH && window.BOOTH.run && window.BOOTH.run.levels) || {};
+    return all[key] || all.normal || { key: 'normal', name: 'Normal', multiplier: 2, related: 1, perfect: true };
+  };
+  const levelKey = k => LEVEL_KEYS.includes(k)
+    ? k
+    : ((window.BOOTH && window.BOOTH.run && window.BOOTH.run.level) || 'normal');
+
+  /* A family that is a family. "isolate" is the absence of relatives and
+     "constructed" is a filing cabinet rather than a clade — Esperanto,
+     Interlingua and Ido are not a family anyone could be fairly confused by.
+     Neither can supply a related wrong answer. */
+  const realFamily = f => f && f !== 'isolate' && f !== 'constructed';
+
+  const FAMILIES = (() => {
+    const m = new Map();
+    for (const loc in L) {
+      const f = L[loc].family;
+      if (!m.has(f)) m.set(f, []);
+      m.get(f).push(loc);
+    }
+    return m;
+  })();
+  const relatives = loc => {
+    const l = L[loc];
+    if (!l || !realFamily(l.family)) return [];
+    return (FAMILIES.get(l.family) || []).filter(x => x !== loc);
+  };
+
+  // mulberry32 over an FNV-1a hash of the seed string. Same seed, same run of
+  // numbers, on an iPad and on a laptop and on the other pad.
+  function seeded(seed) {
+    let h = 2166136261 >>> 0;
+    for (let i = 0; i < seed.length; i++) { h ^= seed.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; }
+    return function () {
+      h = (h + 0x6D2B79F5) >>> 0;
+      let t = h;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  /* Can this question be asked at this level at all? Hard needs three
+     relatives and Normal needs one. Basque has none and Mongolian has one,
+     so a Hard run must not offer them: four options from four families under
+     a label promising the opposite is the booth lying about its own rules.
+     Such questions are filtered out of the run rather than downgraded
+     silently. At Hard that rules out 38 of the 247 languages. */
+  function levelFits(q, level) {
+    const need = levelCfg(levelKey(level)).related || 0;
+    return need === 0 || relatives(q.answer).length >= need;
+  }
+
+  function optionsFor(q, level) {
+    const key = levelKey(level);
+    const cfg = levelCfg(key);
+    const a = L[q.answer];
+    if (!a) return q.options || [];
+
+    const rnd = seeded(q.id + '|' + key);
+    const chosen = [];
+    const draw = pool => {
+      const free = pool.filter(l => l !== q.answer && chosen.indexOf(l) === -1);
+      if (!free.length) return false;
+      chosen.push(free[Math.floor(rnd() * free.length)]);
+      return true;
+    };
+
+    const all = Object.keys(L);
+    const kin = relatives(q.answer);
+    for (let i = 0; i < Math.min(cfg.related || 0, 3); i++) if (!draw(kin)) break;
+
+    /* The rest are unrelated. In reading mode one of them shares the script
+       where it can: a Georgian sentence with three Latin-alphabet options is
+       a test of the alphabet, not of the language, and the alphabet is the
+       one clue the booth should not hand over for free. After that, the same
+       part of the world where possible, so four options never read as a
+       world tour. Every step widens if the pool it wanted is empty — a
+       question with three options is not a question. */
+    const unrelated = all.filter(l => L[l].family !== a.family);
+    if (q.mode === 'read' && chosen.length < 3) {
+      draw(unrelated.filter(l => L[l].script === a.script));
+    }
+    while (chosen.length < 3) {
+      const sameRegion = unrelated.filter(l => L[l].region === a.region);
+      if (sameRegion.length && rnd() < 0.6 && draw(sameRegion)) continue;
+      if (draw(unrelated)) continue;
+      if (!draw(all)) break;
+    }
+
+    // Seeded shuffle too: the right answer must not sit in the same quadrant
+    // every time, and must sit in the same quadrant on both pads of a duel.
+    const out = [q.answer].concat(chosen);
+    for (let i = out.length - 1; i > 0; i--) {
+      const j = Math.floor(rnd() * (i + 1));
+      const t = out[i]; out[i] = out[j]; out[j] = t;
+    }
+    return out;
+  }
+
+  /* All five right, on a level where the wrong answers were relatives.
+     Easy returns 0 by configuration, not by an exception here. */
+  function perfectBonus(level, cfg) {
+    const l = levelCfg(levelKey(level));
+    if (!l.perfect) return 0;
+    const c = cfg || {};
+    return (c.pointsCorrect || 100) * (l.multiplier || 1) * (c.perfectBonus || 2);
+  }
+
   /* Questions already served today, so a queue of visitors does not all get
      the same five. Kept in this browser only: the pads are the only things
      that serve questions and each one keeps its own history. */
@@ -52,7 +185,11 @@
      is a worse quiz than five from four continents. */
   function buildRun(mode, opts) {
     const cfg = Object.assign({ questions: 5, easyFirst: 2 }, opts || {});
-    const pool = available(mode);
+    const level = levelKey(cfg.level);
+    const all = available(mode);
+    // Only languages that can carry this level's wrong answers.
+    let pool = all.filter(q => levelFits(q, level));
+    if (!pool.length) pool = all;
     if (!pool.length) return [];
     const used = seen();
     const takenLocales = new Set();
@@ -77,7 +214,10 @@
       else draw([2, 1]);
     }
     remember(out.map(q => q.id));
-    return out;
+    // The options are the level's, not the bank's. The baked-in `options`
+    // stay in bank.js as the fallback for a build whose language table and
+    // bank have drifted apart.
+    return out.map(q => Object.assign({}, q, { level, options: optionsFor(q, level) }));
   }
 
   const byId = (() => {
@@ -88,16 +228,23 @@
   })();
   // A duel's second pad is handed the first pad's question ids and has to
   // rebuild the identical run from its own copy of the bank.
-  const runFromIds = ids => ids.map(id => byId.get(id)).filter(Boolean);
+  // The level comes with them: both pads must build the same four options.
+  const runFromIds = (ids, level) => ids
+    .map(id => byId.get(id))
+    .filter(Boolean)
+    .map(q => Object.assign({}, q, { level: levelKey(level), options: optionsFor(q, level) }));
 
   /* 100 for the right answer, plus up to 50 more for how much of the clock
      was left. A wrong answer is worth nothing — not a negative, which only
      teaches people to stop guessing and start waiting. */
-  function scoreAnswer(correct, msLeft, totalMs, cfg) {
+  function scoreAnswer(correct, msLeft, totalMs, cfg, level) {
     if (!correct) return 0;
     const c = cfg || { pointsCorrect: 100, pointsSpeedMax: 50 };
     const frac = Math.max(0, Math.min(1, msLeft / totalMs));
-    return c.pointsCorrect + Math.round(c.pointsSpeedMax * frac);
+    const base = c.pointsCorrect + Math.round(c.pointsSpeedMax * frac);
+    // The multiplier takes the speed bonus with it, so being quick is worth
+    // more where the question was harder.
+    return base * (levelCfg(levelKey(level)).multiplier || 1);
   }
 
   // ---- facts --------------------------------------------------------------
@@ -223,6 +370,7 @@
 
   window.Quiz = {
     buildRun, runFromIds, scoreAnswer, available,
+    optionsFor, levelFits, levelCfg, levelKey, perfectBonus, LEVEL_KEYS,
     name, autonym, lang, factFor, correctionFor, totalsCards,
     fmtHours, fmtInt, pct, label, GENDER_LABEL, GENDER_SHORT, AGE_LABEL,
     shuffle, data: DATA, bank: BANK

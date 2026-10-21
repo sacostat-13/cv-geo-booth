@@ -25,6 +25,36 @@
   try { localStorage.setItem('cvquiz.station', station); } catch (e) { /* private mode */ }
   $('station').textContent = 'Station ' + station;
 
+  // ---- level --------------------------------------------------------------
+
+  /* Which difficulty the next run is played at. Deliberately NOT remembered
+     between runs: the pad goes back to the attract screen for the next person
+     in the queue, and the next person did not choose Hard. */
+  const DEFAULT_LEVEL = Q.levelKey(CFG.run.level);
+  let level = DEFAULT_LEVEL;
+
+  const levelButtons = [...document.querySelectorAll('.lvl')];
+  function setLevel(next) {
+    level = Q.levelKey(next);
+    const cfg = Q.levelCfg(level);
+    levelButtons.forEach(b => b.setAttribute('aria-checked', String(b.dataset.level === level)));
+    $('levelLine').textContent = (cfg.expect || '') +
+      (cfg.perfect ? ' All five right is a PERFECT RUN — bonus points.' : '');
+    paintChip(level);
+  }
+  levelButtons.forEach(b => b.addEventListener('click', () => setLevel(b.dataset.level)));
+
+  /* The chip in the top bar. Shown from the moment a level is chosen and for
+     the whole run, because "why is this so hard" and "why is this worth
+     3,000" have the same one-word answer. */
+  function paintChip(key) {
+    const el = $('levelChip');
+    const cfg = Q.levelCfg(key);
+    el.hidden = false;
+    el.textContent = cfg.name;
+    el.className = 'chip ' + key;
+  }
+
   // ---- run state ----------------------------------------------------------
 
   let run = null;
@@ -34,6 +64,8 @@
   function newRun(mode) {
     return {
       mode,
+      level,
+      bonus: 0,
       runId: null,
       duel: null,
       questions: [],
@@ -81,15 +113,19 @@
   async function begin(mode) {
     if (mode === 'listen' && !listenAvailable()) return;
     run = newRun(mode);
-    run.questions = Q.buildRun(mode, CFG.run);
+    run.questions = Q.buildRun(mode, Object.assign({}, CFG.run, { level }));
     if (!run.questions.length) return;
 
-    $('pairMode').textContent = mode === 'listen' ? 'listening' : 'reading';
+    // A duel is only a duel if both pads are answering the same questions
+    // with the same four options for the same points, so the level is part of
+    // what has to match before two runs are paired.
+    $('pairMode').textContent = (mode === 'listen' ? 'listening' : 'reading') +
+      ' on ' + Q.levelCfg(level).name;
     view('pairing');
 
     let res;
     try {
-      res = await S.join({ station, mode, questions: run.questions.map(q => q.id) });
+      res = await S.join({ station, mode, level, questions: run.questions.map(q => q.id) });
     } catch (e) {
       // No backend: play solo, silently. The person in front of the pad is
       // not the right audience for a connectivity problem.
@@ -121,14 +157,22 @@
 
   function enterDuel(duel) {
     run.duel = duel;
+    /* The duel carries its own level. Pairing already requires both pads to
+       have asked for the same one, so this only ever confirms what this pad
+       chose — but reading it from the duel rather than from the local
+       variable means the two pads can never disagree about what they are
+       being scored on. */
+    if (duel.level) { run.level = Q.levelKey(duel.level); paintChip(run.level); }
     // Both pads rebuild the same five questions from the same ids. If this
     // pad somehow cannot — a bank mismatch between devices — it falls back to
     // its own run rather than showing four blank options.
-    const shared = Q.runFromIds(duel.questions || []);
+    const shared = Q.runFromIds(duel.questions || [], run.level);
     if (shared.length === run.questions.length) run.questions = shared;
 
     const other = (duel.stations || []).find(s => s !== station) || '?';
     $('readyVs').textContent = `Station ${station} vs Station ${other}`;
+    document.querySelector('[data-view="ready"] .kicker').textContent =
+      'Duel — ' + Q.levelCfg(run.level).name;
     view('ready');
 
     // Counting down to an absolute instant the server chose, not to a local
@@ -269,7 +313,7 @@
   function beat() {
     if (!run || !run.runId) return;
     S.round({
-      station, runId: run.runId,
+      station, runId: run.runId, level: run.level,
       score: run.score, answered: run.i
       // deliberately no `answer`: this is a keep-alive, not a result
     }).catch(() => {});
@@ -302,7 +346,7 @@
     const q = run.questions[run.i];
     const msLeft = Math.max(0, run.deadline - Date.now());
     const right = chose === q.answer;
-    const gained = Q.scoreAnswer(right, msLeft, CFG.run.answerMs, CFG.run);
+    const gained = Q.scoreAnswer(right, msLeft, CFG.run.answerMs, CFG.run, run.level);
 
     run.score += gained;
     if (right) run.correct++;
@@ -326,7 +370,7 @@
     if (right) confetti();
 
     S.round({
-      station, runId: run.runId,
+      station, runId: run.runId, level: run.level,
       score: run.score, answered: run.i + 1,
       answer: q.answer, chose: chose || '', correct: right
     }).catch(() => {});
@@ -371,8 +415,22 @@
 
   function end() {
     const of = run.questions.length;
-    $('endScore').textContent = String(run.score);
-    $('endLine').textContent = `${run.correct} of ${of} right`;
+    const lvl = Q.levelCfg(run.level);
+
+    /* Five of five, on a level where every wrong answer was a relative. The
+       bonus is added before anything is painted, so the number on the end
+       card, the number the board is told and the number on the big screen are
+       one number — the animation is a celebration of the score, not a
+       second score of its own. */
+    const perfect = of > 0 && run.correct === of && Q.perfectBonus(run.level, CFG.run) > 0;
+    if (perfect) {
+      run.bonus = Q.perfectBonus(run.level, CFG.run);
+      run.score += run.bonus;
+    }
+
+    $('endScore').textContent = run.score.toLocaleString();
+    $('endLine').innerHTML = `${run.correct} of ${of} right on ${esc(lvl.name)}` +
+      (run.bonus ? `<span class="bonusline">+${run.bonus.toLocaleString()} perfect run</span>` : '');
     $('endKicker').textContent = run.duel ? 'Duel' : 'Your run';
 
     /* The missed languages, shown again with a fact each. The lab finding is
@@ -392,7 +450,28 @@
     $('postBoard').disabled = true;
     $('duelBars').hidden = true;
     view('end');
+    if (perfect) perfectRun(lvl, run.bonus, of);
     if (run.duel) watchDuel();
+  }
+
+  /* PERFECT RUN. Over the end card, not instead of it: the score and the
+     "worth remembering" panel are already painted underneath and come back
+     when this clears itself two and a half seconds later. Nothing here waits
+     for a tap — there is a queue behind this person. */
+  let perfectTimer = null;
+  function perfectRun(lvl, bonus, of) {
+    const el = $('perfect');
+    $('perfectSub').textContent = `${of} of ${of} on ${lvl.name}`;
+    $('perfectBonus').textContent = '+' + bonus.toLocaleString();
+    el.classList.remove('out');
+    el.hidden = false;
+    confetti(70);
+    setTimeout(() => confetti(50), 500);
+    clearTimeout(perfectTimer);
+    perfectTimer = setTimeout(() => {
+      el.classList.add('out');
+      perfectTimer = setTimeout(() => { el.hidden = true; el.classList.remove('out'); }, 450);
+    }, 2500);
   }
 
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -427,8 +506,9 @@
   async function post() {
     $('postBoard').disabled = true;
     const payload = {
-      station, runId: run.runId, initials: typed, mode: run.mode,
+      station, runId: run.runId, initials: typed, mode: run.mode, level: run.level,
       score: run.score, correct: run.correct, of: run.questions.length,
+      perfect: !!run.bonus,
       timeMs: Date.now() - run.startedAt,
       duelId: run.duel ? run.duel.id : null,
       missed: run.answers.filter(a => !a.right).map(a => a.answer)
@@ -445,7 +525,7 @@
     } else {
       v.textContent = res.entry.duelWin ? 'Duel won' : "You're on the board";
       v.classList.add('ok');
-      $('postedRank').textContent = res.rank ? `#${res.rank} this hour` : `${res.entry.initials} — ${res.entry.score}`;
+      $('postedRank').textContent = res.rank ? `#${res.rank} this hour` : `${res.entry.initials} — ${res.entry.score.toLocaleString()}`;
       $('postedBeat').textContent = (res.beat !== null && res.of > 2)
         ? `Ahead of ${res.beat}% of the last hour.`
         : 'First on the board this hour.';
@@ -461,11 +541,16 @@
   let resetTimer = null;
   function resetToStart() {
     clearTimeout(resetTimer);
+    clearTimeout(perfectTimer);
+    $('perfect').hidden = true;
+    $('perfect').classList.remove('out');
     clearInterval(run && run.timer);
     if (run) { clearTimeout(run.beat1); clearTimeout(run.beat2); }
     stopPairPoll();
     stopDuelWatch();
     run = null;
+    // Back to the house level for whoever is next in the queue.
+    setLevel(DEFAULT_LEVEL);
     view('start');
   }
 
@@ -530,5 +615,6 @@
     if (body.className === 'screen-question' && Date.now() - idleAt > 90000) resetToStart();
   }, 5000);
 
+  setLevel(DEFAULT_LEVEL);
   view('start');
 })();

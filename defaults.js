@@ -37,6 +37,48 @@
       // outweigh speed or the booth rewards reflexes instead of ears.
       pointsCorrect: 100,
       pointsSpeedMax: 50,
+
+      /* Difficulty. Visitors told us the quiz was hardest when the four
+         options were all relatives of each other, so that is now a choice
+         rather than the only setting. What a level changes is how close the
+         three wrong answers are to the right one — which is the whole
+         difficulty of a guess-the-language question — and what a right
+         answer is worth.
+
+         `related` is how many of the three wrong options come from the same
+         language family as the answer. The multipliers are Simon's: one
+         right answer on Hard is worth five on Easy, one on Normal is worth
+         two. They multiply the whole score for the question, speed bonus
+         included, so being quick is worth more where the question is
+         harder. */
+      level: 'normal',
+      levels: {
+        easy: {
+          key: 'easy', name: 'Easy', multiplier: 1, related: 0, perfect: false,
+          note: 'Four languages from four different families.',
+          expect: 'Tell a Slavic language from a Bantu one.',
+          points: 'Base points'
+        },
+        normal: {
+          key: 'normal', name: 'Normal', multiplier: 2, related: 1, perfect: true,
+          note: 'One wrong answer is a relative of the right one.',
+          expect: 'One option is a close cousin. The other two are not.',
+          points: 'Double points'
+        },
+        hard: {
+          key: 'hard', name: 'Hard', multiplier: 5, related: 3, perfect: true,
+          note: 'All four are from the same family.',
+          expect: 'Four relatives. Nothing but the language itself gives it away.',
+          points: 'Five times the points'
+        }
+      },
+      /* All five right, on a level where the wrong answers were relatives.
+         Worth two more correct answers at that level — 400 on Normal,
+         1,000 on Hard — which is about a third on top of a perfect run:
+         enough to be worth going up a level for, not so much that one lucky
+         run settles the day board. Easy has no perfect run; the bonus is
+         meant to be a reason to leave Easy. */
+      perfectBonus: 2,
       // The first two questions come from languages most people have heard.
       // Nobody should walk away from a Common Voice booth having scored zero.
       easyFirst: 2

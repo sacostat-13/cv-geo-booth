@@ -47,13 +47,24 @@
   let seenInitials = new Set();
   let firstPaint = true;
 
+  /* A score is only readable next to the rules it was made under. One right
+     answer on Hard is worth five on Easy, so a 3,100 beside a 420 is not two
+     people being better and worse at the same thing — without the chip
+     the top of the board is simply unexplainable from three metres. On the
+     day board, which adds runs up, it is the toughest level they played. */
+  const LEVEL_LETTER = { easy: 'E', normal: 'N', hard: 'H' };
+
   function paintRows(el, rows, { total, max }) {
     const filled = rows.slice(0, max).map(r => {
       const fresh = !firstPaint && !seenInitials.has(r.initials);
       const runs = total && r.runs > 1 ? `<span class="runs">${r.runs} runs</span>` : '';
+      const lv = r.level ? `<span class="lv ${r.level}" title="${r.level}">${LEVEL_LETTER[r.level] || ''}</span>` : '';
+      // Five of five with every wrong answer a relative. Rare enough that the
+      // star means something, and the one thing on the board worth pointing at.
+      const star = r.perfect ? '<span class="star" aria-label="perfect run">★</span>' : '';
       return `<li class="${fresh ? 'fresh' : ''}">
         <span class="n">${r.rank}</span>
-        <span class="who">${esc(r.initials)}${runs}</span>
+        <span class="who">${esc(r.initials)}${lv}${star}${runs}</span>
         <span class="pts">${r.score.toLocaleString()}</span>
       </li>`;
     });
@@ -207,12 +218,16 @@
     // Sorted, so Station A is always the left column. Which pad joined first
     // is not something a crowd should have to work out from the screen.
     const [a, b] = (d.stations || ['A', 'B']).slice().sort();
+    // Both pads had to ask for the same level to be paired at all, so the
+    // band can name it once for the two of them.
+    const dl = (CFG.run.levels && CFG.run.levels[d.level]) || null;
+    band.querySelector('.dlabel').textContent = dl ? 'Duel — ' + dl.name : 'Duel';
     const sides = { [a]: $('sideA'), [b]: $('sideB') };
     for (const st of [a, b]) {
       const el = sides[st];
       if (!el) continue;
       el.querySelector('.st').textContent = 'Station ' + st;
-      el.querySelector('.sc').textContent = (d.scores && d.scores[st]) || 0;
+      el.querySelector('.sc').textContent = ((d.scores && d.scores[st]) || 0).toLocaleString();
       el.classList.remove('lead', 'won');
     }
     const sa = (d.scores && d.scores[a]) || 0, sb = (d.scores && d.scores[b]) || 0;
@@ -240,10 +255,13 @@
     const live = Object.entries(pads).filter(([, p]) => !p.finished);
     if (!live.length) return;
     const [st, p] = live[0];
+    const lvl = (CFG.run.levels && CFG.run.levels[p.level]) || null;
     $('playingLine').textContent = p.mode === 'listen'
       ? 'Someone is listening right now'
       : 'Someone is reading right now';
-    $('playingSub').textContent = `Station ${st} — question ${Math.min((p.answered || 0) + 1, CFG.run.questions)} of ${CFG.run.questions}`;
+    $('playingSub').textContent = `Station ${st} — question ` +
+      `${Math.min((p.answered || 0) + 1, CFG.run.questions)} of ${CFG.run.questions}` +
+      (lvl ? ` — ${lvl.name}` : '');
   }
 
   /* With nobody playing the screen alternates between one figure about Common

@@ -15,6 +15,11 @@
   const LIVE_STALE_MS = 45000;
   const DUEL_SETTLE_MS = 12000;   // a settled duel comes down off the screen
   const HOUR_MS = 3600000;
+  // Same level rules as netlify/functions/quiz.mjs: unknown becomes Normal,
+  // and the day board shows the toughest level played under those initials.
+  const LEVELS = new Set(['easy', 'normal', 'hard']);
+  const lvl = v => (LEVELS.has(v) ? v : 'normal');
+  const LEVEL_RANK = { easy: 0, normal: 1, hard: 2 };
   const KEY_LIVE = 'cvquiz.live.v1';
   const KEY_BOARD = 'cvquiz.board.v1';
 
@@ -37,7 +42,7 @@
     }
     return [...best.values()]
       .sort((a, b) => b.score - a.score || a.timeMs - b.timeMs || a.ts - b.ts)
-      .map((r, i) => ({ rank: i + 1, initials: r.initials, score: r.score, correct: r.correct, of: r.of, timeMs: r.timeMs, ts: r.ts, duelWin: !!r.duelWin }));
+      .map((r, i) => ({ rank: i + 1, initials: r.initials, score: r.score, correct: r.correct, of: r.of, timeMs: r.timeMs, ts: r.ts, duelWin: !!r.duelWin, level: lvl(r.level), perfect: !!r.perfect }));
   }
 
   // The day board adds runs up under the same initials; the hour board keeps
@@ -46,9 +51,11 @@
     const tot = new Map();
     for (const r of rows) {
       if (!sameDay(r.ts, now)) continue;
-      const t = tot.get(r.initials) || { initials: r.initials, score: 0, correct: 0, of: 0, runs: 0, timeMs: 0, ts: r.ts };
+      const t = tot.get(r.initials) || { initials: r.initials, score: 0, correct: 0, of: 0, runs: 0, timeMs: 0, ts: r.ts, level: 'easy', perfect: false };
       t.score += r.score; t.correct += r.correct; t.of += r.of; t.runs++;
       t.timeMs += r.timeMs; t.ts = Math.min(t.ts, r.ts);
+      if (LEVEL_RANK[lvl(r.level)] > LEVEL_RANK[t.level]) t.level = lvl(r.level);
+      if (r.perfect) t.perfect = true;
       tot.set(r.initials, t);
     }
     return [...tot.values()]
@@ -127,7 +134,7 @@
       return live;
     }
     const publicDuel = d => d && ({
-      id: d.id, mode: d.mode, startAt: d.startAt, stations: Object.keys(d.runs),
+      id: d.id, mode: d.mode, level: lvl(d.level), startAt: d.startAt, stations: Object.keys(d.runs),
       scores: d.scores, answered: d.answered, winner: d.winner, questions: d.questions
     });
 
@@ -138,17 +145,21 @@
       async join(body) {
         const station = String(body.station || 'A').toUpperCase();
         const mode = body.mode === 'listen' ? 'listen' : 'read';
+        const level = lvl(body.level);
         const runId = newId();
         const now = Date.now();
         const live = prune(readLive());
 
+        // Mode and level both, as on the server: a duel between two
+        // different levels is two different quizzes with one scoreline.
         const found = Object.entries(live.pads).find(([k, p]) =>
-          k !== station && p.waiting && p.mode === mode && now - p.at < DUEL_WINDOW_MS);
+          k !== station && p.waiting && p.mode === mode && lvl(p.level) === level &&
+          now - p.at < DUEL_WINDOW_MS);
 
         if (found) {
           const [other, pad] = found;
           const duel = {
-            id: newId(), mode, at: now, startAt: now + 1200,
+            id: newId(), mode, level, at: now, startAt: now + 1200,
             questions: pad.questions || [],
             runs: { [other]: pad.runId, [station]: runId },
             scores: { [other]: 0, [station]: 0 },
@@ -157,17 +168,17 @@
           };
           live.duel = duel;
           live.pads[other] = Object.assign({}, pad, { waiting: false, duelId: duel.id, at: now });
-          live.pads[station] = { station, mode, runId, waiting: false, duelId: duel.id, score: 0, answered: 0, at: now };
+          live.pads[station] = { station, mode, level, runId, waiting: false, duelId: duel.id, score: 0, answered: 0, at: now };
           writeLive(live);
-          return { runId, station, mode, duel: publicDuel(duel), questions: duel.questions };
+          return { runId, station, mode, level, duel: publicDuel(duel), questions: duel.questions };
         }
 
         live.pads[station] = {
-          station, mode, runId, waiting: true, duelId: null, score: 0, answered: 0, at: now,
+          station, mode, level, runId, waiting: true, duelId: null, score: 0, answered: 0, at: now,
           questions: (body.questions || []).slice(0, 10)
         };
         writeLive(live);
-        return { runId, station, mode, duel: null, waitMs: DUEL_WINDOW_MS };
+        return { runId, station, mode, level, duel: null, waitMs: DUEL_WINDOW_MS };
       },
 
       async pair(station, runId) {
@@ -183,6 +194,7 @@
         const live = prune(readLive());
         const pad = live.pads[station];
         if (!pad || pad.runId !== body.runId) return { ok: false, stale: true };
+        if (body.level) pad.level = lvl(body.level);
         pad.score = body.score || 0;
         pad.answered = body.answered || 0;
         pad.at = Date.now();
@@ -205,6 +217,7 @@
           id: newId(), ts: now, station, runId: body.runId,
           initials: cleanInitials(body.initials),
           mode: body.mode === 'listen' ? 'listen' : 'read',
+          level: lvl(body.level), perfect: !!body.perfect,
           score: body.score || 0, correct: body.correct || 0, of: body.of || 5,
           timeMs: body.timeMs || 0, duelId: body.duelId || null,
           missed: (body.missed || []).slice(0, 10)
@@ -256,7 +269,7 @@
         const day = rankTotal(board, now);
         const pads = {};
         for (const [k, p] of Object.entries(live.pads)) {
-          pads[k] = { mode: p.mode, score: p.score, answered: p.answered, waiting: !!p.waiting, finished: !!p.finished, duelId: p.duelId, at: p.at };
+          pads[k] = { mode: p.mode, level: lvl(p.level), score: p.score, answered: p.answered, waiting: !!p.waiting, finished: !!p.finished, duelId: p.duelId, at: p.at };
         }
         return {
           now, pads,

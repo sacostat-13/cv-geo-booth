@@ -120,6 +120,54 @@ attract screen there is; people look at it and walk past. The screen stays
 live — reacting to whatever the pads are doing — and the instruction sits in
 a strip along the bottom.
 
+## Easy, Normal, Hard
+
+Visitors liked the game and said the same thing about it: it is unfairly hard
+when all four options are relatives of each other. That is now a choice made
+before the mode, on the same screen.
+
+| | Wrong answers | A right answer is worth | Perfect run |
+|---|---|---|---|
+| **Easy** | three unrelated languages | base | — |
+| **Normal** | one relative, two not | double | +400 |
+| **Hard** | three relatives | five times | +1,000 |
+
+A level is **not a different bank**. It is a different set of wrong answers
+for the same question, worked out at run time in `quiz.js` from the question
+id and the level — so one question has three option sets, and changing
+the rules costs an edit rather than a rebuild against 1.8GB of clips.
+
+Three things fall out of that and are worth knowing:
+
+- **Nothing may use `Math.random`.** A duel hands the second pad five
+  question ids and expects it to rebuild the identical five questions. Every
+  draw comes from a generator seeded with `id + level`, so the four options
+  and their order are the same on every device.
+- **A duel pairs on mode *and* level.** Two pads on different levels are not
+  answering the same quiz; pairing them would print a scoreline nobody could
+  read. Both pads sit on Normal between visitors, so the common case still
+  pairs, and a mismatch plays solo.
+- **Not every language can be asked at every level.** Hard needs three
+  relatives and Normal needs one. Basque has none, Mongolian has one. Those
+  questions are filtered out of the run rather than quietly downgraded —
+  at Hard that rules out 38 of the 247 languages, leaving 3,475 questions.
+  `isolate` and `constructed` are not treated as families, because they are
+  not.
+
+The multiplier takes the speed bonus with it, so quickness is worth more
+where the question was harder: a flawless Hard run tops out at 4,750 against
+750 on Easy. That gap is why the boards carry a small **E / N / H** chip and
+a star for a perfect run — at three metres a 4,725 beside a 745 is
+otherwise unexplainable.
+
+The pad goes back to **Normal** between visitors. A level is a choice the
+person in front of the pad made, not a setting the pad keeps.
+
+`npm run check-levels` checks all of this against the real bank: option
+composition at each level over all 4,147 questions, the two pads rebuilding
+an identical run, eligibility, the multipliers and the bonus. Run it after
+any bank rebuild or any edit to `tools/languages.json`.
+
 ## Reading mode is not a fallback
 
 It is offered first, beside Listen, with the same scoring and the same board.
@@ -239,4 +287,12 @@ be overridden by an environment variable at deploy time — see
   someone at a booth. There is no staff "remove this entry" control yet; the
   way to clear a bad entry today is to delete the `board` blob.
 - **Two copies of the scoring rules** — `netlify/functions/quiz.mjs` and the
-  local half of `store.js`. Change one, change the other.
+  local half of `store.js`. Change one, change the other. The level rules are
+  duplicated across the same two files (which levels exist, how a duel pairs,
+  which level the day board shows); the rules that decide the *options* live
+  once, in `quiz.js`.
+- **The level multipliers are a judgement, not a measurement.** Five-to-one
+  for Hard and two-to-one for Normal were set before anyone played it. If the
+  day board turns out to be all-Hard and nothing else, they are the dial:
+  `BOOTH_MULT_HARD` / `BOOTH_MULT_NORMAL` / `BOOTH_PERFECT_BONUS`, turnable
+  between two days of the festival without a code change.

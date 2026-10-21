@@ -259,6 +259,10 @@ button:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
   font-size: clamp(15px, 1.8vw, 20px); color: var(--muted); margin: 0;
   max-width: 30ch; border-top: 1px solid var(--line); padding-top: 14px;
 }
+/* The perfect-run bonus on the end card. Its own line under "5 of 5 right
+   on Hard", in the colour a gain is always shown in on this pad. */
+.bonusline { display: block; margin-top: .35em; color: var(--ok); font-weight: 700; }
+
 .gain { font-size: clamp(22px, 3vw, 34px); font-weight: 800; color: var(--ok); min-height: 1.2em; }
 
 /* ---- end ---------------------------------------------------------------- */
@@ -302,11 +306,118 @@ button:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .keys button.wide { grid-column: span 2; font-size: 16px; color: var(--muted); }
 .endactions { display: flex; gap: 14px; align-items: center; }
 
+/* ---- the level picker --------------------------------------------------- */
+
+/* Three cards in a row, deliberately a third of the height of the mode
+   buttons: this is a setting, not the thing that starts the run, and the two
+   should not compete for the first tap. Each one says what the questions
+   will be like and what they are worth, because a visitor choosing Hard is
+   accepting both and should not have to find out about either mid-run. */
+.levels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(8px, 1.2vw, 14px);
+  width: min(100%, 760px);
+}
+.lvl {
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(10px, 1.6vh, 16px) 12px;
+  min-height: clamp(104px, 14vh, 132px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+  transition: transform .14s, border-color .14s, background .14s;
+}
+.lvl:active { transform: scale(.97); }
+.lvl-name { font-size: clamp(18px, 2.2vw, 24px); font-weight: 700; }
+/* The expectation. Two lines at most on an iPad, and it has to stay legible
+   at arm's length, so it is not allowed to shrink below 13px. */
+.lvl-note { font-size: clamp(13px, 1.4vw, 15px); color: var(--muted); line-height: 1.3; max-width: 22ch; }
+.lvl-pts { font-size: clamp(12px, 1.3vw, 14px); font-weight: 700; color: var(--accent-2); letter-spacing: .04em; }
+
+/* The chosen one is filled rather than merely outlined: at a metre, a 2px
+   border change is not a state change. */
+.lvl[aria-checked="true"] {
+  border-color: var(--accent);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 9%, var(--surface)), var(--surface));
+  box-shadow: 0 6px 20px -12px var(--accent);
+}
+.lvl[aria-checked="true"] .lvl-name { color: var(--accent); }
+.lvl[aria-checked="true"] .lvl-note { color: var(--text); }
+
+.levelline { margin: 0; font-size: clamp(13px, 1.5vw, 16px); color: var(--muted); }
+
+/* The level, small, in the top bar and on the end card — so a player
+   mid-run, and a staffer reading a score over their shoulder, can both see
+   which rules this run is under. */
+.chip {
+  font-size: clamp(11px, 1.2vw, 13px);
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  color: var(--muted);
+}
+.chip.normal { border-color: color-mix(in srgb, var(--accent-2) 55%, var(--line)); color: var(--accent-2); }
+.chip.hard { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+
+/* ---- perfect run -------------------------------------------------------- */
+
+/* Five of five on Normal or Hard. It covers the end card for two and a half
+   seconds and then gets out of the way; the score underneath already has the
+   bonus in it, so nothing is lost if someone looks away. */
+.perfect {
+  position: fixed; inset: 0; z-index: 60;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(60% 50% at 50% 50%, rgba(255,255,255,.92), rgba(255,255,255,.72));
+  animation: perfectIn .25s ease-out both;
+}
+.perfect.out { animation: perfectOut .45s ease-in both; }
+.perfect-card {
+  text-align: center;
+  padding: clamp(20px, 4vh, 40px) clamp(26px, 5vw, 56px);
+  border-radius: 24px;
+  background: var(--surface);
+  border: 3px solid var(--accent);
+  box-shadow: 0 30px 70px -30px var(--accent);
+  animation: perfectPop .6s cubic-bezier(.17,.89,.32,1.28) both;
+}
+.perfect-word {
+  margin: 0;
+  font-size: clamp(38px, 7vw, 76px);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1;
+  background: linear-gradient(100deg, var(--accent-2), var(--accent) 45%, var(--accent-2));
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  animation: perfectSweep 1.6s ease-in-out .2s 2;
+}
+.perfect-sub { margin: 10px 0 0; font-size: clamp(16px, 2vw, 22px); color: var(--muted); }
+.perfect-bonus {
+  margin: 14px 0 0;
+  font-size: clamp(30px, 4.4vw, 52px);
+  font-weight: 800;
+  color: var(--ok);
+  font-variant-numeric: tabular-nums;
+  animation: perfectPop .5s cubic-bezier(.17,.89,.32,1.28) .25s both;
+}
+@keyframes perfectIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes perfectOut { from { opacity: 1; } to { opacity: 0; } }
+@keyframes perfectPop { from { opacity: 0; transform: scale(.78) translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes perfectSweep { 0% { background-position: 100% 0; } 100% { background-position: -60% 0; } }
+
 /* ---- celebration -------------------------------------------------------- */
 
 /* Confetti without a canvas: twenty divs, one animation, removed when done.
    It has to be cheap — this runs on an iPad that has been awake all day. */
-.burst { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 50; }
+/* Above the perfect-run overlay (z-index 60), not under it: the overlay
+   washes the screen white and was swallowing the confetti at the one moment
+   the booth most wants it seen. */
+.burst { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 70; }
 .burst i {
   position: absolute; top: -12px; width: 10px; height: 16px; border-radius: 2px;
   animation: fall linear forwards;
@@ -330,6 +441,12 @@ body.flash-no #app { animation: flashNo .4s ease-out; }
   .options { grid-template-columns: repeat(4, 1fr); }
   .opt { min-height: clamp(92px, 16vh, 120px); }
   .modes { grid-template-columns: 1fr 1fr; }
+  /* The level row and the two mode cards have to share a short viewport, so
+     the mode cards give up the height rather than the level notes, which are
+     the part a first-time visitor actually reads. */
+  .mode { min-height: clamp(150px, 26vh, 220px); }
+  .lvl { min-height: clamp(92px, 20vh, 116px); }
+  body.screen-start .view { gap: clamp(10px, 1.6vh, 18px); }
 }
 
 /* Shown only when a clip fails to load, which means a deploy is missing its

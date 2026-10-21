@@ -13,6 +13,7 @@
 
 <header class="bar">
   <span class="wordmark"><span class="dot"></span>Common Voice</span>
+  <span class="chip" id="levelChip" hidden>Normal</span>
   <span class="station" id="station">Station A</span>
 </header>
 
@@ -21,7 +22,30 @@
   <!-- 1. start ------------------------------------------------------------->
   <section class="view" data-view="start">
     <h1 class="lede">Can you tell which language this is?</h1>
-    <p class="sub">Five questions. Four choices each. Pick how you want them.</p>
+    <p class="sub">Five questions. Four choices each. Pick how hard, then how you want them.</p>
+
+    <!-- The level picker. It sits above the mode buttons because it is the
+         smaller decision and because the mode buttons are what start the run:
+         the last thing you tap should be the thing that begins. -->
+    <div class="levels" id="levels" role="radiogroup" aria-label="Difficulty">
+      <button class="lvl" data-level="easy" role="radio" aria-checked="false">
+        <span class="lvl-name">Easy</span>
+        <span class="lvl-note">Four languages from four different families.</span>
+        <span class="lvl-pts">Base points</span>
+      </button>
+      <button class="lvl" data-level="normal" role="radio" aria-checked="true">
+        <span class="lvl-name">Normal</span>
+        <span class="lvl-note">One wrong answer is a relative of the right one.</span>
+        <span class="lvl-pts">Double points</span>
+      </button>
+      <button class="lvl" data-level="hard" role="radio" aria-checked="false">
+        <span class="lvl-name">Hard</span>
+        <span class="lvl-note">All four are from the same family.</span>
+        <span class="lvl-pts">Five times the points</span>
+      </button>
+    </div>
+    <p class="levelline" id="levelLine">All five right on Normal or Hard is a perfect run — and a bonus.</p>
+
     <div class="modes">
       <button class="mode" data-mode="listen" id="modeListen">
         <span class="mode-icon" aria-hidden="true">
@@ -58,7 +82,7 @@
   <section class="view" data-view="ready">
     <p class="kicker">Duel</p>
     <h1 class="lede"><span id="readyVs">Station A vs Station B</span></h1>
-    <p class="sub">Same five questions, same moment. Ready…</p>
+    <p class="sub">Same five questions, same level, same moment. Ready…</p>
     <div class="count" id="readyCount">5</div>
   </section>
 
@@ -133,6 +157,17 @@
 </main>
 
 <div class="burst" id="burst" aria-hidden="true"></div>
+
+<!-- Perfect run. Sits over the end card for a couple of seconds rather than
+     being a view of its own: the score and the missed-languages panel are
+     already painted underneath, so nothing is taken away to show it. -->
+<div class="perfect" id="perfect" hidden>
+  <div class="perfect-card">
+    <p class="perfect-word">PERFECT RUN!</p>
+    <p class="perfect-sub" id="perfectSub"></p>
+    <p class="perfect-bonus" id="perfectBonus"></p>
+  </div>
+</div>
 
 <script src="defaults.js"></script>
 <script src="config.js"></script>

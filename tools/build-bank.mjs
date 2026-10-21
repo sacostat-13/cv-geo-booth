@@ -223,6 +223,15 @@ console.log(`languages ${LOCALES.length}`);
 
 /* Three wrong answers per question, chosen rather than drawn at random.
 
+   NOTE: since difficulty levels landed, the booth does not use these at run
+   time. quiz.js derives a question's four options from the question id and
+   the chosen level, so one question has three option sets and none of them
+   needs a rebuild to change. What is written here is the fallback for a pad
+   whose language table and bank have drifted apart, and it is the Normal
+   shape: one relative, two not. Changing the rules below changes nothing a
+   visitor sees — the rules that matter are `optionsFor` in quiz.js, and
+   tools/check-levels.mjs checks them.
+
    One is from the same family as the answer. That is the confusion worth
    having: someone who picks Portuguese for Catalan has learned something when
    the screen tells them, where someone who picks Korean for Catalan has only

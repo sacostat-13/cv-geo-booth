@@ -126,6 +126,26 @@ body {
 .rows li .n { color: var(--muted); font-size: 1.9vmin; text-align: right; }
 .rows li .who { font-weight: 700; letter-spacing: .12em; }
 .rows li .pts { font-weight: 700; }
+/* The level a run was played at, and a star for a perfect one. Small: the
+   board is read for the names and the numbers, and this is the footnote that
+   makes the numbers make sense rather than a third column. */
+.rows li .lv {
+  display: inline-block;
+  margin-left: .7vmin;
+  padding: 0 .55vmin;
+  min-width: 2.1vmin;
+  border-radius: .5vmin;
+  font-size: 1.4vmin;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-align: center;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  vertical-align: .25vmin;
+}
+.rows li .lv.normal { border-color: color-mix(in srgb, var(--accent-2) 55%, var(--line)); color: var(--accent-2); }
+.rows li .lv.hard { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.rows li .star { margin-left: .5vmin; font-size: 1.5vmin; color: var(--accent-2); letter-spacing: 0; }
 .rows li .runs { color: var(--muted); font-size: 1.5vmin; letter-spacing: 0; font-weight: 400; margin-left: .6vmin; }
 .rows li.me { background: color-mix(in srgb, var(--accent) 14%, var(--surface-2)); }
 

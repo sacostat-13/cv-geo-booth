@@ -22,6 +22,10 @@ All optional. The booth runs with none of them set.
 | `BOOTH_REVEAL_MS` | `3500` | How long the answer holds the pad |
 | `BOOTH_CLIP_SECS` | `6` | Must match how the clips were cut |
 | `BOOTH_REPLAYS` | `2` | Replays per clip |
+| `BOOTH_LEVEL` | `normal` | Where both pads sit between visitors: `easy`, `normal` or `hard` |
+| `BOOTH_MULT_NORMAL` | `2` | What one right answer on Normal is worth, counted in Easy answers |
+| `BOOTH_MULT_HARD` | `5` | The same for Hard |
+| `BOOTH_PERFECT_BONUS` | `2` | The perfect-run bonus, counted in right answers at that level (so `2` on Hard is +1,000) |
 | `BOOTH_DUEL_WINDOW_MS` | `3500` | How long a pad waits for a challenger |
 | `BOOTH_DUEL_READY_MS` | `5000` | The shared countdown before question one |
 | `BOOTH_POLL_MS` | `1000` | Screen poll while someone is playing |

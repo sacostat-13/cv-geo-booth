@@ -38,6 +38,16 @@ const store = () => getStore({ name: 'cv-booth-quiz', consistency: 'strong' });
 const clean = (v, max) => String(v ?? '').replace(/[\u0000-\u001F\u007F]/g, ' ').trim().slice(0, max);
 const slug = s => clean(s, 64).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'default';
 const newId = () => Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
+/* Easy, Normal or Hard. The level decides how many of a question's three
+   wrong answers are relatives of the right one and what the whole question is
+   worth, so it is part of what two pads must agree on before they can duel,
+   and part of what the board has to carry to explain a 3,000 next to a 400.
+   Anything else becomes Normal rather than an error — a pad on an old
+   build should still be able to play. */
+const LEVELS = new Set(['easy', 'normal', 'hard']);
+const lvl = v => (LEVELS.has(v) ? v : 'normal');
+const LEVEL_RANK = { easy: 0, normal: 1, hard: 2 };
+
 const num = (v, lo, hi, dflt = 0) => {
   const n = Number(v);
   return Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : dflt;
@@ -122,16 +132,21 @@ function rank(rows, since, now) {
   }
   return [...best.values()]
     .sort((a, b) => b.score - a.score || a.timeMs - b.timeMs || a.ts - b.ts)
-    .map((r, i) => ({ rank: i + 1, initials: r.initials, score: r.score, correct: r.correct, of: r.of, timeMs: r.timeMs, ts: r.ts, duelWin: !!r.duelWin }));
+    .map((r, i) => ({ rank: i + 1, initials: r.initials, score: r.score, correct: r.correct, of: r.of, timeMs: r.timeMs, ts: r.ts, duelWin: !!r.duelWin, level: lvl(r.level), perfect: !!r.perfect }));
 }
 
 function rankTotal(rows, now) {
   const tot = new Map();
   for (const r of rows) {
     if (!sameDay(r.ts, now)) continue;
-    const t = tot.get(r.initials) || { initials: r.initials, score: 0, correct: 0, of: 0, runs: 0, timeMs: 0, ts: r.ts };
+    const t = tot.get(r.initials) || { initials: r.initials, score: 0, correct: 0, of: 0, runs: 0, timeMs: 0, ts: r.ts, level: 'easy', perfect: false };
     t.score += r.score; t.correct += r.correct; t.of += r.of; t.runs++;
     t.timeMs += r.timeMs; t.ts = Math.min(t.ts, r.ts);
+    /* The day board adds several runs up, so there is no single level to
+       show. It shows the toughest one they played: the chip is there to
+       explain the size of the number, and the big numbers come from Hard. */
+    if (LEVEL_RANK[lvl(r.level)] > LEVEL_RANK[t.level]) t.level = lvl(r.level);
+    if (r.perfect) t.perfect = true;
     tot.set(r.initials, t);
   }
   return [...tot.values()]
@@ -179,19 +194,27 @@ export default async (req) => {
 async function join(s, event, body) {
   const station = clean(body?.station, 8).toUpperCase() || 'A';
   const mode = body?.mode === 'listen' ? 'listen' : 'read';
+  const level = lvl(body?.level);
   const runId = newId();
   const now = Date.now();
 
   const live = prune(await readLive(s, event));
 
+  /* Same mode AND same level. Two pads on different levels are not answering
+     the same quiz — the questions carry different wrong answers and are
+     worth different points — so pairing them would produce a scoreline
+     nobody could read. They play solo instead. Both pads default to Normal,
+     so the common case still pairs. */
   const challenger = Object.entries(live.pads).find(([k, p]) =>
-    k !== station && p.waiting && p.mode === mode && now - p.at < DUEL_WINDOW_MS);
+    k !== station && p.waiting && p.mode === mode && lvl(p.level) === level &&
+    now - p.at < DUEL_WINDOW_MS);
 
   if (challenger) {
     const [otherStation, other] = challenger;
     const duel = {
       id: newId(),
       mode,
+      level,
       at: now,
       startAt: now + 1200,            // both pads count down to the same instant
       questions: Array.isArray(other.questions) ? other.questions : [],
@@ -203,22 +226,22 @@ async function join(s, event, body) {
     };
     live.duel = duel;
     live.pads[otherStation] = { ...other, waiting: false, runId: other.runId, duelId: duel.id, at: now };
-    live.pads[station] = { station, mode, runId, waiting: false, duelId: duel.id, score: 0, answered: 0, at: now };
+    live.pads[station] = { station, mode, level, runId, waiting: false, duelId: duel.id, score: 0, answered: 0, at: now };
     await writeLive(s, event, live);
     // The second pad takes the first pad's questions, so both see the same five.
-    return json(200, { runId, station, mode, duel: publicDuel(duel), questions: duel.questions });
+    return json(200, { runId, station, mode, level, duel: publicDuel(duel), questions: duel.questions });
   }
 
   live.pads[station] = {
-    station, mode, runId, waiting: true, duelId: null, score: 0, answered: 0, at: now,
+    station, mode, level, runId, waiting: true, duelId: null, score: 0, answered: 0, at: now,
     questions: Array.isArray(body?.questions) ? body.questions.slice(0, 10).map(q => clean(q, 40)) : []
   };
   await writeLive(s, event, live);
-  return json(200, { runId, station, mode, duel: null, waitMs: DUEL_WINDOW_MS });
+  return json(200, { runId, station, mode, level, duel: null, waitMs: DUEL_WINDOW_MS });
 }
 
 const publicDuel = d => d && ({
-  id: d.id, mode: d.mode, startAt: d.startAt, stations: Object.keys(d.runs),
+  id: d.id, mode: d.mode, level: lvl(d.level), startAt: d.startAt, stations: Object.keys(d.runs),
   scores: d.scores, answered: d.answered, winner: d.winner, questions: d.questions
 });
 
@@ -248,6 +271,7 @@ async function round(s, event, body) {
   const pad = live.pads[station];
   if (!pad || pad.runId !== runId) return json(200, { ok: false, stale: true });
 
+  if (body?.level) pad.level = lvl(body.level);
   pad.score = num(body?.score, 0, 100000, pad.score);
   pad.answered = num(body?.answered, 0, 50, pad.answered);
   pad.at = Date.now();
@@ -287,6 +311,8 @@ async function finish(s, event, body) {
     runId,
     initials: initials(body?.initials),
     mode: body?.mode === 'listen' ? 'listen' : 'read',
+    level: lvl(body?.level),
+    perfect: !!body?.perfect,
     score: num(body?.score, 0, 100000),
     correct: num(body?.correct, 0, 50),
     of: num(body?.of, 1, 50, 5),
@@ -358,7 +384,7 @@ async function state(s, event) {
   return json(200, {
     now,
     pads: Object.fromEntries(Object.entries(live.pads).map(([k, p]) =>
-      [k, { mode: p.mode, score: p.score, answered: p.answered, waiting: !!p.waiting, finished: !!p.finished, duelId: p.duelId, at: p.at }])),
+      [k, { mode: p.mode, level: lvl(p.level), score: p.score, answered: p.answered, waiting: !!p.waiting, finished: !!p.finished, duelId: p.duelId, at: p.at }])),
     duel: publicDuel(live.duel),
     duelDone: live.duel ? !!live.duel.winner : false,
     reveal: live.reveal,
