@@ -45,7 +45,6 @@
      gives the same four options in the same order on every device for as
      long as the language table does not change. */
 
-     // this is a change from Rob
   const LEVEL_KEYS = ['easy', 'normal', 'hard'];
   const levelCfg = key => {
     const all = (window.BOOTH && window.BOOTH.run && window.BOOTH.run.levels) || {};
