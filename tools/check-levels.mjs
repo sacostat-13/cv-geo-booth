@@ -28,29 +28,36 @@ const ok = (name, cond, extra='') => { console.log((cond?'  ok  ':'FAIL  ')+name
 
 const fam = loc => L[loc].family;
 const real = f => f !== 'isolate' && f !== 'constructed';
+const kinCount = loc => real(fam(loc)) ? Object.keys(L).filter(l => l !== loc && fam(l) === fam(loc)).length : 0;
+// Easy's relative is optional: a language with none gets an unrelated option instead.
+const wantKin = (q, level) => {
+  const c = CFG.levels[level];
+  return c.relatedOptional ? Math.min(c.related, kinCount(q.answer)) : c.related;
+};
+const famous = (q, opts) => opts.filter(o => o !== q.answer && fam(o) !== fam(q.answer) && L[o].prominence >= 3).length;
 
 // ---- composition, over the whole bank -------------------------------------
 for (const level of ['easy','normal','hard']) {
-  const want = w.BOOTH.run.levels[level].related;
   const pool = Q.available('read').concat(Q.available('listen')).filter(q => Q.levelFits(q, level));
   let bad = 0, sample = '';
   for (const q of pool) {
     const opts = Q.optionsFor(q, level);
     if (opts.length !== 4 || new Set(opts).size !== 4 || !opts.includes(q.answer)) { bad++; sample = q.id + ' ' + opts; continue; }
+    const want = wantKin(q, level), wantFamous = CFG.levels[level].prominent || 0;
     const kin = opts.filter(o => o !== q.answer && fam(o) === fam(q.answer) && real(fam(q.answer))).length;
     if (kin !== want) { bad++; sample = `${q.id} ${level} wanted ${want} relatives, got ${kin}: ${opts.map(o=>o+'/'+fam(o))}`; }
+    else if (famous(q, opts) < wantFamous) { bad++; sample = `${q.id} ${level} wanted ${wantFamous} famous wrong answers: ${opts}`; }
   }
-  ok(`${level}: ${pool.length} eligible questions, every one with exactly ${want} relative(s) among four distinct options`, bad === 0, sample);
+  ok(`${level}: ${pool.length} eligible questions, every one with the level's relatives and famous names among four distinct options`, bad === 0, sample);
 }
 
 // ---- a run at each level ---------------------------------------------------
 for (const level of ['easy','normal','hard']) {
   for (const mode of ['read','listen']) {
     const run = Q.buildRun(mode, Object.assign({}, CFG, { level }));
-    const want = w.BOOTH.run.levels[level].related;
     const everyFits = run.every(q => Q.levelFits(q, level));
     const everyComposed = run.every(q =>
-      q.options.filter(o => o !== q.answer && fam(o) === fam(q.answer)).length === want);
+      q.options.filter(o => o !== q.answer && fam(o) === fam(q.answer) && real(fam(q.answer))).length === wantKin(q, level));
     const distinctLangs = new Set(run.map(q => q.answer)).size === run.length;
     ok(`buildRun ${mode}/${level}: 5 questions, all eligible, all composed, no language twice`,
        run.length === 5 && everyFits && everyComposed && distinctLangs,

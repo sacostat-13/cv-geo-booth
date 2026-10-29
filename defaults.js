@@ -54,9 +54,10 @@
       level: 'normal',
       levels: {
         easy: {
-          key: 'easy', name: 'Easy', multiplier: 1, related: 0, perfect: false,
-          note: 'Four languages from four different families.',
-          expect: 'Tell a Slavic language from a Bantu one.',
+          // relatedOptional: a language with no relatives still plays Easy.
+          key: 'easy', name: 'Easy', multiplier: 1, related: 1, relatedOptional: true, prominent: 2, perfect: false,
+          note: 'Two famous languages and one relative of the right one.',
+          expect: 'Two names everyone knows and one close cousin.',
           points: 'Base points'
         },
         normal: {

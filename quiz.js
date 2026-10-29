@@ -26,10 +26,11 @@
 
      A level is not a different bank. It is a different set of wrong answers.
 
-     Easy puts the right answer among three languages from three other
-     families; Normal slips one relative in; Hard makes all three relatives,
-     so neither the alphabet nor the part of the world gives anything away
-     and only the language itself does.
+     Easy puts the right answer beside two of the best-known languages and
+     one relative; Normal slips one relative in among two unrelated
+     languages; Hard makes all three relatives, so neither the alphabet nor
+     the part of the world gives anything away and only the language itself
+     does.
 
      The options are therefore worked out here rather than baked into the
      bank at build time, as they used to be: three option sets per question
@@ -95,7 +96,8 @@
      Such questions are filtered out of the run rather than downgraded
      silently. At Hard that rules out 38 of the 247 languages. */
   function levelFits(q, level) {
-    const need = levelCfg(levelKey(level)).related || 0;
+    const cfg = levelCfg(levelKey(level));
+    const need = cfg.relatedOptional ? 0 : (cfg.related || 0);
     return need === 0 || relatives(q.answer).length >= need;
   }
 
@@ -117,6 +119,10 @@
     const all = Object.keys(L);
     const kin = relatives(q.answer);
     for (let i = 0; i < Math.min(cfg.related || 0, 3); i++) if (!draw(kin)) break;
+
+    // Famous names from outside the answer's family, so the relative stays the only one.
+    const famous = all.filter(l => L[l].prominence >= 3 && L[l].family !== a.family);
+    for (let i = 0; i < (cfg.prominent || 0) && chosen.length < 3; i++) if (!draw(famous)) break;
 
     /* The rest are unrelated. In reading mode one of them shares the script
        where it can: a Georgian sentence with three Latin-alphabet options is

@@ -128,7 +128,7 @@ before the mode, on the same screen.
 
 | | Wrong answers | A right answer is worth | Perfect run |
 |---|---|---|---|
-| **Easy** | three unrelated languages | base | — |
+| **Easy** | two well-known languages, one relative | base | — |
 | **Normal** | one relative, two not | double | +400 |
 | **Hard** | three relatives | five times | +1,000 |
 
@@ -148,7 +148,10 @@ Three things fall out of that and are worth knowing:
   read. Both pads sit on Normal between visitors, so the common case still
   pairs, and a mismatch plays solo.
 - **Not every language can be asked at every level.** Hard needs three
-  relatives and Normal needs one. Basque has none, Mongolian has one. Those
+  relatives and Normal needs one. Basque has none, Mongolian has one. Easy
+  wants one too but does not insist: a language with no relatives gets an
+  unrelated option in its place, so Japanese, Greek and Basque still play.
+  Easy's well-known languages are the 16 with `prominence: 3` in the table. Those
   questions are filtered out of the run rather than quietly downgraded —
   at Hard that rules out 38 of the 247 languages, leaving 3,475 questions.
   `isolate` and `constructed` are not treated as families, because they are
