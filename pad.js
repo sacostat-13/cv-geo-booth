@@ -115,6 +115,7 @@
     run = newRun(mode);
     run.questions = Q.buildRun(mode, Object.assign({}, CFG.run, { level }));
     if (!run.questions.length) return;
+    preloadClips(run.questions);
 
     // A duel is only a duel if both pads are answering the same questions
     // with the same four options for the same points, so the level is part of
@@ -168,6 +169,7 @@
     // its own run rather than showing four blank options.
     const shared = Q.runFromIds(duel.questions || [], run.level);
     if (shared.length === run.questions.length) run.questions = shared;
+    preloadClips(run.questions);
 
     const other = (duel.stations || []).find(s => s !== station) || '?';
     $('readyVs').textContent = `Station ${station} vs Station ${other}`;
@@ -212,9 +214,6 @@
       $('replaysLeft').textContent = `(${run.replaysLeft} left)`;
       $('replayBtn').hidden = false;
       $('wave').innerHTML = Array.from({ length: 21 }, () => '<i></i>').join('');
-      const a = $('audio');
-      a.src = q.clip;
-      a.currentTime = 0;
       playClip();
     } else {
       const el = $('sentence');
@@ -272,29 +271,81 @@
     }, 1800);
   }
 
+  /* Clips play through Web Audio from buffers decoded once per run. iPad
+     Safari's <audio> element replays unreliably after a rewind; a buffer
+     source starts from zero every time. */
+  const AC = window.AudioContext || window.webkitAudioContext;
+  let actx = null, source = null, playToken = 0;
+  const buffers = new Map();   // clip url -> Promise<AudioBuffer>
+
+  function audioCtx() {
+    if (!actx) {
+      actx = new AC();
+      // Without this, iOS mutes Web Audio when the device is set to silent.
+      try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
+    }
+    return actx;
+  }
+
+  // iOS keeps the context suspended until a tap resumes it, and suspends it
+  // again after an interruption (Siri, an alarm), so every tap checks.
+  function unlockAudio() {
+    const c = audioCtx();
+    if (c.state === 'running') return;
+    c.resume().catch(() => {});
+    const s = c.createBufferSource();
+    s.buffer = c.createBuffer(1, 1, 22050);
+    s.connect(c.destination);
+    s.start(0);
+  }
+  ['touchend', 'click'].forEach(e => addEventListener(e, unlockAudio, true));
+
+  function loadClip(url) {
+    if (!buffers.has(url)) {
+      const p = fetch(url)
+        .then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); })
+        .then(b => audioCtx().decodeAudioData(b));
+      p.catch(() => buffers.delete(url));   // a later tap tries again
+      buffers.set(url, p);
+    }
+    return buffers.get(url);
+  }
+  function preloadClips(questions) {
+    questions.forEach(q => { if (q.mode === 'listen') loadClip(q.clip); });
+  }
+
   function playClip() {
-    const a = $('audio'), q = run.questions[run.i];
+    const q = run && run.questions[run.i];
     if (!q || q.mode !== 'listen') return;
-    a.onerror = clipFailed;
+    stopClip();
+    const token = playToken;
     $('playBtn').classList.add('playing');
     $('wave').classList.add('on');
-    // Clips are cut at build time, but a long one must not be allowed to run
-    // past the answer clock, so the page stops it as well.
-    const stopAt = setTimeout(stopClip, CFG.run.clipSecs * 1000 + 400);
-    a.onended = () => { clearTimeout(stopAt); stopClip(); };
-    a.play().catch(() => stopClip());   // autoplay refusal: the button still works
+    const c = audioCtx();
+    loadClip(q.clip).then(buf => {
+      if (token !== playToken) return;   // another tap, or the question moved on
+      const src = c.createBufferSource();
+      src.buffer = buf;
+      src.connect(c.destination);
+      src.onended = () => { if (source === src) stopClip(); };
+      // Capped so a long clip cannot run past the answer clock.
+      src.start(0, 0, CFG.run.clipSecs);
+      source = src;
+    }, () => { if (token === playToken) clipFailed(); });
   }
   function stopClip() {
+    playToken++;
+    if (source) { try { source.stop(); } catch (e) {} source = null; }
     $('playBtn').classList.remove('playing');
     $('wave').classList.remove('on');
   }
-  $('playBtn').addEventListener('click', () => { const a = $('audio'); a.currentTime = 0; playClip(); });
+  $('playBtn').addEventListener('click', playClip);
   $('replayBtn').addEventListener('click', () => {
     if (run.replaysLeft <= 0) return;
     run.replaysLeft--;
     $('replaysLeft').textContent = `(${run.replaysLeft} left)`;
     if (run.replaysLeft === 0) $('replayBtn').hidden = true;
-    const a = $('audio'); a.currentTime = 0; playClip();
+    playClip();
   });
 
   // ---- clock --------------------------------------------------------------
@@ -548,6 +599,8 @@
     if (run) { clearTimeout(run.beat1); clearTimeout(run.beat2); }
     stopPairPoll();
     stopDuelWatch();
+    stopClip();
+    buffers.clear();
     run = null;
     // Back to the house level for whoever is next in the queue.
     setLevel(DEFAULT_LEVEL);

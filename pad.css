@@ -447,6 +447,11 @@ body.flash-no #app { animation: flashNo .4s ease-out; }
   .mode { min-height: clamp(150px, 26vh, 220px); }
   .lvl { min-height: clamp(92px, 20vh, 116px); }
   body.screen-start .view { gap: clamp(10px, 1.6vh, 18px); }
+  /* The end card goes side by side: score and missed languages on the left,
+     the keypad on the right. Stacked, it is taller than a landscape iPad. */
+  .view[data-view="end"] { flex-direction: row; align-items: stretch; gap: clamp(20px, 3vw, 40px); }
+  .endgrid { grid-template-columns: 1fr; flex: 1 1 0; min-height: 0; overflow-y: auto; align-content: start; }
+  .initials { flex: 1 1 0; align-content: center; }
 }
 
 /* Shown only when a clip fails to load, which means a deploy is missing its
