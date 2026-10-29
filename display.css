@@ -207,7 +207,7 @@ body {
 @keyframes grow { from { transform: scaleX(0); } }
 
 /* Pinned to the foot of the panel, so a long split column cannot crowd it. */
-.qrrow { display: grid; grid-template-columns: auto 1fr; gap: 2vmin; align-items: center; margin-top: auto; padding-top: 1.6vmin; }
+.qrrow { display: grid; grid-template-columns: auto 1fr auto 1fr; gap: 2vmin; align-items: center; margin-top: auto; padding-top: 1.6vmin; }
 /* The QR needs white quiet zone of its own even on a white panel, so it
    keeps the border that separates the two. */
 .qr { background: #fff; border: 1px solid var(--line); padding: 1.2vmin; border-radius: 1.4vmin; line-height: 0; }

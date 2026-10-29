@@ -121,7 +121,10 @@
     // Where the QR code beside a revealed language points. {locale} is
     // replaced with the Common Voice locale code.
     languageUrl: 'https://commonvoice.mozilla.org/{locale}/datasets',
-    contributeUrl: 'https://commonvoice.mozilla.org/{locale}/speak'
+    contributeUrl: 'https://commonvoice.mozilla.org/{locale}/speak',
+    // Where the "play on your phone" QR points, relative to the site. Not /c,
+    // which is a Netlify redirect and 404s on a local static server.
+    playUrl: '/pad.html?station=C'
   };
 
   function merge(base, over) {

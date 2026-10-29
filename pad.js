@@ -24,6 +24,10 @@
   if (!/^[A-Z]$/.test(station)) station = 'A';
   try { localStorage.setItem('cvquiz.station', station); } catch (e) { /* private mode */ }
   $('station').textContent = 'Station ' + station;
+  // A visitor's phone, from the QR on the big screen. Many phones share this
+  // letter, so they play solo and only their finished runs reach the server.
+  const phone = station === 'C';
+  if (phone) $('startFoot').textContent = 'Sound on for Listen. Your score goes on the big screen.';
 
   // ---- level --------------------------------------------------------------
 
@@ -116,6 +120,7 @@
     run.questions = Q.buildRun(mode, Object.assign({}, CFG.run, { level }));
     if (!run.questions.length) return;
     preloadClips(run.questions);
+    if (phone) return startQuestions();
 
     // A duel is only a duel if both pads are answering the same questions
     // with the same four options for the same points, so the level is part of
@@ -146,10 +151,12 @@
     pairPoll = setInterval(async () => {
       if (!run || body.className !== 'screen-pairing') return stopPairPoll();
       if (Date.now() > pairUntil) { stopPairPoll(); return startQuestions(); }
-      try {
-        const r = await S.pair(station, run.runId);
-        if (r && r.duel) { stopPairPoll(); enterDuel(r.duel); }
-      } catch (e) { stopPairPoll(); startQuestions(); }
+      let r;
+      try { r = await S.pair(station, run.runId); } catch (e) { r = null; }
+      // Polls overlap on slow wifi; only the first answer may leave pairing.
+      if (!run || body.className !== 'screen-pairing') return;
+      if (r === null) { stopPairPoll(); startQuestions(); }
+      else if (r.duel) { stopPairPoll(); enterDuel(r.duel); }
     }, 400);
   }
   function stopPairPoll() { if (pairPoll) clearInterval(pairPoll); pairPoll = null; }
@@ -420,7 +427,7 @@
     setTimeout(() => body.classList.remove('flash-ok', 'flash-no'), 520);
     if (right) confetti();
 
-    S.round({
+    if (run.runId) S.round({
       station, runId: run.runId, level: run.level,
       score: run.score, answered: run.i + 1,
       answer: q.answer, chose: chose || '', correct: right
@@ -564,15 +571,17 @@
       duelId: run.duel ? run.duel.id : null,
       missed: run.answers.filter(a => !a.right).map(a => a.answer)
     };
-    let res = null;
-    try { res = await S.finish(payload); } catch (e) { /* board unreachable */ }
+    let res = null, queued = false;
+    try { res = await S.finish(payload); } catch (e) { queued = !!e.queued; }
 
     const v = $('postedVerdict');
     if (!res || !res.ok) {
-      v.textContent = 'Saved on this pad';
+      v.textContent = queued ? 'Saved on this pad' : 'Not saved';
       v.classList.remove('ok');
       $('postedRank').textContent = typed + ' — ' + run.score;
-      $('postedBeat').textContent = 'The board could not be reached just now.';
+      $('postedBeat').textContent = queued
+        ? 'It goes up on the board when the wifi is back.'
+        : 'The board could not be reached just now.';
     } else {
       v.textContent = res.entry.duelWin ? 'Duel won' : "You're on the board";
       v.classList.add('ok');

@@ -157,6 +157,18 @@
     }
   }
 
+  (function paintPlayQr() {
+    const url = new URL(CFG.playUrl || '/pad.html?station=C', location.origin).href;
+    try {
+      const qr = window.qrcode(0, 'M');
+      qr.addData(url);
+      qr.make();
+      $('qrPlay').innerHTML = qr.createImgTag(6, 0);
+    } catch (e) {
+      $('qrPlay').innerHTML = `<div class="qr-fallback">${esc(url.replace(/^https?:\/\//, ''))}</div>`;
+    }
+  })();
+
   let revealedId = '';
   function paintReveal(reveal) {
     const key = reveal.locale + ':' + reveal.at;

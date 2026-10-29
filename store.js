@@ -22,6 +22,9 @@
   const LEVEL_RANK = { easy: 0, normal: 1, hard: 2 };
   const KEY_LIVE = 'cvquiz.live.v1';
   const KEY_BOARD = 'cvquiz.board.v1';
+  const KEY_OUTBOX = 'cvquiz.outbox.v1';
+  const TIMEOUT_MS = 5000;
+  const FINISH_TIMEOUT_MS = 8000;   // finish writes several blobs; a cold start can take a while
 
   const newId = () => Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
   const sameDay = (a, b) => new Date(a).toDateString() === new Date(b).toDateString();
@@ -70,19 +73,57 @@
     const base = '/api/quiz';
     const q = path => `${base}/${path}${path.includes('?') ? '&' : '?'}event=${ev}`;
 
-    async function post(path, body) {
-      const r = await fetch(q(path), {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(body)
-      });
-      if (!r.ok) throw new Error(path + ' ' + r.status);
-      return r.json();
+    // On weak wifi a fetch can hang for a minute; the pad plays solo instead.
+    async function call(path, opts, ms) {
+      const ctl = new AbortController();
+      const t = setTimeout(() => ctl.abort(), ms || TIMEOUT_MS);
+      try {
+        const r = await fetch(q(path), Object.assign({ signal: ctl.signal }, opts));
+        if (!r.ok) { const e = new Error(path + ' ' + r.status); e.status = r.status; throw e; }
+        return await r.json();
+      } finally { clearTimeout(t); }
     }
-    async function get(path) {
-      const r = await fetch(q(path), { cache: 'no-store' });
-      if (!r.ok) throw new Error(path + ' ' + r.status);
-      return r.json();
+    const post = (path, body, ms) => call(path, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(body)
+    }, ms);
+    const get = path => call(path, { cache: 'no-store' });
+
+    /* Finished runs that did not reach the board wait here and are retried.
+       The id lets the server drop a retry of a run it already has. */
+    const readOutbox = () => {
+      try { return JSON.parse(localStorage.getItem(KEY_OUTBOX) || '[]'); } catch (e) { return []; }
+    };
+    const writeOutbox = rows => {
+      try { localStorage.setItem(KEY_OUTBOX, JSON.stringify(rows.slice(-200))); } catch (e) { /* private mode */ }
+    };
+    let flushing = false;
+    async function flush() {
+      if (flushing) return;
+      flushing = true;
+      try {
+        for (const body of readOutbox()) {
+          try { await post('finish', body, FINISH_TIMEOUT_MS); }
+          catch (e) { if (!e.status || e.status >= 500) break; }   // still offline; a 4xx will never succeed
+          writeOutbox(readOutbox().filter(r => r.id !== body.id));
+        }
+      } finally { flushing = false; }
+    }
+    addEventListener('online', flush);
+    setInterval(flush, 30000);
+    flush();
+
+    async function finish(body) {
+      body = Object.assign({ id: newId(), ts: Date.now() }, body);
+      try {
+        const res = await post('finish', body, FINISH_TIMEOUT_MS);
+        flush();
+        return res;
+      } catch (e) {
+        if (!e.status || e.status >= 500) { writeOutbox(readOutbox().concat(body)); e.queued = true; }
+        throw e;
+      }
     }
 
     return {
@@ -91,7 +132,7 @@
       join: body => post('join', body),
       pair: (station, runId) => get(`pair?station=${encodeURIComponent(station)}&runId=${encodeURIComponent(runId)}`),
       round: body => post('round', body),
-      finish: body => post('finish', body),
+      finish,
       state: () => get('state')
     };
   }

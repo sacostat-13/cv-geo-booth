@@ -462,3 +462,20 @@ body.flash-no #app { animation: flashNo .4s ease-out; }
    running the booth, not for the person playing. */
 .build { color: var(--line); font-size: clamp(11px, 1.1vw, 13px); font-variant-numeric: tabular-nums; }
 .bar { gap: 10px; }
+
+/* Phones, from the station C QR. Screens scroll here rather than shrink: a
+   phone is held close, so the 75mm booth targets can give up some size. */
+@media (max-width: 600px) {
+  .build { display: none; }
+  .bar { padding-top: max(10px, env(safe-area-inset-top)); padding-bottom: 10px; }
+  .view { overflow-y: auto; gap: 14px; }
+  .view[data-view="start"], .view[data-view="end"] { justify-content: flex-start; }
+  .lede { font-size: 26px; }
+  .mode { min-height: 140px; padding: 16px; }
+  .lvl { padding: 10px 6px; }
+  .endgrid { grid-template-columns: 1fr; }
+  .keys { grid-template-columns: repeat(7, 1fr); }
+  .keys button { min-height: 48px; }
+  .endactions { flex-wrap: wrap; justify-content: center; }
+  .primary { min-width: 0; padding: 18px 26px; }
+}

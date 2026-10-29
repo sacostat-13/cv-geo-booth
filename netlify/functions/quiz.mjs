@@ -303,10 +303,16 @@ async function finish(s, event, body) {
   const station = clean(body?.station, 8).toUpperCase() || 'A';
   const runId = clean(body?.runId, 40);
   const now = Date.now();
+  // A run synced late from a pad's outbox keeps the time it was played.
+  const ts = num(body?.ts, now - 12 * HOUR_MS, now, now);
+  const id = clean(body?.id, 40).replace(/[^a-z0-9-]/gi, '') || newId();
+
+  let board = await readBoard(s, event);
+  if (board.some(r => r.id === id)) return json(200, { ok: true, duplicate: true });
 
   const entry = {
-    id: newId(),
-    ts: now,
+    id,
+    ts,
     station,
     runId,
     initials: initials(body?.initials),
@@ -323,12 +329,14 @@ async function finish(s, event, body) {
   if (entry.correct > entry.of) entry.correct = entry.of;
 
   // The durable copy first: if the board write races and loses, this survives.
-  await s.setJSON(`${event}/runs/${now}-${entry.id}`, entry);
+  await s.setJSON(`${event}/runs/${ts}-${entry.id}`, entry);
 
   const live = prune(await readLive(s, event));
   const pad = live.pads[station];
 
-  if (pad && pad.duelId && live.duel && live.duel.id === pad.duelId) {
+  // A late sync must not touch whatever run that pad is playing now.
+  const current = pad && runId && pad.runId === runId;
+  if (current && pad.duelId && live.duel && live.duel.id === pad.duelId) {
     const d = live.duel;
     d.done[station] = { initials: entry.initials, score: entry.score, timeMs: entry.timeMs, correct: entry.correct };
     d.scores[station] = entry.score;
@@ -348,11 +356,11 @@ async function finish(s, event, body) {
       entry.duelWin = d.winner === station;
     }
   }
-  if (pad) { pad.waiting = false; pad.at = now; pad.finished = true; pad.score = entry.score; }
+  if (current) { pad.waiting = false; pad.at = now; pad.finished = true; pad.score = entry.score; }
   live.lastEntry = { initials: entry.initials, score: entry.score, correct: entry.correct, of: entry.of, at: now };
   await writeLive(s, event, live);
 
-  let board = await readBoard(s, event);
+  board = await readBoard(s, event);
   board.push(entry);
   if (board.length > BOARD_MAX) board = board.slice(-BOARD_MAX);
   await s.setJSON(event + '/board', board);

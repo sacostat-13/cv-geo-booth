@@ -30,7 +30,7 @@
   to = "/index.html"
   status = 404
 
-# Tidy URLs for the three things that get opened on hardware.
+# Tidy URLs for the things that get opened on hardware.
 [[redirects]]
   from = "/screen"
   to = "/display.html"
@@ -42,6 +42,11 @@
 [[redirects]]
   from = "/b"
   to = "/pad.html?station=B"
+  status = 200
+# Visitors' phones, from the QR on the big screen.
+[[redirects]]
+  from = "/c"
+  to = "/pad.html?station=C"
   status = 200
 
 [[headers]]
